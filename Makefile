@@ -5,6 +5,7 @@ THESIS = swiatlow_thesis
 
 all:
 	pdflatex ${THESIS}
+	pdflatex ${THESIS}
 	# bibtex   ${THESIS}
 	# pdflatex ${THESIS}
 	# pdflatex ${THESIS}
@@ -13,5 +14,4 @@ all:
 	# ls -ltrh
 	open -a skim ${THESIS}.pdf
 	sh scripts/pages.sh
-	git status
 
