@@ -6,9 +6,9 @@ THESIS = swiatlow_thesis
 all:
 	pdflatex ${THESIS}
 	pdflatex ${THESIS}
-	# bibtex   ${THESIS}
-	# pdflatex ${THESIS}
-	# pdflatex ${THESIS}
+	bibtex   ${THESIS}
+	pdflatex ${THESIS}
+	pdflatex ${THESIS}
 	# clear
 	# du -hs
 	# ls -ltrh

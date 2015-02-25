@@ -12,3 +12,11 @@
 *.gz
 
 *.toc
+
+*.sublime-project
+
+*.sublime-workspace
+
+*.bbl
+
+*.blg
