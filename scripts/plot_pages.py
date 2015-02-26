@@ -1,3 +1,5 @@
+# todo: add a point at the end of a streak of days with no compiles (or figure out how to interpolate better)
+
 import datetime, time
 import sys
 
@@ -45,6 +47,15 @@ with open("pages.md") as file:
 # dayssince = reversed(dayssince)
 # pages = reversed(pages)
 
+# small module to better include flat days
+for i in xrange(len(dayssince) - 1):
+    if dayssince[i+1] - dayssince[i] > 0:
+        dayssince.insert(i+1, dayssince[i] + 1)
+        pages.insert(i+1, pages[i])
+    i = i - 1
+
+# print dayssince, pages
+
 import numpy as np
 dayssince = np.array(dayssince)
 pages     = np.array(pages)
@@ -70,7 +81,7 @@ plt.text(0,                1.12*max(pages), r"Updated %s" % (lasttime))
 plt.axis([-1, maxdayssince+1, 0, 1.1*max(pages)])
 plt.grid(False)
 plt.plot(dayssince, pages, "-")
-plt.plot(dayssince, pages, "rd")
+# plt.plot(dayssince, pages, "rd")
 plt.fill_between(dayssince, 0, pages, facecolor='blue', interpolate=True)
 plt.savefig("pages.png")
 plt.savefig("pages.pdf")
