@@ -14,8 +14,10 @@ pages = []
 dayssince.append(0)
 pages.append(12)
 
+first = True
+
 with open("pages.md") as file:
-    for line in file.readlines():
+    for line in reversed(file.readlines()):
 
         line = line.strip()
         if not line:
@@ -29,9 +31,19 @@ with open("pages.md") as file:
 
         current = datetime.datetime.strptime(date, "%Y-%m-%d-%Hh%Mm%Ss")
         delta = current - start
-        dayssince.append(delta.days + delta.seconds/spd)
-        pages.append(int(pagecount))
-        lasttime, lastpages = current, pagecount
+        # print delta.days
+        if not delta.days in dayssince:
+            # print "adding to the array"
+            dayssince.append(delta.days)
+            pages.append(int(pagecount))
+        
+        if first:
+            lasttime, lastpages = current, pagecount
+            # print lasttime, lastpages
+            first = False
+
+# dayssince = reversed(dayssince)
+# pages = reversed(pages)
 
 import numpy as np
 dayssince = np.array(dayssince)
