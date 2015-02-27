@@ -60,10 +60,12 @@ print pages
 # small module to better include flat days
 for i in xrange(len(dayssince) - 1):
     # print i, dayssince[i], dayssince[i+1]
-    if dayssince[i] - dayssince[i+1] > 0:
+    if dayssince[i] - dayssince[i+1] > 1:
         # print 'i am true' 
-        dayssince.insert(i+2, dayssince[i+1] - 1)
-        pages.insert(i+2, pages[i+2])
+        dayssince.insert(i+1, dayssince[i] - 1)
+        pages.insert(i+1, pages[i+1])
+        # print dayssince
+        # print pages
     i = i - 1
 
 # print dayssince, pages
@@ -71,6 +73,9 @@ for i in xrange(len(dayssince) - 1):
 import numpy as np
 dayssince = np.array(dayssince)
 pages     = np.array(pages)
+
+if len(dayssince) > 1:
+    print str(pages[0] - pages[1]) + ' pages today!'
 
 from matplotlib import rcParams
 # rcParams["font.family"] = "sans-serif"
