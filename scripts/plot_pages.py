@@ -1,4 +1,7 @@
-# todo: add a point at the end of a streak of days with no compiles (or figure out how to interpolate better)
+# thanks to tunasauraus for a great start to this script
+# changed it to show only one point per day though (bit busy with how often I compile)
+# todo: generalize details like start date as arguments so that others can more easily use it
+# note: requires pdfinfo to be installed (from the amusingly sketchy http://www.foolabs.com/xpdf/)
 
 import datetime, time
 import sys
@@ -12,13 +15,10 @@ last = ""
 dayssince = []
 pages = []
 
-# the template already has 8 pages. thx reecer.
-dayssince.append(0)
-pages.append(12)
-
 first = True
 
 with open("pages.md") as file:
+    # read in reverse, to make it easier to take just the latest compile for a day
     for line in reversed(file.readlines()):
 
         line = line.strip()
@@ -44,14 +44,26 @@ with open("pages.md") as file:
             # print lasttime, lastpages
             first = False
 
+# the template already has 12 pages. thx stanford.
+# this has to go at the end because we read the file in reverse order.
+dayssince.append(0)
+pages.append(12)
+
+
 # dayssince = reversed(dayssince)
 # pages = reversed(pages)
+# print 'first time'
+print 'Your progress is:'
+print dayssince
+print pages
 
 # small module to better include flat days
 for i in xrange(len(dayssince) - 1):
-    if dayssince[i+1] - dayssince[i] > 0:
-        dayssince.insert(i+1, dayssince[i] + 1)
-        pages.insert(i+1, pages[i])
+    # print i, dayssince[i], dayssince[i+1]
+    if dayssince[i] - dayssince[i+1] > 0:
+        # print 'i am true' 
+        dayssince.insert(i+2, dayssince[i+1] - 1)
+        pages.insert(i+2, pages[i+2])
     i = i - 1
 
 # print dayssince, pages
@@ -67,7 +79,8 @@ rcParams["font.size"] = "16"
 import matplotlib.pyplot as plt
 
 now = datetime.datetime.now()
-maxdayssince = (now - start).days + (now - start).seconds/spd
+# maxdayssince = (now - start).days + (now - start).seconds/spd
+maxdayssince = (now - start).days
 
 ax = plt.gca()
 ax.xaxis.set_label_coords(0.74, -0.07)
@@ -78,6 +91,7 @@ plt.ylabel("Pages")
 plt.title("")
 plt.text(1.1*maxdayssince, 1.12*max(pages), r"%s pages"   % (lastpages))
 plt.text(0,                1.12*max(pages), r"Updated %s" % (lasttime))
+# plt.axis([0, maxdayssince, 0, 1.1*max(pages)])
 plt.axis([-1, maxdayssince+1, 0, 1.1*max(pages)])
 plt.grid(False)
 plt.plot(dayssince, pages, "-")

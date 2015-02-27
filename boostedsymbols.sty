@@ -1,0 +1,119 @@
+%
+% User-defined latex commands for SUBSTRUCTURE
+%
+
+\RequirePackage{xspace}
+
+% Jet mass related
+\newcommand{\mjet}      {\ensuremath{m^{\rm jet}}\xspace}
+\newcommand{\mlead}     {\ensuremath{\mjet_{1}}\xspace}
+\newcommand{\mleadavg}  {\ensuremath{\langle\mlead\rangle}\xspace}
+\newcommand{\Mjet}      {\mjet}
+\newcommand{\massjet}   {\mjet}
+\newcommand{\mThresh}   {\ensuremath{M_{\rm threshold}}\xspace}
+\newcommand{\mjetAvg}   {\ensuremath{\langle\mjet\rangle}\xspace}
+\newcommand{\masstrkjet}{\ensuremath{m^{\rm track \; jet}}\xspace}
+
+\newcommand{\Wmass}     {\ensuremath{m_{\Wboson}}\xspace}
+\newcommand{\WmassT}    {\ensuremath{m^{\Wboson}_{T}}\xspace}
+\newcommand{\topmass}   {\ensuremath{m_{\rm top}}\xspace}
+\newcommand{\massZprime}{\ensuremath{m_{\Zprime}}\xspace}
+
+% Jet algorithm and grooming related
+\newcommand{\akt}       {\antikt\xspace}
+\newcommand{\Akt}       {\Antikt\xspace}
+\newcommand{\AKT}       {\akt}
+\newcommand{\AKTFat}    {\antikt, \ensuremath{R=1.0}\xspace}
+\newcommand{\AKTPrune}  {\antikt, \ensuremath{R=1.0} (pruned)\xspace}
+\newcommand{\AKTFilt}   {\antikt, \ensuremath{R=1.0} (filtered)\xspace}
+\newcommand{\KTSix}     {\ensuremath{k_{t}}, \ensuremath{R=0.6}\xspace}
+\newcommand{\kt}        {\ensuremath{k_{t}}\xspace}
+\newcommand{\ca}        {Cambridge-Aachen\xspace}
+\newcommand{\CamKt}     {\ensuremath{\mathrm{C/A}}\xspace}
+\newcommand{\CASix}     {\CamKt, \ensuremath{R=0.6}\xspace}
+\newcommand{\CAFat}     {\CamKt, \ensuremath{R=1.2}\xspace}
+\newcommand{\CAPrune}   {\CamKt, \ensuremath{R=1.2} (pruned)\xspace}
+\newcommand{\CAFilt}    {\CamKt, \ensuremath{R=1.2} (filtered)\xspace}
+\newcommand{\SISCone}   {SISCone}
+\newcommand{\SISConeSiz}{\SISCone, \ensuremath{R=0.6}\xspace}
+\newcommand{\minKt}     {\ensuremath{\min\left(\pti^2, \ptj^2\right)}\xspace}
+\newcommand{\minAKt}    {\ensuremath{\min\left(\pti^{-2}, \ptj^{-2}\right)}\xspace}
+\newcommand{\minGen}    {\ensuremath{\min\left(\pti^{2p}, \ptj^{2p}\right)}\xspace}
+\newcommand{\Rij}       {\ensuremath{R_{ij}}\xspace}
+\newcommand{\DRij}      {\ensuremath{\Delta\Rij}\xspace}
+\newcommand{\DRratio}   {\ensuremath{\frac{\DRij^2}{R^2}}\xspace}
+\newcommand{\diB}       {\ensuremath{d_{iB}}\xspace}
+\newcommand{\Rfilt}     {\ensuremath{R_{\rm filt}}\xspace}
+\newcommand{\jone}      {\ensuremath{J_{1}}\xspace}
+\newcommand{\jtwo}      {\ensuremath{J_{2}}\xspace}
+\newcommand{\sjone}     {\ensuremath{j_{1}}\xspace}
+\newcommand{\sjtwo}     {\ensuremath{j_{2}}\xspace}
+\newcommand{\msubjone}  {\ensuremath{m^{\sjone}}\xspace}
+\newcommand{\msubjtwo}  {\ensuremath{m^{\sjtwo}}\xspace}
+\newcommand{\mjone}     {\ensuremath{m^{\jone}}\xspace}
+\newcommand{\mjtwo}     {\ensuremath{m^{\jtwo}}\xspace}
+\newcommand{\ptsubjone} {\ensuremath{p_{T}^{\sjone}}\xspace}
+\newcommand{\ptsubjtwo} {\ensuremath{p_{T}^{\sjtwo}}\xspace}
+\newcommand{\Rsubjets}  {\ensuremath{R_{\sjone,\sjtwo}}\xspace}
+\newcommand{\DRsubjets} {\ensuremath{\Delta\Rsubjets}\xspace}
+\newcommand{\pti}       {\ensuremath{p_{{\rm T}i}}\xspace}
+\newcommand{\ptj}       {\ensuremath{p_{Tj}}\xspace}
+\newcommand{\ycut}      {\ensuremath{y_{\rm cut}}\xspace}
+\newcommand{\mcut}      {\ensuremath{m_{\rm cut}}\xspace}
+\newcommand{\ymin}      {\ensuremath{y_{\min}}\xspace}
+\newcommand{\fcut}      {\ensuremath{f_{\rm cut}}\xspace}
+\newcommand{\Rsub}      {\ensuremath{R_{\rm sub}}\xspace}
+\newcommand{\drsub}     {\ensuremath{\Rsub}\xspace}
+\newcommand{\mufrac}    {\ensuremath{\mu_{\rm frac}}\xspace}
+\newcommand{\rcut}      {\ensuremath{R_{\rm cut}}\xspace}
+\newcommand{\zcut}      {\ensuremath{z_{\rm cut}}\xspace}
+\renewcommand{\pt}      {\ensuremath{p_{\rm T}}\xspace}
+\renewcommand{\pttrue}  {\ensuremath{p_{\rm T}^{\rm true}}\xspace}
+\newcommand{\largeR}    {large-\ensuremath{R}\xspace}
+\newcommand{\LargeR}    {Large-\ensuremath{R}\xspace}
+\newcommand{\NjetStd}   {\ensuremath{N_{\rm jet}^{R4}}\xspace}
+
+
+% Insitu mass validation
+\newcommand{\rtrkjet}       {\ensuremath{r_{\rm track \; jet}}\xspace}
+\newcommand{\rtrkjetPt}     {\ensuremath{\rtrkjet^{p_T}}\xspace}
+\newcommand{\rtrkjetM}      {\ensuremath{\rtrkjet^{M}}\xspace}
+\newcommand{\rtrkjetPtData} {\ensuremath{\rtrkjet^{p_{T},{\rm data}}}\xspace}
+\newcommand{\rtrkjetMData}  {\ensuremath{\rtrkjet^{M,{\rm data}}}\xspace}
+\newcommand{\rtrkjetPtMC}   {\ensuremath{\rtrkjet^{p_{T},{\rm MC}}}\xspace}
+\newcommand{\rtrkjetMMC}    {\ensuremath{\rtrkjet^{M,{\rm MC}}}\xspace}
+\newcommand{\RtrkjetPt}     {\ensuremath{R_{r{\rm \; track \; jet}}^{p_T}}\xspace}
+\newcommand{\RtrkjetM}      {\ensuremath{R_{r{\rm \; track \; jet}}^{M}}\xspace}
+
+% Jet substructure related
+\newcommand{\subjetpt}  {\ensuremath{p_{T}^{\rm subjet}}\xspace}
+\newcommand{\yij}       {\ensuremath{y_{ij}}\xspace}
+\newcommand{\dcut}      {\ensuremath{d_{\rm cut}}\xspace}
+\newcommand{\dmin}      {\ensuremath{d_{\min}}\xspace}
+\newcommand{\dij}       {\ensuremath{d_{ij}}\xspace}
+\newcommand{\Dij}       {\ensuremath{\sqrt{\dij}}\xspace}
+\newcommand{\DOneTwo}   {\ensuremath{\sqrt{d_{12}}}\xspace}
+\newcommand{\DTwoThr}   {\ensuremath{\sqrt{d_{23}}}\xspace}
+\newcommand{\yOneTwo}   {\ensuremath{y_{1}}\xspace}
+\newcommand{\yTwoThr}   {\ensuremath{y_{2}}\xspace}
+\newcommand{\yOneTwoDef}{\ensuremath{\yOneTwo=\DOneTwo/\mjet}\xspace}
+\newcommand{\yTwoThrDef}{\ensuremath{\yTwoThr=\DTwoThr/\mjet}\xspace}
+\newcommand{\xj}        {\ensuremath{x_{J}}\xspace}
+\newcommand{\jetFunc}   {\ensuremath{J^{(eik),c} (\mjet,\pT,R)}\xspace}
+\newcommand{\tauN}      {\ensuremath{\tau_N}\xspace}
+\newcommand{\tauTwoOne} {\ensuremath{\tau_{21}}\xspace}
+\newcommand{\tauThrTwo} {\ensuremath{\tau_{32}}\xspace}
+\newcommand{\dip}       {\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\dipOneTwo} {\ensuremath{\dip_{12}}\xspace}
+\newcommand{\dipTwoThr} {\ensuremath{\dip_{23}}\xspace}
+\newcommand{\dipOneThr} {\ensuremath{\dip_{13}}\xspace}
+
+% Samples
+\newcommand{\Zprimett}  {\ensuremath{\Zprime\ra t\bar{t}}\xspace}
+\newcommand{\Zqq}       {\ensuremath{Z\ra q\bar{q}}\xspace}
+\newcommand{\Wqq}       {\ensuremath{W\ra q\bar{q}}\xspace}
+
+
+% Random
+\newcommand{\mpi}{multiple parton interactions\xspace} % David/Emily using multiple proton interactions.
+                                                                                                                 

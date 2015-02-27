@@ -1,9 +1,21 @@
 \documentclass{report}
 
 \usepackage{suthesis-2e}
-\usepackage{graphicx}
 
-\graphicspath{{figures}{figures/detector/}}
+%standard packages
+\usepackage{graphicx}
+\usepackage{color}
+
+%misc atlas packages and helper packages
+\usepackage{atlasbsm}
+\usepackage{atlasmisc}
+\usepackage{atlasunit}
+\usepackage{jetetmisssymbols}
+\usepackage{boostedsymbols}
+\usepackage{susysymbols}
+\usepackage{edittools}
+
+\graphicspath{{figures}{figures/detector/}{figures/lhc}}
 
 \dept{Physics}
 
@@ -17,6 +29,7 @@
 \secondreader{Jay G. Wacker}
 \thirdreader{Blas Cabrera (???)} %if needed
 \fourthreader{???} %if needed
+
  
 \beforepreface
 \prefacesection{Preface}
@@ -36,10 +49,12 @@
 
 
 \chapter{The Large Hadron Collider}
-		 Do I need this?
+\input{chapters/lhc.tex}
+		
 
 \chapter{The ATLAS Detector}
 \input{chapters/detector.tex}
+
 
 
 

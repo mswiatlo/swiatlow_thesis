@@ -1,0 +1,152 @@
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  Useful things for proton-proton physics                           |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+\newcommand*{\pt}{\ensuremath{p_{\text{T}}}\xspace}
+\newcommand*{\pT}{\ensuremath{p_{\text{T}}}\xspace}
+\newcommand*{\et}{\ensuremath{E_{\text{T}}}\xspace}
+\newcommand*{\eT}{\ensuremath{E_{\text{T}}}\xspace}
+\newcommand*{\ET}{\ensuremath{E_{\text{T}}}\xspace}
+\newcommand*{\HT}{\ensuremath{H_{\text{T}}}\xspace}
+\newcommand*{\ptsq}{\ensuremath{p^2_{\text{T}}}\xspace}
+\newcommand*{\MET}{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}\xspace}
+\newcommand*{\met}{\ensuremath{E_{\text{T}}^{\text{miss}}}\xspace}
+\newcommand{\EjetRec}{\ensuremath{E_{\text{rec}}}}
+\newcommand{\PjetRec}{\ensuremath{p_{\text{rec}}}}
+\newcommand{\EjetTru}{\ensuremath{E_{\text{truth}}}}
+\newcommand{\PjetTru}{\ensuremath{p_{\text{truth}}}}
+\newcommand{\EjetDM}{\ensuremath{E_{\text{DM}}}}
+\newcommand{\Rcone}{\ensuremath{R_{\text{cone}}}}
+\newcommand*{\abseta}{\ensuremath{|\eta|}\xspace}
+\newcommand*{\Ecm}{\ensuremath{E_{\text{cm}}}}
+
+% +--------------------------------------------------------------------+
+% | Masses                                                             |
+% +--------------------------------------------------------------------+
+\newcommand*{\mh}{\ensuremath{m_{h}}\xspace}
+\newcommand*{\mW}{\ensuremath{m_{W}}\xspace}
+\newcommand*{\mZ}{\ensuremath{m_{Z}}\xspace}
+\newcommand*{\mH}{\ensuremath{m_{H}}\xspace}
+% \newcommand*{\mA}{\ensuremath{m_{A}}\xspace}
+
+%\def\mass#1{\ensuremath{m_{#1#1}}}%  "\mass{\mu}" produces "msub{mumu}".
+\newcommand{\twomass}[2]{\ensuremath{m_{#1#2}}\xspace}
+
+
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  Hours:minutes macro                                               |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+
+\newcount\hrs\newcount\minu\newcount\temptime
+\def\hm{\hrs=\time \divide\hrs by 60 \minu=\time\temptime=\hrs
+\multiply\temptime by 60%
+\advance\minu by -\temptime
+\ifnum\minu<10 \let\zerofill=0\else \let\zerofill=\relax\fi
+ \the\hrs:\zerofill\the\minu}
+
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  Useful symbols for use in or out of math mode                     |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+
+\newcommand*{\ra}{\ensuremath{\rightarrow}\xspace}
+\newcommand*{\la}{\ensuremath{\leftarrow}\xspace}
+\newcommand*{\rarrow}{\ensuremath{\rightarrow}\xspace}
+\newcommand*{\larrow}{\ensuremath{\leftarrow}\xspace}
+%\let\rarrow=\ra
+%\let\larrow=\la
+\newcommand*{\lapprox}{\ensuremath{\sim\kern-1em\raise 0.65ex\hbox{$<$}}\xspace}%  Or use \lsim
+\newcommand*{\rapprox}{\ensuremath{\sim\kern-1em\raise 0.65ex\hbox{$>$}}\xspace}%  and \rsim.
+\newcommand*{\gam}{\ensuremath{\gamma}\xspace}
+\newcommand*{\rts}{\ensuremath{\sqrt{s}}\xspace}
+\newcommand*{\stat}{\mbox{$\;$(stat.)}\xspace}
+\newcommand*{\syst}{\mbox{$\;$(syst.)}\xspace}
+%
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  QCD                                                               |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+%
+\newcommand*{\alphas}{\ensuremath{\alpha_{\text{S}}}\xspace}
+\newcommand*{\NF}{\ensuremath{N_{\text{F}}}\xspace}
+\newcommand*{\NC}{\ensuremath{N_{\text{C}}}\xspace}
+\newcommand*{\CF}{\ensuremath{C_{\text{F}}}\xspace}
+\newcommand*{\CA}{\ensuremath{C_{\text{A}}}\xspace}
+\newcommand*{\TF}{\ensuremath{T_{\text{F}}}\xspace}
+\newcommand*{\Lms}{\ensuremath{\Lambda_{\overline{\text{MS}}}}\xspace}
+\newcommand*{\Lmsfive}{\ensuremath{\Lambda^{(5)}_{\overline{\text{MS}}}}\xspace}
+\newcommand*{\KT}{\ensuremath{k_{\perp}}\xspace}
+%
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  CKM matrix                                                        |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+%
+\newcommand*{\Vcb}{\ensuremath{\vert V_{cb} \vert}\xspace}
+\newcommand*{\Vub}{\ensuremath{\vert V_{ub} \vert}\xspace}
+\newcommand*{\Vtd}{\ensuremath{\vert V_{td} \vert}\xspace}
+\newcommand*{\Vts}{\ensuremath{\vert V_{ts} \vert}\xspace}
+\newcommand*{\Vtb}{\ensuremath{\vert V_{tb} \vert}\xspace}
+\newcommand*{\Vcs}{\ensuremath{\vert V_{cs} \vert}\xspace}
+\newcommand*{\Vud}{\ensuremath{\vert V_{ud} \vert}\xspace}
+\newcommand*{\Vus}{\ensuremath{\vert V_{us} \vert}\xspace}
+\newcommand*{\Vcd}{\ensuremath{\vert V_{cd} \vert}\xspace}
+%
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  The decay symbol, to be used in \eqalign.                         |
+% |  It works like: \[\eqalign{a\ra &b+c\cr &\dk &e+f\cr &&\dk g+h}\]  |
+% |                                                                    |
+% |                  a  -->  b + c                                     |
+% |                          |                                         |
+% |                          |                                         |
+% |                          +----> e + f                              |
+% |                                 |                                  |
+% |                                 |                                  |
+% |                                 +----> g + h                       |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+%
+\newdimen\dkwidth
+\def\dk{%
+   \dkwidth=\baselineskip
+   {\def\to{\rightarrow}%  allows "\rightarrowfill" to work.
+   \kern 3pt%
+   \hbox{%
+      \raise 3pt%
+      \hbox{%
+         \vrule height 0.8\dkwidth width 0.7pt depth0pt%
+      }%
+      \kern-0.4pt%
+      \hbox to 1.5\dkwidth{%
+         \rightarrowfill
+      }%
+   \kern0.6em%
+   }}%
+}%
+%
+% +--------------------------------------------------------------------+
+% |                                                                    |
+% |  Redefine \eqalign to allow more than one column; very             |
+% |  useful for multiple decays as defined above.                      |
+% |                                                                    |
+% +--------------------------------------------------------------------+
+%
+%\unlock
+\def\eqalign#1{%
+   \,
+   \vcenter{%
+      \openup\jot\m@th
+      \ialign{%
+         \strut\hfil$\displaystyle{##}$&&$%
+         \displaystyle{{}##}$\hfil\crcr#1\crcr%
+      }%
+   }%
+   \,
+}%

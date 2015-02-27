@@ -1,0 +1,19 @@
+%%% EDITORIAL tools
+
+% Text color
+\newcommand{\redtext}[1]      {{\textcolor{red} #1}}
+\newcommand{\bluetext}[1]     {{\textcolor{blue} #1}}
+
+% Editorial notes
+%\newcommand{\editnote}[2][Ed] {{[{\em{\bf\em \textbf{{#1}:} }{\it #2}}]}}
+\newcommand{\editnote}[2][Ed] {{[{\em{\bf\em \textbf{{\textcolor{red}{#1}}:} }{\it \textcolor{red}{#2}}}]}}
+
+% Placeholder figure with text
+\newcommand{\placeholder}[3]  {\framebox[#1]{\begin{minipage}[t]{#1} \vspace{0pt} \centering #3 \vspace{#2}\end{minipage}}}
+
+% Horizontal rules
+\newcommand{\T}               {\rule{0pt}{2.6ex}}
+\newcommand{\B}               {\rule[-1.2ex]{0pt}{0pt}}
+
+% Other symbols
+\newcommand{\lsim}            {{\stackrel{<}{\sim}}}

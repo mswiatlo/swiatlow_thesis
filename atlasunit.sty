@@ -1,0 +1,62 @@
+%-------------------------------------------------------------------------------
+% Useful units. The use of these is deprecated.
+% Use a units package, e.g. siunitx instead.
+%-------------------------------------------------------------------------------
+\newcommand*{\TeV}{\ifmmode {\mathrm{\ Te\kern -0.1em V}}\else
+                   \textrm{Te\kern -0.1em V}\fi}%
+\newcommand*{\GeV}{\ifmmode {\mathrm{\ Ge\kern -0.1em V}}\else
+                   \textrm{Ge\kern -0.1em V}\fi}%
+\newcommand*{\MeV}{\ifmmode {\mathrm{\ Me\kern -0.1em V}}\else
+                   \textrm{Me\kern -0.1em V}\fi}%
+\newcommand*{\keV}{\ifmmode {\mathrm{\ ke\kern -0.1em V}}\else
+                   \textrm{ke\kern -0.1em V}\fi}%
+\newcommand*{\eV}{\ifmmode  {\mathrm{\ e\kern -0.1em V}}\else
+                   \textrm{e\kern -0.1em V}\fi}%
+\let\tev=\TeV
+\let\gev=\GeV
+\let\mev=\MeV
+\let\kev=\keV
+\let\ev=\eV
+
+\newcommand*{\TeVc}{\ifmmode {\mathrm{\ Te\kern -0.1em V}/c}\else
+                   {\textrm{Te\kern -0.1em V}/$c$}\fi}%
+\newcommand*{\GeVc}{\ifmmode {\mathrm{\ Ge\kern -0.1em V}/c}\else
+                   {\textrm{Ge\kern -0.1em V}/$c$}\fi}%
+\newcommand*{\MeVc}{\ifmmode {\mathrm{\ Me\kern -0.1em V}/c}\else
+                   {\textrm{Me\kern -0.1em V}/$c$}\fi}%
+\newcommand*{\keVc}{\ifmmode {\mathrm{\ ke\kern -0.1em V}/c}\else
+                   {\textrm{ke\kern -0.1em V}/$c$}\fi}%
+\newcommand*{\eVc}{\ifmmode  {\mathrm{\ e\kern -0.1em V}/c}\else
+                   {\textrm{e\kern -0.1em V}/$c$}\fi}%
+\let\tevc=\TeVc
+\let\gevc=\GeVc
+\let\mevc=\MeVc
+\let\kevc=\keVc
+\let\evc=\eVc
+
+\newcommand*{\TeVcc}{\ifmmode {\mathrm{\ Te\kern -0.1em V}/c^2}\else
+                   {\textrm{Te\kern -0.1em V}/$c^2$}\fi}%
+\newcommand*{\GeVcc}{\ifmmode {\mathrm{\ Ge\kern -0.1em V}/c^2}\else
+                   {\textrm{Ge\kern -0.1em V}/$c^2$}\fi}%
+\newcommand*{\MeVcc}{\ifmmode {\mathrm{\ Me\kern -0.1em V}/c^2}\else
+                   {\textrm{Me\kern -0.1em V}/$c^2$}\fi}%
+\newcommand*{\keVcc}{\ifmmode {\mathrm{\ ke\kern -0.1em V}/c^2}\else
+                   {\textrm{ke\kern -0.1em V}/$c^2$}\fi}%
+\newcommand*{\eVcc}{\ifmmode  {\mathrm{\ e\kern -0.1em V}/c^2}\else
+                   {\textrm{e\kern -0.1em V}/$c^2$}\fi}%
+\let\tevcc=\TeVcc
+\let\gevcc=\GeVcc
+\let\mevcc=\MeVcc
+\let\kevcc=\keVcc
+\let\evcc=\eVcc
+
+%\def\cm{\ifmmode  {\mathrm{\ cm}}\else
+%                   \textrm{~cm}\fi}%
+
+\newcommand*{\ifb}{\mbox{fb$^{-1}$}}
+\newcommand*{\ipb}{\mbox{pb$^{-1}$}}
+\newcommand*{\inb}{\mbox{nb$^{-1}$}}
+
+\newcommand*{\degr}{\ensuremath{^\circ}}
+
+\newcommand*{\lumirate}{cm$^{-2}/$s}
