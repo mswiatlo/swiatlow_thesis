@@ -1,30 +1,54 @@
 %!TEX root = ../swiatlow_thesis.tex
 \label{chapter:detector}
 
-The design of the LHC, with two high-luminosity interaction points at opposite ends of the ring, called for two general purpose detectors to be built in these locations. Their charge was to accurately reconstruct collision events in the most hostile conditions yet seen in a collider: with a bunch spacing of 25 ns and the unprecedented introduction of pile-up the detectors would have an enormous challenge ahead of them. ATLAS (A Toroidal LHC APparatus)~\cite{ATLASPaper} and CMS (Compact Muon Solenoid)~\cite{CMSPaper} were the two detectors built for this task, with ATLAS occupying the (much more convenient) Point 1 and CMS located at the (very distant) Point 5.
-
-In keeping with the principle of ``similar, but opposite'' established by their locations, the ATLAS and CMS detectors take
-
-The ATLAS detector 
+The design of the LHC, with two high-luminosity interaction points at opposite ends of the ring, called for two general purpose detectors to be built in these locations. Their charge was to accurately reconstruct collision events in the most hostile conditions yet seen in a collider: with a bunch spacing of 25 ns and the unprecedented introduction of pile-up the detectors would have an enormous challenge ahead of them in dealing with both the rate and the reconstruction of events. ATLAS (A Toroidal LHC APparatus)~\cite{ATLASPaper} and CMS (Compact Muon Solenoid)~\cite{CMSPaper} were the two detectors built for this task, with ATLAS occupying the (much more convenient) Point 1 and CMS located at the (very distant) Point 5. The data presented in this thesis was collected by the ATLAS experiment in $pp$ collisions at $\sqrt{s} = 8$~TeV in 2012. 
 
 
-The data presented in this thesis was collected by the ATLAS experiment in $pp$ collisions at $\sqrt{s} = 8$~TeV in 2012. 
+\editnote{Paragraph on general principles?}
 
 
-
-%2012 luminosity figure? Or in LHC section?
+Particle detectors measure particles via their interactions with matter, as drawn schematically in Figure~\ref{fig:detector:schematic}. For example, charged particles (such as electrons and some hadrons) interact electromagnetically with silicon and gas tubes, leaving hits in different layers of detectors which can be traced back to form a track. Electrons and photons, with their low masses and high rate of interaction with matter, are measured by the electromagnetic calorimeter. The calorimeter is composed of alternating layers of metal meant to cause the particle to interact and lose energy, and active materials which measure the energy left behind in these interactions. The hadron calorimeter follows a similar principle, and alternately placed layers of metal and active material again aim to stop and measure the hadrons which the electromagnetic calorimeter did not stop. Muons, which do not interact very much with matter most matter but do leave hits in trackers, survive past even the hadronic calorimeter, and a special set of muon detectors can be used to identify them there. Neutrinos, as they interact with matter only via the weak force and thus very rarely, escape detection and are reconstructed only by inferring their presence from the lack of momentum conservation in the transverse plane. \editnote{this isn't great?}
 
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{atlas.jpg}
+\includegraphics[width=0.7\textwidth]{schematic.jpg}
+\label{fig:detector:schematic}
+\caption{A schematic diagram of the interactions of various particles with detector components. Copyright CERN.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+General purpose particle detectors thus demand the following characteristics: \editnote{define radiation lengths? above?}
+
+\begin{enumerate}
+	\item Tracking systems must be able to identify primary and secondary vertices, while minimizing the radiation lengths before the calorimeters
+	\item Strong calorimetry systems are required to accurately measure the energy and position electrons, photons, and hadrons
+	\item Muon systems must be able to precisely reconstruct muons
+\end{enumerate}
+
+To this end, the ATLAS detector is built in the traditional onion-layer configuration, which measures particles as they travel perpendicular to the beam. The Inner Detector, composed of the concentric Pixel, SCT \editnote{define}, and Transition-Radiation-Tracker (TRT) subsystems, lies at the center of the detector and precisely measures tracks created by charged particles. A 2 T solenoid encloses the Inner Detector, bending charged particles and enabling the measurement of their momenta. Next the Electromagnetic Calorimeter (ECal), composed of liquid argon (LAr) and copper, sits outside of the solenoid in a liquid nitrogen cryostat, and measures energy deposits from electrons and photons (as well as hadrons to a lesser extent). The Hadronic Calorimeter, built to measure and stop any remaining hadronic particles, is composed of steel and scintillating tile in the center (referred to as the barrel), and LAr and copper in forward regions (referred to as end-caps). Surrounding these are an additional set of magnets: the superconducting air-core toroids of the barrel and endcaps, which bend particles in the plane perpendicular to that of the bending due to the solenoid. \editnote{That needs cleaning.} The Muon Spectrometer (composed of MDT, RPC, TGC, and CSC subsystems) sits outside of (and next to) these magnets, and provides a final measurement of the charged particles which reach that far. The entire detector is shown in Figure~\ref{fig:detector:atlas}. The incredible size of the detector-- 25 m in diameter, and 46 m long-- is dominated by the Muon Spectrometer and the toroids. On the other hand, the detector is comparatively light (only 7000 tons, compared to 14,000 tons for CMS), as the air-core toroids do not add substantial weight to the detector. \editnote{decide how to cite all this}
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{atlas.jpg}
 \label{fig:detector:atlas}
 \caption{A computer-generated view of the ATLAS detector, with people for scale. Copyright CERN.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
+
+
+In keeping with the principle of ``similar, but opposite'' established by their locations, the ATLAS and CMS detectors take complementary approaches to the various aspects of event reconstruction in collisions. All general purpose detectors have the same basic goals: the must reconstruct the outgoing, stable particles produced in collisions and the subsequent decays of particles in these collisions. Different particles are detected with different general classes of detectors, of which there are many possible types. For example, electrons and photons are measured by the ECal, for which ATLAS used a liquid argon (LAr) and copper system while CMS used a crystal lead tungstate system. Each had their own advantages and disadvantages (ATLAS's was less costly and already proven technology with better position resolution, while CMS took a riskier route which promised better energy resolution), but overall performance between the detectors tends to be very similar because of various trade-offs. In the case of the ECals, the precision of ATLAS and CMS's $H\rightarrow \gamma \gamma$ measurements ended up being largely similar \editnote{cite?}, in no small part because CMS's all-silicon tracking system introduced greater radiation lengths before the calorimeters, thereby prompting more photons to convert and losing precision in the measurement. On the other hand, CMS's comparatively weak brass hadronic calorimeter (compared to ATLAS's higher resolution tile calorimeter), is compensated by their tracking system, which enables a particle-flow reconstruction algorithm to combine information from all detectors and improve jet performance to levels very similar to ATLAS. \editnote{consider citations, and substantial revisions here}. Similarly, the large size and extra toroid magnets of ATLAS allow for a larger lever-arm and an additional set of measurements of muons (enabling reconstruction with or without the inner detector): however, muon reconstruction performance in CMS is very similar because the stronger solenoidal magnetic field (4 T compared to 2 T) allows for a better measurement using the inner detector only (with the muon systems on CMS providing only a tag of a passing muon, and not a complete reconstruction). 
+
+
+%2012 luminosity figure? Or in LHC section?
+
 
 
 %Detector figure
@@ -49,6 +73,17 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 %%%%%%%%%%%%%%%% 
 
 
+% approval dates
+
+% cavern construction (picture?)
+
+% construction milestones
+
+% first data, first papers
+
+% quenching? higgs discovery
+
+
 \section{Magnet Systems}
 
 \subsection{Solenoid}
@@ -59,7 +94,7 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 \centering
 \includegraphics[width=0.7\textwidth]{solenoid.jpg}
 \label{fig:detector:solenoid}
-\caption{A photograph of the ATLAS solenoid before it was lowered to the cavern. Copyright CERN.}
+\caption{A photograph of the ATLAS solenoid shortly after the winding of the coils was finished. Copyright CERN.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
