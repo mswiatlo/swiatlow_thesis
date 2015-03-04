@@ -15,3 +15,6 @@ all:
 	open -a skim ${THESIS}.pdf
 	sh scripts/pages.sh
 
+clean:
+	rm -f *.aux *.log *.pdf *.bbl *.blg *.brf *.cb *.ind *.idx *.ilg  \
+	 	*.inx *.dvi *.toc *.out *~ ~* spellTmp 

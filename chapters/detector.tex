@@ -130,6 +130,11 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 
 \section{Inner Detector}
 
+
+Define ID
+
+At design luminosity, the detector is expected to measure approximately 1000 charged particles every 25 ns within the detector acceptance.
+
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
@@ -154,13 +159,15 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 
 \subsection{Silicon Pixel Detector}
 
-\editnote{Citationsssss}
+The innermost ATLAS sub-detector is the Silicon Pixel Detector~\cite{ATLASPaper}. The principal of detection for the pixel detector follows the standard ionizing radiation detector~\cite{Detectors}. Charged particles interact with the active medium (doped silicon), knocking electrons loose from their host atoms and creating electron-hole pairs. An applied voltage carries the holes and electrons to opposite ends of the detectors, where they are read out. The active regions are very small in both $x$ and $y$ dimensions, allowing for many independent measurement channels in a small area. Given the high number of particles expected from LHC collisions, and that the density is greatest nearest to the interaction point, it is critical that the innermost detector have a huge number of very small channels, making the task perfectly suited for a pixel detector.
 
-The innermost ATLAS sub-detector is the Silicon Pixel Detector. 80.4 million independent pixel channels, with a size of $50 \times 400~\mu$m, , are read out by 1744 bump-bonded modules attached to the active sensors. Each of the modules are composed of 16 front-end chips. This corresponds to a combined active area of 1.7 $m^2$. The detector is arranged in three radial layers in the barrel section, and three disks in the end-caps. In the radial layers, the pixels have a resolution of $10 \times 115~\mu$m in $r-\phi$ and $z$ respectively, and in the end-caps the orientation is reversed and the resolution is $10 \times 115~\mu$m in $z$ and $r-\phi$: the orientations are always chosen such that the most precise measurement takes place in the direction most relevant to the measurement of the track $p_T$. \editnote{Check these numbers, especially end-cap} \editnote{Anything about occupancy?}
+80.4 million independent pixel channels, with a size of $50 \times 400~\mu$m, are read out by 1744 bump-bonded modules attached to the active sensors. Each of the modules are composed of 16 front-end chips~\cite{ATLASPaper}. This corresponds to a combined active area of 1.7 $m^2$. The detector is arranged in three radial layers in the barrel section, and three disks in the end-caps. In the radial layers, the pixels have a resolution of $10 \times 115~\mu$m in $R-\phi$ and $z$ respectively, and in the end-caps the orientation is perpendicular and the resolution is $10 \times 115~\mu$m in $R$ and $R-\phi$: the orientations are always chosen such that the most precise measurement takes place in the direction most relevant to the measurement of the track $p_T$.\footnote{The $R-\phi$ coordinate is simply a distance-projected version of the azimuthal angle $\phi$.} The barrel and disk arrangement is shown in Figure~\ref{fig:detector:pixel}. Hits are read out when charge has been collected over a tunable threshold determined by the noise of each pixel, resulting in typical occupancies of $10^{-4}$ -- $10^{-5}$, though this grows obviously grows with additional $pp$ interactions.
 
-The innermost radial layer, known as the $b$-layer, sits only 50.5 mm from the center of the beampipe, while the outermost layer is located at 122.5 mm. By placing detectors so close to the interaction point, it is possible to very accurately measure the location of both  primary vertices-- the locations of $p-p$ collisions-- and second vertices-- the locations of the displaced decays of particles with long lifetimes, such as $B$-hadrons.
+The innermost radial layer, known as the $b$-layer, sits only 50.5 mm from the center of the beampipe, while the outermost layer is located at 122.5 mm~\cite{ATLASPaper}. By placing detectors so close to the interaction point, it is possible to very accurately measure the location of both  primary vertices-- the locations of $pp$ collisions-- and second vertices-- the locations of the displaced decays of particles with long lifetimes, such as $B$-hadrons~\cite{ATLASExpected}.
 
-Placing the detector so close to the beamline comes at a price, however, as the detector is particularly susceptible to radiation damage due to the high flux of particles through a small area. At design luminosity, this is expected to be about 158 kGy/year at the $b$-layer, reduced to 25.4 kGy/year at the outermost layer. As the performance of the detector is thus expected to degrade over time (indeed, the entire inner detector is planned to be replaced after 300 $fb^{-1}$ are collected), \editnote{This is not the nicest way of putting this.}
+Placing the detector so close to the beamline comes at a price, however, as the detector is particularly susceptible to radiation damage due to the high flux of particles through a small area. At design luminosity, this is expected to be about 158 kGy/year at the $b$-layer, reduced to 25.4 kGy/year at the outermost layer~\cite{ATLASPaper}. Damage comes in the form of displaced atoms in the doped silicon lattice, resulting in lower electron-hole yields per particle interaction. Some of the damage is mitigated by operating at cold temperatures (typically $-5$ to $-10$\degree~C), and higher bias voltages can also alleviate the effects.
+
+While the entire Inner Detector is expected to be replaced after 300 \ifb~are collected in order to replace the damaged components, the long shutdown of 2013-2015 presented ATLAS with the opportunity to augment the existing pixel detector with the so-called Insertable B-Layer (or IBL)~\cite{ATLASIBL}. The IBL, which adds an additional layer of pixels to the barrel and endcap pixel systems, is attached directly to a new carbon-fiber beampipe, and is located only 33 mm from the center of the beampipe. Due to this extremely close distance, the pixel size has been further reduced to $50 \times 250 \mu$m. The vertexing performance (especially secondary vertex identification for $b$-tagging) of ATLAS in Run 2, starting in 2015, is expected to substantially increase due to the IBL. 
 
 %%%%%%%%%%%%%%%%
 
@@ -177,6 +184,8 @@ Placing the detector so close to the beamline comes at a price, however, as the 
 
 \subsection{Silicon Strip Tracker}
 
+The next outermost subdetector in the ID is composed of silicon microstrip (SCT) layers~\cite{ATLASPaper}. 
+
 
 %%%%%%%%%%%%%%%%
 
@@ -184,7 +193,7 @@ Placing the detector so close to the beamline comes at a price, however, as the 
 \centering
 \includegraphics[width=0.7\textwidth]{sct.jpg}
 \label{fig:detector:sct}
-\caption{A photograph of one segment of the ATLAS SCT barrel system. Copyright CERN.}
+\caption{A photograph of one segment of the ATLAS SCT end-cap disks. Copyright CERN.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
