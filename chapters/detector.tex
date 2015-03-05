@@ -87,7 +87,7 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 \section{Magnet Systems}
 
 \subsection{Solenoid}
-
+\label{atlas:magnets:solenoid}
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
@@ -130,10 +130,11 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 
 \section{Inner Detector}
 
+The ATLAS Inner Detector (ID) sits at the center of the experiment~\cite{ATLASPaper}. The purpose of the detector is to reconstruct the tracks (i.e. trajectories) of charged particles produced by the collisions of the LHC in order to not only accurately measure the locations of primary and secondary vertices, but to also directly measure the momenta and locations of charged particles~\cite{ATLASExpected}. The detector covers the range $|\eta| < 2.5$, and is capable of measuring particle momenta as low as $\pT = 500$~MeV. Charged particle reconstruction efficiencies are typically greater than $90\%$ for 100 GeV particles and $70\%$ for 1 GeV particles, with a strong $\eta$ dependence. Typical \pT resolutions are of order $0.05\% \mathrm{GeV}^{-1} \times \pT \oplus 1\%$, and impact parameter resolutions are approximately 10 $\mu$m\footnote{The impact parameter is the perpendicular distance from the origin to the point of closest approach of the track, and is critical for the measurement of secondary vertices.}. 
 
-Define ID
+The ID is composed of several independent detector subsystem which read out the locations of interactions with charged particles. These hits are fit to tracks by a suite of tools, which include standard global-$\chi^2$ and Kalman-filters, but also several specialized fitters~\cite{ATLASExpected}. The \pT of the particles is obtained by measuring the curvature produced by the 2 T solenoid (as described by Section~\ref{atlas:magnets:solenoid}) surrounding the detector. The three subsystems, described below, are the silicon pixel tracker (Pixel), silicon microstrip tracker (SCT), and transition radiation tracker (TRT). The combined detector has a length of 7024 m and a radius of 1.15 m~\cite{ATLASPaper}. Figure~\ref{fig:detector:inner-detector} shows a computer generated image of the combined ID, and Figure~\ref{fig:detector:inner-detector-2} shows a computer-generated image of the various subcomponents of the ID and their spacing.
 
-At design luminosity, the detector is expected to measure approximately 1000 charged particles every 25 ns within the detector acceptance.
+At design luminosity, the detector is expected to measure approximately 1000 charged particles every 25 ns within the detector acceptance~\cite{ATLASExpected}. The added growth of pileup in the 2012 and future LHC runs have increased the importance of the Inner Detector as the primary vertex identification has become even more critical~\cite{ATLAS-CONF-2012-042}, but growing challenges from the computing time necessary to fit so many tracks (which increase more than quadratically as the number of detector hits~\cite{Combinatorics}) will also need to be overcome to make best use of the detector's information.
 
 %%%%%%%%%%%%%%%%
 
@@ -161,7 +162,7 @@ At design luminosity, the detector is expected to measure approximately 1000 cha
 
 The innermost ATLAS sub-detector is the Silicon Pixel Detector~\cite{ATLASPaper}. The principal of detection for the pixel detector follows the standard ionizing radiation detector~\cite{Detectors}. Charged particles interact with the active medium (doped silicon), knocking electrons loose from their host atoms and creating electron-hole pairs. An applied voltage carries the holes and electrons to opposite ends of the detectors, where they are read out. The active regions are very small in both $x$ and $y$ dimensions, allowing for many independent measurement channels in a small area. Given the high number of particles expected from LHC collisions, and that the density is greatest nearest to the interaction point, it is critical that the innermost detector have a huge number of very small channels, making the task perfectly suited for a pixel detector.
 
-80.4 million independent pixel channels, with a size of $50 \times 400~\mu$m, are read out by 1744 bump-bonded modules attached to the active sensors. Each of the modules are composed of 16 front-end chips~\cite{ATLASPaper}. This corresponds to a combined active area of 1.7 $m^2$. The detector is arranged in three radial layers in the barrel section, and three disks in the end-caps. In the radial layers, the pixels have a resolution of $10 \times 115~\mu$m in $R-\phi$ and $z$ respectively, and in the end-caps the orientation is perpendicular and the resolution is $10 \times 115~\mu$m in $R$ and $R-\phi$: the orientations are always chosen such that the most precise measurement takes place in the direction most relevant to the measurement of the track $p_T$.\footnote{The $R-\phi$ coordinate is simply a distance-projected version of the azimuthal angle $\phi$.} The barrel and disk arrangement is shown in Figure~\ref{fig:detector:pixel}. Hits are read out when charge has been collected over a tunable threshold determined by the noise of each pixel, resulting in typical occupancies of $10^{-4}$ -- $10^{-5}$, though this grows obviously grows with additional $pp$ interactions.
+80.4 million independent pixel channels, with a size of $50 \times 400~\mu$m, are read out by 1744 bump-bonded modules attached to the active sensors. Each of the modules are composed of 16 radiation hard front-end chips~\cite{ATLASPaper}. This corresponds to a combined active area of 1.7 $m^2$. The detector is arranged in three radial layers in the barrel section, and three disks in the end-caps. In the radial layers, the pixels have a resolution of $10 \times 115~\mu$m in $R-\phi$ and $z$ respectively, and in the end-caps the orientation is perpendicular and the resolution is $10 \times 115~\mu$m in $R$ and $R-\phi$: the orientations are always chosen such that the most precise measurement takes place in the direction most relevant to the measurement of the track $p_T$.\footnote{The $R-\phi$ coordinate is simply a distance-projected version of the azimuthal angle $\phi$.} The barrel and disk arrangement is shown in Figure~\ref{fig:detector:pixel}. Hits are read out when charge has been collected over a tunable threshold determined by the noise of each pixel, resulting in typical occupancies of $10^{-4}$ -- $10^{-5}$, though this grows obviously grows with additional $pp$ interactions.
 
 The innermost radial layer, known as the $b$-layer, sits only 50.5 mm from the center of the beampipe, while the outermost layer is located at 122.5 mm~\cite{ATLASPaper}. By placing detectors so close to the interaction point, it is possible to very accurately measure the location of both  primary vertices-- the locations of $pp$ collisions-- and second vertices-- the locations of the displaced decays of particles with long lifetimes, such as $B$-hadrons~\cite{ATLASExpected}.
 
@@ -184,7 +185,9 @@ While the entire Inner Detector is expected to be replaced after 300 \ifb~are co
 
 \subsection{Silicon Strip Tracker}
 
-The next outermost subdetector in the ID is composed of silicon microstrip (SCT) layers~\cite{ATLASPaper}. 
+The next outermost subdetector in the ID is composed of silicon microstrip layers~\cite{ATLASPaper}, and is commonly referred to as the SCT.  The SCT operates under a very similar principal to the Pixel detector: doped silicon under an electric bias is the active medium, and electron/hole pairs are collected to read out hits. Unlike the Pixels, one dimension of the detector is ganged together to form the eponymous strips. Two sets of detectors must therefore placed perpendicularly to each other (or at some other angle) to provide a true two-dimensional measurement, but the number of channels to be read out has been significantly reduced~\cite{Detectors}.
+
+The ATLAS SCT contains 4088 modules, each composed of two 64 mm silicon strip sensors with a 40-mrad angular offset~\cite{ATLASPaper}. Like the Pixels, the detector is arranged into radial layers in the barrel and disks in the endcap, of which there are 4 and 9 respectively. The strips have a resolution of $17 \times 580$ in $R-\phi$ and $z$ respectively in the barrel, and $17 \times 580$ in $R-\phi$ and $R$ in the disks. The SCT occupies the space between 275 mm and 560 mm from the beamline. The detector contains a total of 6.3 million read out channels read out by radiation hard front-end chips~\cite{SCTPaper}. The increased distance of the SCT from the beamline significantly lowers the rate of expected radiation damage, but increased bias voltages are still expected to be necessary after significant luminosity~\cite{ATLASPaper}.  Figure~\ref{fig:detector:sct} shows one segment of the SCT endcap disks.
 
 
 %%%%%%%%%%%%%%%%
@@ -193,7 +196,7 @@ The next outermost subdetector in the ID is composed of silicon microstrip (SCT)
 \centering
 \includegraphics[width=0.7\textwidth]{sct.jpg}
 \label{fig:detector:sct}
-\caption{A photograph of one segment of the ATLAS SCT end-cap disks. Copyright CERN.}
+\caption{A photograph of one segment of the ATLAS SCT endcap disks. Copyright CERN.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
