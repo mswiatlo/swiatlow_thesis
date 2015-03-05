@@ -16,5 +16,5 @@ all:
 	sh scripts/pages.sh
 
 clean:
-	rm -f *.aux *.log *.pdf *.bbl *.blg *.brf *.cb *.ind *.idx *.ilg  \
+	rm -f *.aux *.log *.pdf *.bbl *.blg *.brf *.cb *.ind *.idx *.ilg  *.bbl \
 	 	*.inx *.dvi *.toc *.out *~ ~* spellTmp 
