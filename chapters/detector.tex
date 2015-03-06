@@ -5,7 +5,7 @@ The design of the LHC, with two high-luminosity interaction points at opposite e
 
 Particle detectors measure particles via their interactions with matter, as drawn schematically in Figure~\ref{fig:detector:schematic}. For example, charged particles (such as electrons and some hadrons) interact electromagnetically with silicon and gas tubes, leaving hits in different layers of detectors which can be traced back to form a track. Electrons and photons, with their low masses and high rate of interaction with matter, are measured by the electromagnetic calorimeter. The calorimeter is composed of alternating layers of metal meant to cause the particle to interact and lose energy, and active materials which measure the energy left behind in these interactions. The hadron calorimeter follows a similar principle, and alternately placed layers of metal and active material again aim to stop and measure the hadrons which the electromagnetic calorimeter did not stop. Muons, which do not interact very much with matter most matter but do leave hits in trackers, survive past even the hadronic calorimeter, and a special set of muon detectors can be used to identify them there. Neutrinos, as they interact with matter only via the weak force and thus very rarely, escape detection and are reconstructed only by inferring their presence from the lack of momentum conservation in the transverse plane.
 
-A significant constraint in the design of detectors is the interaction of particles with matter. \editnote{This needs citations.}
+A significant constraint in the design of detectors is the interaction of particles with matter. \editnote{This needs citations.} As particles traverse matter-- including the detectors built to measure them-- they lose energy via interactions, or in the case of photons, can even convert into electron/positron pairs. As some detectors-- particularly the calorimeters-- sit radially behind others, this can mean that substantial portions of the energy of particles can have already dispersed by the time they are measured. One of the keys to an accurate detector, then, is to minimize the material before the calorimeters. \editnote{Clean this up with better discussion of radiation lengths. Pages 350 of Perkins may be helpful}
 
 
 %%%%%%%%%%%%%%%%
@@ -25,9 +25,10 @@ General purpose particle detectors thus demand the following characteristics: \e
 	\item Tracking systems must be able to identify primary and secondary vertices, while minimizing the radiation lengths before the calorimeters
 	\item Strong calorimetry systems are required to accurately measure the energy and position electrons, photons, and hadrons
 	\item Muon systems must be able to precisely reconstruct muons
+	\item All detector systems must be capable of being read out quickly, and a triggering system is required to quickly identify interesting events for recording
 \end{enumerate}
 
-To this end, the ATLAS detector is built in the traditional onion-layer configuration, which measures particles as they travel perpendicular to the beam. The Inner Detector, composed of the concentric Pixel, SCT \editnote{define}, and Transition-Radiation-Tracker (TRT) subsystems, lies at the center of the detector and precisely measures tracks created by charged particles. A 2 T solenoid encloses the Inner Detector, bending charged particles and enabling the measurement of their momenta. Next the Electromagnetic Calorimeter (ECal), composed of liquid argon (LAr) and copper, sits outside of the solenoid in a liquid nitrogen cryostat, and measures energy deposits from electrons and photons (as well as hadrons to a lesser extent). The Hadronic Calorimeter, built to measure and stop any remaining hadronic particles, is composed of steel and scintillating tile in the center (referred to as the barrel), and LAr and copper in forward regions (referred to as end-caps). Surrounding these are an additional set of magnets: the superconducting air-core toroids of the barrel and endcaps, which bend particles in the plane perpendicular to that of the bending due to the solenoid. \editnote{That needs cleaning.} The Muon Spectrometer (composed of MDT, RPC, TGC, and CSC subsystems) sits outside of (and next to) these magnets, and provides a final measurement of the charged particles which reach that far. The entire detector is shown in Figure~\ref{fig:detector:atlas}. The incredible size of the detector-- 25 m in diameter, and 46 m long-- is dominated by the Muon Spectrometer and the toroids. On the other hand, the detector is comparatively light (only 7000 tons, compared to 14,000 tons for CMS), as the air-core toroids do not add substantial weight to the detector. \editnote{decide how to cite all this}
+To this end, the ATLAS detector is built in the traditional onion-layer configuration, which measures particles as they travel perpendicular to the beam~\cite{ATLASPaper}. The Inner Detector, composed of the concentric Pixel, SCT \editnote{define}, and Transition-Radiation-Tracker (TRT) subsystems, lies at the center of the detector and precisely measures tracks created by charged particles. A 2 T solenoid encloses the Inner Detector, bending charged particles and enabling the measurement of their momenta. Next the Electromagnetic Calorimeter (ECal), composed of liquid argon (LAr) and copper, sits outside of the solenoid in a liquid nitrogen cryostat, and measures energy deposits from electrons and photons (as well as hadrons to a lesser extent). The Hadronic Calorimeter, built to measure and stop any remaining hadronic particles, is composed of steel and scintillating tile in the center (referred to as the barrel), and LAr and copper in forward regions (referred to as end-caps). Surrounding these are an additional set of magnets: the superconducting air-core toroids of the barrel and endcaps, which bend particles in the plane perpendicular to that of the bending due to the solenoid. \editnote{That needs cleaning.} The Muon Spectrometer (composed of MDT, RPC, TGC, and CSC subsystems) sits outside of (and next to) these magnets, and provides a final measurement of the charged particles which reach that far. The entire detector is shown in Figure~\ref{fig:detector:atlas}. The incredible size of the detector-- 25 m in diameter, and 46 m long-- is dominated by the Muon Spectrometer and the toroids. On the other hand, the detector is comparatively light (only 7000 tons, compared to 14,000 tons for CMS), as the air-core toroids do not add substantial weight to the detector~\cite{CMSPaper,ATLASPaper}.
 
 
 %%%%%%%%%%%%%%%%
@@ -70,6 +71,34 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 
 %%%%%%%%%%%%%%%% 
 
+By the release of the 1994 Technical Proposal~\cite{ATLASTP}, the detector design was becoming much more complete, and many of the choices of design for the detector subsystems (the components of the ID, for example) were already mostly complete. By 1997 many of the detector subsystem Technical Design Reports (TDR) were complete, and construction began on these systems~\cite{ATLASHistory}. 1999 saw a TDR for the entire detector, representing a complete integrated design for the entire detector~\cite{tdr1,tdr2}. Memoranda of Understanding with national funding institutions are completely arranged by 2000, as construction of the detector is well underway~\cite{ATLASHistory}. The cavern, the largest yet built at CERN and pictured in Figure~\ref{fig:detector:cavern}, is completed in 2003. Assembly of detector components continues rapidly at this point, and the detector is finished in 2008.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{cavern.jpg}
+\label{fig:detector:cavern}
+\caption{A view of the ATLAS cavern during construction. Copyright CERN.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+Early data-taking was of course disrupted by the incident described in Section~\ref{lhc:history}, and first 7 TeV collisions were recorded on March 3, 2010. ATLAS recorded 35 \ipb~in 2010, 4.6 \ifb~in 2011, and 20.3 \ifb~in 2012. Figure~\ref{fig:detector:lumi} shows the dramatic increase of data during 2011 and 2012, which came at the cost of pileup levels higher than what had been planned for. The detector had an impressive uptime during collisions, with more than $90\%$ of delivered collisions usable for physics.
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{atlas-lumi.pdf}
+\label{fig:detector:lumi}
+\caption{ATLAS recorded luminosity as a function of date in 2011 and 2012. The yellow show all data delivered by the LHC, green was recorded by ATLAS, and blue was high-quality data.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
 
 % approval dates
 
@@ -84,8 +113,35 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 
 \section{Magnet Systems}
 
+The magnets of ATLAS play a critical role in the meausurement of particle momenta by bending charged particles via the interaction with the Lorentz Force Law:
+
+\begin{equation}
+\frac{d \vec{p}}{d t} = q (\vec{E} + \vec{v} \times \vec{B})
+\end{equation}
+%
+where $\vec{p}$ is the particle 4-momentum, $q$ is the charge, $v$ is the velocity, and $E$ and $B$ are the electric and magnetic fields. The solenoid, for example, has a field in $z$ direction only, resulting in a force in the $\phi$ direction. As the magnetic field does no work, the energy of the particle is not changed, and only the direction is affected. The degree of bending is directly proportional to $\vec{v}$, the velocity, and so the particle's momentum is able to be extracted. The field configuration in the toroid systems is much more complicated, but the particle momentum reconstruction follows the same general principle. \editnote{Clean this up, and cite.}
+
+The combined magnet system is shown in Figure~\ref{fig:detector:magnets}. The solenoid sits at the center, and the toroid system on the outside and in the endcaps.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{magnet-fields.pdf}
+\label{fig:detector:magnets}
+\caption{A computer generated visualization of the ATLAS magnet systems.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
 \subsection{Solenoid}
 \label{atlas:magnets:solenoid}
+
+ATLAS's solenoid is shown in Figure~\ref{fig:detector:solenoid} shortly after its construction was finished. It sits inside the calorimeter systems, and surrounds the Inner Detector. This is contrast to the configuration in CMS, where their solenoid surrounds the calorimeter systems. Thus, particles in ATLAS do not bend in the calorimeters and particle showers tend to be more directly collimated, while particles tend to be dispersed much further in the calorimeter in CMS.
+
+The ATLAS solenoid has a 2 T axial field, powered by 7.730 kA of current~\cite{ATLASPaper}. Since the solenoid is in front of the calorimeters, care must be taken to reduce the material that particles can interact with. To that end, the magnet and the LAr calorimeter share the same vacuum vessel, eliminating the need for two additional walls. The magnet is composed of Al-stabilized NbTi conductor, developed specifically to best balance high field and low thickness. The solenoid occupies the space between 2.46 and 2.56 m, and is 5.8 m long axially. The stored energy of the magnet system is approximately 40 MJ, and it takes approximately a week to cool the magnet to the operational temperature of 4.5 K. 
+
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
@@ -98,7 +154,9 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 %%%%%%%%%%%%%%%% 
 
 
-\subsection{Toroids}
+\subsection{Barrel toroids}
+
+The ATLAS magnet system contains two separate toroids systems~\cite{ATLASPaper}. The barrel toroid consists of 8 coils in separate racetrack-configured, stainless-steel vacuum vessels which give the ATLAS the detector its famous shape, as seen in Figure~\ref{fig:detector:toroid}. The magnets are supported by a system of 8 inner and 8 outer support rings. The entire system is 25.3 m long, and begins at 9.4 m radially and ends at 20.1 m. The magnet is composed of the same wire as used in the solenoid, and the magnet system stores 1.1 GJ of energy during operation at 20.5 kA of current. The barrel toroid takes approximately 5 weeks to cool to its nominal temperature of 4.6 K.
 
 
 %%%%%%%%%%%%%%%%
@@ -106,12 +164,15 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{toroid.jpg}
-\label{fig:detector:solenoid}
+\label{fig:detector:toroid}
 \caption{A photograph of the ATLAS barrel toroids after their installation. Note person in the center for scale. Copyright CERN.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
+\subsection{Endcap toroids}
+
+The third ATLAS magnet system are the endcap toroids~\cite{ATLASPaper}. These magnets are designed bend the muons which interact with the muon spectrometer endcaps. They are constructed to be removable in order to allow access to the calorimeter and inner detector systems. The endcaps are each constructed of 8 flat, square coils with 8 keystone wedges which share the same cryostat. The magnets each take four weeks to cool to the operating temperature of 4.5 K, and operate at 20.5 kA with a stored energy of 0.25 MJ each. The coil material is again largely similar to that of the barrel toroid and solenoid. One of the endcap toroids is pictured in Figure~\ref{fig:detector:endcap-toroid} after being lowered into the ATLAS cavern.
 
 
 %%%%%%%%%%%%%%%%
@@ -119,7 +180,7 @@ ATLAS emerged in a later 1992 Letter of Intent as a merger of the ASCOT and EAGL
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{endcap-toroid.jpg}
-\label{fig:detector:solenoid}
+\label{fig:detector:endcap-toroid}
 \caption{A photograph of an ATLAS endcap toroid shortly before its installation in the detector. Copyright CERN.}
 \end{figure}
 
@@ -158,7 +219,7 @@ At design luminosity, the detector is expected to measure approximately 1000 cha
 
 \subsection{Silicon Pixel Detector}
 
-The innermost ATLAS sub-detector is the Silicon Pixel Detector~\cite{ATLASPaper}. The principal of detection for the pixel detector follows the standard ionizing radiation detector~\cite{Detectors}. Charged particles interact with the active medium (doped silicon), knocking electrons loose from their host atoms and creating electron-hole pairs. An applied voltage carries the holes and electrons to opposite ends of the detectors, where they are read out. The active regions are very small in both $x$ and $y$ dimensions, allowing for many independent measurement channels in a small area. Given the high number of particles expected from LHC collisions, and that the density is greatest nearest to the interaction point, it is critical that the innermost detector have a huge number of very small channels, making the task perfectly suited for a pixel detector.
+The innermost ATLAS sub-detector is the Silicon Pixel Detector~\cite{Pixel,ATLASPaper}. The principal of detection for the pixel detector follows the standard ionizing radiation detector~\cite{Detectors}. Charged particles interact with the active medium (doped silicon), knocking electrons loose from their host atoms and creating electron-hole pairs. An applied voltage carries the holes and electrons to opposite ends of the detectors, where they are read out. The active regions are very small in both $x$ and $y$ dimensions, allowing for many independent measurement channels in a small area. Given the high number of particles expected from LHC collisions, and that the density is greatest nearest to the interaction point, it is critical that the innermost detector have a huge number of very small channels, making the task perfectly suited for a pixel detector.
 
 80.4 million independent pixel channels, with a size of $50 \times 400~\mu$m, are read out by 1744 bump-bonded modules attached to the active sensors. Each of the modules are composed of 16 radiation hard front-end chips~\cite{ATLASPaper}. This corresponds to a combined active area of 1.7 $m^2$. The detector is arranged in three radial layers in the barrel section, and three disks in the end-caps. In the radial layers, the pixels have a resolution of $10 \times 115~\mu$m in $R-\phi$ and $z$ respectively, and in the end-caps the orientation is perpendicular and the resolution is $10 \times 115~\mu$m in $R$ and $R-\phi$: the orientations are always chosen such that the most precise measurement takes place in the direction most relevant to the measurement of the track $p_T$.\footnote{The $R-\phi$ coordinate is simply a distance-projected version of the azimuthal angle $\phi$.} The barrel and disk arrangement is shown in Figure~\ref{fig:detector:pixel}. Hits are read out when charge has been collected over a tunable threshold determined by the noise of each pixel, resulting in typical occupancies of $10^{-4}$ -- $10^{-5}$, though this grows obviously grows with additional $pp$ interactions.
 
@@ -183,9 +244,9 @@ While the entire Inner Detector is expected to be replaced after 300 \ifb~are co
 
 \subsection{Silicon Strip Tracker}
 
-The next outermost subdetector in the ID is composed of silicon microstrip layers~\cite{ATLASPaper}, and is commonly referred to as the SCT.  The SCT operates under a very similar principal to the Pixel detector: doped silicon under an electric bias is the active medium, and electron/hole pairs are collected to read out hits. Unlike the Pixels, one dimension of the detector is ganged together to form the eponymous strips. Two sets of detectors must therefore placed perpendicularly to each other (or at some other angle) to provide a true two-dimensional measurement, but the number of channels to be read out has been significantly reduced~\cite{Detectors}.
+The next outermost subdetector in the ID is composed of silicon microstrip layers~\cite{SCTPaper,ATLASPaper}, and is commonly referred to as the SCT.  The SCT operates under a very similar principal to the Pixel detector: doped silicon under an electric bias is the active medium, and electron/hole pairs are collected to read out hits. Unlike the Pixels, one dimension of the detector is ganged together to form the eponymous strips. Two sets of detectors must therefore placed perpendicularly to each other (or at some other angle) to provide a true two-dimensional measurement, but the number of channels to be read out has been significantly reduced~\cite{Detectors}.
 
-The ATLAS SCT contains 4088 modules, each composed of two 64 mm silicon strip sensors with a 40-mrad angular offset~\cite{ATLASPaper}. Like the Pixels, the detector is arranged into radial layers in the barrel and disks in the endcap, of which there are 4 and 9 respectively. The strips have a resolution of $17 \times 580$ in $R-\phi$ and $z$ respectively in the barrel, and $17 \times 580$ in $R-\phi$ and $R$ in the disks. The SCT occupies the space between 275 mm and 560 mm from the beamline. The detector contains a total of 6.3 million read out channels read out by radiation hard front-end chips~\cite{SCTPaper}. The increased distance of the SCT from the beamline significantly lowers the rate of expected radiation damage, but increased bias voltages are still expected to be necessary after significant luminosity~\cite{ATLASPaper}.  Figure~\ref{fig:detector:sct} shows one segment of the SCT endcap disks.
+The ATLAS SCT contains 4088 modules, each composed of two 64 mm silicon strip sensors with a 40-mrad angular offset~\cite{ATLASPaper}. Like the Pixels, the detector is arranged into radial layers in the barrel and disks in the endcap, of which there are 4 and 9 respectively. The strips have a resolution of $17 \times 580$ in $R-\phi$ and $z$ respectively in the barrel, and $17 \times 580$ in $R-\phi$ and $R$ in the disks. The SCT occupies the space between 275 mm and 560 mm from the beamline. The detector contains a total of 6.3 million read out channels read out by radiation hard front-end chips~\cite{SCTReadout}. The increased distance of the SCT from the beamline significantly lowers the rate of expected radiation damage, but increased bias voltages are still expected to be necessary after significant luminosity~\cite{SCTPaper,ATLASPaper}.  Figure~\ref{fig:detector:sct} shows one segment of the SCT endcap disks.
 
 
 %%%%%%%%%%%%%%%%
@@ -205,7 +266,7 @@ The final subdetector of the ID is the transition radiation tracker~\cite{ATLASP
 
 The TRT covers the range $|\eta| < 2.0$ in the standard barrel and endcap arrangements~\cite{TRTPaper}. There are 52544 tubes, each 1.44 m in length, arranged in two active regions on either side of the center of the detector. The endcaps are each composed of 122880 370 mm long tubes, organized into 18 wheels. The barrel is arranged in layers of 76 straws, while the endcaps have 160 planes. There are a combined 350848 channels in the detector.
 
-The TRT, whose active elements are much larger than that of the silicon sensors in the rest of the ID, has a significantly larger hit resolution: 130 $\mu$m in $R-\phi$~\cite{ATLASPaper}. This is partly compensated by the large number of straws that charged particles cross, generating on average 30 hits~\cite{ATLASExpected}. The TRT has the added benefit of providing identification of electrons via the emission of transition X-rays. \editnote{Few sentences on how this works.} In the barrel, the TRT straws are embedded in a set of polypropylene-polyethylene fibers with a diameter of 19 $\mu$m; in the endcap, foil is interleaved between the straws. A special readout system in the straw readout electronics measures these transition photons~\cite{TRTReadout}. This type of identification is not possible with silicon detectors, providing the TRT with a unique capability. Finally, the gas tubes of the TRT present a significantly lower amount of material to particles traversing the ID compared to silicon detectors, thereby degrading less the performance of the ECal and HCal.
+The TRT, whose active elements are much larger than that of the silicon sensors in the rest of the ID, has a significantly larger hit resolution: 130 $\mu$m in $R-\phi$~\cite{ATLASPaper}. This is partly compensated by the large number of straws that charged particles cross, generating on average 30 hits~\cite{ATLASExpected}. The TRT has the added benefit of providing identification of electrons via the emission of transition X-rays~\cite{TRTPID}. \editnote{Few sentences on how this works.} In the barrel, the TRT straws are embedded in a set of polypropylene-polyethylene fibers with a diameter of 19 $\mu$m; in the endcap, foil is interleaved between the straws. A special readout system in the straw readout electronics measures these transition photons~\cite{TRTReadout}. This type of identification is not possible with silicon detectors, providing the TRT with a unique capability. Finally, the gas tubes of the TRT present a significantly lower amount of material to particles traversing the ID compared to silicon detectors, thereby degrading less the performance of the ECal and HCal.
 
 Given the distance of the TRT from the interaction point, and the greater resilience of gas tubes to radiation compared to silicon (there is no atomic lattice to be damaged), the TRT is not expected to be significantly damaged during the course of data-taking. However, with the presence of increasing pileup conditions in upcoming runs, the occupancy of the TRT is expected to grow significantly, presenting a significant challenge to continued operation~\cite{TRTOccupancy}.
 
