@@ -507,4 +507,18 @@ In addition to the main detectors described in the previous sections, several fo
 
 \section{Triggering}
 
+With collisions occuring every 25 ns at design luminosity, and even every 50 ns in 2012 operations, ATLAS has no chance of recording every collision. Instead, a triggering system is used to quickly identify interesting events and to mark them for later analysis\cite{ATLASPaper,Trigger2010}. This system is divided into three stages: Level 1 (L1), Level 2 (L2), and the Event Filter (EF). Each stage is designed to make a decision using some limited amount of information from the detector at a maximum rate before handing off to the next stage, which can use more information to make a better informed decision. In this manner, the initial collision rate of 40 MHz (20 MHz in 2012) is reduced to 75 kHz after the L1, 3.5 kHz at L2, and 200 Hz at EF. The listed rates were design goals for the initial running of ATLAS: in practice, as much as 400-600 Hz were accepted at EF during Run 1.
+
+\subsection{Level 1}
+
+The L1 trigger is unique amongst the trigger subsystems in that it is implemented entirely in custom hardware, configurable with programmable firmware~\cite{ATLASPaper,Trigger2010}. The L1 accepts information from the calorimeter and muon spectrometer systems only, as the ID information takes significantly longer to readout and is not available at the rate requried for L1 decisions.  The L1 muon triggers typically require 3 hits in coincidence in either the RPC or TGC detectors, with various $p_T$ threshholds. The calorimeter trigger system is significantly more complicated. As the high level of granularity of the detector would present rate challenges for the trigger, the calorimeter is readout in $0.1\times0.1$ towers in $\eta \times \phi$ (with worse granularity at high $\eta$), and typically ignore longitudinal segmentation. These trigger towers are used as the basis for triggers for electrons, photons, taus, jets, total transverse energy $\sum E_T$, and missing energy $\MET$. The various signatures combine the towers in different ways to create the relevant physics objects: jets, for example, are searched for with a sliding window algorithm which looks at $8\times 8$ tower regions and identifies areas with significant $E_T$. Photons and electrons typically use smaller regions, and require isolation of the signal to reduce contamination from jet backgrounds.
+
+Information from the L1 decisions are passed to the Central Trigger Processor (CTP), and data from the detector is offloaded to on-detector buffers in case an accept signal is sent~\cite{ATLASPaper}. The CTP can store up to 256 signatures, which are various combinations of muon and calorimeter information. Once the CTP sends a decision, detector buffers are transfered to the Read-Out System (ROS) via the Read-Out Links (ROLs), each of which has a Read-Out Buffer (ROB). The areas of the detector which caused the L1 trigger to fire are passed to the L2 trigger as a Region Of Interest (ROI).
+
+\subsection{Level 2}
+
+The L2 and EF are collectively referred to as the High Level Trigger (HLT), as they are both written in software and run on commodity computers~\cite{ATLASPaper}. Significantly more information is available at L2 as the rate has already been reduced signficantly. L2 triggers usually operate via requesting ROIs from the L1 trigger, which indicate which regions of the detector should be further inspected. The data from these regions is read into L2, and used to construct jets, tracks, photons, and so on, which can be used to make trigger decisions.
+
+
+
 \section{Data Quality}
