@@ -84,19 +84,9 @@ By the release of the 1994 Technical Proposal~\cite{ATLASTP}, the detector desig
 
 %%%%%%%%%%%%%%%% 
 
-Early data-taking was of course disrupted by the incident described in Section~\ref{lhc:history}, and first 7 TeV collisions were recorded on March 3, 2010. ATLAS recorded 35 \ipb~in 2010, 4.6 \ifb~in 2011, and 20.3 \ifb~in 2012. Figure~\ref{fig:detector:lumi} shows the dramatic increase of data during 2011 and 2012, which came at the cost of pileup levels higher than what had been planned for. The detector had an impressive uptime during collisions, with more than $90\%$ of delivered collisions usable for physics.
+Early data-taking was of course disrupted by the incident described in Section~\ref{lhc:history}, and first 7 TeV collisions were recorded on March 3, 2010. ATLAS recorded 35 \ipb~in 2010, 4.6 \ifb~in 2011, and 20.3 \ifb~in 2012. The dramatic increase of data during 2011 and 2012 came at the cost of pileup levels far higher than what had been planned for. As Section~\ref{atlas:data-quality} describes, the detector operated incredibly well during these difficult conditions, and over 90\% of data delivered by the LHC was successfully recorded.
 
 
-%%%%%%%%%%%%%%%%
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{atlas-lumi.pdf}
-\label{fig:detector:lumi}
-\caption{ATLAS recorded luminosity as a function of date in 2011 and 2012. The yellow show all data delivered by the LHC, green was recorded by ATLAS, and blue was high-quality data.}
-\end{figure}
-
-%%%%%%%%%%%%%%%% 
 
 
 
@@ -517,8 +507,40 @@ Information from the L1 decisions are passed to the Central Trigger Processor (C
 
 \subsection{Level 2}
 
-The L2 and EF are collectively referred to as the High Level Trigger (HLT), as they are both written in software and run on commodity computers~\cite{ATLASPaper}. Significantly more information is available at L2 as the rate has already been reduced signficantly. L2 triggers usually operate via requesting ROIs from the L1 trigger, which indicate which regions of the detector should be further inspected. The data from these regions is read into L2, and used to construct jets, tracks, photons, and so on, which can be used to make trigger decisions.
+The L2 and EF are collectively referred to as the High Level Trigger (HLT), as they are both written in software and run on commodity computers~\cite{ATLASPaper}. Significantly more information is available at L2 as the rate has already been reduced signficantly. L2 triggers usually operate via requesting ROIs from the L1 trigger, which indicate which regions of the detector should be further inspected. The data from these regions is read into L2, and used to construct jets, tracks, photons, and so on, which can be used to make trigger decisions. As L2 has significantly more information available than L1, the algorithms used to reconstruct these objects are much closer to the offline reconstruction.
 
+\subsection{Event Filter}
+
+If the L2 accepts an event, the full event is read out into the Sub-Farm Inputs (SFI) and is reconstructed with no ROI restrictions~\cite{ATLASPaper}. The Event Filter then applies algorithms designed to be very close to the offline reconstruction (for example, performing topoclustering on the calorimeter cells to create inputs for jet clustering). The EF decision is performed for many events in parallel by a large network of computers-- typically each event takes 4 s to process, but the large size of the network still allows for many events to be processed in parallel. This final refinement of the detector information allows for a further significant reduction in the rate. Each readout event is approximately 1.6 MB, and is sent by the Sub-Farm Outputs (SFO) to the CERN Tier 0 datacenter for permanent storage.
 
 
 \section{Data Quality}
+\label{atlas:data-quality}
+
+The Run 1 detector conditoins enabled a very high efficiency of data collection by ATLAS. Figure~\ref{fig:detector:lumi} shows the delivered LHC luminosity in the 2011-2012 period in green, and the recorded ATLAS data in yellow, with the final usable data in blue. The overall efficiency is close to 90$\%$, indicating high uptime of all subsystems.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{atlas-lumi.pdf}
+\label{fig:detector:lumi}
+\caption{ATLAS recorded luminosity as a function of date in 2011 and 2012. The yellow show all data delivered by the LHC, green was recorded by ATLAS, and blue was high-quality data.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+The detector uptime, and combined recording efficiency, is displayed in Figure~\ref{fig:detector:uptime}. All detector subsystems reported a very high uptime, with many detectors recovering data previously marked as `bad' by correcting flagged data in offline reconstruction. The remaining large portion of the inefficiency comes from the so-called ``warm start'' period, where the ATLAS pixel detector (and in early parts of the run also the SCT) ramps up its HV power supplies and preamplifiers only after the LHC has declared stable beams.
+
+The LAr and Tile detectors critical to the hadronic analyses in this thesis both suffered several types of errors during operations. Most LAr errors were due to high-voltage power supply trips which disabled modules while the power supplies automatically recovered; most tile issues were related to problems with the low-voltage power supplies. Both of these errors were flagged during data taking so that affected events could be properly vetoed (in the case of the LAr issues) or corrected (in the case of the Tile).
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{DQ-eff-table2012pp-AprilDecember2012}
+\label{fig:detector:uptime}
+\caption{ATLAS subdetector uptime during 2012 data taking.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
