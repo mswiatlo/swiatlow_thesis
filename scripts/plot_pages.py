@@ -97,13 +97,13 @@ maxdayssince = (now - start).days
 ax = plt.gca()
 fig, ax1 = plt.subplots()
 ax1.xaxis.set_label_coords(0.74, -0.07)
-ax1.yaxis.set_label_coords(-0.10, 0.9)
+ax1.yaxis.set_label_coords(-0.10, 0.6)
 
 ax1.set_xlabel("Days since start (Feb. 23)")
 ax1.set_ylabel("Pages",color='b')
 ax1.set_title("")
-ax1.text(0.6*maxdayssince, 1.12*max(pages), r"%s pages"   % (lastpages), color='blue')
-ax1.text(0.8*maxdayssince, 1.12*max(pages), r"%s words"   % (lastwords), color='red')
+ax1.text(0.1*maxdayssince, 0.9*max(pages), r"%s pages"   % (lastpages), color='blue')
+ax1.text(0.1*maxdayssince, 0.8*max(pages), r"%s words"   % (lastwords), color='red')
 ax1.text(0,                1.12*max(pages), r"Updated %s" % (lasttime))
 # plt.axis([0, maxdayssince, 0, 1.1*max(pages)])
 ax1.axis([-1, maxdayssince+1, 0, 1.1*max(pages)])
@@ -114,7 +114,7 @@ ax1.fill_between(dayssince, 0, pages, facecolor='blue', interpolate=True)
 
 ax2 = ax1.twinx()
 ax2.set_ylabel('Words',color='r')
-ax2.yaxis.set_label_coords(1.1, 0.9)
+ax2.yaxis.set_label_coords(1.1, 0.6)
 # print dayssince, words
 ax2.plot(dayssince, words, "r-",linewidth=2)
 
