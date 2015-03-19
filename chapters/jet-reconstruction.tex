@@ -52,7 +52,44 @@ Discussion of bending, out of cone
 Alternative to independent track jets
 
 \subsection{Cluster Calibration}
+
 \section{Jet Calibration}
+
+Once a jet has been clustered, from either EM-scale or LC-scale constituents, it is not yet ready for use by analyses. The non-compensating nature of the ATLAS calorimeters guarantees that the energy measured by the detectors is not the full energy of the particles which passed through them. Jets on ATLAS therefore go through several stages of additional corrections and calibrations, as outlined in Figure~\ref{fig:jet-reconstruction:making-jets}. Each level of the corrections and calibrations is referred to as a \textit{scale}. The steps involved are:
+
+\begin{enumerate}
+	\item Jet clustering, producing jets at the \textit{constituent scale} (or EM/LC)
+	\item Jet areas pileup correction
+	\item A residual NPV and $\mu$ dependent offset, producing jets at the \textit{pileup corrected scale}
+	\item A Monte Carlo based \textit{Jet Energy Scale} (JES) calibration, producing jets at the \textit{particle scale}
+	\item A Global Sequential Calibration to reduce flavor dependence
+	\item In-situ data-driven calibrations, producing jets at the \textit{fully calibrated scale}
+\end{enumerate}
+
+All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both EM and LC-scale inputs. While the LC calibration of the clusters is able to correct for non-compensation to some extent (by noting the difference between hadronic and electromagnetic interactions in the calorimeter, and the corresponding different energies they deposit), even LC-scale jets require significant further calibrations to correspond to truth jets. \LargeR jets, as used by the analyses in this thesis, undergo only the MC JES calibration, for reasons discussed below. The following sections describe each of these steps in detail.
+
+\subsection{Pileup Corrections}
+
+\subsection{MC Jet Energy Scale}
+
+\subsection{Global Sequential Calibration}
+
+\subsection{In-situ Calibrations}
+
+\subsection{\LargeR Calibrations}
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{JES_calib_chain.png}
+\label{fig:jet-reconstruction:making-jets}
+\caption{A diagram displaying the multiple steps which are used to transform a jet at the constituent scale to a fully-calibrated physics object for use in analysis.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
 
 \section{Flavor Tagging}
 
