@@ -92,11 +92,13 @@ The LHC itself is composed of eight essentially identical octants, as shown in F
 
 Operating at full design luminosity, each beam of the LHC contains 2808 bunches each filled with $10^{11}$ protons. This corresponds to a bunch spacing of 25 ns, with longer spacing in between so-called ``bunch trains'': the exact structure of the fill pattern is determined by the fill patterns of the prior accelerators, and the need to provide gaps which can be used to safely dump the beam if necessary~\cite{lhc-bunches}\footnote{In particular, the size of these gaps is determined by the turn-on time of the LHC beam dump kicker of about 3~$\mu$s.}. In operations in 2010-2012, a minimum bunch spacing of 50 ns was used due to electron-cloud effects restricting the operation at 25 ns; the bunch charge was instead increased to deliver additional luminosity. 
 
-emmittance, etc.
-
-stored beam energy
-
-table summarizing parameters
+Another important parameter describing the beam conditions is the \textit{emittance} $\epsilon$, defined as an ellipse with:
+%
+\begin{equation}
+\epsilon = \gamma x^2 + 2 \alpha x x' + \beta x'^2
+\end{equation}
+%
+where $\gamma$, $\alpha$, and $\beta$ are the ellipse parameters, and $x$ is a coordinate and $x'$ the velocity of that coordinate~\cite{accelerator-book}. The overall emmittance $\epsilon$ is conserved by Liouville's theorem, but focusing magnets can change the other parameters of the ellipse. In particular, as $\beta$ shrinks and $\gamma$ grows, the physical size of the beam in that direction becomes smaller, but with a wider range of velocities. Thus at interaction points, $\beta$ is minimized such that the transverse size of the two beams are minimized and collisions are most likely. This particular value is called $\beta^*$, and is a key parameter in describing the luminosity of the accelerator. Note that in principle each transverse coordinate can have indepedent sizes, but typically circular beams are assumed.
 
 %%%%%%%%%%%%%%%%
 
@@ -112,6 +114,21 @@ table summarizing parameters
 \section{Luminosity, and Pileup}
 \label{lhc:luminosity-and-pileup}
 
+Assuming the beams are circular, all of the previously discussed beam parameters come together in defining the luminosity:
+%
+\begin{equation}
+\mathcal{L} = \frac{N^2 k_b f \gamma}{4\pi \epsilon_n \beta^*} F
+\end{equation}
+%
+where $N$ is the number of protons per bunch, $k_b$ is the number of bunches per beam, $f$ is the revolution frequency, $\gamma$ is the relativistic factor, $\epsilon_n$ is the normalized emittance, $\beta^*$ is the $\beta$ value at the IP, and $F$ is a geometric factor indicating the crossing angle of the beams. This shows clearly the handles that the accelerator operators have to increase the luminosity: they can increase the number of protons and the number of bunches, or decrease the size of the beam.
+
+Luminosity is a measurement of the rate of collisions; the \textit{integrated luminosity} refers to the amount of data collected over a period of time. Luminosity is typically reported in units of \lumirate, which is an inverse cross-section per time. Another commonly used unit is the \textit{barn}, which is $10^{-24}$ cm$^2$. Luminosities in ATLAS are typically reported in \ipb~or \ifb. The product of the integrated luminosity and the cross-section of production for some physics process ($pp \rightarrow t\bar{t}$, $pp \rightarrow \tilde{g}\tilde{g}$, etc.) gives the number of events expected for that process in that amount of data.
+
+Increasing the number of bunches (which is possible by switching from 50 ns bunchspacing to 25 ns, for example) increases the frequency of bunch crossings, but does not increase the rate of collisions per bunch crossing. The other factors do the opposite: they keep the rate of bunch crossings constant, but increase the rate of collisions per bunch crossing. Historically in hadron colliders, the expected number of collisions per crossing has been very low, and often less than 1. With the extremely strong performance of the LHC, however, the rate of collisions per crossing has increased to significantly more than one, leading to the condition of \textit{pileup}.
+
+As the expected rate of bunch-crossings is 400 MHz-- far higher than what the detectors can record-- a triggering system is typically used to quickly identify ``interesting'' events for read-out and future analysis. The rate of interesting events is much lower than that of the full interaction cross-section, so there is typically only one interesting event per bunch crossing (at most). This means that when an interesting event is recorded, it is embedded in a background of other collisions, referred to as pileup. The LHC is the first collider which has to deal with significant levels of pileup, as it was not feasible to use an even lower bunch-spacing, leaving only increasing the per-bunch collision rate to increase the overall luminosity.
+
+The pileup profiles-- defined using the variable $\mu$, or the average number of collisions per bunch-crossing-- for 2011 and 2012 operations is shown in Figure~\ref{fig:lhc:mu-profile}. $\mu$ is an average variable which describes the beam conditions-- the actual number of interactions per bunch-crossing can fluctuate with Poisson statistics, and is better measured with variables like $N_{vtx}$, the number of reconstructed primary vertices using the tracking detectors. The wide distribution of $\mu$ values is due to two effects. First, the operation of the accelerator is optimized throughout the year, leading to lower values of $\beta^*$ and higher $N$ and $k_b$, and thus changing $\mu$ over time. Additionally, the expected $\mu$ can change during a run-- in particular, as collisions occur and the number of protons in a bunch decreases over time, $\mu$ will decrease proportionally.
 
 %%%%%%%%%%%%%%%%
 
@@ -119,7 +136,7 @@ table summarizing parameters
 \centering
 \includegraphics[width=0.7\textwidth]{mu_2011_2012-dec.pdf}
 \label{fig:lhc:mu-profile}
-\caption{muuu}
+\caption{The profile of the average number of interactions per bunch crossing, $\mu$, delivered during operations in 2011 and 2012.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -127,11 +144,45 @@ table summarizing parameters
 
 \section{Operations in 2010-2012}
 
-some more lumi plots? instaneous?
+Operations during Run 1 of the LHC were extraordinarly successful: in 2010, the collider delivered 48.1 \ipb to ATLAS, 5.46 \ifb in 2011, and 22.8 \ifb in 2012. Figure~\ref{fig:lhc:lumivsyear} shows the integrated luminosity delivered as a function of time, demonstrating the remarkable advances in collision rate as accelerator operations became more advanced. Table~\ref{tab:lhc:parameters} shows the typical beam parameters in each year of operation, compared to the design. In some respects-- emittance and proton number-- the LHC is actually outperforming the design specifications, which has led to very high luminosity levels even with a 50 ns bunch spacing. This comes at the price of the much higher than expected pileup levels, and the correponding difficulties in detector operation that this creates.
 
-pileup plots (or is that earlier)
+%%%%%%%%%%%%%%%%
 
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{intlumivsyear.pdf}
+\label{fig:lhc:lumivsyear}
+\caption{The integrated luminosity as a function of time in Run 1, as measured by the ATLAS detector.}
+\end{figure}
 
+%%%%%%%%%%%%%%%% 
+
+\begin{table}
+	\caption{Table of LHC run parameters in Run 1, and the design.}
+	\label{tab:lhc:parameters}
+	\begin{center}
+		\begin{tabular}{l|cccc}
+		\hline
+
+		\hline
+		\textbf{Parameter} & \textbf{2010} & \textbf{2011} & \textbf{2012} & \textbf{Design} \\
+		\hline
+			 Beam Energy [TeV] & 3.5 &        3.5    &       4.0 &            7.0\\
+			 $\beta^*$ [m]      & 2.0/3.5 &     1.5/1.0   &       0.6 &            0.55\\
+			 Bunch spacing [ns] & 150 &         75/50   &       50 &             25\\
+			 Number of bunches  & 368 &         1380    &       1374 &           2808\\
+			 Average proton number  & 1.2 $\times 10^{11}$ &    1.45 $\times 10^{11}$     3.5    &   1.7 $\times 10^{11}$ &     1.15 $\times 10^{11}$\\
+			 Normalized emittance at start of fill [mm.mrad]  & 2.0 &    2.4 &      2.5    &   3.75\\
+			 Peak luminosity [\lumirate] & $2.1\times 10^{32}$   &  $3.7 \times 10^{33}$   & $7.7 \times 10^{33}$ & $1 \times 10^{34}$ \\
+			 Maximum $\mu$ &  4  &  17   &  40 & 19 \\
+		\hline
+
+		\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Figure~\ref{fig:lhc:lumivstime} shows the peak luminosity as a function of time in Run 1, and Figure~\ref{fig:lhc:muvstime} shows the peak pileup rate during the same period. In particular, it is clear that the growth is directly related: almost the entirety of the luminosity gain seen in 2011 and 2012 came at the price of increased pileup.
 
 %%%%%%%%%%%%%%%%
 
@@ -139,7 +190,7 @@ pileup plots (or is that earlier)
 \centering
 \includegraphics[width=0.7\textwidth]{lumivstime.pdf}
 \label{fig:lhc:lumivstime}
-\caption{lumi vs time}
+\caption{Peak luminosity delivered by the LHC as a function of time in Run 1, as measured by the ATLAS detector.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -150,20 +201,10 @@ pileup plots (or is that earlier)
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{muvstime.pdf}
-\label{fig:lhc:lumivstime}
-\caption{mu vs time}
+\label{fig:lhc:muvstime}
+\caption{Peak interactions per crossing as a function of time in Run 1, as measured by the ATLAS detector.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
 
-%%%%%%%%%%%%%%%%
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{intlumivsyear.pdf}
-\label{fig:lhc:lumivsyear}
-\caption{lumi vs year}
-\end{figure}
-
-%%%%%%%%%%%%%%%% 
