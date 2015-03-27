@@ -61,6 +61,7 @@ Once a jet has been clustered, from either EM-scale or LC-scale constituents, it
 	\item Jet clustering, producing jets at the \textit{constituent scale} (or EM/LC)
 	\item Jet areas pileup correction
 	\item A residual NPV and $\mu$ dependent offset, producing jets at the \textit{pileup corrected scale}
+	\item A jet origin correction, correcting the $\eta$ of a jet for the true location of the primary vertex, creating jets at the \textit{origin corrected scale}
 	\item A Monte Carlo based \textit{Jet Energy Scale} (JES) calibration, producing jets at the \textit{particle scale}
 	\item A Global Sequential Calibration to reduce flavor dependence
 	\item In-situ data-driven calibrations, producing jets at the \textit{fully calibrated scale}
@@ -116,17 +117,60 @@ where $A$ is the scalar area of the jet. It is also common to define the 4-vecto
 p_\mu^{\mathrm{corrected}} = p_\mu - \rho A_\mu
 \end{equation}
 %
-Often this is preferable, as not just the $p_T$ but the mass of the jet is thus corrected for pileup. However, in some situations it is possible for the jet mass to be over-corrected, resulting in a negative $m^2$ and therefore imaginary mass. For this reason, ATLAS used only the scalar correction in Run~1. After the pileup correction, a jet is referred to as being at the ``pileup corrected scale'' and is ready for further calibration.
+Often this is preferable, as not just the $p_T$ but the mass of the jet is thus corrected for pileup. However, in some situations it is possible for the jet mass to be over-corrected, resulting in a negative $m^2$ and therefore imaginary mass. For this reason, ATLAS used only the scalar correction in Run~1. After the pileup correction, a jet is referred to as being at the ``pileup corrected scale'' and is ready for further calibration. Figure~\ref{fig:jet-reconstruction:jet-pu-vs-mu} shows the improvement in the RMS of the jet offset-- a measurement of the resolution induced by pileup-- as a function of $\mu$. The corrected distribution in blue shows a substantial improvement over the original distribution in black, and an average NPV based correction in red.
 
-One important aspect to note is that these corrections are done on jet 4-vectors as a whole, and not on consituents-- this means that jet moments, such as substructure observables, are not corrected. There are several extensions of the areas technique which aim to correct shapes, and some additional ideas which correct jet inputs before clustering, and therefore automatically correct shapes. While ATLAS explored some of these options in Run 1, the susceptibility of most variables to pileup was found to be rather small, putting off the need for dedicated corrections to Run 2. \editnote{cite, cite}
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{pu_vs_mu.pdf}
+\label{fig:jet-reconstruction:jet-pu-vs-mu}
+\caption{The improvement of the width of the jet offset (a measurement of the jet resolution in simulation) from the application of the jet areas pileup correction in blue, compared to an NPV based correction in red, and no correction in black.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+One important aspect to note is that these corrections are done on jet 4-vectors as a whole, and not on constituents-- this means that jet moments, such as substructure observables, are not corrected. There are several extensions of the areas technique which aim to correct shapes, and some additional ideas which correct jet inputs before clustering, and therefore automatically correct shapes. While ATLAS explored some of these options in Run 1, the susceptibility of most variables to pileup was found to be rather small, putting off the need for dedicated corrections to Run 2. \editnote{cite, cite}
 
 
 % plots plots? summarizing this?
 
+%origin correction?
+
 \subsection{MC Jet Energy Scale}
 
-The MC Jet Energy Scale is the next step of the jet calibration chain. The sampling and non-compensating nature of the ATLAS calorimeters means that the measured energy is only some fraction of the energy of the actual particles passing through the detector. The JES is a correction, derived in bins of $E$ and $\eta$, which restores (on average) both this full energy, and correct direction, of a measured jet.
+The MC Jet Energy Scale is the next step of the jet calibration chain. The sampling and non-compensating nature of the ATLAS calorimeters means that the measured energy is only some fraction of the energy of the actual particles passing through the detector. Futhermore, as the detector technology changes as a function of $\eta$, topoclusters in different parts of the detector may be better or worse measured, leading to biases in the jet direction. The JES is a correction which restores (on average) both this full energy, and correct direction, of a measured jet~\cite{JES2010}.The calibration is a multiplicative correction on energy, and an additive correction on $\eta$, binned in both the reconstructed jet energy and $\eta$.
 
+Jets, composed of either EM or LC-scale clusters, are calibrated to the particle scale\footnote{From now on, reconstructed jets will refer to jets of both EM and LC consituents.} in Pythia 8 dijet events. This requires that the reconstructed jets are matched to truth jets. The requirement for matching is such that the $\Delta R$ between the reconstructed and truth jet is $<0.75\times R$. Furthermore, the matched jets (both truth and reconstructed) are also required to be isolated, such that no other jet of its type exists within $\Delta R < 2.5\times R$. All well matched jets within the sample are used. The dijet sample is used because it produces a well-understood spectrum of jets at many energy scales. The energy response is defined as:
+%
+\begin{equation}
+\mathcal{R}^{\mathrm{jet}} = E^{\mathrm{jet}}_{\mathrm{reco}} /  E^{\mathrm{jet}}_{\mathrm{truth}} 
+\end{equation}
+%
+and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector $\eta$ is used as it corresponds better to the location of the jet in the calorimeter.} and $E^{\mathrm{jet}}_{\mathrm{reco}}$. Each bin produces a Gaussian distribution, which is fit and the mean value is extracted. Each $E^{\mathrm{jet}}_{\mathrm{reco}}$ point in an $\eta$ bin then is then fit by a log-polynomial function, of the form
+%
+\begin{equation}
+\mathcal{F}.
+\end{equation}
+%
+Finally, this function is numerically inverted to get the calibration correction:
+%
+\begin{equation}
+%E_^{\mathrm{jet}}_\mathrm{corrected}.
+E_{blah}
+\end{equation}
+%
+
+This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape-- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{truth}$ to start, then the fluctuations up and down will depend only on the calorimeter response-- the physics spectrum has already been accounted for by the $E_{truth}$ binning.
+
+The $\eta$ correction mentioned previously is dervied as a subsequent correction in much the same way, except that the response is defined additively:
+%
+\begin{equation}
+\mathcal{R}_\eta
+\end{equation}
+%
+and the correction is therefore also additive.
+% If you bin in reco, you match truth to your reco jet. because your smaple has a a pt spectrum, you will match more low truth than high truth (though calorimter response means that you will have both up and down). this is a bias. if you bin in truth, the fluctuation up and down will be equal-- the calorimeter response will be the only thing causing up/down. thus, if your correction is binned in truth, it will not be biased, but it requires a numerical inversion to do correctly.
 
 
 \subsection{Global Sequential Calibration}
