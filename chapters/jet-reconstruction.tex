@@ -166,19 +166,26 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 The $\eta$ correction mentioned previously is dervied as a subsequent correction in much the same way, except that the response is defined additively:
 %
 \begin{equation}
-\mathcal{R}_\eta
+\mathcal{R}_\eta = \eta^{\mathrm{jet}}_{\mathrm{reco}} -  \eta^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and the correction is therefore also additive.
+and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors.
 % If you bin in reco, you match truth to your reco jet. because your smaple has a a pt spectrum, you will match more low truth than high truth (though calorimter response means that you will have both up and down). this is a bias. if you bin in truth, the fluctuation up and down will be equal-- the calorimeter response will be the only thing causing up/down. thus, if your correction is binned in truth, it will not be biased, but it requires a numerical inversion to do correctly.
 
 
 \subsection{Global Sequential Calibration}
 
+Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector. The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration.
+
+
+
 \subsection{In-situ Calibrations}
+
+Following the JES and GSC calibration steps, a final data-driven \textit{in-situ} calibration uses different jet balance techniques in data to develop a small residual correction and a measurement of the uncertainties on the final jet $p_T$ scale. $Z$+jet, $\gamma$+jet, and multi-jet measurements are used in low $p_T$, medium $p_T$, and high $p_T$ regions respectively.
 
 \subsection{\LargeR Calibrations}
 
+The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs.
 
 
 
