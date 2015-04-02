@@ -157,9 +157,10 @@ and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector
 where $N$, the maximum order of the polynomial, extends from 1 to 6 and is determined by minimizing the $\chi^2/$NDF of each fit. Finally, this function is inverted to get the calibration correction:
 %
 \begin{equation}
-E^{\mathrm{jet}}_{\mathrm{JES}} = \frac{E^{\mathrm{jet}}_{\mathrm{reco}}}{\mathcal{F}_\mathrm{calib}}
+E^{\mathrm{jet}}_{\mathrm{JES}} = \frac{E^{\mathrm{jet}}_{\mathrm{reco}}}{\mathcal{F}_\mathrm{calib}}.
 \end{equation}
 %
+Figure~\ref{fig:jet-reconstruction:e-fit} shows an example of the Gaussian fit used to find the response in each energy and $\eta$ bin; Figure~\ref{fig:jet-reconstruction:ni-e} shows the result of an example fit for the full energy distribution in the same $\eta$ bin. Figure~\ref{fig:jet-reconstruction:calib-function} shows the calibration function for all of the standard jet collections for one bin of $\eta$. Finally, Figure~\ref{fig:jet-reconstruction:total_jes} shows the JES for different energy bins as a function of the detector $\eta$, for both the EM and LC $R=0.4$ collections.
 
 This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape-- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response-- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning.
 
@@ -181,15 +182,34 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{ni_e.pdf}
-\label{fig:jet-reconstruction:e-fit}
+\label{fig:jet-reconstruction:ni-e}
 \caption{An example of the log-polynomial fit used to measure the jet response as a function of $E_\mathrm{reco}$ in a bin of $E_\mathrm{detector}$. The inverse of this function is the energy calibration applied for each point.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
-%calibration function plot for all collections
+%%%%%%%%%%%%%%%%
 
-%complete calibration as a function of eta plot
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{calib_function.pdf}
+\label{fig:jet-reconstruction:calib-function}
+\caption{The size of the calibration constants for each of the standard jet collection for one bin of $\eta_\mathrm{detector}$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[EM]{\includegraphics[width=0.45\textwidth]{figures/jet-reconstruction/total_jes_eta_em.pdf}}
+\subfigure[LC]{\includegraphics[width=0.45\textwidth]{figures/jet-reconstruction/total_jes_eta_lc.pdf}}
+\label{fig:jet-reconstruction:total_jes}
+\caption{The size of the calibration constants for each of the standard jet collection for one bin of $\eta_\mathrm{detector}$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 The $\eta$ correction mentioned previously is derived as a subsequent correction in much the same way, except that the response is defined additively:
 %
@@ -197,7 +217,7 @@ The $\eta$ correction mentioned previously is derived as a subsequent correction
 \mathcal{R}_\eta^\mathrm{jet} = \eta^{\mathrm{jet}}_{\mathrm{reco}} -  \eta^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors.
+and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors. Figure~\ref{fig:jet-reconstruction:eta-fit} shows an example of the Gaussian fit used to determine the response; Figure~\ref{fig:jet-reconstruction:ni-eta} shows an example of the calibration function itself in an $\eta$ bin where the correction is non-negligible. Finally, Figure~\ref{fig:jet-reconstruction:total-eta} shows the full size of the correction for different energy bins as a function of $\eta$ for $R=0.6$ EM jets in 2010-- the correction is similar in 2012 conditions.
 
 %%%%%%%%%%%%%%%%
 
@@ -215,11 +235,23 @@ and the correction is therefore also additive. The size of the correction is not
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{ni_eta.pdf}
-\label{fig:jet-reconstruction:e-fit}
+\label{fig:jet-reconstruction:ni-eta}
 \caption{An example of the log-polynomial fit used to measure the jet $\eta$-response as a function of $E_\mathrm{true}$ in a bin of $E_\mathrm{detector}$. The jet-$\eta$ correction is the negative of each point.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{total_eta.pdf}
+\label{fig:jet-reconstruction:total-eta}
+\caption{The full size of the $\eta$ calibration corrections, for different bins of energy and as a function of the detector $\eta$, for $R=0.6$ EM jets in 2010.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
 
 %eta plot from 2010 paper 
 
