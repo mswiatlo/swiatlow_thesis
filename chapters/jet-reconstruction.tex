@@ -73,7 +73,7 @@ All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both 
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{JES_calib_chain.png}
+\includegraphics[width=0.6\textwidth]{JES_calib_chain.png}
 \label{fig:jet-reconstruction:making-jets}
 \caption{A diagram displaying the multiple steps which are used to transform a jet at the constituent scale to a fully-calibrated physics object for use in analysis.}
 \end{figure}
@@ -98,7 +98,7 @@ A more sophisticated treatment of the area of a jet asks the question ``if a par
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{jet-areas-example.pdf}
+\includegraphics[width=0.6\textwidth]{jet-areas-example.pdf}
 \label{fig:jet-reconstruction:jet-active-areas}
 \caption{An event display showing a Pythia QCD simulation event with \antikt $R=1.0$ trimmed jets, with subjets formed by the \kt algorithm with $\Rsub = 0.3$.}
 \end{figure}
@@ -123,7 +123,7 @@ Often this is preferable, as not just the $p_T$ but the mass of the jet is thus 
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{pu_vs_mu.pdf}
+\includegraphics[width=0.6\textwidth]{pu_vs_mu.pdf}
 \label{fig:jet-reconstruction:jet-pu-vs-mu}
 \caption{The improvement of the width of the jet offset (a measurement of the jet resolution in simulation) from the application of the jet areas pileup correction in blue, compared to an NPV based correction in red, and no correction in black.}
 \end{figure}
@@ -138,8 +138,9 @@ One important aspect to note is that these corrections are done on jet 4-vectors
 %origin correction?
 
 \subsection{MC Jet Energy Scale}
+\label{jet-reconstruction:jet-calibration-mc-jet-energy-scale}
 
-The MC Jet Energy Scale is the next step of the jet calibration chain. The sampling and non-compensating nature of the ATLAS calorimeters means that the measured energy is only some fraction of the energy of the actual particles passing through the detector. Futhermore, as the detector technology changes as a function of $\eta$, topoclusters in different parts of the detector may be better or worse measured, leading to biases in the jet direction. The JES is a correction which restores (on average) both this full energy, and correct direction, of a measured jet~\cite{JES2010}.The calibration is a multiplicative correction on energy, and an additive correction on $\eta$, binned in both the reconstructed jet energy and $\eta$.
+The MC Jet Energy Scale is the next step of the jet calibration chain. The sampling and non-compensating nature of the ATLAS calorimeters means that the measured energy is only some fraction of the energy of the actual particles passing through the detector. Futhermore, as the detector technology changes as a function of $\eta$, topoclusters in different parts of the detector may be better or worse measured, leading to biases in the jet direction. The JES is a correction which restores (on average) both this full energy, and correct direction, of a measured jet~\cite{JES2010}. The calibration is a multiplicative correction on energy, and an additive correction on $\eta$, binned in both the reconstructed jet energy and $\eta$.
 
 Jets, composed of either EM or LC-scale clusters, are calibrated to the particle scale\footnote{From now on, reconstructed jets will refer to jets of both EM and LC consituents.} in Pythia 8 dijet events. This requires that the reconstructed jets are matched to truth jets. The requirement for matching is such that the $\Delta R$ between the reconstructed and truth jet is $<0.75\times R$. Furthermore, the matched jets (both truth and reconstructed) are also required to be isolated, such that no other jet of its type exists within $\Delta R < 2.5\times R$. All well matched jets within the sample are used. The dijet sample is used because it produces a well-understood spectrum of jets at many energy scales. The energy response is defined as:
 %
@@ -147,29 +148,81 @@ Jets, composed of either EM or LC-scale clusters, are calibrated to the particle
 \mathcal{R}^{\mathrm{jet}} = E^{\mathrm{jet}}_{\mathrm{reco}} /  E^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector $\eta$ is used as it corresponds better to the location of the jet in the calorimeter.} and $E^{\mathrm{jet}}_{\mathrm{reco}}$. Each bin produces a Gaussian distribution, which is fit and the mean value is extracted. Each $E^{\mathrm{jet}}_{\mathrm{reco}}$ point in an $\eta$ bin then is then fit by a log-polynomial function, of the form
+and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector $\eta$ is used as it corresponds better to the location of the jet in the calorimeter.} and $E^{\mathrm{jet}}_{\mathrm{truth}}$. Each bin produces a Gaussian distribution, which is fit and the mean value is extracted. Each $E^{\mathrm{jet}}_{\mathrm{truth}}$ point in an $\eta$ bin then is then transformed into the corresponding $E^{\mathrm{jet}}_{\mathrm{reco}}$ point by this measured response-- this step is the ``numerical inversion'' which gives the technique its name. An entire $\eta$ bin is then fit by a log-polynomial function, of the form
 %
 \begin{equation}
-\mathcal{F}.
+\mathcal{F}_\mathrm{calib}\left(E^{\mathrm{jet}}_{\mathrm{reco}}\right) = \sum_{i=0}^N a_i \ln \left( E^{\mathrm{jet}}_{\mathrm{reco}} \right)^i
 \end{equation}
 %
-Finally, this function is numerically inverted to get the calibration correction:
+where $N$, the maximum order of the polynomial, extends from 1 to 6 and is determined by minimizing the $\chi^2/$NDF of each fit. Finally, this function is inverted to get the calibration correction:
 %
 \begin{equation}
-%E_^{\mathrm{jet}}_\mathrm{corrected}.
-E_{blah}
+E^{\mathrm{jet}}_{\mathrm{JES}} = \frac{E^{\mathrm{jet}}_{\mathrm{reco}}}{\mathcal{F}_\mathrm{calib}}
 \end{equation}
 %
 
-This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape-- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{truth}$ to start, then the fluctuations up and down will depend only on the calorimeter response-- the physics spectrum has already been accounted for by the $E_{truth}$ binning.
+This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape-- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response-- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning.
 
-The $\eta$ correction mentioned previously is dervied as a subsequent correction in much the same way, except that the response is defined additively:
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{e_fit.pdf}
+\label{fig:jet-reconstruction:e-fit}
+\caption{An example of the Gaussian fit used to measure the energy response in a $\eta_\mathrm{detector}$, $E_\mathrm{true}$ bin.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{ni_e.pdf}
+\label{fig:jet-reconstruction:e-fit}
+\caption{An example of the log-polynomial fit used to measure the jet response as a function of $E_\mathrm{reco}$ in a bin of $E_\mathrm{detector}$. The inverse of this function is the energy calibration applied for each point.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+%calibration function plot for all collections
+
+%complete calibration as a function of eta plot
+
+The $\eta$ correction mentioned previously is derived as a subsequent correction in much the same way, except that the response is defined additively:
 %
 \begin{equation}
-\mathcal{R}_\eta = \eta^{\mathrm{jet}}_{\mathrm{reco}} -  \eta^{\mathrm{jet}}_{\mathrm{truth}} 
+\mathcal{R}_\eta^\mathrm{jet} = \eta^{\mathrm{jet}}_{\mathrm{reco}} -  \eta^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
 and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{eta_fit.pdf}
+\label{fig:jet-reconstruction:eta-fit}
+\caption{An example of the Gaussian fit used to measure the $\eta$ response in a $\eta_\mathrm{detector}$, $E_\mathrm{true}$ bin.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{ni_eta.pdf}
+\label{fig:jet-reconstruction:e-fit}
+\caption{An example of the log-polynomial fit used to measure the jet $\eta$-response as a function of $E_\mathrm{true}$ in a bin of $E_\mathrm{detector}$. The jet-$\eta$ correction is the negative of each point.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+%eta plot from 2010 paper 
+
 % If you bin in reco, you match truth to your reco jet. because your smaple has a a pt spectrum, you will match more low truth than high truth (though calorimter response means that you will have both up and down). this is a bias. if you bin in truth, the fluctuation up and down will be equal-- the calorimeter response will be the only thing causing up/down. thus, if your correction is binned in truth, it will not be biased, but it requires a numerical inversion to do correctly.
 
 
@@ -185,9 +238,19 @@ Following the JES and GSC calibration steps, a final data-driven \textit{in-situ
 
 \subsection{\LargeR Calibrations}
 
-The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs.
+The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs. For analyses which require the use of jets with a different $R$ parameter and/or grooming, another set of calibrations must be performed. Optimization studies on a variety of signal classes in 2011 determined that the collection \antikt $R=1.0$ with trimming applied, using $\Rsub = 0.3$ and $\fcut = 0.05$, performed very well in a number of final states, and presented a very small susceptibility to pileup. This calibration was thus centrally supported in 2012, and both calibrations and uncertainties were provided.
 
+The calibration procedure for these \largeR jets is slightly different than for the other collections. As most users are interested in the substructure properties of the jets, and using constituents at the hadron-scale is more sensible than the raw detector outputs, only LC inputs are used for \largeR jets. Additionally, because trimming effectively removes a large portion of the pileup contamination in the jets, no dedicated pileup correction procedure is applied (though in principle, it is possible to easily add an areas correction to the subjets before they are trimmed, and this should improve performance). This is visible in Figure, which shows the lack of sensitivity of the jet mass to additional pileup interactions. Thus, the MC JES procedure is performed on jets at the LC scale.
 
+The MC JES procedure itself is identical to that described in Section~\ref{jet-reconstruction:jet-calibration-mc-jet-energy-scale}, except that an additional \textit{mass calibration} step is performed. This procedure defines a mass response in the typical way,
+%
+\begin{equation}
+\mathcal{R}^{\mathrm{jet}}_m = m^{\mathrm{jet}}_{\mathrm{reco}} /  m^{\mathrm{jet}}_{\mathrm{truth}} 
+\end{equation}
+%
+and performs a numerical inversion calibration procedure identical to the energy calibration procedure, after both the energy and $\eta$ are calibrated. This procedure is required because of the varying mass response of the calorimeter, as displayed in Figure~. This is again caused by the varying performance of detector technologies which change as a function of $\eta$: hadrons on one side of the jet, without a calibration, would cause more mass in the jet than the other side, even if they had the same energy. As the mass of \largeR jets is commonly used as a discriminating variable in analyses (as opposed to the $R=0.4$, which is rarely if ever used), it is important that the variable have a consistent meaning as the detector technology changes.
+
+Uncertainties on the \largeR jets are derived using a track-jet double ratio technique. Track-jets reconstructed with the same jet algorithm are matched to the calorimeter jets in a multi-jet sample, in both data and simulation. The ratio of the track-jet mass to the calorimeter mass is then measured: this provides a comparison of two indepenent measurements of the jet mass. The ratio of this ratio gives a bound on the disagreement of the modelling of the jet mass (or $p_T$, or other quantities) in the simulation.  These uncertainties, while conservative because of the introduction of charged fragmentation modeling, provide an \textit{in-situ} alternative measurement of the jet mass and other substructure properties. 
 
 \section{Pileup Jet Tagging}
 \label{jet-reconstruction:pileup-jet-tagging}
