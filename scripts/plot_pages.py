@@ -114,7 +114,7 @@ ax1.fill_between(dayssince, 0, pages, facecolor='blue', interpolate=True)
 
 ax2 = ax1.twinx()
 ax2.set_ylabel('Words',color='r')
-ax2.yaxis.set_label_coords(1.1, 0.6)
+ax2.yaxis.set_label_coords(1.1, 0.4)
 # print dayssince, words
 ax2.plot(dayssince, words, "r-",linewidth=2)
 

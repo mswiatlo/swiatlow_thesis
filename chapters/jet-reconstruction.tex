@@ -12,7 +12,7 @@ Jet reconstruction in ATLAS makes use of the algorithms described in~\ref{chapte
 %
 Some analyses also make use of various \CAFat jets, with various forms of split-filtering or reclustered-mass-drop filtering \editnote{Cite these.}. The analyses presented in in this thesis utilize the first and third algorithms, and most of the discussion that follows will focus on various aspects of the reconstruction of these jets.
 
-There are many more aspects to creating a jet than just choosing an algorithm, and this chapter covers the various aspects of jet reconstruction from inputs to calibrations and flavor identification. 
+There are many more aspects to creating a jet than just choosing an algorithm, and this chapter covers the various aspects of jet reconstruction from inputs to calibrations and flavor identification. Note that while the jet reconstruction and calibration procedure has evolved significantly since the start of data-taking, some aspects have not changed very much. While all the procedures described follow the latest developments in ATLAS, some of the demonstrative figures may use older data if that particular procedure has not changed.
 
 \section{Jet Inputs}
 
@@ -59,11 +59,10 @@ Once a jet has been clustered, from either EM-scale or LC-scale constituents, it
 
 \begin{enumerate}
 	\item Jet clustering, producing jets at the \textit{constituent scale} (or EM/LC)
-	\item Jet areas pileup correction
-	\item A residual NPV and $\mu$ dependent offset, producing jets at the \textit{pileup corrected scale}
+	\item Jet areas pileup correction, and a residual NPV and $\mu$ dependent offset, producing jets at the \textit{pileup corrected scale}
 	\item A jet origin correction, correcting the $\eta$ of a jet for the true location of the primary vertex, creating jets at the \textit{origin corrected scale}
 	\item A Monte Carlo based \textit{Jet Energy Scale} (JES) calibration, producing jets at the \textit{particle scale}
-	\item A Global Sequential Calibration to reduce flavor dependence
+	\item A Global Sequential Calibration to reduce flavor and hadronization sensitivity
 	\item In-situ data-driven calibrations, producing jets at the \textit{fully calibrated scale}
 \end{enumerate}
 
@@ -136,6 +135,10 @@ One important aspect to note is that these corrections are done on jet 4-vectors
 % plots plots? summarizing this?
 
 %origin correction?
+
+\subsection{Jet Origin Correction}
+
+...
 
 \subsection{MC Jet Energy Scale}
 \label{jet-reconstruction:jet-calibration-mc-jet-energy-scale}
@@ -252,16 +255,47 @@ and the correction is therefore also additive. The size of the correction is not
 
 %%%%%%%%%%%%%%%% 
 
-
-%eta plot from 2010 paper 
-
 % If you bin in reco, you match truth to your reco jet. because your smaple has a a pt spectrum, you will match more low truth than high truth (though calorimter response means that you will have both up and down). this is a bias. if you bin in truth, the fluctuation up and down will be equal-- the calorimeter response will be the only thing causing up/down. thus, if your correction is binned in truth, it will not be biased, but it requires a numerical inversion to do correctly.
 
 
 \subsection{Global Sequential Calibration}
 
-Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector. The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration.
+Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector. The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration~\cite{ATLAS-GSC}. Moreover, even jets of a single flavor type can fragment in wildly different ways, resulting in a range of possible responses: by measuring global jet properties, it is possible to better understand this fragmentation and correct the response jet-by-jet and thereby substantially improve the jet resolution.
 
+Five variables are used to correct the jets; most of the variables are only available in some subset of the detector $\eta$. As the name of the technique suggests, these corrections are applied independently and sequentially. In order, these are:
+
+\begin{enumerate}
+	\item In $0 < |\eta| < 1.7$, $f_{\mathrm{Tile0}}$, the fraction of energy in the first layer of the tile calorimeter.
+	\item In $0 < |\eta| < 3.5$, $f_{\mathrm{LAr3}}$, the fraction of energy in the third layer of the LAr EM calorimeter.
+	\item In $0 < |\eta| < 2.5$, \ntrk, the number of primary-vertex tracks associated to a jet.
+	\item In $0 < |\eta| < 2.5$, Track Width, the radial distribution of the $p_T$ of tracks associated to a jet, defined as:
+	\begin{equation}
+	\mathrm{Track~Width} = \frac{\sum_{i \in j} p_T^{i} \Delta R(i,j) }{\sum_{i \in j} p_T^i}
+	\end{equation}
+	where $i$ iterates over tracks associated to jet $j$.
+	\item In $0 < |\eta| < 2.7$, $N_\mathrm{segments}$, the number of muon segments associated to a jet
+\end{enumerate}
+The first two variables, $f_{\mathrm{Tile0}}$ and $f_{\mathrm{LAr3}}$, measure the longitudinal shower profile of the jet. \ntrk measures the charged component of the jet fragmentation; the track width measures the shower profile in the $\eta-\phi$ plane. $N_{\mathrm{segments}}$ measures the amount of hadronic activity in the muon spectrometer, a result of so-called ``punch-through'' wherein not all hadrons are stopped and sampled by the calorimeters. Because LC jets already contain longitudinal information in the topo-clusters, the first two variables are ommitted for the GSC for that class of jets. Figure~\ref{fig:jet-reconstruction:gsc} shows the dependence of the jet response on these variables. The correction, as a function of the variable $x$, is defined as $C(x) = \mathcal{R}^{-1}(x)$, where $\mathcal{R}$ is the \pt response. This correction is binned finely in both \pt and $\eta$, and is normalized such that the inclusive response does not change. After the calibrations, the average response is 1 when measured by any of these variables, indicating that the jet energy measurement variance has been substantially reduced. Figure~\ref{fig:jet-reconstruction:resolution_gsc} shows the improvement in the \textit{jet resolution} (i.e., the width of a response measurement) as a function of \pt; the lower values after the GS correction, in blue, compared to the nominal in black, indicate that fluctuations in jet measurement have been reduced.
+
+
+\begin{figure}
+\centering
+\subfigure[$f_{\mathrm{Tile0}}$]{\includegraphics[width=0.3\textwidth]{fig_06a.pdf}}
+\subfigure[$f_{\mathrm{LAr3}}$]{\includegraphics[width=0.3\textwidth]{fig_06b.pdf}}
+\subfigure[\ntrk]{\includegraphics[width=0.3\textwidth]{fig_06c.pdf}}
+
+\subfigure[Track Width]{\includegraphics[width=0.3\textwidth]{fig_06d.pdf}}
+\subfigure[$N_\mathrm{Segments}$]{\includegraphics[width=0.3\textwidth]{fig_06e.pdf}}
+\label{fig:jet-reconstruction:gsc}
+\caption{The average jet response, as a function of each GSC variable, in a central bin of jet $\eta$.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_04a.pdf}
+\label{fig:jet-reconstruction:resolution_gsc}
+\caption{The improvement in jet resolution after applying the GSC correction.}
+\end{figure}
 
 
 \subsection{In-situ Calibrations}
@@ -270,7 +304,15 @@ Following the JES and GSC calibration steps, a final data-driven \textit{in-situ
 
 \subsection{\LargeR Calibrations}
 
-The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs. For analyses which require the use of jets with a different $R$ parameter and/or grooming, another set of calibrations must be performed. Optimization studies on a variety of signal classes in 2011 determined that the collection \antikt $R=1.0$ with trimming applied, using $\Rsub = 0.3$ and $\fcut = 0.05$, performed very well in a number of final states, and presented a very small susceptibility to pileup. This calibration was thus centrally supported in 2012, and both calibrations and uncertainties were provided.
+The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs. For analyses which require the use of jets with a different $R$ parameter and/or grooming, another set of calibrations must be performed. Optimization studies on a variety of signal classes in 2011 determined that the collection \antikt $R=1.0$ with trimming applied, using $\Rsub = 0.3$ and $\fcut = 0.05$, performed very well in a number of final states, and presented a very small susceptibility to pileup as demonstrated in Figure~\ref{fig:jet-reconstruction:pileup_large}~\cite{ATLAS-SS-2011}. This collection was thus centrally supported in 2012, and both calibrations and uncertainties were provided.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_18b.pdf}
+\label{fig:jet-reconstruction:pileup_large}
+\caption{The dependence of the average lead jet mass in dijet events in 2011 data for ungroomed \antikt $R=1.0$ jets and several configurations of trimming.}
+\end{figure}
+
 
 The calibration procedure for these \largeR jets is slightly different than for the other collections. As most users are interested in the substructure properties of the jets, and using constituents at the hadron-scale is more sensible than the raw detector outputs, only LC inputs are used for \largeR jets. Additionally, because trimming effectively removes a large portion of the pileup contamination in the jets, no dedicated pileup correction procedure is applied (though in principle, it is possible to easily add an areas correction to the subjets before they are trimmed, and this should improve performance). This is visible in Figure, which shows the lack of sensitivity of the jet mass to additional pileup interactions. Thus, the MC JES procedure is performed on jets at the LC scale.
 
@@ -280,9 +322,26 @@ The MC JES procedure itself is identical to that described in Section~\ref{jet-r
 \mathcal{R}^{\mathrm{jet}}_m = m^{\mathrm{jet}}_{\mathrm{reco}} /  m^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and performs a numerical inversion calibration procedure identical to the energy calibration procedure, after both the energy and $\eta$ are calibrated. This procedure is required because of the varying mass response of the calorimeter, as displayed in Figure~. This is again caused by the varying performance of detector technologies which change as a function of $\eta$: hadrons on one side of the jet, without a calibration, would cause more mass in the jet than the other side, even if they had the same energy. As the mass of \largeR jets is commonly used as a discriminating variable in analyses (as opposed to the $R=0.4$, which is rarely if ever used), it is important that the variable have a consistent meaning as the detector technology changes.
+and performs a numerical inversion calibration procedure identical to the energy calibration procedure, after both the energy and $\eta$ are calibrated. This procedure is required because of the varying mass response of the calorimeter, as displayed in Figure~. This is again caused by the varying performance of detector technologies which change as a function of $\eta$: hadrons on one side of the jet, without a calibration, would cause more mass in the jet than the other side, even if they had the same energy. As the mass of \largeR jets is commonly used as a discriminating variable in analyses (as opposed to the $R=0.4$, which is rarely if ever used), it is important that the variable have a consistent meaning as the detector technology changes. Figure~\ref{fig:jet-reconstruction:total_jms} shows the effect of the jet calibration in 2011; while the mass response is close to $1$ in central $\eta$ bins, it can be substantially mismeasured at higher values of $\eta$ when the jet energy is low.
 
-Uncertainties on the \largeR jets are derived using a track-jet double ratio technique. Track-jets reconstructed with the same jet algorithm are matched to the calorimeter jets in a multi-jet sample, in both data and simulation. The ratio of the track-jet mass to the calorimeter mass is then measured: this provides a comparison of two indepenent measurements of the jet mass. The ratio of this ratio gives a bound on the disagreement of the modelling of the jet mass (or $p_T$, or other quantities) in the simulation.  These uncertainties, while conservative because of the introduction of charged fragmentation modeling, provide an \textit{in-situ} alternative measurement of the jet mass and other substructure properties. 
+\begin{figure}
+\centering
+\subfigure[Before mass calibration]{\includegraphics[width=0.45\textwidth]{fig_07a.pdf}}
+\subfigure[After mass calibration]{\includegraphics[width=0.45\textwidth]{fig_07b.pdf}}
+\label{fig:jet-reconstruction:total_jms}
+\caption{The mass response, for different bins of jet energy, as a function of jet $\eta$, before and after the calibration procedure.}
+\end{figure}
+
+Uncertainties on the \largeR jets are derived using a track-jet double ratio technique. Track-jets reconstructed with the same jet algorithm are matched to the calorimeter jets in a multi-jet sample, in both data and simulation. The ratio of the track-jet mass to the calorimeter mass is then measured: this provides a comparison of two indepenent measurements of the jet mass. The ratio of this ratio gives a bound on the disagreement of the modelling of the jet mass (or $p_T$, or other quantities) in the simulation.  These uncertainties, while conservative because of the introduction of charged fragmentation modeling, provide an \textit{in-situ} alternative measurement of the jet mass and other substructure properties. Figure~\ref{fig:jet-reconstruction:jms_uncertainty} shows both the raw track-to-calo mass ratio, and the corresponding derived uncertainty as a function of the jet \pt, in 2011 data.
+
+\begin{figure}
+\centering
+\subfigure[Track/Calo Mass]{\includegraphics[width=0.45\textwidth]{fig_09b.pdf}}
+\subfigure[Mass uncertainty]{\includegraphics[width=0.45\textwidth]{fig_10b.pdf}}
+\label{fig:jet-reconstruction:jms_uncertainty}
+\caption{The jet track mass/ calo mass ratio in data and MC as a function of the jet mass, and the corresponding derived uncertainty as a function of jet \pt.}
+\end{figure}
+
 
 \section{Pileup Jet Tagging}
 \label{jet-reconstruction:pileup-jet-tagging}
