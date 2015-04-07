@@ -302,6 +302,37 @@ The first two variables, $f_{\mathrm{Tile0}}$ and $f_{\mathrm{LAr3}}$, measure t
 
 Following the JES and GSC calibration steps, a final data-driven \textit{in-situ} calibration uses different jet balance techniques in data to develop a small residual correction and a measurement of the uncertainties on the final jet $p_T$ scale. $Z$+jet, $\gamma$+jet, and multi-jet measurements are used in low $p_T$, medium $p_T$, and high $p_T$ regions respectively.
 
+In $Z$+jet measurements, a well reconstructed $Z$-boson, decaying in either the $e^+/e^-$ or $\mu^+/\mu^-$ channel, is used as a reference object to probe the quality of the jet energy measurement. In particular, a reference \pt is defined as $p_T^\mathrm{ref} = p_T^\mathrm{Z} \times |\cos(\mathrm{jet}, Z) |$ in order to take into account the potential presence of additional parton radiation which might affect the direct balance of the $Z$ and the leading jet. The mean of the response (defined as $\mathcal{R}_Z = p_T^\mathrm{jet} / p_T^\mathrm{ref}$) is measured using Poisson fits at low $p_T^\mathrm{ref}$ (due to inefficiency of the trigger cutting off the low end of the response) and the arithmetic mean at higher values; the disagreement between data and MC, as a function of $p_T^\mathrm{ref}$, is used to estimate the systematic uncertainty on the jet $p_T$. Figure~\ref{fig:jet-reconstruction:z_jet} shows an example of one such fit in a bin of $p_T^\mathrm{ref}$, and of the evolution of $\mathcal{R}_Z$ as a function of $p_T^\mathrm{ref}$.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[Example of a fit used to estimate $\mathcal{R}_Z$]{\includegraphics[width=0.45\textwidth]{fig_15a.pdf}}
+\subfigure[Data/MC as a function of $p_T^\mathrm{ref}$]{\includegraphics[width=0.45\textwidth]{fig_17a.pdf}}
+\label{fig:jet-reconstruction:z_jet}
+\caption{Examples of the measurements used to measure the uncertainties in jet $p_T$ at low \pt using $Z$+jet events.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+The $\gamma$+jet measurements use a similar principle, and measures $\mathcal{R}_\gamma = p_T^\mathrm{jet} / p_T^\gamma$. High quality photon events are selected in both data and MC, and the $\mathcal{R}_\gamma$ is measured in both in fine bins of \pt and $\eta$. Poisson fits are used at low \pt because of trigger turn-on issues, and the arithmetic mean is used at higher values, to estimate the average response as a function of $p_T^\gamma$.  Figure~\ref{fig:jet-reconstruction:gamma_jet} shows an example of a fit to $\mathcal{R}_\gamma$ in one bin of $p_T^\gamma$ and the evolution of the mean value as a function of $p_T^\gamma$.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[Example of a fit used to estimate $\mathcal{R}_\gamma$]{\includegraphics[width=0.45\textwidth]{fig_22b.pdf}}
+\subfigure[Data/MC as a function of $p_T^\gamma$]{\includegraphics[width=0.45\textwidth]{fig_23a.pdf}}
+\label{fig:jet-reconstruction:gamma_jet}
+\caption{Examples of the measurements used to measure the uncertainties in jet $p_T$ at moderate \pt using $\gamma$+jet events.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+At high \pt, a multijet balance technique is used to derive uncertainties. In this technique, a leading jet with \pt significantly higher than a system of low \pt jets is balanced against that system; the uncertainties on the well-measured low \pt jets are propagated in order to estimate the \pt of the leading jet. The multijet balance is defined as $\mathrm{MJB} = \frac{|\vec{p}_T^{\mathrm{jet}}|}{|\vec{p}_T^{\mathrm{recoil}}|} $; events used in the analysis are required to have $p_T^\mathrm{leading} < $
+
+
 \subsection{\LargeR Calibrations}
 
 The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs. For analyses which require the use of jets with a different $R$ parameter and/or grooming, another set of calibrations must be performed. Optimization studies on a variety of signal classes in 2011 determined that the collection \antikt $R=1.0$ with trimming applied, using $\Rsub = 0.3$ and $\fcut = 0.05$, performed very well in a number of final states, and presented a very small susceptibility to pileup as demonstrated in Figure~\ref{fig:jet-reconstruction:pileup_large}~\cite{ATLAS-SS-2011}. This collection was thus centrally supported in 2012, and both calibrations and uncertainties were provided.
