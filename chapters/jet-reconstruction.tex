@@ -138,7 +138,33 @@ One important aspect to note is that these corrections are done on jet 4-vectors
 
 \subsection{Jet Origin Correction}
 
-...
+Before any other corrections are performed, the $\eta$ of a jet is first adjusted, to take into account for the measured $z$ location of the primary vertex:
+%
+\begin{equation}
+\eta^\mathrm{corrected} = \eta^\mathrm{detector} - \frac{z_{PV} \cosh \eta^\mathrm{detector} }{r}
+\end{equation}
+%
+where $z_{PV}$ is the $z$ location of the primary vertex, and $r$ is the ``center-magnitude'' of the jet (i.e., a weighted sum of the jet clusters which averages over their energies to give the radial distance away from the center of the detector). Figure~\ref{fig:jet-reconstruction:origin_correction} shows the impact of the correction on the $\eta$ resolution of the jet, which is quite substantial.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{origin_correction.pdf}
+\label{fig:jet-reconstruction:origin_correction}
+\caption{The improvement in the $\eta$ resolution after the application of the jet origin correction; no change in $\phi$ resolution is observed, as expected.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+This correction is in fact a first order Taylor approximation to a more complete correction, of the form:
+%
+\begin{equation}
+\eta^\mathrm{corrected} = \mathrm{asinh} \left(\sinh \eta^\mathrm{det} - \frac{z_{PV} \cosh \eta^\mathrm{detector}}{r}  \right).
+\end{equation}
+%
+In principle, such a correction is best applied at the \textit{cluster} level, so that the jet clustering algorithms are run on origin-corrected inputs. This strategy will hopefully be adopted during Run 2, but in the meantime, the jet as a whole is corrected as part of the calibration process. The Color Flow analysis described later actually performs this cluster-level correction for a number of reasons, which will be discussed later.
+
 
 \subsection{MC Jet Energy Scale}
 \label{jet-reconstruction:jet-calibration-mc-jet-energy-scale}
@@ -330,7 +356,48 @@ The $\gamma$+jet measurements use a similar principle, and measures $\mathcal{R}
 
 %%%%%%%%%%%%%%%% 
 
-At high \pt, a multijet balance technique is used to derive uncertainties. In this technique, a leading jet with \pt significantly higher than a system of low \pt jets is balanced against that system; the uncertainties on the well-measured low \pt jets are propagated in order to estimate the \pt of the leading jet. The multijet balance is defined as $\mathrm{MJB} = \frac{|\vec{p}_T^{\mathrm{jet}}|}{|\vec{p}_T^{\mathrm{recoil}}|} $; events used in the analysis are required to have $p_T^\mathrm{leading} < $
+At high \pt, a multijet balance technique is used to derive uncertainties. In this technique, a leading jet with \pt significantly higher than a system of low \pt jets is balanced against that system; the uncertainties on the well-measured low \pt jets are propagated in order to estimate the \pt of the leading jet. The multijet balance is defined as $\mathrm{MJB} = \frac{|\vec{p}_T^{\mathrm{jet}}|}{|\vec{p}_T^{\mathrm{recoil}}|} $; events used in the analysis are required to have $p_T^\mathrm{leading}$ smaller than some fraction of $p_T^\mathrm{leading}$. The analysis procedeeds iteratively, starting with low $p_T^\mathrm{subleading}$ and proceeding higher as the uncertainties are successively iterated to higher values of $p_T^\mathrm{jet}$. Figure~\ref{fig:jet-reconstruction:mjb} shows the value of the MJB as a function of $p_T^\mathrm{jet}$ before any iterations; the residual disagreement between data and MC in this plot, after all iterations, is used as the uncertainty at high \pt.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_29a.pdf}
+\label{fig:jet-reconstruction:mjb}
+\caption{The value of the MJB, as a function of $p_T^\mathrm{recoil}$, in data and MC. The residual disagreement is used to define the uncertainty at high $p_T^\mathrm{jet}$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+Each of the previously mentioned techniques, as well as creating an uncertainty band on \pt, also can determine the mismeasurement of the scale, which is typically $0-2\%$. These corrections are applied to data only, bringing the data and MC to the same scale after the full calibration procedure.
+
+Once each of these procedures is performed, they are statistically combined to create a total calibration and uncertainty. Each procedure is weighted, as a function of \pt and $\eta$, by the systematic and statistical uncertainty of that procedure: the combined calibration and uncertainty uses a measurement most heavily when its uncertainties are lowest. Figure~\ref{fig:jet-reconstruction:combined_jes} shows the result of this combination, and the applicable range of each measurement. This figure also shows the combined size of the residual calibration applied to data: a factor $C = 1/\mathcal{R}_\mathrm{in-situ}$, where $\mathcal{R}_\mathrm{in-situ}$ is the value on the y-axis of the figure, is applied to data in order to bring the response in data and MC to the same level.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{responseRatio_LCJES_R4-2.pdf}
+\label{fig:jet-reconstruction:combined_jes}
+\caption{The combined uncertainty band, overlaid with the uncertainties derived from the $Z$+jets, $\gamma$+jets, and multijet analyses.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+Figure~\ref{fig:jet-reconstruction:combined_uncertainties} shows the size of the uncertainties as a function of \pt and $\eta$: jets are measured best at central $\eta$ and at moderate \pt. The plots also show a breakdown of the physics sources of the uncertainties: pileup dominates at low \pt, but at higher values the in-situ measurements are largest (the relative \textit{in-situ} refers to the $\eta$-intercalibration used to provide uncertainties at high $\eta$, using an iterative technique similar to the MJB). Additional terms are usually provided for the variation due to the unknown flavor response and flavor composition; the use of the GSC calibrations help reduce those terms.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[As a function of $p_T^\mathrm{jet}$]{\includegraphics[width=0.45\textwidth]{JESUncertainty-Moriond2013-Dijet-LC4-pT-noCloseby.pdf}}
+\subfigure[As a function of $\eta$]{\includegraphics[width=0.45\textwidth]{JESUncertainty-Moriond2013-Dijet-LC4-eta-noCloseby.pdf}}
+\label{fig:jet-reconstruction:combined_uncertainties}
+\caption{The combined JES uncertainty, as a function of \pt and $\eta$, in 2012 data, for \antikt~$R=0.4$ LC jets.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 
 \subsection{\LargeR Calibrations}
@@ -376,6 +443,10 @@ Uncertainties on the \largeR jets are derived using a track-jet double ratio tec
 
 \section{Pileup Jet Tagging}
 \label{jet-reconstruction:pileup-jet-tagging}
+
+While the jet areas pileup suppression is able to remove the ambient pileup energy within \textit{existing} jets, oftentimes pileup interactions can produce entirely new jets. There are two ways that this can happen. First, a pileup interaction can simply produce a dijet event with appreciable \pt: in this case, the jets are in some sense real, but come from an interaction different from the one of interest\footnote{Usually the primary interaction is defined as the vertex with the highest $\pt^2$ of its associated tracks.}. In other situations, particles produced by pileup interactions can by chance be concentrated in one location; in such a case, a new \textit{stochastic} jet is produced by the products of many interactions. In both situations, tracking information can be used (at least within the tracker acceptance) to measure the degree of pileup particles contributing to a jet.
+
+
 
 \section{Flavor Tagging}
 
