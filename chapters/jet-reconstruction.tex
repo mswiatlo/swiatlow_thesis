@@ -432,6 +432,8 @@ and performs a numerical inversion calibration procedure identical to the energy
 
 Uncertainties on the \largeR jets are derived using a track-jet double ratio technique. Track-jets reconstructed with the same jet algorithm are matched to the calorimeter jets in a multi-jet sample, in both data and simulation. The ratio of the track-jet mass to the calorimeter mass is then measured: this provides a comparison of two indepenent measurements of the jet mass. The ratio of this ratio gives a bound on the disagreement of the modelling of the jet mass (or $p_T$, or other quantities) in the simulation.  These uncertainties, while conservative because of the introduction of charged fragmentation modeling, provide an \textit{in-situ} alternative measurement of the jet mass and other substructure properties. Figure~\ref{fig:jet-reconstruction:jms_uncertainty} shows both the raw track-to-calo mass ratio, and the corresponding derived uncertainty as a function of the jet \pt, in 2011 data.
 
+%%%%%%%%%%%%%%%%%%%%%
+
 \begin{figure}
 \centering
 \subfigure[Track/Calo Mass]{\includegraphics[width=0.45\textwidth]{fig_09b.pdf}}
@@ -440,15 +442,140 @@ Uncertainties on the \largeR jets are derived using a track-jet double ratio tec
 \caption{The jet track mass/ calo mass ratio in data and MC as a function of the jet mass, and the corresponding derived uncertainty as a function of jet \pt.}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%
 
 \section{Pileup Jet Tagging}
 \label{jet-reconstruction:pileup-jet-tagging}
 
 While the jet areas pileup suppression is able to remove the ambient pileup energy within \textit{existing} jets, oftentimes pileup interactions can produce entirely new jets. There are two ways that this can happen. First, a pileup interaction can simply produce a dijet event with appreciable \pt: in this case, the jets are in some sense real, but come from an interaction different from the one of interest\footnote{Usually the primary interaction is defined as the vertex with the highest $\pt^2$ of its associated tracks.}. In other situations, particles produced by pileup interactions can by chance be concentrated in one location; in such a case, a new \textit{stochastic} jet is produced by the products of many interactions. In both situations, tracking information can be used (at least within the tracker acceptance) to measure the degree of pileup particles contributing to a jet.
 
+The simplest method of meausuring this pileup contamination is with a variable called JVF, which is defined as:
+%
+\begin{equation}
+\label{eqn:jet-reconstruction:jvf}
+\mathrm{JVF} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{ \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_0) + \sum_{n\geq1} \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_n)}
+\end{equation}
+%
+where the sums over tracks ($k$ and $l$ indices) are tracks which are ghost-associated to a jet~\cite{ATLAS-JVF}. Thus, the variable is defined as the primary vertex track \pt fraction: the amount of \pt in a jet originating from the primary vertex, compared to all other vertices. An example distribution in 2012 conditions is shown in Figure~\ref{fig:jet-reconstruction:jvf}: real jets have a high fraction, as expected, and pileup jets have a low fractions. Jets without any tracks are assigned a value of $-1$. Analyses typically select jets with $|\mathrm{JVF}| > 0.5$, and apply this cut only when jets have $\pt < 50$ GeV, as the rate of high \pt pileup jets is exceedingly small. 
 
+%%%%%%%%%%%%%%%%
 
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_26.pdf}
+\label{fig:jet-reconstruction:jvf}
+\caption{An example distribution of JVF measured for primary vertex and pileup jets in a $Z$+jets simulation sample.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+One issue with JVF is that while it is indeed able to identify pileup jets, the second term in the denominator Equation~\ref{eqn:jet-reconstruction:jvf} depends on $N$, the number of pileup vertices in the event~\cite{ATLAS-JVT}. Ideally, pileup supression would be done using variables which are themselves not dependent on pileup, so that the efficiency and fake-rate of such variables do not change with the pileup conditions. One simple way to do this is to correct the problematic term in  Equation~\ref{eqn:jet-reconstruction:jvf}, defining a new variable corrJVF as:
+%
+\begin{equation}
+\label{eqn:jet-reconstruction:corrjvf}
+\mathrm{corrJVF} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{ \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_0) + \frac{\sum_{n\geq1} \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_n)}{\kappa n_\mathrm{trk}^\mathrm{PU}}}
+\end{equation}
+%
+where $\kappa$ is an arbitrary factor, typically selected to be 0.01, and $n_\mathrm{trk}^\mathrm{PU}$ is the \textit{total} number of pileup tracks in the event~\cite{ATLAS-JVT}. This normalization prevents the arbitrary growth of the second term, and renders corrJVF insensitive to the number of pileup tracks, and just as performant as JVF. Another variable which is sensitive to pileup jets, but insensitive to the number of vertices, is $R_{p\mathrm{T}}$, defined as
+%
+\begin{equation}
+R_{p\mathrm{T}} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{p_T^\mathrm{jet}}.
+\end{equation}
+%
+This variable is the simply the charged component of the jet \pt~\cite{ATLAS-JVT}. For typical jets, 2/3 of the energy is expected to occur in charged particles (due to there being two charges, and only one neutral ``charge''), with some degree of flucutation due to charged hadronization and detector inefficiencies. A lower value indicates either a strangely fragmenting jets, or more dangerously, a large degree of pileup contamination. As corrJVF and $R_{p\mathrm{T}}$ contain orthogonal information-- one measures the pileup track contamination, and the other the neutral contamination-- the variables ccan be combined using a likelihood into a new, more powerful variable: JVT (the jet-vertex-tagger). The distributions of corrJVF, $R_{p\mathrm{T}}$, and JVT are showin in Figure~\ref{fig:jet-reconstruction:jvt}.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[corrJVF]{\includegraphics[width=0.3\textwidth]{fig_02a.pdf}}
+\subfigure[$R_{p\mathrm{T}}$]{\includegraphics[width=0.3\textwidth]{fig_03a.pdf}}
+\subfigure[JVT]{\includegraphics[width=0.3\textwidth]{fig_05b.pdf}}
+\label{fig:jet-reconstruction:jvt}
+\caption{The distributions of various $N_\mathrm{vtx}$-insensitive pileup tagging variables.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+The improvement in performance of JVT is shown in Figure~\ref{fig:jet-reconstruction:jvt_performance}~\cite{ATLAS-JVT}. The left figure shows the fake rate (i.e. the rate of acceptance of pileup jets) as a function of the hard-scatter jet efficiency-- a lower curve indicates stronger performance, and JVT clearly performs the best out of the different variables. The right figure shows the fake rate as a function of $N_\mathrm{vtx}$ for a fixed efficiency; the strong sensitivity of JVF is visible, while JVT is not affected.  
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure{\includegraphics[width=0.45\textwidth]{fig_06a_jvt}}
+\subfigure{\includegraphics[width=0.45\textwidth]{fig_06b_jvt}}
+\label{fig:jet-reconstruction:jvt_performance}
+\caption{Performance of JVT compared to JVF, comparing both the efficiency vs. fake-rate and the sensitivity to changing $N_\mathrm{vtx}$ conditions.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Pileup in \LargeR Jets}
+
+Typically \largeR jets are not directly sensitive to the creation of new pileup jets: the high \pt thresholds used in these analyses typically mean that jets consisting of entirely pileup are very rare. One possible issue is the presence of pileup \textit{subjets}: i.e., small subjets within an otherwise normal \largeR jet which are dominated by pileup~\cite{ATLAS-JVT}. Figure~\ref{fig:jet-reconstruction:pu_subjet} shows an example of such a jet: the \largeR jet labeled as the truth $Z$-boson (in this simulated $W'\rightarrow WZ$ event) has a mass of 90 GeV when using only the two subjets on the left, but rises to 120 when including the subjet on the right. However, it is also clear from this event display that the subjet on the right has no hard-scatter tracks associated to it, and only tracks from pileup interactions\footnote{This figure nicely demonstrates the advantage of the ghost-association scheme for tracks: the non-trivial shape of the \kt subjets are captured by the ghost association, but not by a simpler $\Delta R$ scheme.}. A subjet corrJVF discriminant could hypothetically remove such subjets, even if they remain after trimming (like this one did). In practice, Run 1 pileup conditions were low enough such that normal trimming generally performed the same as a corrJVF subjet tagger: higher pileup in Run 2 might make pileup subjet tagging a more important consideration.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_20a.pdf}
+\label{fig:jet-reconstruction:pu_subjet}
+\caption{An example of a jet contaminated by a pileup subjet (i.e., the \largeR jet with the truth $Z$-boson).}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 \section{Flavor Tagging}
+
+Another important aspect of jet reconstruction is the \textit{flavor tagging} of jets.  This refers to the identification of a long-lived (typically $\tau \approx 1.5$~ps) $B$-hadrons within jets, and so is commonly also called $b$-tagging. $B$-hadrons, because of this comparatively long life time (long, compared to the $10^{-20}$~s lifetimes of the $W$ or $Z$, for example) and the relativistic time dilation at high energy, decay at macroscopic distances (typically a few mm) away from the primary vertex in the transverse direction at a location referred to as a \textit{secondary vertex}. Precision tracking detectors are able to identify these displaced tracks and vertices, allowing $B$-jets to be identified against very large light-flavor backgrounds. As interesting physics signatures-- SUSY, top decays, Higgs decays, and so on-- often involve final states with $b$-jets, the identification of such jets is critical to the physics program of the LHC~\cite{ATLAS-B}.
+
+There are many different complementary techniques used to identify $B$-hadrons~\cite{ATLAS-B}. The following is a description of the most important techniques, and their comparative advantages. All the algorithms share a common baseline track association, which uses a \pt-dependent $\Delta R$ cone of maximum size $R=0.45$ at $\pt = 20$~GeV and $R=0.25$ at $\pt = 150$~GeV. The actual tracks selected are tuned in detail to keep the best tracks for each algorithm; the restrictions on some include a requirement on the $B$-layer of the pixel detector or not, varying \pt tresholds (either 400 MeV and 1 GeV), and the rejection of two-track vertices with mass consistent with the decay or conversion of a $\gamma$, $K$, or $\Lambda$.
+
+\subsection{IP3D}
+
+The simplest of the main ATLAS $b$-taggers, IP3D searches for tracks with significant impact parameters, which are therefore inconsistent with originating from the primary vertex~\cite{ATLAS-B}. Both the longitudinal ($z_0$) and transverse ($d_0$) impact parameters are measured, and a significance is calculated by dividing each distance by the estimated error on the measurement, and so well measured tracks are thus weighted more highly than poorly measured tracks. The sign of the impact parameter is also used: a positive sign indicates that the track extrapolation cross the direction of the jet in front of the primary vertex, and is consistent with the decay of a long-lived particle moving transversely from the primary vertex. Tracks from light-flavor decays can be mismeasured and appear in front of and behind the jet equally; thus, selecting jets with the tracks in front (i.e., with positive significance) can reduce light-flavor backgrounds. Figure~\ref{fig:jet-reconstruction:b-tagging:ip3d} shows each of these variables in dijet data and MC from early data collected in 2011. The information from both of these variables is combined in a likelihood to create the output of IP3D, also displayed in Figure~\ref{fig:jet-reconstruction:b-tagging:ip3d}.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[$d_0$, the transverse impact parameter]{\includegraphics[width=0.3\textwidth]{fig_03}}
+\subfigure[$z_0$, the longitudinal impact parameter]{\includegraphics[width=0.3\textwidth]{fig_04}}
+\subfigure[Combined IP3D weight]{\includegraphics[width=0.3\textwidth]{fig_07}}
+\label{fig:jet-reconstruction:b-tagging:ip3d}
+\caption{Distribution of the signed impact parameter significances used by the IP3D tagging algorithm, and the combined IP3D output, in a dijet sample in both data and MC.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+%The sign is positive if the track extrapolation crosses the jet direction in front of the primary vertex, and negative otherwise.
+
+\subsection{SV1}
+
+The SV1 algorithm, as the named suggests, uses information about the secondary vertex reconstruction in the jet~\cite{ATLAS-B}. Two separate vertexing approaches are used: first, all two-track vertices are considered, with pairs rejected if they are consistent with a material interaction or decay of some non-$B$-hadron. The number of these remaining vertices is used as a discriminating variable: $b$-jets are expected to have a higher number than light-flavor jets. Additionally, all the tracks from the surviving two-track vertices are combined to form an inclusive secondary vertex, which aims to reconstruct the true decay location of the $B$-hadron (though it also includes the decay of any subsequent $D$-hadrons, which may also be somewhat displaced). Tracks are iteratively removed from this secondary vertex until a $\chi^2$ goodness of fit threshhold is reached. The energy and mass of the remaining tracks associated to the secondary vertex are combined in a likelihood and used as a discriminating variable. The 3D displacement significance of this vertex, $L_{\mathrm{3D}} / \sigma_{L_\mathrm{3D}}$, is the primary variable used to discriminate between light-flavor and $b$-jets. Finally, the $\Delta R$ between the direction of the jet and the secondary vertex is used as an additional discriminating variable. Several of these variables are displayed in Figure~\ref{fig:jet-reconstruction:b-tagging:sv1}. 
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[SV mass]{\includegraphics[width=0.3\textwidth]{fig_10a_sv1}}
+\subfigure[SV energy fraction]{\includegraphics[width=0.3\textwidth]{fig_10b_sv1}}
+\subfigure[Number of two-track vertices]{\includegraphics[width=0.3\textwidth]{fig_10c_sv1}}
+\label{fig:jet-reconstruction:b-tagging:sv1}
+\caption{Several of the inputs used in the SV1 $b$-tagging algorithm, in a dijet sample in both data and MC.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{JetFitter}
+
+The JetFitter algorithm is the most sophisticated of the standalone taggers~\cite{ATLAS-B,JetFitter}. Using a Kalman filter technique,  
+
+\subsection{MV1}
+
+Each of these algorithms contains useful orthogonal information, and the most performant approach to $b$-tagging combines all of them. A neural network is used to combine the outputs of IP3D, IP3D+SV1, and JetFitter, producing a variable called MV1~\cite{ATLAS-B-Eff}\footnote{The use of both IP3D separately, in combination in the IP3D+SV1 variable, is not optimal in the construction of a multivariate algorithm, but in principle the correlations can be properly measured and accounted for by the neural network}.
+
+\subsection{Calibration}
 
 \section{Quark/Gluon Discrimination}
 	\subsection{Lots of subsections}
