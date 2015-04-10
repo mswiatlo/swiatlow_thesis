@@ -43,6 +43,11 @@ The following subsections describe some details of the topoclustering and tracki
 \subsection{Topoclustering}
 \label{jet-reconstruction:jet-inputs:topoclustering}
 
+Energy measurements in the calorimeter are done at the \textit{cell} level, the smallest read-out unit in the calorimeter.
+
+
+\subsection{Cluster Calibration}
+
 \subsection{Tracking}
 
 Discussion of bending, out of cone
@@ -51,7 +56,6 @@ Discussion of bending, out of cone
 
 Alternative to independent track jets
 
-\subsection{Cluster Calibration}
 
 \section{Jet Calibration}
 
@@ -72,7 +76,7 @@ All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{JES_calib_chain.png}
+\includegraphics[width=0.9\textwidth]{JES_calib_chain.png}
 \label{fig:jet-reconstruction:making-jets}
 \caption{A diagram displaying the multiple steps which are used to transform a jet at the constituent scale to a fully-calibrated physics object for use in analysis.}
 \end{figure}
@@ -569,13 +573,62 @@ The SV1 algorithm, as the named suggests, uses information about the secondary v
 
 \subsection{JetFitter}
 
-The JetFitter algorithm is the most sophisticated of the standalone taggers~\cite{ATLAS-B,JetFitter}. Using a Kalman filter technique,  
+The JetFitter algorithm is the most sophisticated of the standalone taggers~\cite{ATLAS-B,JetFitter}, and targets the separate reconstruction of the $B$- and $D$-hadron decay vertices. Using a Kalman filter technique, tracks associated to a jet iteratively update the location of the primary vertex, the $B$-hadron flight direction, and the distance between the $B$ flight direction and the track. Each intersection of the track with the flight direction is a potential secondary vertex; pairs determiend to be close to each other, and likely to be part of the same physical vertex, are then iteratively merged. The result, which typically leads to two reconstructed, in-line vertices (corresponding to the $B$ and $D$ decays), can be used as a tagger. A likelihood (binned in the number of tracks and vertices into 13 orthogonal categories) is formed using several pieces of information from each vertex: the mass of the tracks, the energy fraction of the tracks compared to the energy of the jet, and the weighted decay length significance. Figure~\ref{fig:jet-reconstruction:b-tagging:jetfitter} shows several of these input variables, and Figure~\ref{fig:jet-reconstruction:b-tagging:jetfitter_total} shows the output of the JetFitter likelihood.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[Number of 2-track vertices]{\includegraphics[width=0.3\textwidth]{fig_16a}}
+\subfigure[Decay chain mass]{\includegraphics[width=0.3\textwidth]{fig_16c}}
+\subfigure[Decay chain energy fraction]{\includegraphics[width=0.3\textwidth]{fig_16d}}
+\label{fig:jet-reconstruction:b-tagging:jetfitter}
+\caption{Several of the inputs used in the JetFitter $b$-tagging algorithm, in a dijet sample in both data and MC.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_14.pdf}
+\label{fig:jet-reconstruction:b-tagging:jetfitter_total}
+\caption{The output of the JetFitter $b$-tagging likelihood, in a dijet sample in both data and MC.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 \subsection{MV1}
 
-Each of these algorithms contains useful orthogonal information, and the most performant approach to $b$-tagging combines all of them. A neural network is used to combine the outputs of IP3D, IP3D+SV1, and JetFitter, producing a variable called MV1~\cite{ATLAS-B-Eff}\footnote{The use of both IP3D separately, in combination in the IP3D+SV1 variable, is not optimal in the construction of a multivariate algorithm, but in principle the correlations can be properly measured and accounted for by the neural network}.
+Each of these algorithms contains useful orthogonal information, and the most performant approach to $b$-tagging combines all of them. A neural network is used to combine the outputs of IP3D, SV1, and JetFitterCombNN (itself the output of a neural network combining IP3D and JetFitter), producing a variable called MV1~\cite{ATLAS-B-Eff}\footnote{The use of both IP3D separately, in combination in the JetFitterCombNN variable, is not optimal in the construction of a multivariate algorithm, but in principle the correlations can be properly measured and accounted for by the neural network}. Figure~\ref{fig:jet-reconstruction:b-tagging:mv1} shows the $b$-jet efficiency vs light jet rejection in MC; the improvement of the MV1 algorithm over the other taggers is substantial.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_01a.pdf}
+\label{fig:jet-reconstruction:b-tagging:mv1}
+\caption{A comparison, using $t\bar{t}$ MC, of the $b$-jet efficiency vs. light jet rejection of several $b$-tagging algorithms.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 \subsection{Calibration}
+
+After $b$-tagging algorithms are developed, they also need to be \textit{calibrated} in data in order to be useful for physics analyses. The algorithms are all trained in simulation, and have some dependence on the hadronization and fragmentation modeling of these MC generators: for this reason, the outputs of the algorithms can differ in data and MC (as seen in the previous figures), and so the efficiency of $b$-tagging (on both $b$ and light jets) can also differ in data and MC~\cite{ATLAS-B-Eff,ATLAS-B-Eff-Mistag,ATLAS-B-Eff-LL,ATLAS-B-CL}. Many techniques are used to measure the efficiency in data (and derive the corresponding scale-factors to adjust MC to data), and determine the systematic uncertainties on these efficiencies. The scale factors are typically close to 1, and uncertainties are typically near 10\%, as shown in Figure~\ref{fig:jet-reconstruction:b-tagging:calib}.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig_02b-2}
+\label{fig:jet-reconstruction:b-tagging:calib}
+\caption{The size of the scale factor for $b$-tagging calibration in data, as a function of the jet \pt, and the size of the corresponding uncertainties.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 \section{Quark/Gluon Discrimination}
 	\subsection{Lots of subsections}
