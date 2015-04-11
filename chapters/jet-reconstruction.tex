@@ -43,16 +43,49 @@ The following subsections describe some details of the topoclustering and tracki
 \subsection{Topoclustering}
 \label{jet-reconstruction:jet-inputs:topoclustering}
 
-Energy measurements in the calorimeter are done at the \textit{cell} level, the smallest read-out unit in the calorimeter.
+Energy measurements in the calorimeter are done at the \textit{cell} level, the smallest read-out unit in the calorimeter. Cells, however, are not particularly well suited for constructing jets for a number of reasons: they are very noisy, they are very sensitive to pileup, one particle can leave energy in many different cells,  there are too many for the $\mathrm{O}( n \log n)$ jet clustering algorithms to efficiently cluster, etc. Topo-clustering is one algorithm, out of many historical altenatives, to efficiently reduce cells to a more manageable, less noisy object~\cite{JES2010,JES2011}.
 
+Topo-clusters, short for ``three dimensional topological clusters,'' sum the scalar energy measured in adjacent cells joined by the clustering algorithm. The clustering is based on the principle of measured energy significance in each cell, defined as $E/\sigma_{\mathrm{noise}}$ where $\sigma_\mathrm{noise}$ is defined as $\sigma_\mathrm{noise} = \sigma^\mathrm{electronic}_\mathrm{noise}~\oplus~\sigma^\mathrm{pileup}_\mathrm{noise}$~\cite{JES2010,JES2011}. The first term corresponds to the expected electronics noise from the detector readout in that cell; the second term corresponds to the expected variation in the energy measurement caused by pileup in that cell. $\sigma^\mathrm{pileup}_\mathrm{noise}$ is set to a value of the expected $\mu$, which was $30$ during 2012 conditions. For most of the detector $\eta$, $\sigma^\mathrm{electronic}_\mathrm{noise} \approx \sigma^\mathrm{pileup}_\mathrm{noise}$, except in the forward region where $\sigma^\mathrm{pileup}_\mathrm{noise}$ is much larger due to the large forward flux (and larger cell size). Figure~\ref{fig:jet-reconstruction:jet-inputs:topoclustering-noise} shows the different total noise expected in each of 2010, 2011, and 2012; the rising values indicate the greater expected presence of pileup.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[2010]{\includegraphics[width=0.45\textwidth]{topo_2010}}
+\subfigure[2011]{\includegraphics[width=0.45\textwidth]{topo_2011}}
+
+\subfigure[2012]{\includegraphics[width=0.45\textwidth]{topo_2012}}
+\label{fig:jet-reconstruction:jet-inputs:topoclustering-noise}
+\caption{Total expected noise, $\sigma_\mathrm{noise} = \sigma^\mathrm{electronic}_\mathrm{noise}~\oplus~\sigma^\mathrm{pileup}_\mathrm{noise}$, in each year of detector operations, for various subdetectors, as a function of $\eta$. The higher levels in 2011 and 2012 compared to 2012 indicate the changing pileup noise threshold.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+Each cell thus has an energy significance $\zeta = E / \sigma_\mathrm{noise}$~\cite{JES2010,JES2011}. Topo-clusters are \textit{seeded} by cells with a significance of $S$ (typically 4) or greater. All cells surrounding the seed cell (either directly neighboring if the cells are in the same layer, or overlapping in $\eta/\phi$ if in different layers) with significance $N$ (typically 2) or greater are then joined to the seed. This \textit{growth} stage continues iteratively for all adjoining cells with $\zeta > N$. As a last step, all cells with significance larger than $P$ (typically 0) adjoining the growth-stage cells are also joined to the cluster: this is referred to as the \textit{boundary}. Finally, a splitting algorithm can split clusters into two at a boundary between two local maxima. Typically, clusters are expected to be produced approximately once by each particle in the calorimeter, though multiple clusters can be created depending on the way the particle interacts. Note that all energies measured are absolute: negative energy cells are allowed to join topo-clusters. Negative energy cells originate from the pulse shaping of the LAr calorimeter, and these negative fluctuations (many caused by pileup) are expected to partly cancel the positive fluctuations caused by pileup. The noise-suppression aspect of topo-clustering significantly improves the performance of the calorimeter by removing isolated fluctuations due to electronics noise and pileup, though particularly large fluctuations can still survive the seeding requirement. Figure~\ref{fig:jet-reconstruction:jet-inputs:topoclustering-display} shows cells at the various stages of the topo-clustering, in one layer of the calorimeter.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[Seed cells]{\includegraphics[width=0.45\textwidth]{FCal_evtdisplay_2sig.pdf}}
+\subfigure[Growth cells]{\includegraphics[width=0.45\textwidth]{FCal_evtdisplay_4sig.pdf}}
+
+\subfigure[All cells]{\includegraphics[width=0.6\textwidth]{FCal_evtdisplay_full.pdf}}
+\label{fig:jet-reconstruction:jet-inputs:topoclustering-display}
+\caption{Topo-cluster cells during the clustering, showing first the seed cells, then the growth cells, and finally all cells. Only the first layer of the LAR-FCal is shown in this event display. The final display also shows the outlines of the final topo-clusters, after splitting.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Cluster Calibration}
+
+Energy from electromagnetic particles (photons and electrons) is measured at a different scale from that of hadrons, whose interactions with material involve the release of nuclear binding and neutrinos which are not observed. Identifying clusters as originating from either of these two categories can improve the energy measurement, as type-dependent cluster calibrations can be applied to take into account these effects.
 
 \subsection{Tracking}
 
 Discussion of bending, out of cone
 
-\subsubsection{Ghost Association}
+\subsubsection{Track Association}
 
 Alternative to independent track jets
 
