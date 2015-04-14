@@ -79,7 +79,73 @@ Each cell thus has an energy significance $\zeta = E / \sigma_\mathrm{noise}$~\c
 
 \subsection{Cluster Calibration}
 
-Energy from electromagnetic particles (photons and electrons) is measured at a different scale from that of hadrons, whose interactions with material involve the release of nuclear binding and neutrinos which are not observed. Identifying clusters as originating from either of these two categories can improve the energy measurement, as type-dependent cluster calibrations can be applied to take into account these effects.
+Energy from electromagnetic particles (photons and electrons) is measured at a different scale from that of hadrons, whose interactions with material involve the release of nuclear binding and neutrinos which are not observed. Identifying clusters as originating from either of these two categories can improve the energy measurement, as type-dependent cluster calibrations can be applied to take into account these effects. This procedure is referred to as \textit{local calibration weighting}, as it uses local cluster information to calibrate the detector objects.
+
+The identification of clusters as hadronic or EM using a four-variable likelihood:
+%
+\begin{equation}
+\mathcal{P}_\mathrm{clus}^\mathcal{EM}(E_\mathrm{clus}^\mathcal{EM}, \eta_\mathrm{clus}, \rho_\mathrm{clus},\lambda_\mathrm{center} ) \mapsto \mathcal{P}^\mathrm{EM}_{\mathrm{clus},ijkl} = \frac{N_{ijkl}^{\pi^0}}{N_{ijkl}^{\pi^0} + N_{ijkl}^{\pi^\pm}}
+\end{equation}
+%
+where $E_\mathrm{clus}^\mathcal{EM}$ and $\eta_\mathrm{clus}$ are the cluster energy and position, and $\rho_\mathrm{clus}$ and $\lambda_\mathrm{center}$ are the cluster density and the radial depth of the cluster center. For a given energy and $\eta$, clusters with a lower radial depth and higher density are more likely to originate from EM particles, whereas hadronic interactions are expected to have longer and deeper showers. Neutral pions, which decay to photons, are used to train the EM particles in the likelihood, and positive pions are used to train the hadronic component. Figure~\ref{fig:jet-reconstruction:cluster-calibration:em-like} shows an example of the likelihood to be an EM shower, for a particular energy and $\eta$ bin. A cut on $\mathcal{P} > 0.5$ is typically used as the boundary of the classifier.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{emlike.pdf}
+\label{fig:jet-reconstruction:cluster-calibration:em-like}
+\caption{An example of the likelihood used for classification of EM vs hadronic showers, for a particular bin of energy and $\eta$. The diagonal line indicates the surface of a $\mathcal{P} > 0.5$ cut.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+After a cluster has been classified as hadronic or electromagnetic,  calibrations can be used to refine their energy measurement. There are three separate stages of calibration, as displayed in Figure~\ref{fig:jet-reconstruction:cluster-calibration:calib-flow}: hadronic calibration (if applicable), out-of-cone corrections, and dead material corrections.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{calib_flow_cropped.pdf}
+\label{fig:jet-reconstruction:cluster-calibration:calib-flow}
+\caption{The form of the calibration algorithm for clusters in the LCW procedure.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+The hadronic calibration weight, defined as $w_\mathrm{cell}^\mathrm{had} = \frac{{E}^\mathrm{dep}_\mathrm{cell}}{E^\mathrm{EM}_\mathrm{cell}}$, where the numerator is the truth amount of energy released in a shower, and the denominator is the measured amount. Look-up tables, created with single pion events, are developed for every cell in the detector in bins of the cell energy.
+
+The out-of-cluster correction is used to account for energy which may be lost due to the significance cuts in the topo-clustering procedure. The correction is determined separately for EM and hadronic clusters, and single particle MC simulations are used to determine the size of the corrections. A specially designed search algorithm is used to find unassigned cells close to clusters which are likely part of the same shower, and adds their energy back to the cluster.
+
+A final correction, again developed separately for EM and hadronic particles using single particle simulation, accounts for dead material in front of the calorimeters. The energy lost in these regions is found, in these simulations, to be strongly proportional to the energy in the pre-sampler, or the first layer of the FCal in the forward ergion. Additionally, energy lost in the transition regions between the EM and hadronic calorimeters is found to be proportional to $\sqrt{E_l^\mathrm{EM} E_f^\mathrm{had}}$, where $E_l^\mathrm{EM}$ is the energy in the last layer of the EM calorimeter, and $E_f^\mathrm{had}$ is the energy in the first layer of the hadronic calorimeter. Figure~\ref{fig:jet-reconstruction:cluster-calibration:ooc-dm} shows an example of the search strategies for both out-of-cluster and dead material corrections. 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{ooc_dm_bounds.pdf}
+\label{fig:jet-reconstruction:cluster-calibration:ooc-dm}
+\caption{An example of the search procedures for the out-of-cluster and }
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+Each cell in a cluster then has a continuous calibration weight, based on the cluster's $\mathcal{P}$, as:
+%
+\begin{equation}
+w_\mathrm{cell}^\mathrm{cal} = \mathcal{P}^\mathrm{EM}_\mathrm{clus} w_\mathrm{cell}^\mathrm{em-cal} + (1 - \mathcal{P}_\mathrm{clus}^\mathrm{EM}) w_\mathrm{cell}^\mathrm{had-cal}
+\end{equation}
+%
+where the individual $w_\mathrm{cell}$ terms are the products of the calibration factors previously described, for EM and hadronic showers. The final calibrated cluster then has the energy:
+%
+\begin{equation}
+E^\mathrm{cal}_\mathrm{clus} = \sum_{i \in \mathrm{cluster}} w_{\mathrm{cell},i}^\mathrm{cal} E_{\mathrm{cell},i}^\mathrm{EM}
+\end{equation}
+%
+which is just the sum of the individual cell energies with their respective weights. The cluster $\eta$ and $\phi$ are calculated using the cell weights in a similar way.
+
+Most analyses which use substructure information use clusters calibrated to the LC scale: the calibration procedure brings particles much closer to their true energy, and removes at least some of the bias in which hadronic particles are measured at an incorrect scale. LC jets still require a JES calibration, described in the following sections, which indicates that the LC scale is not the complete truth scale: however, as substructure moments are calculated over all the constituents of a jet and usually normalized by the sum of their energies, it is most important that all particles be at a \textit{consistent} scale, which the LC calibration procedure largely accomplishes.
 
 \subsection{Tracking}
 
