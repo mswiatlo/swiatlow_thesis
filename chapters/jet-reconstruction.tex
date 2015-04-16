@@ -149,11 +149,23 @@ Most analyses which use substructure information use clusters calibrated to the 
 
 \subsection{Tracking}
 
-Discussion of bending, out of cone
+Tracks are objects constructed from \textit{hits} in the inner detector: each hit corresponds to a particle interaction with a detector, and tracks correspond to the trajectories of these particles as they pass through. A number of sequential algorithms are used to find the tracks~\cite{Track2011,TrackOld}. The first is an ``inside-out'' algorithm which starts with 3-point seeds (colinear hits in either the pixel or SCT detectors, found with a fast seeding algorithm) and uses a Kalman filter to then iteratively add successive possible hits found along an extrapolated ``road'' in the detector. Each hit added to the track updates the track properties, and helps determine better the probable location of the next hit. Simultaneously, hits which dramatically increase the $\chi^2$ of the fit are rejected. Ambiguties can occur in the track matching, especially in the dense environments of jets; these are resolved before the track is extrapolated into the TRT. A second, ``outside-in'' algorithm starts with TRT seeds and extrapolates inwards; this algorithm produces significantly less well measured tracks.
 
-\subsubsection{Track Association}
+Tracks used in analyses are required to pass a number of quality criteria, which unfortunately can vary from analysis to analysis. Typically, the quality requirements for jet measurements (non $b$-tagging) are:
 
-Alternative to independent track jets
+\begin{enumerate}
+\item $p_T > 500$~\MeV
+\item $z_0 \sin{(\theta)}~<~$1.5 mm (relaxed for the purposes of JVF)
+\item $d_0 < 1$~mm (relaxed for the purposes of JVF)
+\item At least 1 pixel hit
+\item At least 6 SCT hits
+\item $\chi^2/$ndf $< 3$
+\end{enumerate}
+
+Tracks can be used in hadronic meaurements in many ways. Often, they are used as stand-alone inputs to jet algorithms, producing independent jets unbiased by the calorimeter measurements. Tracks can also be associated to jets, in order to measure additional properties of already determined calorimeter jets. Tracks are associated to jets typically in two ways: a $\Delta R$ association, or a ``ghost'' association. In the former, a distance between the track and jet axis is measured using the standard $\Delta R$ definition; tracks with $\Delta R < R_\mathrm{jet}$ are considered as associated to the jet. The ghost association technique is more complicated, and requires the concept of a \textit{jet area} to be defined, and so is described in Section~\ref{jet-reconstruction:pileup:ghost-association}.
+
+% Previous studies of tracking performance in a low pile-up environment have demonstrated excellent algo- rithmic performance and good agreement between data and simulation [13, 14]. Tracks are reconstructed in the inner detector using a sequence of algorithms [15]. The inside-out algorithm starts from 3-point seeds in the silicon detectors and adds hits moving away from the interaction point using a combinato- rial Kalman filter. Ambiguities in the track candidates found in the silicon detectors are resolved, and tracks are extended into the TRT. The inside-out algorithm is the baseline algorithm designed for the efficient reconstruction of primary charged particles. Primary particles are defined as particles with a mean lifetime of greater than 3×10−11 s directly produced in a pp interaction or from the subsequent decays or interactions of particles with a lifetime shorter than 3 × 10−11 s. The tracks reconstructed by the inside-out algorithm are required to have transverse momentum pT > 400 MeV.
+% In a second stage, a track search starts from segments reconstructed in the TRT and extends them inwards by adding silicon hits, which is referred to as back-tracking. Back-tracking is designed to re- construct secondaries, which are particles produced in the interactions of primaries. Finally tracks with a TRT segment but no extension into the silicon detectors are referred to as TRT-standalone tracks. This document focus on the impact of pile-up on the baseline inside-out algorithm. There is significant impact from pile-up on both back-tracking and TRT-standalone reconstruction, which will not be discussed here.
 
 
 \section{Jet Calibration}
@@ -234,10 +246,31 @@ Often this is preferable, as not just the $p_T$ but the mass of the jet is thus 
 
 One important aspect to note is that these corrections are done on jet 4-vectors as a whole, and not on constituents-- this means that jet moments, such as substructure observables, are not corrected. There are several extensions of the areas technique which aim to correct shapes, and some additional ideas which correct jet inputs before clustering, and therefore automatically correct shapes. While ATLAS explored some of these options in Run 1, the susceptibility of most variables to pileup was found to be rather small, putting off the need for dedicated corrections to Run 2. \editnote{cite, cite}
 
-
 % plots plots? summarizing this?
 
-%origin correction?
+
+\subsubsection{Aside: Ghost Association}
+\label{jet-reconstruction:pileup:ghost-association}
+
+Now that the concept of the jet area has been defined, it is possible to define the ghost association technique previously aluded to. This technique uses the active jet area, as defined with ghosts defined previously, to determine whether a track (or truth particle, etc.) should be associated to a jet. In particular, a track (or any other object) is replaced with a ghost copy-- i.e. one with the same physical position, but some small $\epsilon$ of energy. This ghost particle is allowed to participate in the jet clustering, and the jet which the ghost is clustered to identifies which jet the track should be associated with. Figure~\ref{fig:jet-reconstruction:ghost} is an event display showing such a matching of tracks to jets: even the complicated subjet shapes are able to have an unambiguous matching using the ghost association technique.
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{AKT10_legend4moment_example_etaphi_default.png}
+\label{fig:jet-reconstruction:ghost}
+\caption{An example of the ghost association algorithm in action, showing the locations of tracks from pileup vertices and from the hard-scatter vertices overlaid on the area of calorimeter jets. Tracks within the grey areas are considered to be associated to a jet.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+
+Isolated \antikt jets are circular in shape, which motivates the $\Delta R$ association, which is fast to compute and is very accurate for these simple cases. The ghost association technique is often useful for environments where jets are non-circular-- i.e., when using the \kt or \ca algorithms, or when jets are very dense and overlapping and therefore non-circular.
+
+
 
 \subsection{Jet Origin Correction}
 
@@ -388,8 +421,9 @@ and the correction is therefore also additive. The size of the correction is not
 
 
 \subsection{Global Sequential Calibration}
+\label{jet-reconstruction:calibration:gsc}
 
-Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector. The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration~\cite{ATLAS-GSC}. Moreover, even jets of a single flavor type can fragment in wildly different ways, resulting in a range of possible responses: by measuring global jet properties, it is possible to better understand this fragmentation and correct the response jet-by-jet and thereby substantially improve the jet resolution.
+Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector\footnote{See Section~\ref{jet-reconstruction:qg} for a much large discussion of quark/gluon jet differences, and a more precise treatment of the exact labeling used to define these.} The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration~\cite{ATLAS-GSC}. Moreover, even jets of a single flavor type can fragment in wildly different ways, resulting in a range of possible responses: by measuring global jet properties, it is possible to better understand this fragmentation and correct the response jet-by-jet and thereby substantially improve the jet resolution.
 
 Five variables are used to correct the jets; most of the variables are only available in some subset of the detector $\eta$. As the name of the technique suggests, these corrections are applied independently and sequentially. In order, these are:
 
@@ -730,5 +764,86 @@ After $b$-tagging algorithms are developed, they also need to be \textit{calibra
 %%%%%%%%%%%%%%%% 
 
 \section{Quark/Gluon Discrimination}
-	\subsection{Lots of subsections}
-		...
+\label{jet-reconstruction:qg}
+\subsection{Overview}
+\label{jet-reconstruction:qg:overview}
+%~\cite{Miyazawa:1966,Ramond:1971gb,Golfand:1971iw,Neveu:1971rx,Neveu:1971iv,Gervais:1971ji,Volkov:1973ix,Wess:1973kz,Wess:1974tw}
+
+Just as $b$-tagging is useful for search for new physics in channels with heavy flavor, the identification of \textit{light quarks} can also be important when searching for new physics. Most commonly, the jets associated with multi-jet production arise from gluon radiation, and so a tool to eliminate these backgrounds can be very useful. Even searches for the Higgs boson decaying to hadronic $W$-bosons or $Z$-bosons can benefit, as once again the signal is dominated by light-quark jets and backgrounds are often gluon-induced.
+
+This type of discrimination has been attempted at several experiments before ATLAS~\cite{TevatronShapes1,QGNN,Pumplin,QGopal,Ariel,QGsub,QGlep,QGcleo,DelphiQG,DelphiQG2,AlephQG,L3QG}. This discrimination tends to rely on the different color charges for quarks ($C_F=4/3$) and gluons ($C_A=3$), which leads to a leading order prediction that gluon jets have $C_A/C_F = 9/4$ more particles (which are consequently more widely distributed, and generally softer) than light-quark jets. OPAL's measurement~\cite{QGopal} indeed measured something very similar to this prediction. Because of their much simpler experimental environments, experiments like OPAL at $e^+/e^-$ colliders have generally been much more successful at discriminating between quarks and gluons, as determining ``pure'' samples at a hadron collider is exceedingly difficult. However, recent developments from the theory communited have suggested not just that pure samples suitable for calibration are obtainable, but also that discrimination is possible in the challenging underlying-event and pileup heavy environment of a hadron collider~\cite{schwartz1,schwartz2}.
+
+This section follows the results of the ATLAS paper on quark-gluon discrimination using 2011 data~\cite{ATLASqg}. First, quark and gluon jets are more precisely defined, followed by a description of possible discriminating variables. The use of data-driven templates is discussed, and then the final tagger properties and power is presented.
+
+\subsection{Definition of Light Quark and Gluon Jets}
+\label{jet-reconstruction:qg:definition}
+
+The labeling of a $b$-jet or a $c$-jet is a fairly straightforward process: the initiating $b$ and $c$ quarks, though unmeasurable and therefore un-physical themselves, inevitably hadronize into observable $B$ and $D$ hadrons. Thus, the presence of a $B$ or $D$ hadron, at the MC simulation level, is enough to provide a label to the jet: if a $B$ or $D$ hadron is present, it is clear that a secondary vertex can occur, and the jet should be counted as being heavy-flavor.
+
+This unambiguous hadronization does not occur for light-quark and gluon jets. In the parton shower process, gluons even split into pairs of quarks before hadronization: all gluon jets contain quarks, in some sense. Moreover, the observable particles-- kaons, pions, protons, neutrons, and so on-- are all identical for quark and gluon initiated jets. Even before attempting discrimination between the two classes, then, it is difficult to precisely state what we are discriminating between.
+
+One potentially less ambiguous definition is to use the partons from the matrix element to label jets. This has the disadvantage that only some jets can be labelled-- in particular, in multi-jet events, depending on the generator, as few as 2 partons are simulated as part of the matrix element, and therefor only two jets out of many could be labelled. A better strategy is to simply use the highest energy parton within $\Delta R < R_\mathrm{jet}$ of the jet. When studied with both Pythia $2\rightarrow2$ and MadGraph $2\rightarrow4$ generators, this matching followed the labelling from the matrix element in $> 95\%$ of events. This labelling has the advantage of also working on the hadronic decays of top quarks or $Z$-bosons. For the rest of the discussions in this section, this labeling scheme will be implied when discussing quark and gluon jets.
+
+While this analysis does not directly attempt to tag $b$ and $c$ jets, they must often be subtracted from the samples in order to deal with only light-flavor jets. These jets are labelled with the following priority: if a $B$-hadron with $\pt > 5$ GeV exists within $\Delta R < R_\mathrm{jet}$, label it a $b$-jet. If two such independent hadrons exist, label it a $bb$ jet (originating from a gluon splitting, but not considered in this analysis). If this fails, search for a $D$-hadron with $\pt > 5$ GeV within the jet; if one is found, label it a $c$-jet, and if two are found, label it $cc$. Only after these steps have determined that there are no heavy flavor quarks within the jet is the jet's light-flavor type assessed.
+
+\subsection{Data and MC Samples}
+\label{jet-reconstruction:qg:samples}
+
+Several different data and MC samples are used to study the properties of quark and gluon jets. There are two main categories: multi-jet and $\gamma$+jet events. 
+
+Multi-jet events are modelled by Pythia 6 and \texttt{Herwig++} simulation, and some smaller samples using Madgraph interfaced with Pythia 8. Events are selected in data with single jet triggers with various thresholds which are fully efficient at $\pt > 40$~GeV. The lower \pt threshhold triggers are \textit{prescaled} to reduce the rate at high luminosity. When binning results in \pt, each bin is filled exclusively with events from a single trigger that is fully efficient in that range (and the second jet is used only if its \pt also is in this same bin). When studying tri-jet events, the same \pt binning and trigger treshholds are used.
+
+The $\gamma$+jet sample is selected with single photon triggers, again with variable tresholds and corresponding prescales. The lowest threshold is at $p_\mathrm{T}^\gamma > 25$~GeV, and a back-to-back requirement between the $\gamma$ and jet, $\Delta \phi > 2.8$, is imposed. An additional veto on soft radiation is imposed, wherein the uncalibrated \pt of the sub-leading jet is required to be less than $30\%$ of $p_\mathrm{T}^\gamma$~\cite{JES2010}\footnote{In the corresponding 2012 analysis, it was discovered that this cut changes the \pt distribution within each \pt bin and slightly biases the result, lowering slightly the performance of the tagger.}. Each jet \pt bin is filled by a single-photon trigger that is fully efficient in that bin, as the balance between photon and jet guarantees. The same triggers are used in the $\gamma$+2jet sample, except that the subleading jet \pt cut is removed.
+
+% The dijet sample is selected using single-jet triggers with various thresholds [48], which are fully efficient for jets with pT > 40 GeV. Each jet pT bin is filled exclusively by a single trigger that is fully efficient for jets in that pT range, following Ref. [1]. The trijet sample uses the same trigger selection as the dijet sample. This guarantees that studies using the jet with the third highest pT in each event are not biased by the trigger.
+
+%The γ+jet sample is selected using single-photon trig-gers. The lowest threshold single-photon trigger is fully efficient for photons with pT > 25 GeV. For this sam- ple, a back-to-back requirement for the photon and the leading jet, ∆φ > 2.8, is imposed. An additional veto on soft radiation is also applied to further reduce back- ground contamination [41]: the uncalibrated pT of the sub-leading jet is required to be less than 30% of the photon pT. Relying on the pT balance of the photon and jet, each jet pT bin is filled exclusively by a single-photon trigger that provides a fully efficient selection.
+%The same triggers are used in the γ+2-jet sample in each region of jet pT. Since the sub-leading jet pT is lower than that of the leading jet by definition, this selection is also not biased by jet reconstruction effects.
+
+\subsection{Quark and Gluon Jet Properties}
+\label{jet-reconstruction:qg:properties}
+
+Given the expectations developed in Section~\ref{jet-reconstruction:qg:overview}, there are many different jet observables which could potentially distinguish between quark and gluon initiated jets. One approach is to try to measure the number of particles to take advantage of the color factor difference. In principle, a variable just as $n_\mathrm{clusters}$ would be ideal, as it is expected to be directly proportional to the number of stable particles interacting with the calorimeter. However, as the granularity of the calorimeter changes with $\eta$, and the number of clusters grows unbounded with pileup, this is not a very useful variable. A related alternative is \ntrk, the number of tracks associated to a jet\footnote{Note that in this analysis, tracks are associated with a $\Delta R < R_\mathrm{jet}$ requirement instead of a ghost association. As most jets considered are isolated, and \antikt~is used throughout, this is a reasonable simplification.}. This is expected to have much less $\eta$ dependence, and because tracks from pileup vertices are able to be rejected, is stable with regards to the amount of pileup.
+
+Other variables take into account the radial distribution of the energy inside the jet. One simple such variable is the \textit{jet width}, as discussed in Section~\ref{jet-reconstruction:calibration:gsc}. The width is the first radial moment of the \pt of the jet: jets with a very focused core will have lower width, and jets with a more even distribution of energy will have a higher width. Gluons, because they first split to quarks, and because of their higher color factor, are expected to have broader energy distributions and therefore higher width. The width can be calculated with clusters as inputs, or the tracks associated to a jet. Because of the issues with pileup, track width is used in this analysis.
+
+Many other variables, as documented in \cite{schwartz1}, are possible, but these two were the preferred combination from early theoretical studies. Another set of studies~\cite{EEC} indicated that a new observable, the energy-energy correlated angularity, could also be useful. This class of observables is defined as:
+\begin{equation}
+{\rm ang_{\rm EEC}}=\frac{ \sum_i \sum_j p_{{\rm T},i} \times p_{{\rm T},j} \times (\Delta R(i,j))^\beta}{ (\sum_i p_{{\rm T},i})^2 },
+\end{equation}
+where $i$ runs over the tracks associated to the jet and $j$ runs over the tracks associated to the jet with $j>i$ (the calorimeter version is sensitive to pileup, and therefore not studied), and $\beta$ is a tunable parameter typically $O(1)$. While this variable is in principle very sensitive, several effects conspire to limit its effectiveness and prevent it from being used in the final result (as will be discussed shortly).
+
+To characterize the separation between quark and gluon jets with these variables, we define the \textit{separation} as~\cite{2006physics11219P}:
+%
+\begin{equation}
+s=\frac{1}{2}\int\frac{(p_q(x)-p_g(x))^2}{p_q(x)+p_g(x)}dx = \frac{1}{2}\sum_i\frac{(p_{q,i}-p_{g,i})^2}{p_{q,i}+p_{g,i}}, 
+\label{eq:separation}
+\end{equation}
+%
+where $i$ runs over bins of a histogram. This is a measure of the overlap of two distributions, $q(x)$ and $g(x)$, which are the quark and gluon distributions respectively in a Pythia dijet simulation.  The result is shown in Figure~\ref{fig:jet-reconstruction:qg:separation}: in general, the separation power increases as a function of \pt, and \ntrk is predicted to have the best power. Track width performs worse than many of the other variables, but because of its resilience in modeling (compared to the EEC variables) and its robustness to pileup (compared to the calorimeter width), it will also be studied further. Moreover, the track width has a very low correlation with \ntrk: as low as $15\%$ at low \pt and only $50\%$ at high \pt, whereas the EEC variables have consistent correlations of $75\%$. This means that a combined observable from \ntrk and track width will likely outperform other options.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{qg/SeparationPower}
+\label{fig:jet-reconstruction:qg:separation}
+\caption{The size of the scale factor for $b$-tagging calibration in data, as a function of the jet \pt, and the size of the corresponding uncertainties.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+\subsection{Data-Driven Templates}
+
+
+
+
+
+
+
+
+
+
+
+
+
