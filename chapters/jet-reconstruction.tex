@@ -1016,3 +1016,254 @@ Events with photons are already used to extract the more quark-like component of
 where $\eta_\gamma$ ($\eta_\text{jet~1}$) is the $\eta$ of the photon (leading jet), and 
 $\Delta R_{(\text{jet~2},\gamma)}$ gives the difference in $\eta$--$\phi$ space between the sub-leading 
 jet and the photon. By imposing a requirement on this variable of $\xi < 1$, purities over 90\% can be achieved (as validated with MadGraph siulation), although with a significant loss of events. This sample can again be compared to the extracted templates for quarks from Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. This comparison is presented in \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth3} and \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth4} of Figure~\ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}. Once again, the agreement between the independent data sample and the extracted templates is very good for both the \ntrk and Track Width variables, validating our use of our templates for both quark and gluon jets.
+
+\section{Creating a Tagger, and Results}
+
+As the discriminating power of Track Width and \ntrk changes with \pt (\ntrk gains power as \pt rises, while the opposite is true for Track Width), a combined likelihood between the two variables will be the most effective tool for quark-jet tagging\footnote{Though a gluon jet tagger is also possible, the details are not considered in this analysis.}. Such a likelihood is defined using the normalized extracted two-dimensional distributions (called $q$ and $g$),
+%
+\begin{equation}
+L=\frac{q}{q+g}.
+\end{equation}
+%
+A cut on this variable $L$, built in bins of \pt and $\eta$, will effectively discriminate between quarks and gluons. Note that the two-dimensional distributions are first smoothed with a Gaussian kernel and dynamically rebinned to ensure that all regions of the distributions are populated sufficiently\footnote{In particular, low statistics in the $q$ distribution also causes a rebinning of the $g$ distribution, in order to make the likelihood construction as simple as possible. To rebinning covers only areas of the distribution which are statistically limited: regions sufficiently populated are not rebinned}. The two-dimensional distribution of $L$ is shown in the top of Figure~\ref{fig:jet-reconstruction:qg:likelihoodSample}, for both data and MC: it is clear that the taggers have very different properties in data and in the simulation. This figure also contains the projections of the $L$ variable, when using the quark and gluon distributions used to build the tagger, before smoothing. Separation clearly exists for both data and MC taggers, but is much stronger in MC.
+
+
+
+\begin{figure}[tbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_2dT_llhood_q_.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_2dT_llhood_q__FromMC.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_oneDim_q_.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_oneDim_q__FromMC.pdf}
+}
+\caption{ Value of the likelihood-based ratio $L$ as a function of \ntrk and track width (top) and 
+likelihood-based discriminant distribution for quark- and gluon-jets (bottom) for isolated jets 
+of $|\eta|<0.8$ and $160<\pt<210\GeV$. The plots have been obtained using data (left) and
+a \Pythia 6 dijet sample (right). Jets are reconstructed using the \akt\ jet algorithm
+with radius parameter $R=0.4$. }
+\label{fig:jet-reconstruction:qg:likelihoodSample}
+\end{center}
+\end{figure}
+
+The performance of the tagger is determined using the two dimensional templates extracted from data, before smoothing, and for labelled jets in MC simulations. The tagger is indepdently derived in \Pythia and \Herwigpp, following the same procedure as in data. Systematic unceratinies are estimated by deriving alternative templates as described in the previous section and determining the change in efficiency and rejection for the same cut on $L$. Table~\ref{tab:perfSummary} summarizes this performance for jets with $|\eta|<0.8$. Several different operating points, at $30\%$, $50\%$, $70\%$, and $90\%$ quark efficiency are evaluated. The statistical uncertainty is determined using pseudoexperiments via bootstrapping. Systematic uncertainties are combined in quadrature. Scale factors between data and MC are computed for the gluon efficiencies: quark efficiencies by definition have a scale factor of 1 (though there is some uncertainty) as the tagger (and the associated cut) is derived separately in data and MC. Several different \pt bins are shown in the table. 
+
+
+\begin{table}[htbp]
+\caption{
+Summary of the performance of the quark-jet tagger on quark- and gluon-jets in data and \Pythia MC simulation for jets built with the \antikt algorithm with $R=0.4$ and with $|\eta|<0.8$. 
+The first error corresponds to the statistical uncertainty, while the second corresponds to the systematic uncertainty.
+The scale factor is the ratio of data to MC simulation. 
+\label{tab:perfSummary}}
+\begin{center}
+\begin{tabular}{|c|l|l|l|l|l|l|}
+\hline
+& \multicolumn{2}{|c|}{Monte Carlo} & \multicolumn{2}{|c|}{Data} & \multicolumn{2}{|c|}{Scale Factor} \\ 
+\hline
+& $\epsilon_{\rm quark}$ & $\epsilon_{\rm gluon}$ & $\epsilon_{\rm quark}$ & $\epsilon_{\rm gluon}$ & SF$_{\rm quark}$ & SF$_{\rm gluon}$ \\
+\hline\noalign{\smallskip}
+\multirow{4}{*}{\begin{sideways}$\pt=60$--$80 \GeV$\end{sideways}} 
+& 30\% &  8.4\% &  ($30.0\pm0.8^{+3.2}_{-5.3}$)\%    &  ($11.9\pm0.3^{+7.5}_{-2.9}$)\%    &  $1.00\pm0.03^{+0.11}_{-0.18}$ & $1.42\pm0.04^{+0.89}_{-0.34}$ \\&&&&&&\\
+& 50\% & 21.0\% &  ($50.0^{+1.4+4.3}_{-1.3-6.8}$)\%  &  ($26.6^{+0.8+7.1}_{-0.6-3.9}$)\%  &  $1.00^{+0.027+0.09}_{-0.026-0.14}$ & $1.27^{+0.04+0.34}_{-0.03-0.19}$ \\&&&&&&\\
+& 70\% & 41.5\% &  ($70.0^{+1.7+3.9}_{-1.5-11.0}$)\%  &  ($48.4^{+1.1+4.7}_{-0.9-6.0}$)\%  &  $1.00^{+0.024+0.06}_{-0.022-0.16}$ & $1.17^{+0.03+0.11}_{-0.02-0.14}$ \\&&&&&&\\
+& 90\% & 69.9\% &  ($90.0^{+1.5+1.7}_{-1.3-3.3}$)\%  &  ($80.2^{+1.0+5.6}_{-0.8-2.2}$)\%   &  $1.00^{+0.02+0.02}_{-0.01-0.04}$ & $1.15^{+0.015+0.08}_{-0.012-0.03}$ \\&&&&&&\\
+\hline\noalign{\smallskip}
+\multirow{4}{*}{\begin{sideways}\centering$\pt=110$--$160 \GeV$\end{sideways}} 
+& 30\% &  5.7\% &  ($30.0\pm0.6^{+2.8}_{-4.6}$)\%  & ($11.6^{+0.6+6.2}_{-0.4-4.6}$)\%   & $1.00\pm0.02^{+0.09}_{-0.15}$ & $2.03^{+0.11+1.08}_{-0.08-0.81}$ \\ &&&&&&\\
+& 50\% & 13.9\% &  ($50.0\pm1.0^{+4.1}_{-6.1}$)\%  & ($24.3^{+1.2+7.4}_{-0.8-9.2}$)\%   & $1.00\pm0.02^{+0.08}_{-0.12}$ & $1.75^{+0.09+0.53}_{-0.06-0.66}$ \\ &&&&&&\\
+& 70\% & 29.7\% &  ($70.0^{+1.0+3.9}_{-1.1-8.5}$)\%  & ($45.3^{+1.5+4.6}_{-1.1-9.3}$)\% & $1.00^{+0.01+0.06}_{-0.02-0.12}$ & $1.52^{+0.05+0.15}_{-0.04-0.31}$ \\ &&&&&&\\
+& 90\% & 64.8\% &  ($90.0^{+0.5+2.0}_{-0.6-2.6}$)\%  & ($78.1^{+1.0+3.5}_{-0.6-6.0}$)\% & $1.00^{+0.006+0.02}_{-0.007-0.03}$ & $1.21^{+0.02+0.05}_{-0.01-0.09}$ \\ &&&&&&\\
+\hline\noalign{\smallskip}
+\multirow{4}{*}{\begin{sideways}\centering$\pt=310$--$360 \GeV$\end{sideways}} 
+& 30\% &  3.9\% & ($30.0^{+5.0+2.1}_{-7.1-4.7}$)\% & ($11^{+5+8}_{-7-4}$)\% & $1.00^{+0.17+0.07}_{-0.24-0.16}$ & $2.8^{+1.4+2.0}_{-1.9-1.1}$ \\&&&&&&\\
+& 50\% & 10.3\% & ($50.0^{+8.1+3.0}_{-11.6-8.3}$)\%& ($23^{+10+8}_{-12-9}$)\%& $1.00^{+0.16+0.06}_{-0.23-0.17}$ & $2.2^{+1.0+0.8}_{-1.1-0.9}$ \\&&&&&&\\
+& 70\% & 23.5\% & ($70.0^{+7.2+3.1}_{-8.8-7.0}$)\% & ($43^{+8+6}_{-12-10}$)\% & $1.00^{+0.10+0.04}_{-0.13-0.10}$ & $1.81^{+0.35+0.23}_{-0.51-0.42}$ \\&&&&&&\\
+& 90\% & 58.9\% & ($90.0^{+5.0+1.8}_{-4.9-3.1}$)\% & ($80^{+6+4}_{-10-7}$)\% & $1.00^{+0.06+0.02}_{-0.05-0.03}$ & $1.37^{+0.10+0.07}_{-0.17-0.11}$ \\&&&&&&\\
+%\vspace[-0.1]
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The largest scale factors occur at high \pt for the tighest operating point, where the difference between the predicted and observed \ntrk distributions are largest. Looser operating points, and lower \pt, have lower scale factors. Interestingly, the efficiency in data changes much less with \pt than predicted by \Pythia: the simulation seems to predict the strongly growing strength of \ntrk with \pt, while the true gain is much slower. Results are shown only for the central $\eta$ bin, but are consistent across $\eta$ (though uncertainties, especially statistical, are higher at higher $\eta$).
+
+Figure~\ref{fig:jet-reconstruction:qg:perf_summary} shows a summary of the performance, by plotting the quark efficiency vs the gluon efficiency in data and several simulations, for two different \pt bins. \Pythia clearly shows a significantly lower gluon efficiency, i.e. an over-performance of the tagger. \Herwigpp shows a slightly higher gluon efficiency than in data, i.e. an under-performance of the tagger, though it is not significant outside of the uncertainties for some of the \pt bins and operating points.
+
+\begin{figure}[!htp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT60_EffcienciesVsQEffHerwig.pdf}
+\label{fig:jet-reconstruction:qg:perf_summary_a}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT210_EffcienciesVsQEffHerwig.pdf}
+\label{fig:jet-reconstruction:qg:perf_summary_b}
+}
+\caption{ Gluon-jet efficiency as a function of quark-jet efficiency calculated using jet 
+properties extracted from data (solid symbols) and from MC-labeled jets
+from the dijet \Pythia (empty squares) and \Herwigpp (empty diamonds) samples. 
+Jets with (a) $60<\pt<80$~\GeV\ and (b) $210<\pt<260$~\GeV\  and $|\eta|<0.8$
+are reconstructed with the anti-$k_t$ algorithm with $R=0.4$.
+The shaded band shows the total systematic uncertainty on the data. The bottom of the plot
+shows the ratios of each MC simulation to the data. The error bands on the performance
+in the data are drawn around 1.0. 
+}
+\label{fig:jet-reconstruction:qg:perf_summary}
+\end{center}
+\end{figure}
+
+The performance of the tagger can also be measured usign the purified samples, i.e. the tri-jet and $\gamma$+2jet samples. The results of these comparisons are shown in Figure~\ref{fig:jet-reconstruction:qg:perf_summary_pur}, at low \pt and high \pt. The performance in the purified sample is very similar to the data samples used to train the tagger, though the results are statistically limited. In any case, the tagging performance may be slightly worse in these samples, and is again not near the prediction from \Pythia. Figure~\ref{fig:jet-reconstruction:qg:perfDataMC} shows the performance, separately for each operating point, as a function of the jet \pt, in \Pythia, the nominal extracted data samples, and the purified data samples. Once again, over a wide range of \pt bins the agreement between the extracted data and purified data is very good, while \Pythia predicts a much lower gluon efficiency.
+
+\begin{figure}[!htp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT60_EffcienciesVsQEffPure.pdf}
+\label{fig:jet-reconstruction:qg:perf_summary_pur_a}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT210_EffcienciesVsQEffPure.pdf}
+\label{fig:jet-reconstruction:qg:perf_summary_pur_b}
+}
+\caption{ Gluon-jet efficiency as a function of quark-jet efficiency as calculated using jet properties extracted
+from data (solid symbols), purified in data through kinematic cuts (empty diamonds), and extracted from
+{\sc Pythia} 6 MC simulation (empty squares).
+Jets with (a) $60<\pt<80$~\GeV\ and (b) $210<\pt<260$~\GeV\ and $|\eta|<0.8$ are reconstructed with the anti-$k_t$ algorithm with $R=0.4$. 
+The shaded band shows the total systematic uncertainty on the data. 
+The bottom of the plot
+shows the ratio of {\sc Pythia} 6 MC simulation or the enriched data samples 
+to the extracted data. The error bands on the performance
+in the data are drawn around 1.0. 
+}
+\label{fig:jet-reconstruction:qg:perf_summary_pur}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_30EffcienciesPure} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_50EffcienciesPure} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_70EffcienciesPure} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_90EffcienciesPure}
+}
+\caption{
+Gluon-jet efficiency for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
+in data (solid symbols), enriched data (empty diamonds) and in \Pythia MC simulation 
+(empty squares) as a function of jet $\pt$. 
+Systematic uncertainties are shown as error bands around the data. The bottom of the plot 
+shows the ratio of data and MC simulation. 
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
+$R=0.4$ and reconstructed with $|\eta|<0.8$.
+}
+\label{fig:jet-reconstruction:qg:perfDataMC}
+\end{center}
+\end{figure}
+
+
+The dominant uncertainty is the sample dependence. This is evident from Figure~\ref{fig:jet-reconstruction:qg:systSplit} and \ref{fig:jet-reconstruction:qg:systSplitQ}, which show the breakdown of the systematic uncertainties by type as a function of jet \pt, for each operating point, and for gluon jets and quark jets respectively. Figures~\ref{fig:jet-reconstruction:qg:extractSyst} and \ref{fig:jet-reconstruction:qg:extractSyst2} show the breakdown of the origin of the non-closure uncertainty. Recall, the uncertainty is derived by creating a tagger in MC using the extraction procedure, and seeing how using a defined $L$ cut varies the quark and gluon efficiency in a sample (compared to the extracted template used to define the tagger). No single generator, and no single flavor type, dominates the difference between the templates and the raw distributions, but substantial differences occassionally arise and need to be accounted for with the systematic.
+
+
+\begin{figure}[htbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_30} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_50} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_70}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_90}
+}
+\caption{
+Contributions of the different systematic uncertainties to the gluon-jet efficiency 
+for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
+as a function of jet $\pt$. The combined systematic uncertainty is 
+shown as an outer box.  
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
+$R=0.4$ and reconstructed with $|\eta|<0.8$. }
+\label{fig:jet-reconstruction:qg:systSplit}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_30} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_50} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_70}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_90}
+}
+\caption{
+Contributions of the different systematic uncertainties to the quark-jet efficiency 
+for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
+as a function of jet $\pt$. The combined systematic uncertainty is 
+shown as an outer box.  
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
+$R=0.4$ and reconstructed with $|\eta|<0.8$. }
+\label{fig:jet-reconstruction:qg:systSplitQ}
+\end{center}
+\end{figure}
+
+\begin{figure*}[htbp]
+\begin{center}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_30}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_30Eff} \\
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_50}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_50Eff} \\
+\caption{ Sample-dependence effects on quark-jet (left) and gluon-jet (right) efficiency as a function
+of jet $\pt$ for the 30\% (top) and 50\% (bottom) working points for jets with $|\eta|<0.8$.  Four different estimates
+of sample-dependence effects are shown: the effects of applying the tagger in the
+dijet and $\gamma$+jet \Pythia 6 MC samples, and in the dijet and $\gamma$+jet \Herwigpp MC samples.
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter $R=0.4$.
+A smoothing procedure has been applied to reduce the statistical uncertainties inherent in the
+sample comparisons.
+}
+\label{fig:jet-reconstruction:qg:extractSyst}
+\end{center}
+\end{figure*}
+
+
+\begin{figure*}[htbp]
+\begin{center}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_70}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_70Eff} \\
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_90}
+\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_90Eff} \\
+\caption{ Sample-dependence effects on quark-jet (left) and gluon-jet (right) efficiency as a function
+of jet $\pt$ for the 70\% (top) and 90\% (bottom) working points for jets with $|\eta|<0.8$.  Four different estimates
+of sample-dependence effects are shown: the effects of applying the tagger in the 
+dijet and $\gamma$+jet \Pythia 6 MC samples, and in the dijet and $\gamma$+jet \Herwigpp MC samples.  
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter $R=0.4$. 
+A smoothing procedure has been applied to reduce the statistical uncertainties inherent in the
+sample comparisons. 
+}
+\label{fig:jet-reconstruction:qg:extractSyst2}
+\end{center}
+\end{figure*}
+
+\subsection{Conclusions}
+
+While the ATLAS quark-gluon tagger saw performance in data much worse than the prediction of the \Pythia MC, it was extremely elucidating to understand the data and MC disagreements in such detail. In the longer term, with an unfolded version of this analysis, generators could potentially be improved to show more reasonable showering distributions; in the short term, we know to be very skeptical of variables such as \ntrk which may not be very well modelled in MC.
