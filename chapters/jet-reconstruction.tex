@@ -835,15 +835,184 @@ where $i$ runs over bins of a histogram. This is a measure of the overlap of two
 
 \subsection{Data-Driven Templates}
 
+Figures~\ref{fig:jet-reconstruction:qg:dijetProperties} and \ref{fig:jet-reconstruction:qg:gammajetProperties} show the \ntrk and Track Width distributions for data, \Pythia, and \Herwigpp generators, in both dijet and $\gamma$+jet topologies. The distributions show that while there is decent agreement for the width, the \ntrk variable is very poorly modelled: \Pythia predicts too many tracks consistently, while \Herwigpp predicts too few. 
+
+\begin{figure}[tbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_ntrk_PT60_eta0.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_ntrk_PT260_eta0.pdf}
+} \\
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_trkwidth_PT60_eta0.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_trkwidth_PT260_eta0.pdf}
+}
+\caption{
+Jet \ntrk (top) and track width (bottom) for jets with $60<\pt<80$~\GeV\ (left) and
+$260<\pt<310$~\GeV\ (right) in {\sc Pythia} 6, {\sc Herwig++}, and data, for a dijet selection.
+Jets have $|\eta|<0.8$ and are reconstructed with an \AKT\ jet algorithm with $R=0.4$.
+ }
+\label{fig:jet-reconstruction:qg:dijetProperties}
+\end{center}
+\end{figure}
+
+\begin{figure}[tbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_ntrk_PT60_eta0.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_ntrk_PT260_eta0.pdf}
+} \\
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_trkwidth_PT60_eta0.pdf}
+}
+\subfigure[]{
+\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_trkwidth_PT260_eta0.pdf}
+}
+\caption{
+Jet \ntrk (top) and track width (bottom) for jets with $60<\pt<80$~\GeV\ (left) and
+$260<\pt<310$~\GeV\ (right) in {\sc Pythia} 6, {\sc Herwig++}, and data, for a $\gamma+$jet selection.
+Jets have $|\eta|<0.8$ and are reconstructed with an \AKT\ jet algorithm with $R=0.4$.
+ }
+\label{fig:jet-reconstruction:qg:gammajetProperties}
+\end{center}
+\end{figure}
+
+This makes the usual prospect of constructing a tagger-- beginning with a likelihood trained in MC and calibrating small residual differences in data-- a challenging prospect. Instead, we first extract a pure quark or gluon shape from data, and construct the tagger from these shapes. To construct these shapes, we look at histograms in two different samples, where we can measure the quark/gluon flavor fraction very precisely using the matrix element of the generator\footnote{And while generator hadronization properties vary greatly, this fraction of quark and gluon jets is rather consistent; any residual difference, at the $10\%$ level, is taken as a systematic later in the procedure.}. For each bin $i$ of jet $\eta$, jet $\pt$, and jet property (track width, number of tracks, or the two-dimensional distribution of the these), a set of linear equations is solved:
+%
+\begin{align}
+P_i(\eta,\pt) &= f_{q}(\eta,\pt) \times P_{q,i}(\eta,\pt) \nonumber \\
+	& + f_{g}(\eta,\pt) \times P_{g,i}(\eta,\pt) \nonumber \\
+& + f_{c}(\eta,\pt) \times P_{c,i}(\eta,\pt) \nonumber \\
+& + f_{b}(\eta,\pt) \times P_{b,i}(\eta,\pt) , 
+\label{eq:fractions}
+\end{align}
+%
+where $P_i$ is the value of the relevant distribution in bin $i$ of the distribution in the dijet
+or $\gamma+$jet sample, $f_{q}$ and $f_{g}$ are the light-quark and gluon fractions 
+predicted by \Pythia at a given $\eta$ and $\pt$, 
+and $P_{q,i}$ and $P_{g,i}$ are the values of the relevant distribution 
+for quark- and gluon-jets in bin $i$ of the distribution. The fractions 
+$f_{c}$ and $f_{b}$ for $c$-jets and $b$-jets are relatively small. They are taken from the
+MC simulation, together with the corresponding distributions $P_{c}$ and $P_{b}$.
+The same is true for the fractions and distributions for $g\rightarrow c\bar{c}$ and $g\rightarrow b\bar{b}$,
+not shown in Eq.~\ref{eq:fractions} for brevity. The heavy flavor fractions are typically below $5-10\%$, and are taken directly from MC and subtracted from the distributions.
+
+This leaves two equations (one for a dijet sample, and one for $\gamma$+jet), with two unknowns ($P_{q}$ and $P_{g}$), which can be solved bin-by-bin. The only MC input is from the fractions-- the rest of the shape of the resulting distribution comes from data. The studies are performed in three bins of $|\eta|$: $|\eta|<0.8$, $0.8<|\eta|<1.2$ and $1.2<|\eta|<2.1$, though in general only the results from the central bin will be shown for the sake of brevity. Note that this technique depends on the assumption that the shape of a quark jet in a $\gamma$+jet sample is the same as that of a quark jet in a dijet sample: as we will later see, this is largely true, but residual differences will account for the largest systematic. An additional fake term,  $f_{{\rm fake}, i}(\eta,\pt)\times P_{{\rm fake}, i}(\eta,\pt)$, is added to the distributions in the $\gamma$+jet sample to take into account the fake photons which contaminate this sample~\cite{JES2011}.
+
+This method is first tested for the individual distributions of \ntrk and Track Width in MC, as in the top subfigures of Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. The closure in \Pythia is very good: the small residual differences between the extracted templates and the inputs are taken as a systematic later. The dijet sample, as it contains more gluons, is in some sense the basis of the gluon distribution; likewise, as the $\gamma$ is more likely to radiate from a charged object than a neutral, the $\gamma$+jet sample is more quark-enriched and the extraction leads to a quarks following the $\gamma$+jet sample more closely. With the technique validated in MC, we can also use it in data, replacing the relevant value from data into the $P_i$ of Equation~\ref{eq:fractions}. The results of this are shown in Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos} in the bottom panel: we see now a confirmation of the earlier studies, in that the \ntrk variable is clearly poorly modelled by the MC. In particular, the \textit{gluon} distribution is strongly incorrect for \ntrk, while quarks fare better; the Track Width distribution is reasonably well modelled for both quarks and gluons, as expected. As the differences between data and MC make quarks and gluons more similar than predicted by the simulation, we can expect a degraded tagger performance compared to the naive expectation.
 
 
+\begin{figure*}[p]
+\begin{center}
+%Subfigures
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/ntrk_akt4TopoEM_eta0_means_withMCin_FromMC_Pyth}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/trkwidth_akt4TopoEM_eta0_means_withMCin_FromMC_Pyth}
+} \\
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/ntrk_akt4TopoEM_eta0_means_withMCin}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{qg/trkwidth_akt4TopoEM_eta0_means_withMCin}
+}
+\caption{ Average (a,c) \ntrk and (b,d) track width for quark- (solid symbols) and gluon-jets
+(open symbols) as a function of reconstructed jet $\pt$ for isolated jets with $|\eta|<0.8$.
+Results are shown for distributions obtained using the in-situ extraction method in
+\Pythia 6 simulation (black circles, (a,b)) or data (black circles, (c,d)), as well as for 
+labeled jets in the dijet sample (triangles) and in the $\gamma$+jet sample (squares).
+The error bars represent only statistical uncertainties. Isolated jets are reconstructed using the
+\akt jet algorithm with radius parameter $R=0.4$. The bottom panels show
+the ratio of the results obtained with the in-situ extraction method to the results
+in the dijet and $\gamma$+jet MC samples. }
+\label{fig:jet-reconstruction:qg:ntrkWidthClos}
+\end{center}
+\end{figure*}
 
+There are several sources of uncertainty in the extraction procedure:
 
+\begin{enumerate}
+\item Uncertainties on input fractions ($f_{x,i}$)
+\item Uncertainties on the input shapes ($P_{x,i}$) 
+\item Uncertainties on the fake photon background
+\item Sample dependent effects (the differences between quarks in $\gamma$+jet and dijet samples)
+\end{enumerate}
 
+The input fraction uncertainties are addressed by comparing the fractions in \Pythia and MadGraph, and taking the difference as directly as a systematic. This takes into account differences potentially due to different renormalization/factorization scales, and the different ways of simulating the emission of quarks/gluons. A $5\%$ uncertainty, anti-correlated between the quark and gluon fractions, is assigned as a conservative systematic. The differences due to the mismodelling of the PDF is also included as a systematic. A combination of different PDF sets are assessed, each with different properties. They use different fitting procedures (MRST, CTEQ, and NNPDF), and are accurate to different orders in the perturabtive expansion (MSTW2008lo for LO, CT10 for NLO), and have different assumptions about the $\alpha_s$ calculation (MRST2007lmod for LO$^*$ and MRSTMCal for LO$^{**}$). Another $5\%$ anti-correlated systematic takes these effects into account conservatively.
 
+Uncertainties on the shapes come from the MC dependence on the $b$ and $c$-jet shapes. Uncertainties on the $b$-jet shapes are determined from a $t\bar{t}$ sample with $> 95\%$ purity: a $10\%$ systematic is assigned on the $b$-jet properties to take this into account. For $c$-jets, templates with 10\% increases in the rates of 2-prong, 3-prong, and 4-prong decays are used to estimate the effect of changes to the $c$-hadron decay. The largest propagated difference of these is used as the systematic uncertainty on the tagger.
 
+The fake photon background is assessed in several ways. The fake-factors are developed using an ABCD procedure, and the cuts used to define each of the regions are varied to assess the sensitivity to these effects. This results in a purity difference of $10\%$ for low \pt jets, and is the dominant uncertainty related to the photon measurement.
 
+The sample dependent uncertainty is the largest, and takes into account the differences in the MC's seen in Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. 
+Uncertainties on the jet properties are estimated first from differences
+between the $\gamma+$jet and dijet samples of the properties of quark- and gluon-jets, using both \Pythia and \Herwigpp. The envelope of these
+variations is used to estimate a systematic uncertainty, but is prone to large fluctuations due to the limited statistics of the MC samples. These statistical 
+uncertainties
+are estimated and used to smooth the $\pt$ dependence of the uncertainty following the
+procedure described in \cite{JES2011}: a Gaussian kernel with size proportional to the inverse of the uncertainty averages over the \pt bins, weighting those with lower statistical uncertainty higher. 
+The sample dependence is consistently the dominant systematic uncertainty for all jet $\pt$, and thus it is critical to take into account these variations.
 
+\section{Validation with event-level kinematic cuts}
+\label{jet-reconstruction:qg:validation}
 
+While the shapes derived in the previous section are data-driven, the large data and MC differences motivate an independent check in completely separate samples for the purpose of validation. Luckily, \cite{schwartz2} proposed several samples, accessible at hadron colliders, with quark/gluon purity of $> 90\%$ which could be used for validation purposes. These samples are very statistically limited and therefore insufficient to determine the shapes used for a tagger themselves, but can serve very well as test samples. Moreover, these independent samples give a feeling for any residual color-flow or event-level dependence which the previous uncertainty procedure may have missed.
 
+Gluon jets are found in the dijet sample, particularly because the proton have a very large gluon component at low $x$. However, as \pt rises, the gluon fraction falls off rapidly, leaving a mixed sample when measured at any appreciable \pt. In multi-jet events, however, any radiated jet is relatively more likely to originate from a gluon. As this radiation is likely to be soft, the third-leading jet is thus more likely to be a gluon. A kinematic discriminant, using only information on the relative location of jets, can further purify the tri-jet sample: 
+%
+\begin{equation}
+\zeta=|\eta_3|-|\eta_1-\eta_2|,
+\end{equation}
+%
+where $\eta_i$ is the pseudorapidity of the $i$th leading jet. Cutting on $\zeta < 0$ results in a tri-jet sample with gluon purity $> 90\%$, as determined in MadGraph simulation. To evaluate the determination of the gluon shapes from Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}, those templates are directly compared to the sample with $\zeta < 0$. This comparison is presented in \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth1} and \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth2} of Figure~\ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}. The agreement between the extracted template and the completely independent pure data sample of gluons is very good, for both \ntrk and Track Width. In particular, the \ntrk distributions agree quite well, and the purified sample agrees better with the data than the \Pythia simulation.
 
+\begin{figure}[p]
+\begin{center}
+\subfigure[]{
+\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth1}
+\includegraphics[width=0.45\textwidth]{/qg/smoothed_ntrk_akt4TopoEM_eta0_PureExtractedG}
+}
+\subfigure[]{
+\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth2}
+\includegraphics[width=0.45\textwidth]{qg/smoothed_trkwidth_akt4TopoEM_eta0_PureExtractedG}
+} \\
+\subfigure[]{
+\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth3}
+\includegraphics[width=0.45\textwidth]{qg/smoothed_ntrk_akt4TopoEM_eta0_PureExtractedQ}
+}
+\subfigure[]{
+\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth4}
+\includegraphics[width=0.45\textwidth]{qg/smoothed_trkwidth_akt4TopoEM_eta0_PureExtractedQ}
+}
+\caption{Top, the jet (a) \ntrk and (b) track width as a function of $\pt$ for jets in a
+gluon-jet-enriched trijet sample (triangles) compared to gluon-jet extracted templates (circles) for
+$|\eta|<0.8$. Bottom, the jet (c) \ntrk and (d) track width as a function of $\pt$ for jets in a quark-jet-enriched $\gamma$+jet
+sample (triangles) compared to quark-jet extracted templates (circles) for jets with $|\eta|<0.8$.
+Jets are reconstructed with the \antikt algorithm with $R=0.4$. The bottom
+panels of the figures show the ratios of the results found in the enriched sample to the extracted
+results. Error bars on
+the points for the enriched sample correspond to statistical uncertainties. The inner
+shaded band around the circles and in the ratio represents statistical uncertainties on the
+extracted results, while the outer error band represents the combined systematic and statistical
+uncertainties.
+}
+\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}
+\end{center}
+\end{figure}
+
+Events with photons are already used to extract the more quark-like component of the templates: events with one jet and one photon have $>80\%$ quark purity at $\pt > 150$~GeV. Enrichment of this sample is difficult, and anyway, we have already used it for the template extraction and so validation requires a new sample. A sample with a single photon and two jets turns out to be more effective~\cite{schwartz2}: if no additional selection is applied, they have a lower purity, but another kinematic event-level cut can be used to significantly purify the sample by helping to identify the jets seeded by the parton that is most likely to have radiated the photon (which is more likely to be a quark because the photon requires electric charge to be radiated). The observable is defined as:
+%
+\begin{equation}
+\xi=\eta_\text{jet~1}\times\eta_\gamma+\Delta R_{(\text{jet~2},\gamma)},
+\end{equation}
+%
+where $\eta_\gamma$ ($\eta_\text{jet~1}$) is the $\eta$ of the photon (leading jet), and 
+$\Delta R_{(\text{jet~2},\gamma)}$ gives the difference in $\eta$--$\phi$ space between the sub-leading 
+jet and the photon. By imposing a requirement on this variable of $\xi < 1$, purities over 90\% can be achieved (as validated with MadGraph siulation), although with a significant loss of events. This sample can again be compared to the extracted templates for quarks from Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. This comparison is presented in \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth3} and \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth4} of Figure~\ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}. Once again, the agreement between the independent data sample and the extracted templates is very good for both the \ntrk and Track Width variables, validating our use of our templates for both quark and gluon jets.
