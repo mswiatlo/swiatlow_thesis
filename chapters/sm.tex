@@ -133,9 +133,24 @@ Finally, it should be noted that the details of confinement are still very myste
 
 \subsection{Parton Distribution Functions}
 
-At a hadron collider such as the LHC, confinement plays an interesting role in determining not only the outgoing particles-- in the form of jets-- but also the incoming particles, through a process described by \textit{parton distribution functions}. The protons which the LHC accelerates are not in fact fundamental objects: they are composed of two up quarks one one down quark, and the gluons which hold them together. This means collisions at the LHC are not really between protons, but between the partons \textit{inside} the protons. Thus, calculations of cross-sections at hadron colliders are not done at a particular energy, or even with specific parton inputs, but instead must be averaged over a distribution of possible input particles and energies those particles might have.
+At a hadron collider such as the LHC, confinement plays an interesting role in determining not only the outgoing particles-- in the form of jets-- but also the incoming particles, through a process described by \textit{parton distribution functions} (PDFs). The protons which the LHC accelerates are not in fact fundamental objects: they are composed of two up quarks one one down quark, and the gluons which hold them together. This means collisions at the LHC are not really between protons, but between the partons \textit{inside} the protons. Thus, calculations of cross-sections at hadron colliders are not done at a particular energy, or even with specific parton inputs, but instead must be averaged over a distribution of possible input particles and energies those particles might have.
 
-To make matters even more interesting, the deep structure of the proton is much more complicated than a simple view of $uud$ would suggest.
+To make matters even more interesting, the deep structure of the proton is much more complicated than a simple view of $uud$ would suggest. The internal gluons holding the hadron together can split into virtual quark/anti-quark pairs before reforming to gluons: these virtual quarks, referred to as \textit{sea} partons (as opposed to the \textit{valence} partons $uud$), as well as the gluons inside the proton, can also participate in collisions.
+
+Thankfully, the situation is not completely hopeless: the QCD factorization theorem states that the cross-section of a hard-scattering can be factorized from the non-perturbative structure of the hadrons in the collision. The probability of a particular parton from the proton interacting at some momentum-scale $Q^2$ with some energy fraction $x$ from the proton is parameterized by the PDF's previously mentioned. An example is shown in Figure~\ref{fig:sm:pdf}: at low energy, or low $Q^2$, the $u$ and $d$ quark (as well as the gluon) are dominant, but at higher $Q^2$ it is possible for even sea $c$ and $b$ quarks to participate in interactions. Many different parameterizations of PDFs are available, each using a variety of measurements and theories to constrain the provided functions \editnote{cite}.
+
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{mstw2008nlo68cl_allpdfs}
+\label{fig:sm:pdf}
+\caption{An example of a PDF set-- in this case the MSTW2008NLO-- which characterizes the probability of a particular particle inside the proton interacting, as a function of the momentum-fraction $x$ and the momentum scale $Q^2$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 % The process of confinement, and its relationship with asymptotic freedom, can be understood better in certain limits. For example, consider a pair of quarks in a bound state. At very high $\mu$-- that is, very small distance scales-- the particles are free to move without restriction, as the ``rubber band'' that is holding them together has not been stretched. As we transition to lower e
 
@@ -143,7 +158,92 @@ To make matters even more interesting, the deep structure of the proton is much 
 \section{Matter}
 \label{chapter:sm:matter}
 
-Matter in the SM is composed of 3 generations each of the previously mentioned quarks, and another family of fermions referred to as leptons.
+The gauge bosons of the fundamental symmetry groups of the SM are commonly referred to as force-carriers, as they mediate the interactions of their respective sector. Another class of particles exist which are not directly related to the forces, and are therefore referred to as matter. Unlike the force-carriers, which are all which are all bosons with integer spin, matter particles are all fermions and have half-integer spin. Matter in the SM is composed of 3 generations each of the previously mentioned quarks, and another family of fermions referred to as leptons. Each generation consists of a pair of related particles; each generation is identical except for the masses of the particles. Each fermion also has an anti-particle partner, which is alike in all ways except for having the opposite electric charge.
 
+\subsection{Quarks}
+
+Quarks, as already described, are the constituent particles of protons, neutrons, and the remainder of the hadron zoo. They are charged under the $SU(3)_C$ of the strong force, so they interact with the strong force via gluons; they are also charged under $SU(2)_W \otimes U(1)_Y$, so they also interact with the $W$, $Z$, and $\gamma$ of the electroweak force. The various types of quarks, paired into generation columns, are:
+%
+\begin{equation}
+\label{eqn:quarks}
+\colvec{2}{u}{d}  \colvec{2}{c}{s}  \colvec{2}{t}{b}
+\end{equation}
+%
+and are commonly referred to as the up, down, charm, strange, top, and bottom flavors. The top row is commonly referred to as ``up''-type, and all have electric charge of $+2/3$; the bottom row is referred to as ``down''-type and has electric charge of $-1/3$. The lightest generation is listed on the left, and the heaviest on the right. The $u$ are $d$ nearly degenerate in mass, with masses of $2.3$ and $4.8$ MeV respectively, while the $s$ is not much heavier at $95$ MeV: for the purposes of many applications in high-energy experiments, these are all effectively massless. The remaining quarks, however, are much heavier: the $c$ has a mass of $1.3$ GeV, and the $b$ has $4.2$ GeV. The top is even more massive, at $173$ GeV: approximately the same mass as an atom of gold. This mass is so high that the top quark, unlike the others, decays before it has the time to hadronize, and no top-quark bound states exist. These masses are free parameters of the theory, and arise via a mechanism described in Section~\ref{chapter:sm:matter:masses}-- while there is no expectation that they be identical, there is also no explanation for them having such different properties.
+
+\subsection{Leptons}
+
+Leptons are the second category of matter-- they all interact via the weak force, and none are charged under the strong force. Once again, they have three generations organized into pairs:
+%
+\begin{equation}
+\label{eqn:leptons}
+\colvec{2}{\nu_e}{e}  \colvec{2}{\nu_\mu}{\mu}  \colvec{2}{\nu_\tau}{\tau}
+\end{equation}
+%
+The bottom row, referred to as the ``charged leptons'', all have charge $-1$, and have mass in increasing order of the generation. They are called the electron, muon, and tau, respectively. The electron is completely stable, while the muon has a lifetime on the order of $10^{-6}$~s, and therefore is stable as far as high-energy experiments are concerned. The $\tau$ has a much shorter lifetime, and can decay into the other leptons or in hadronic channel, making the identification of $\tau$s much more challenging at the LHC than the other generations. For this reason, ``leptonic'' analyses at the LHC often refer to analyses involving the first two generations only.
+
+The top row of Equation~\ref{eqn:leptons} are referred to as neutrinos: these particles, as the name suggests, are electrically neutral and therefore do not interact with $\gamma$. Almost all particle detection mechanisms at the LHC (see Chapter~\ref{chapter:detector}) rely on the particle interacting with the detector electromagnetically, and so for this reason, neutrinos are directly observed in collision events. Instead, their presence is inferred from mis-balances in momentum and energy conservation (in the transverse plane). Neutrinos are also effectively massless: while recent observations \editnote{cite} have confirmed that they do have masses, they are so vanishingly small that they have little experimental consequence at the LHC.
+
+\subsection{Interactions}
+
+The matter particles described now are all written in the Dirac representation, which combines $L$ and $R$ chiralities into a single spinor object.  It is also possible to write them as $SU(2)$ doublet pairs (paired following the column structure of Equations~\ref{eqn:quarks} and \ref{eqn:leptons}): these are referred to as $Q^i$ and $L^i$ respectively, and contain the left-handed fields only. The right handed fields are uncharged under the weak interaction, and therefore form the $SU(2)$ singlets $e_R^i$, $\nu_R^i$, $u_R^i$ and $d_R^i$\footnote{Technically, the right-handed $\nu_R^i$ have not been observed, as only the component of neutrinos which interact via the weak force have been measured.}
+
+Since the $Q$ and $L$ doublets interact via the weak force, interaction terms for them look like:
+%
+\begin{equation}
+\label{eqn:weak-interactions}
+\mL_\mathrm{interactions} = i \bar{L}_i (\gamma^\mu \partial_\mu - i g \gamma^\mu W_\mu^a \tau^a - i' Y_L \gamma^\mu B_\mu) L_i
+\end{equation}
+%
+with a similar term for $Q$; the singlets interact only with the hypercharge boson, $B$. The off-diagonal terms of the $W\tau$ term (which contain the $W_1$ and $W_2$ terms) couple together the top and bottom rows of the $SU(2)$ doublets. Once everything is re-written in the mass eigenstates, this means that the $W^\pm$ bosons (the linear combinations of $W_1$ and $W_2$) exchange an up-type quark for a down-type quark or vice versa (and likewise exchange charged-leptons for neutrinos). The structure of the weak interaction thus has very interesting consequences for how matter interacts with it.
+
+\subsection{Masses}
+\label{chapter:sm:matter:masses}
+
+Just as for the gauge bosons, mass terms for fermions are problematic: a Dirac mass term like $m \bar{\psi} \psi = m\bar{\psi}_L \psi_R + m \bar{\psi}_L \psi_R$ is not invariant under the $SU(2)$ group, as the $SU(2)$ transformation affects only the left-handed component. The solution is to couple the the matter terms to the Higgs boson via a Yukawa coupling:
+%
+\begin{equation}
+\mL_\mathrm{Yukawa} = - y \bar{Q} H d_R + h.c.
+\end{equation}
+%
+The $Q$ and $H$ both transform with $SU(2)$, canceling the transformation and providing gauage invariance. After symmetry breaking thus generates a mass term of the form $-m_d(\bar{d}_L d_R + \bar{d}_R d_L)$-- recall that we choose $\colvec{2}{0}{v}$ as the direction of the Higgs field, so only the down-type quarks gets a mass from this-- where $m_d = \frac{y}{\sqrt{2}}v$. The up-type quarks get a mass from a similar term, using $\bar{Q}\sigma_2 H^*$ to rotate the vev into the up-type sector while preserving gauge invariance. Thus, mass originates not as a fundamental property of a particle, but from the interaction of the particle with the Higgs field. Different masses are possible as a consequence of different $y$-couplings for each particle.
+
+In order to provide for the masses of multiple generations of quarks, a more complicated Yukawa structure using matrices (indexing the flavor via $i,j$) is required:
+%
+\begin{equation}
+\label{eqn:yukawa_masses}
+\mL_\mathrm{mass} = -Y_{ij}^d \bar{Q}^i H d_R^j - i Y_{ij}^d \sigma_2 H^* u_R^j + h.c.
+\end{equation}
+%
+After symmetry breaking, this reduces to:
+%
+\begin{equation}
+\mL_\mathrm{mass} = - \frac{v}{\sqrt{2}} (\bar{d}_L Y_d d_R + \bar{u}_L Y_u uR) + h.c.
+\end{equation}
+%
+These Yukawa matrices are arbitrary, and are in general not diagonal: this means that once we diagonalize the matrix to the mass eigenbasis:
+%
+\begin{equation}
+\mL_\mathrm{mass} = - m_j^d \bar{d}^j_L d^j_R - m_j^u \bar{u}_L^j u^j_R + h.c.,
+\end{equation}
+%
+this is \textit{not} the same as the original $SU(2)$ interaction basis written down in Equation~\ref{eqn:quarks}. In fact, if we transform the interactions of Equation~\ref{eqn:weak-interactions} with the diagonalization matrix used to change these bases, we will see that most terms transform cleanly, but terms which mix $u_L$ and $d_L$-- the off-diagonal terms of $W\tau$-- will not remain diagonal in the flavor-basis. The particles we are familiar with exist in the mass eigenstate, and so it is most common to adopt that basis and introduce off-diagonal terms into the interactions. This means, for example, that while the $W$ usually decays to $ud$ or $cs$, it can also decay to $us$ or $cd$. The exact level of non-diagonalization is parameterized by the \textit{CKM matrix}: most terms are very close to on-diagonal, but the coupling of for example $us$ and $cd$ are approximately $4\%$.
+
+Note that because the charged-leptons correspond to the ``down''-type, and the neutrinos are massless\footnote{At least, their masses seem to most likely be acquired via a different mechanism, not described here.}, the second term of Equation~\ref{eqn:yukawa_masses} is not necessary in the lepton-mass sector. Therefore there is no problem in diagonalizing the mass-basis and interaction-basis simultaneously, there is no CKM matrix for the lepton sector.
 
 %define matter fields, how they interact with ew, some lagrangian details, section 29.3 from S
+
+\section{Summary}
+
+The particle content of the Standard Model is summarized in Figure~\ref{fig:sm:summary}: the Higgs boson sits at the heart of the theory, the 4 gauge bosons interact with matter and transmit the forces, and the 12 matter particles compose the atoms which we are all composed of. It is a remarkably concise theory: simply the statement of three generations of matter, the $SU(3)\times SU(2)\times U(1)$ gauge symmetry, the non-trivial minimum of the Higgs-potential, and Lorentz invariance gets us remarkably far in uniquely determining the shape of the theory. It took decades of theoretical insight and experimental work to create such a powerful description of the Universe, but the resilience of SM predictions to even very high energies proves the soundness of the underlying theory. 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Particle-Fever-Standard-Model-Graphic.png}
+\label{fig:sm:summary}
+\caption{Summary of the particle content of the Standard Model. Graphic courtesy of Particle Fever and Quantum Diaries.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
