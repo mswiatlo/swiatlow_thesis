@@ -1,0 +1,1 @@
+Control (CR), validation (VR), and signal regions (SR) used for the analysis. p<sub>T</sub><sup>3</sup> and p<sub>T</sub>four represent the transverse momentum of the third and fourth jet in p<sub>T</sub>, respectively.

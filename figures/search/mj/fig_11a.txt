@@ -1,0 +1,1 @@
+Expected and observed cross-section limits for the six-quark gluino models for (a) the case where each gluino is required to decay into a top quarks, and (b) the case where every gluino decays into a b-quark and a top quark.

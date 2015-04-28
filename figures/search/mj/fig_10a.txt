@@ -1,0 +1,1 @@
+Expected and observed cross-section limits for the six-quark gluino models for (a) the case where no gluinos decay into heavy-flavor quarks, and (b) the case where every gluino decays into a b-quark in the final state.

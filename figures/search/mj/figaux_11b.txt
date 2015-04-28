@@ -1,0 +1,1 @@
+The optimized signal region selections are shown in the (mgluino, mninoone) plane for the ten-quark model when no b-tagging requirement is allowed to enter the optimization procedure.

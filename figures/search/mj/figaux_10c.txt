@@ -1,0 +1,1 @@
+Comparisons of the relative bias between data and expectations in the (a,c) &ge;6-jet and (b,d) &ge;7-jet regions. The relative systematic uncertainties assigned to the background estimated as well as the total relative uncertainty are also shown. Regions without b-tagging requirements can be seen in Figure 5.

@@ -1,0 +1,1 @@
+Expected (a) and observed (b) mass exclusions at the 95% CL in the BR(t) vs. BR(b) space for BR(c)=50%. Each point in this space is individually optimized and fit. Masses below these values are excluded in the six-quark model. Bin centers correspond to evaluated models.

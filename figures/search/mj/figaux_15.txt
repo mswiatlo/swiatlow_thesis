@@ -1,0 +1,1 @@
+Closure test of the M<sub>J</sub><sup>&Sigma;</sup> template in the 3-jet control region (3jCR) using the p<sub>T</sub><sup>3</sup>&gt;100 GeV selection.

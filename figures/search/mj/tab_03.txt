@@ -1,0 +1,1 @@
+Table showing the predicted in the SM and observed number of events in SR100 as well as three representative signal scenarios. The background uncertainties are displayed as statistical + systematic; the signal uncertainties are displayed as statistical + systematic + theoretical.

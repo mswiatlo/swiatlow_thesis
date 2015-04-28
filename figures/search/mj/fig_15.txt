@@ -1,0 +1,1 @@
+Expected and observed exclusion limits in the (mgluino, mninoone) plane for the ten-quark model for the jet-counting analysis (with and without b-tagged jets) and the total-jet-mass analysis. fig:overlaidcontours
