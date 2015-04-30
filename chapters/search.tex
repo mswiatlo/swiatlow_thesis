@@ -187,6 +187,8 @@ While the complicated multi-jet backgrounds generally require the previously dis
 
 \subsubsection{1D Optimization}
 
+Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimization:MJ}, \ref{fig:search:search:optimization:T21}, \ref{fig:search:search:optimization:T32}, \ref{fig:search:search:optimization:NCA}, \ref{fig:search:search:optimization:NKT}, \ref{fig:search:search:optimization:PT31}, and \ref{fig:search:search:optimization:DEta} show the distribution of a given variable for both signal (in colors) and background (in black) on the left, while the right shows the signal efficiency vs. background rejection (defined as 1/(background efficiency)). Several trends are clear for most of the variables: higher \mgluino raises the energy of the event and increases the discrimination power of most of the variables. Some variables have less dependence on this, however, such as $T_{21}$ and $T_{32}$.
+
 %%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
@@ -288,11 +290,128 @@ While the complicated multi-jet backgrounds generally require the previously dis
 \subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_DEta_RPVGluino.pdf}}
 \subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j360_a10_NjetIncl_NFatJetMin4_DEta_g_RPVGluino}}
 \label{fig:search:search:optimization:DEta}
-\caption{Distribution of $\Delta \eta$ a variable describing the difference in pseudo-rapidity between the leading two jets.. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $\Delta \eta$ distribution.}
+\caption{Distribution of $\Delta \eta$ a variable describing the difference in pseudo-rapidity between the leading two jets. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $\Delta \eta$ distribution.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
 
+Finally, Figure~\ref{fig:search:search:optimization:All} shows two efficiency vs. rejection curves for two different mass points, comparing all of the various variables previously shown (though $\Delta \eta$ is not shown, its performance is slightly stronger than $\pt^3/\pt^1$ on these plots). Several important conclusions are clear:
+
+\begin{enumerate}
+\item While \Ht is sometimes strongest at very high signal efficiency, and $N_{kT}$ and $N_{CA}$ sometimes strongest at very, very low signal efficiency, \MJ is generally the strongest variable by far.
+\item \Ht is generally the second strongest variable, though it is a kinematic variable and so the background estimation may not work well with it.
+\item $N_{kT}$ and $N_{CA}$ generally work very well-- but integer type variables may be problematic with a Gaussian kernel smoothing.
+\item $T_{32}$ and $T_{21}$ perform worse than the subjet counting variables, but do have some power.
+\item $\pt^3/\pt^1$ has comparatively low power.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint2_g_RPVGluino}}
+\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint7_g_RPVGluino}}
+\label{fig:search:search:optimization:All}
+\caption{Signal efficiency vs. background rejection curves for two pass points, comparing the power of various variables. $\Delta \eta$ is not shown, but has similar power (though slightly stronger) than $\pt^3 / \pt^1$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+From this set of results, it is clear that \MJ is a good candidate for a final discriminant variable which can apply the most discrimination between signal and background. There are several other candidates for the second variable used for defining signal and control regions, but these need two-dimensional correlation studies in order to understand the best pairing.
+
+One important consideration, for the sake of the background estimation, is understanding whether the \pt spectrum is sensitive to new physics (as we use the \pt spectrum to determine the background expectation). Figure~\ref{fig:search:search:optimization:pt} shows that the \pt spectrum is essentially unchanged, showing that we can use the kinematics without worry of biasing the background estimate.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/overlay_sigBkgd_sherpaDijets_logy_stacked_jet_pT1_NFatJetMin4_lowDEta70incl_CR_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
+\label{fig:search:search:optimization:pt}
+\caption{An example of a \pt distribution for the leading jet, using \Sherpa multi-jet backgrounds, with various signal models overlaid.}
+\end{figure}
+
+\subsubsection{Additional 1D Studies}
+
+Additionally, one could ask whether individual jet masses are useful for signal discrimination. Figures~\ref{fig:search:search:optimization:signalcomp1} and \ref{fig:search:search:optimization:signalcomp2} show the leading and subleading mass distribution as compared to \Herwigpp backgrounds: the important thing to notice is that for no signal point is the mass of the $\tilde{g}$, or the mass of the \lsp, properly and consistently reconstructed. This demonstrates the advantage of the accidental substructure approach: for such a complicated signal, the significant overlaps between various decay products mean it is easiest to simply use the mass as a discriminant, without trying to reconstruct a specific particle's mass.
+
+
+%%------------------------------    
+
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[High boost mass points.]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass1_signalComparison_highBoost_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}
+    \label{fig:search:search:optimization:signalcomp1:highboost}}~
+  \subfigure[High $\mgluino$ mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass1_signalComparison_highGluinoM_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}
+    \label{fig:search:search:optimization:signalcomp1:highmg}}
+  \subfigure[$\mgluino = 1$ TeV mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass1_signalComparison_OneTeV_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}~
+    \label{fig:search:search:optimization:signalcomp1:tevmg}}
+  \subfigure[$\sim$Top mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass1_signalComparison_TopMass_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}~
+    \label{fig:search:search:optimization:signalcomp1:topmg}}
+
+    
+  \caption{Leading jet mass distributions for many different signal mass points, compared to the \texttt{Herwig++} dijet background. 
+           }
+           
+  \label{fig:search:search:optimization:signalcomp1}
+\end{figure}
+
+%%------------------------------    
+
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[High boost mass points.]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass2_signalComparison_highBoost_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}
+    \label{fig:search:search:optimization:signalcomp2:highboost}}~
+  \subfigure[High $\mgluino$ mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass2_signalComparison_highGluinoM_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}
+    \label{fig:search:search:optimization:signalcomp2:highmg}}
+  \subfigure[$\mgluino = 1$ TeV mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass2_signalComparison_OneTeV_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}~
+    \label{fig:search:search:optimization:signalcomp2:tevmg}}
+  \subfigure[$\sim$Top mass points]{
+    \includegraphics[width=0.45\columnwidth]{INT/Discrimination/overlay_jet_mass2_signalComparison_TopMass_Incl_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v22.pdf}~
+    \label{fig:search:search:optimization:signalcomp2:topmg}}
+
+    
+  \caption{Subleading jet mass distributions for many different signal mass points, compared to the \texttt{Herwig++} dijet background. 
+           }
+           
+  \label{fig:search:search:optimization:signalcomp2}
+\end{figure}
+
+%%------------------------------    
+
+Finally, while our main goal is to study the \gluino-\lsp model inclusively in flavor, it is interesting to consider whether we are particularly sensitive, for example, to \gluino decays mediated through $\tilde{t}$, or whether we are pick out mostly \lsp decays to $\tilde{t}$. In principle, top decays should slightly increase the quark multiplicity, as leptonic decays produce only one quark and hadronic decays produce three. While it is difficult to tell because of the limited statistics in the flavor-sliced samples, Figure~\ref{fig:search:search:optimization:flavor} shows the difference between situations in which the \gluino or \lsp decay to tops, compared to an inclusive sample. Both the \MJ and leading jet mass are approximately consistent over these comparisons, showing that the analysis selects flavor without large amounts of bias.
+
+
+%%------------------------------
+\begin{figure}[!ht]
+  \centering
+
+  \subfigure[Jet $M_{J,4}^{\Sigma}$]{
+    \includegraphics[width=0.48\textwidth]{INT/FlavorStudies/overlay_MJ4_jetComparison_all_AntiKt10LCTopoTrimmedPtFrac5SmallR30_Trimmed.pdf}
+    \label{fig:search:search:optimization:flavor:mj4}}
+  \subfigure[Jet $m_{j,1}$]{
+    \includegraphics[width=0.48\textwidth]{INT/FlavorStudies/overlay_jet_mass1_jetComparison_all_AntiKt10LCTopoTrimmedPtFrac5SmallR30_Trimmed.pdf}
+    \label{fig:search:search:optimization:flavor:m1}}
+  
+    \caption{Mass distributions for different truth particle final state flavors. The shape of the distributions was shown to be approximately independent of the final state.}
+  \label{fig:search:search:optimization:flavor}
+\end{figure}
+%%------------------------------
+
+\subsubsection{Two-Dimensional Optimization}
+
+The second phase of optimization involves deciding on variable to be used in combination with \MJ. Additionally, as this second variable is meant to determine the creation of signal and control regions, it should not be strongly correlated with \MJ: large correlations could bias the information determined in a control region, such that it would not be directly applicable to a signal region anymore.
+
+
+%%%%%%%%%%%%%%%%  
 %show all the variables
 %show also that \pt, etc are not really sensitive
 
