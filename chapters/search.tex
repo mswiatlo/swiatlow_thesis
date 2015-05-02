@@ -410,13 +410,85 @@ Finally, while our main goal is to study the \gluino-\lsp model inclusively in f
 
 The second phase of optimization involves deciding on variable to be used in combination with \MJ. Additionally, as this second variable is meant to determine the creation of signal and control regions, it should not be strongly correlated with \MJ: large correlations could bias the information determined in a control region, such that it would not be directly applicable to a signal region anymore.
 
+The easiest way to see the differences between pairs of variables is to construct two dimensional likelihoods, defining:
+%
+\begin{equation}
+L = \frac{S}{S+B}
+\end{equation}
+%
+where $S$ and $B$ are two-dimensional histograms in the two variables of interest, separately for signal and background. A useful pair of variables will have a high $L$ in a corner of this space: this would indicate that both variables are useful, and that they provide complementary information. Highly correlated variables appear as a line: this indicates that the power of one variable is strongly associated to a second, and that a cut on only one of them would be sufficient. 
+
+Figure~\ref{fig:search:search:optimization:2D:NCA} and \ref{fig:search:search:optimization:2D:NKT}, for example, show the likelihoods formed with the subjet counting variables. While $N_{CA}$ and $N_{kT}$ are useful on their own, they provide little information on top of $\MJ$: a horizontal cut in this plane would provide just as much power as a diagonal (or curved) cut. The correlation levels in the background between \MJ and these variables is over $60\%$, indicating that indeed little additional information is contained. $T_{32}$ and $T_{21}$ are also similarly correlated to \MJ, and therefore are also not particularly useful.
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NCASub4_SigPoint1_L_RPVGluino.pdf}
+\label{fig:search:search:optimization:2D:NCA}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $N_{CA}$ as inputs.}
+\end{figure}
 
 %%%%%%%%%%%%%%%%  
-%show all the variables
-%show also that \pt, etc are not really sensitive
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NKTSub4_SigPoint1_L_RPVGluino.pdf}
+\label{fig:search:search:optimization:2D:NKT}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $N_{kt}$ as inputs.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+Other variables have less correlation, and therefore potentially improved utility. Figure~\ref{fig:search:search:optimization:2D:PT31}, for example, shows the likelihood constructed with $\pt^3/\pt^1$: a diagonal cut, incorporating the discriminating power of both variables, would be clearly helpful. In this case, the correlation in the background between the two variables is at $20\%$: still substantial, but significantly reduced compared to the substructure based variables. This is reasonable, as all substructure variables are correlated to some extent: mass arises from the presence of wild angle radiation, which also causes extra subjets or lower talues of $\tau_{32}$, etc. Kinematic information like \pt is slightly correlated with masses as well, but less when looking at a ratio of \pt's, and looking at only some of the jets (instead of \Ht, which looks at the \pt of all them like much like \MJ).
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_PT31_SigPoint3_L_RPVGluino.pdf}
+\label{fig:search:search:optimization:2D:PT31}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\pt^3/\pt^1$ as inputs.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%  
+
+Finally, Figure~\ref{fig:search:search:optimization:2D:DETA} shows the likelihood constructed with \Deta. Once again, the discrimination is improved by a diagonal cut, and even better, the correlation is significantly lower in these variables, at $<10\%$. Figure~\ref{fig:search:search:optimization:2D:DETAraw} shows the distribution in the \herwigpp di-jet sample: this evident very low level of correlation between the variables makes \Deta ideal to define signal and control regions, as will be discussed in Section~\ref{chapter:search:search:regions}. For this reason, the two variables used to define the analysis were chosen to be \MJ and \Deta.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint5_L_RPVGluino.pdf}
+\label{fig:search:search:optimization:2D:DETA}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\Delta \eta$ as inputs.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint_RPVGluino.pdf}
+\label{fig:search:search:optimization:2D:DETAraw}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\Delta \eta$ as inputs.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+Note also that other combinations without \MJ were also considered: \Ht and $T_{32}$, for example, are subsantially less correlated because \Ht does not use substructure information. These pairings were all less effective than \MJ and \Deta combination. Additionally, pre-selection cuts on $T_{32}$ and $T_{21}$ were attempted, in combination with the \MJ and \Deta variables: adding the additional discrimination from the n-subjettiness variables did not significantly increase the discrimination.
+
 
 	\subsection{Trigger}
 	\subsection{Analysis Regions}
+	\label{chapter:search:search:regions}
 	\subsection{Background Estimates}
 	\label{chapter:search:search:background}
 	\subsection{Limits}

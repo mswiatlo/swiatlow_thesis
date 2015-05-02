@@ -16,7 +16,7 @@ The Standard Model (SM) of particle physics is the enormously successful set of 
 
 The theory consists of two main parts: the Glashow-Weinberg-Salam theory of electroweak interactions, which describes the electromagnetic and weak nuclear forces, and Quantum Chromodynamics, which describes the strong nuclear force. Together these form the symmetry group of the Standard Model, $SU(3)_C \otimes SU(2)_W \otimes U(1)_Y$. With the discovery of the Higgs Boson, the mechanism of symmetry breaking in the electroweak sector has been elucidated, and all the particles predicted by the model have been identified. While the SM is complete in this sense, there are still many questions which it does not address, and some of these will be addressed in Chapter~\ref{chapter:susy} and \ref{chapter:search}. At the same time, some predictions of the SM-- the decay channels of the Higgs Boson, or the details of parton showering in QCD-- are still not fully understood, and one new measurement of such SM phenomena is presented in Chapter~\ref{chapter:color}.
 
-The following sections give an overview of the SM and outline some of its most powerful successes. The approach will be very cursory, aiming to give a broad overview of the SM Lagrangian and how various parts of it function; detailed references can be found in \ldots. \editnote{Citations on main historial papers?}
+The following sections give an overview of the SM and outline some of its most powerful successes. The approach will be very cursory, aiming to give a broad overview of the SM Lagrangian and how various parts of it function; detailed references can be found in \cite{schwartz,2006physics11219P}. \editnote{Citations on main historial papers?}
 
 
 
@@ -51,7 +51,7 @@ where $v = m / \sqrt{\lambda}$, and $h$ is a real scalar field. The choice of un
 |D_\mu H|^2 = g^2 \frac{v^2}{8} \left[ (W_\mu^1)^2 + (W_\mu^2)^2 + \left( \frac{g'}{g} B_\mu - W_\mu^3 \right) \right]
 \end{equation}
 %
-These are the mass terms of the three massive gauge bosons (each proportional go $\frac{g^2 v^2}{8}$). To simplify these masses, we introduce $\tan(\theta_w) = \frac{g'}{g}$, which allows us to write:
+These are the mass terms of the three massive gauge bosons (each proportional to $\frac{g^2 v^2}{8}$). To simplify these masses, we introduce $\tan(\theta_w) = \frac{g'}{g}$, which allows us to write:
 %
 \begin{align}
 Z_\mu &\equiv \cos \theta_w W_\mu^3 - \sin \theta_w B_\mu\\
@@ -120,7 +120,7 @@ One particularly interesting set of corrections is for the coupling constant, $g
 \beta(\alpha_s) = - \frac{\alpha_s^2}{2\pi} \left(11 - \frac{4}{3}n_\mathrm{colors}\right)
 \end{equation} 
 %
-where $\alpha_s = g_s^2 / 4\pi$. The terms here arise from a particularly long calculation (see \ldots), but can be understood to arise from the gluonic self-interactions. Since in the SM QCD $n_\mathrm{colors} = 3$, this is negative: the strength of QCD shrinks as the energy scale increases. This phenomena is referred to as \textit{asymptotic freedom}: as the energy scale $\mu$ approaches infinity, the strength of the force drops to zero. Conversely, at low energies, the coupling constant approaches infinity-- meaning that the perturbative expansion used to derive this breaks down, and a new approach must be taken. 
+where $\alpha_s = g_s^2 / 4\pi$. The terms here arise from a particularly long calculation (see \cite{schwartz}), but can be understood to arise from the gluonic self-interactions. Since in the SM QCD $n_\mathrm{colors} = 3$, this is negative: the strength of QCD shrinks as the energy scale increases. This phenomena is referred to as \textit{asymptotic freedom}: as the energy scale $\mu$ approaches infinity, the strength of the force drops to zero. Conversely, at low energies, the coupling constant approaches infinity-- meaning that the perturbative expansion used to derive this breaks down, and a new approach must be taken. 
 
 \subsection{Confinement}
 
@@ -180,7 +180,7 @@ Leptons are the second category of matter-- they all interact via the weak force
 \colvec{2}{\nu_e}{e}  \colvec{2}{\nu_\mu}{\mu}  \colvec{2}{\nu_\tau}{\tau}
 \end{equation}
 %
-The bottom row, referred to as the ``charged leptons'', all have charge $-1$, and have mass in increasing order of the generation. They are called the electron, muon, and tau, respectively. The electron is completely stable, while the muon has a lifetime on the order of $10^{-6}$~s, and therefore is stable as far as high-energy experiments are concerned. The $\tau$ has a much shorter lifetime, and can decay into the other leptons or in hadronic channel, making the identification of $\tau$s much more challenging at the LHC than the other generations. For this reason, ``leptonic'' analyses at the LHC often refer to analyses involving the first two generations only.
+The bottom row, referred to as the ``charged leptons'', all have charge $-1$, and have mass in increasing order of the generation. They are called the electron, muon, and tau, respectively. The electron is completely stable, while the muon has a lifetime on the order of $10^{-6}$~s, and therefore is stable as far as high-energy experiments are concerned. The $\tau$ has a much shorter lifetime, and can decay into the other leptons or in hadronic channel, making the identification of $\tau$'s much more challenging at the LHC than the other generations. For this reason, ``leptonic'' analyses at the LHC often refer to analyses involving the first two generations only.
 
 The top row of Equation~\ref{eqn:leptons} are referred to as neutrinos: these particles, as the name suggests, are electrically neutral and therefore do not interact with $\gamma$. Almost all particle detection mechanisms at the LHC (see Chapter~\ref{chapter:detector}) rely on the particle interacting with the detector electromagnetically, and so for this reason, neutrinos are directly observed in collision events. Instead, their presence is inferred from mis-balances in momentum and energy conservation (in the transverse plane). Neutrinos are also effectively massless: while recent observations \editnote{cite} have confirmed that they do have masses, they are so vanishingly small that they have little experimental consequence at the LHC.
 
@@ -206,7 +206,7 @@ Just as for the gauge bosons, mass terms for fermions are problematic: a Dirac m
 \mL_\mathrm{Yukawa} = - y \bar{Q} H d_R + h.c.
 \end{equation}
 %
-The $Q$ and $H$ both transform with $SU(2)$, canceling the transformation and providing gauage invariance. After symmetry breaking thus generates a mass term of the form $-m_d(\bar{d}_L d_R + \bar{d}_R d_L)$-- recall that we choose $\colvec{2}{0}{v}$ as the direction of the Higgs field, so only the down-type quarks gets a mass from this-- where $m_d = \frac{y}{\sqrt{2}}v$. The up-type quarks get a mass from a similar term, using $\bar{Q}\sigma_2 H^*$ to rotate the vev into the up-type sector while preserving gauge invariance. Thus, mass originates not as a fundamental property of a particle, but from the interaction of the particle with the Higgs field. Different masses are possible as a consequence of different $y$-couplings for each particle.
+The $Q$ and $H$ both transform with $SU(2)$, canceling the transformation and providing gauage invariance. After symmetry breaking this generates a mass term of the form $-m_d(\bar{d}_L d_R + \bar{d}_R d_L)$-- recall that we choose $\colvec{2}{0}{v}$ as the direction of the Higgs field, so only the down-type quarks gets a mass from this-- where $m_d = \frac{y}{\sqrt{2}}v$. The up-type quarks get a mass from a similar term, using $\bar{Q}\sigma_2 H^*$ to rotate the vev into the up-type sector while preserving gauge invariance. Thus, mass originates not as a fundamental property of a particle, but from the interaction of the particle with the Higgs field. Different masses are possible as a consequence of different $y$-couplings for each particle.
 
 In order to provide for the masses of multiple generations of quarks, a more complicated Yukawa structure using matrices (indexing the flavor via $i,j$) is required:
 %
