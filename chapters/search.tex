@@ -530,11 +530,11 @@ The \texttt{j360} trigger is fully unprescaled, and the integrated luminosity co
 \subsection{Analysis Regions}
 \label{chapter:search:search:regions}
 
-Several basic requirements in the analysis have thus been defined: we require high quality events, we use events with several \largeR jets, and we require the leading such jet to have \ptjet > 500 GeV. Two classes of region are now defined: the exclusive 3-jet control region (referred to as the 3jCR) and the various $\geq 4$ jet regions (referred to with the prefix 4j). These are summarized in Figure~\ref{fig:search:search:regions}. 
+Several basic requirements in the analysis have thus been defined: we require high quality events, we use events with several \largeR jets, and we require the leading such jet to have \ptjet > 500 GeV. Two classes of region are now defined: the exclusive 3-jet control region (referred to as the 3jCR) and the various $\geq 4$ jet regions (referred to with the prefix 4j). These are summarized in Figure~\ref{fig:search:search:regions}. To count for the signal region definition, as previously discussed, a jet must have $\pt > 100$~GeV and $|\eta| < 2.5$. 
 
 The 3jCR is inclusive in all variables. This region is strongly enriched in the multi-jet background: a requirement of exactly 3-jets highly reduces the signal in this region (and moreover, the natural cross-section of a 3-jet region is an order of magnitude higher than that of the $\geq 4$ jet region). This makes the 3jCR a perfect candidate for the training sample of the substructure template background estimation technique.
 
-As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s power is not very strong, but it is rather uncorrelated with \MJ. This means that a selection on $\Deta$ designed to select background-- i.e., a cut on $|\Deta|$ to be high-- can expose a region with high \MJ, but comparatively low expected signal. This allows for the assessment of the templates and the derivation of additional topology related uncertainties, even in the 4j regions. The 4jCR (control region) is defined with $\Deta > 1.4$; the 4jVR (validation region) is defined as $1.4 >\Deta > 1.0$. The two separate regions allow for the derivation of corrections and uncertainties in one, and then the assessment of these in an orthogonal region.
+As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s power is not very strong, but it is rather uncorrelated with \MJ. This means that a selection on $\Deta$ designed to select background-- i.e., a cut on $|\Deta|$ to be high-- can expose a region with high \MJ, but comparatively low expected signal. This allows for the assessment of the templates and the derivation of additional topology related uncertainties, even in the 4j regions. The 4jCR (control region) is defined with $\Deta > 1.4$; the 4jVR (validation region) is defined as $1.4 >\Deta > 1.0$. The two separate regions allow for the derivation of corrections and uncertainties in one, and then the assessment of these in an orthogonal region. Finally, a cut of $|\Deta| < 0.7$ defines the signal region (4jSR), where new physics is hoped to be found.
 
 %%------------------------------
 \begin{figure}[!ht]
@@ -550,11 +550,268 @@ As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s pow
 \end{figure}
 %%------------------------------
 
-One additional set
+One additional criteria is based on the strength of the $\pt^3/\pt^1$ variable previously discussed. Two different 4jSR's are defined to take advantage of the relative power of $\pt^3$ in various portions of the \gluino-\lsp mass plane. The SR100 is defined with the nominal $\pt^3$ threshold of $100$ GeV, and the SR250 is defined with $\pt^3 > 250$~GeV. $\pt^3/\pt^1$ is not used, as it is more straightforward to apply the cut to the \pt of the third jet only. 
+
+As will be described later, the \MJ \textit{distribution} in the SR100 and SR250 is tested for its compatibility to the SM prediction: the template is method is able to predict a full shape, not just a value after a cut, and so the analysis takes full advantage of this additional information. In order to facilitate more straightforward comparisons to theoretical results, one additional region, defined similarly to SR250 but using a strict cut of $\MJ > 625$~GeV (SR1), is used. 
+
+All of the various regions of the analysis are summarized in Table~\ref{tab:search:search:regions:CRselections}. Each sub-region of the 4jSR has a corresponding 4jVR and 4jCR; the 3jCR is used to train these all together. Since the only differences between the various 4j regions are cuts on \pt and $\eta$, which are controlled for by the template, this uniform training is possible.
+
+%%------------------------------
+  \begin{table}[!htb]
+    \begin{center}
+	  \begin{tabular}{r|c|c|c|c|c}
+	    \hline \hline
+Region  &   \Njet       & $\Deta$    & \ptthr & \ptfour & \MJ \\ 
+Name  &         &     & [GeV] & [GeV] & [GeV]\\ \hline   
+ 		 3jCR  & $\Njet=3$     & --         &              & --            & -- \\ \hline
+		 \multirow{2}{*}{4jCR}  & \multirow{2}{*}{$\Njet\geq4$}  & \multirow{2}{*}{$>1.40$}    & $>100$       & \multirow{2}{*}{$>100$}        & -- \\
+		 	   &               &            & $>250$       &               & -- \\ \hline
+		 \multirow{2}{*}{4jVR}  & \multirow{2}{*}{$\Njet\geq4$}  & \multirow{2}{*}{1.0--1.40} & $>100$       & \multirow{2}{*}{$>100$}        & -- \\
+		 	   &               &            & $>250$       &               & -- \\ \hline
+		 SR1   &               &            & $>250$       &               & $>625$ \\
+		 SR100 & $\Njet\geq4$  & $<0.7$     & $>100$       & $>100$        & $>350$ (binned) \\
+		 SR250 &               &            & $>250$       &               & $>350$ (binned) \\
+		\hline \hline
+	  \end{tabular}
+    \end{center}
+  \caption{Control (CR), validation (VR), and signal regions (SR) used for the analysis. \ptthr and \ptfour represent the transverse momentum of the third and fourth jet in \pT, respectively.}
+  \label{tab:search:search:regions:CRselections}
+  \end{table}%      
+%%------------------------------
+
+
 
 	
 	\subsection{Background Estimates}
 	\label{chapter:search:search:background}
+
+Now that the sensitive variables, background estimate strategy, and analysis regions are defined, it is time to actually develop the expected Standard Model contribution to the signal region. The first priority is assessing the construction of the templates in the 3jCR.
+
+It should be noted that for the purposes of constructing the templates, steeply falling distributions like jet masses and \pt are actually not very optimal: the rapidly falling distribution means that statistics are not evenly distributed through the boundaries of the variable. The solution is to apply a transformation to these two variables: instead of \pt, $\log(\pt/50)$ is used, and instead of mass, $-\log(m/\pt)$ is used.
+
+\subsubsection{Template Construction in the 3jCR}
+
+Should the templates for jets be constructed inclusively-- that is, without differentiating between jet number-- or exclusively? Figure~\ref{fig:search:search:background:3jCR} shows the results of two possibilities for the leading (left) and subleading (right) jets.  In this figure, the black points correspond to the actual mass distributions, the blue points correspond to the exclusively constructed template, and the red points correspond to an inclusively (in the leading two jets) constructed template. The inclusive template has an advantage of a doubling in the size of the training sample, but the performance in reproducing the input distribution is reduced. A slope exists in the ratio of the inclusive template to the actual mass points, and this goes in different directions for the leading and subleading jets: this indicates that the inclusive template is correctly averaging between the two distributions, but that there is in fact a difference between them (as was also observed in the equivalent theory studies~\cite{MassTemplates}).
+
+
+%%------------------------------
+\begin{figure}[!ht]
+  \centering
+  \subfigure[1st leading jet template]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_14a.pdf}}
+    % \label{fig:search:search:regions:3j}}
+  \subfigure[2nd jet template]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_14b.pdf}}
+    % \label{fig:search:search:regions:4j}}
+    \caption{Templates constructed with various inputs, compared to actual mass distributions of jets in the 3jCR, for the leading and subleading jets.}
+  \label{fig:search:search:background:3jCR}
+\end{figure}
+%%------------------------------
+
+Figure~\ref{fig:search:search:background:3jCRThird} shows a similar comparison for the third leading jet. The black points are again the distribution of actual jet masses in the 3jCR, while the blue are the outputs of a template constructed with only the third leading jet, and the red points are a template constructed from only the first two jets. This shows the marked difference between the first two jets and the third: while using a training of the leading on the subleading would have been quite close (double the difference observed in Figure~\ref{fig:search:search:background:3jCR}), the difference here is much larger. For this reason, the templates for all the jets are constructed inclusively. It is still an open question of how the fourth leading jet should be modelled; this will be discussed shortly.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{mj/figaux_14c.pdf}
+\label{fig:search:search:background:3jCRThird}
+\caption{Templates constructed with various inputs, compared to actual mass distributions of jets in the 3jCR, for the third leading jet.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+Next is the consideration of input variables to the templates: in particular, since the $\Deta$ cuts in the 4j region will shape the $\eta$ distributions used as inputs to the templates, it is important to consider whether there is any dependence on the mass from the jet $\eta$. In principle, the calibration of the mass has eliminated any detector-related component to this dependence, but there can be effects due to jet physics.
+
+
+Figure~\ref{fig:search:search:background:closure:eta} presents the result of the study of the dependence of the jet templates on the jet $\eta$. In this study, the templates are derived either without (dark blue) or with (light purple) an explicit dependence on the jet $\eta$. Three different kinematic samples are then used to test the closure of the method: Figure~\ref{fig:search:search:background:inclusive} uses an inclusive 3-jet kinematic sample, Figure~\ref{fig:search:search:background:closure:higheta} uses a high $\eta$ ($|\eta|>1.8$) kinematic sample, and Figure~\ref{fig:search:search:background:closure:loweta} uses a low $\eta$ ($|\eta|<0.7$) kinematic sample. In the latter two cases, the template formed with an explicit dependence on $\eta$ is observed to perform significantly better than the the inclusive template. An $\eta$-dependent template is therefore adopted as the approach to be used in deriving the template for the full \MJ distribution. Note that 10 bins in $|\eta|$ are used, leading to, in the worst case, a degradation in statistical power of about a factor of 3 in the central $\eta$ bins.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass and template (inclusive in $\eta$)]{
+    \includegraphics[width=0.3\columnwidth]{INT/Eta/jetmass1_3temp_3kin_etabinning.pdf}
+    \label{fig:search:search:background:closure:inclusive}}
+  \subfigure[Leading jet mass and template ($|\eta|>1.8$)]{
+    \includegraphics[width=0.3\columnwidth]{INT/Eta/jetmass1_3temp_3kin_etabinning_higheta.pdf}
+    \label{fig:search:search:background:closure:higheta}} 
+  \subfigure[Leading jet mass and template ($|\eta|<0.7$)]{
+    \includegraphics[width=0.3\columnwidth]{INT/Eta/jetmass1_3temp_3kin_etabinning_loweta.pdf}
+    \label{fig:search:search:background:closure:loweta}} 
+    
+  \caption{Comparisons between templates formed with no $\eta$ dependence (dark blue) and those where the templates are formed in several jet $\eta$ bins and combined (light purple). These templates are then compared to the actual jet mass distributions for the
+           \subref{fig:search:search:background:closure:inclusive} inclusive $\eta$ selection, 
+           \subref{fig:search:search:background:closure:higheta} a high $\eta$ selection ($|\eta|>1.8$), and
+           \subref{fig:search:search:background:closure:loweta} a low $\eta$ selection ($|\eta|<0.7$).
+          }
+           
+  \label{fig:search:search:background:closure:eta}
+\end{figure} 
+%%------------------------------ 
+
+The final closure test is to compare the \MJ template using the 3-jet kinematic sample to the actual \MJ distribution in 3-jet events. We use the approaches described above to account for $\eta$ dependence and the jet ordering. Figure~\ref{fig:search:search:background:closure:MJ} shows the closure of the method in the 3jCR using the $\ptthr>100$~GeV selection. The closure is very good, indicating that we are able to construct an event-wide variable like \MJ from the individual jet mass templates.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{mj/figaux_15.pdf}
+  \caption{Closure test of the \MJ template in the 3-jet control region (3jCR) using the $\ptthr>100$~GeV selection.}
+  \label{fig:search:search:background:closure:MJ}
+\end{figure}
+%%------------------------------ 
+
+
+
+\subsubsection{Checks on Region Compatibility}
+
+Before extrapolating our templates to the 4j regions, it is important to first consider whether the extrapolation is sensible. If the \pt distributions are dramatically different, or the mass distributions very much different for a given \pt, then controlling for the kinematics alone will not be sufficient to build a prediction for mass. In the following plots, we show that the 3j and 4jCR have very similar 2D shapes between the input kinematics (\pt and $\eta$) and the output observable (jet mass) used in the templates. Their similar kinematic distributions means that the use of the template technique to extrapolate between them is appropriate.
+
+
+Figure~\ref{fig:search:search:kincorrelations:mpt0}, for example, shows the mass-\pt correlations in the 3j and 4jCR samples in data: the distributions in fact look very similar. Likewise, Figure~\ref{fig:search:search:kincorrelations:mpt1} and Figure~\ref{fig:search:search:kincorrelations:mpt2} show these correlations for the second leading and third leading jets; again the distributions are very much compatible.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_0_3.pdf}}
+    % \label{fig:kincorrelations:mpt0:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_0_4.pdf}}
+    % \label{fig:kincorrelations:mpt0:4}}
+
+    
+  \caption{Leading et mass vs jet $p_T$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:mpt0}
+\end{figure}
+%%------------------------------ 
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_1_3.pdf}}
+    % \label{fig:kincorrelations:mpt1:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_1_4.pdf}}
+    % \label{fig:kincorrelations:mpt1:4}}
+
+    
+  \caption{Subleading jet mass vs jet $p_T$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:mpt1}
+\end{figure}
+%%------------------------------ 
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_2_3.pdf}}
+    % \label{fig:kincorrelations:mpt2:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/mpt_2_4.pdf}}
+    % \label{fig:kincorrelations:mpt2:4}}
+
+    
+  \caption{Third leading jet mass vs jet $p_T$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:mpt2}
+\end{figure}
+%%------------------------------ 
+
+
+Figures~\ref{fig:search:search:kincorrelations:meta0,fig:search:search:kincorrelations:meta1,fig:search:search:kincorrelations:meta2} show a similar plot displaying the correlations in mass and $\eta$. Once again, the distributions are not too different: there is no large extrapolation from a region dominated by one $\eta$ shape to a region with a different $\eta$ shape, for example.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_0_3.pdf}}
+    % \label{fig:kincorrelations:meta0:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_0_4.pdf}}
+    % \label{fig:kincorrelations:meta0:4}}
+
+    
+  \caption{Leading et mass vs jet $\eta$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:meta0}
+\end{figure}
+%%------------------------------ 
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_1_3.pdf}}
+    % \label{fig:kincorrelations:meta1:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_1_4.pdf}}
+    % \label{fig:kincorrelations:meta1:4}}
+
+    
+  \caption{Subleading jet mass vs jet $\eta$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:meta1}
+\end{figure}
+%%------------------------------ 
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_2_3.pdf}}
+    % \label{fig:kincorrelations:meta2:3}}
+  \subfigure[4jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/kinematic_correlations/meta_2_4.pdf}}
+    % \label{fig:kincorrelations:meta2:4}}
+
+    
+  \caption{Third leading jet mass vs jet $\eta$ for the 3j and 4jCR samples.}
+           
+  \label{fig:search:search:kincorrelations:meta2}
+\end{figure}
+%%------------------------------ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Reweighting, and Systematic Uncertainties, in the 4jCR}
+
+
+
+
+
+\subsubsection{Cross-checks Using MC Simulation}
+
+\subsubsection{Final Cross-checks in the 4jVR}
+
+
+\subsubsection{Searching in the 4jSR}
+
 	\subsection{Limits}
 	\subsection{Future Prospects}
 		...
