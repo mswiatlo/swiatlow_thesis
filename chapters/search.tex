@@ -177,13 +177,17 @@ Thus, by measuring jet properties (such as the mass, or the n-subjettiness) as a
 %
 
 \section{Constructing a Search}
+\label{chapter:search:search}
 
 With the general principles of a substructure based RPV SUSY search defined, the following subsections define the analysis of \cite{RPVSUSY}, which was the first search for the 10-quark model previously described.
 
-\label{chapter:search:search}
+
 \subsection{Optimization}
+\label{chapter:search:search:optimization}
 
 While the complicated multi-jet backgrounds generally require the previously discussed data-driven background techniques to create reliable predictions for the final analysis, it is cumbersome to use these techniques for performing the optimization over a large number of possible variables. For this reason, we use signal MC and \herwigpp di-jet MC to explore the previously defined variables, and to select the most useful way of defining the analysis. The goal is to find two variables which are \textit{uncorrelated}: that is, that they provide discrimination power more or less independently of each other. In this way, one variable can be used to define signal and control regions, while another can be used as the final cut in the signal region to define the precise search region.
+
+One initial question is the number of jets required in the signal region, and which jet algorithm to use. The jet algorithm is the \antikt $R=1.0$, built from locally calibrated topological clusters, with trimming of $\Rsub = 0.3$ and $\fcut > 5\%$, as described in Chapter~\ref{chapter:jet-reconstruction}. These jets are available to 100 GeV: below this point, the calibrations and uncertainties are not valid. An initial optimization found that requiring $\geq 4$ jets above this threshold was the most effective strategy: exactly 3-jet and lower multiplicities are background dominated, while the signal efficiency for a $> 5$ is rather low. Note that the requirement on 4 jets is inclusive: jets with higher multiplicity are allowed. It should also be noted that jets are required to fall with $|\eta| < 2.5$, the region of validity of the systematic uncertainty measurement: jets outside of this requirement are not considered, so the ordering of the 4 jets in the analysis takes into account only jets within this proper fiducial region.
 
 \subsubsection{1D Optimization}
 
@@ -319,6 +323,8 @@ Finally, Figure~\ref{fig:search:search:optimization:All} shows two efficiency vs
 
 From this set of results, it is clear that \MJ is a good candidate for a final discriminant variable which can apply the most discrimination between signal and background. There are several other candidates for the second variable used for defining signal and control regions, but these need two-dimensional correlation studies in order to understand the best pairing.
 
+Throughout these studies, the event-level variables have been constructed from the leading 4 jets (recall that the signal region was pre-selected to have $>=4$ jets. Other possibilities-- such as constructing the substructure observable from only the leading 2 jets-- could potentially make the background estimation easier, but come at a price of slightly reduced discrimination (as the third and fourth jets do have useful substructure information to contribute). Similarly, one could add more jets to the sums/means if they existed, but this was found to not contribute at all to discrimation, and as it would further complicate the background estimation, this strategy was not adopted. For this reasons, all the variables considered simply use the leading 4 jets in the event.
+
 One important consideration, for the sake of the background estimation, is understanding whether the \pt spectrum is sensitive to new physics (as we use the \pt spectrum to determine the background expectation). Figure~\ref{fig:search:search:optimization:pt} shows that the \pt spectrum is essentially unchanged, showing that we can use the kinematics without worry of biasing the background estimate.
 
 %%%%%%%%%%%%%%%%
@@ -329,6 +335,7 @@ One important consideration, for the sake of the background estimation, is under
 \label{fig:search:search:optimization:pt}
 \caption{An example of a \pt distribution for the leading jet, using \Sherpa multi-jet backgrounds, with various signal models overlaid.}
 \end{figure}
+
 
 \subsubsection{Additional 1D Studies}
 
@@ -486,9 +493,66 @@ Finally, Figure~\ref{fig:search:search:optimization:2D:DETA} shows the likelihoo
 Note also that other combinations without \MJ were also considered: \Ht and $T_{32}$, for example, are subsantially less correlated because \Ht does not use substructure information. These pairings were all less effective than \MJ and \Deta combination. Additionally, pre-selection cuts on $T_{32}$ and $T_{21}$ were attempted, in combination with the \MJ and \Deta variables: adding the additional discrimination from the n-subjettiness variables did not significantly increase the discrimination.
 
 
-	\subsection{Trigger}
-	\subsection{Analysis Regions}
-	\label{chapter:search:search:regions}
+\subsection{Event and Trigger Selections}
+
+To perform the analysis in data, only events which pass a general quality selection and particular trigger configuration are used. The quality selection is rather generic to many ATLAS analyses:
+%
+\begin{enumerate}
+\item Events are required to have not occurred during periods with limited detector operations.
+\item Events are required to contain a primary vertex consistent with the LHC beamspot, reconstructed from at least 2 tracks with transverse momenta $\pt^{\mathrm{track}} > 400$~MeV
+\item Jets reconstructed with the anti-kt algorithm using a size parameter of $R = 0.4$ and a measured $\pt^{\mathrm{jet}}$ > 25 GeV are required to satisfy the “looser” requirements, which are targetted at reducing background from photons and electrons (by requiring the EM fraction to be at least 5\%), as well as poorly functioning regions of the detector (by requiring that no jet be allowed to have more than 99\% of its energy in one layer)~\cite{jetquality}. Furthermore, jets with a majority of their energy in the HEC are required to have no problematic noise characteristics, and no more than 60 GeV of negative energy (both indications of read-out problems); jets enclosed in the ECal are required to have good pulse shapes in all layers. If any jet with $\pt^{\mathrm{jet}} > 25$~GeV is found to fail any of these criteria, the event is rejected.
+\end{enumerate} 
+%
+
+A three-stage trigger system is used to select interesting events for the analysis. The Level-1 trigger... \editnote{Need to add L1 and L2 details!}
+
+
+The high-\pt trigger at the event filter, \texttt{EF\_j360\_a10tcem}, has an online cut of $360$~GeV on the leading jet \pt, constructed using the \antikt $R=1.0$ algorithm from online EM-scale topo-clusters. Fluctuations due to jet energy resolution and differences between online and offline reconstruction (for example, the online jet has no trimming applied, and the clusters are only EM-scale instead of locally calibrated) mean that a jet with a given offline \pt may or may not have actually fired the trigger. As the modeling of the trigger in the simulation is somewhat unrelaible, we require the offline jet \pt to be fully efficient: i.e., that the \pt is so high that the trigger is guaranteed to have fired.
+
+To measure the efficiency of the \texttt{j360} trigger, its measurements are compared to a \textit{reference} trigger. A reference trigger has a lower \pt threshold, but is pre-scaled to avoid taking data at too high a rate. A higher \pt threshold trigger is considered fully efficient if it fired on every event on which the lower \pt treshold trigger fired. The ratio of their efficiencies is called the \textit{turn-on} curve. In order to make the trigger fully efficient an offline \pt cut on the trimmed jet pT at $500$~GeV was used, as motivated by Figure~\ref{fig:search:search:trig:pt1}. 
+
+%% pT1 and cum eff
+\begin{figure}[!ht]
+  \centering
+  \subfigure[Leading $\ptjet$]{
+    \includegraphics[width=0.48\columnwidth]{INT/Trigger/overlay_Eff_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
+    \label{fig:search:search:trig:pt1:eff}}
+  \subfigure[Cumulative efficiency (leading $\ptjet>500$~GeV)]{
+    \includegraphics[width=0.48\columnwidth]{INT/Trigger/overlay_Eff_ZoomDetailed_CumEff500_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
+    \label{fig:search:search:trig:pt1:cumeff}}
+    \caption{Efficiency for the \texttt{EF\_j360\_a10tcem} trigger as a function of leading $\ptjet$. The efficiency is calculated using \texttt{EF\_j240\_a10tcem} as the reference trigger. The cumulative efficiency (shown in the legend) is the ratio of the sum of the number of events passing the trigger \texttt{EF\_j360\_a10tcem} and the number of events passing the reference trigger \texttt{EF\_j240\_a10tcem}. }
+  \label{fig:search:search:trig:pt1}
+\end{figure}
+%%------------------------------
+
+The \texttt{j360} trigger is fully unprescaled, and the integrated luminosity collected by the trigger (and passing basic detector quality criteria) corresponds to the full 20.3 \ifb ATLAS dataset.
+
+\subsection{Analysis Regions}
+\label{chapter:search:search:regions}
+
+Several basic requirements in the analysis have thus been defined: we require high quality events, we use events with several \largeR jets, and we require the leading such jet to have \ptjet > 500 GeV. Two classes of region are now defined: the exclusive 3-jet control region (referred to as the 3jCR) and the various $\geq 4$ jet regions (referred to with the prefix 4j). These are summarized in Figure~\ref{fig:search:search:regions}. 
+
+The 3jCR is inclusive in all variables. This region is strongly enriched in the multi-jet background: a requirement of exactly 3-jets highly reduces the signal in this region (and moreover, the natural cross-section of a 3-jet region is an order of magnitude higher than that of the $\geq 4$ jet region). This makes the 3jCR a perfect candidate for the training sample of the substructure template background estimation technique.
+
+As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s power is not very strong, but it is rather uncorrelated with \MJ. This means that a selection on $\Deta$ designed to select background-- i.e., a cut on $|\Deta|$ to be high-- can expose a region with high \MJ, but comparatively low expected signal. This allows for the assessment of the templates and the derivation of additional topology related uncertainties, even in the 4j regions. The 4jCR (control region) is defined with $\Deta > 1.4$; the 4jVR (validation region) is defined as $1.4 >\Deta > 1.0$. The two separate regions allow for the derivation of corrections and uncertainties in one, and then the assessment of these in an orthogonal region.
+
+%%------------------------------
+\begin{figure}[!ht]
+  \centering
+  \subfigure[3jCR]{
+    \includegraphics[width=0.48\columnwidth]{INT/3jetsketch}
+    \label{fig:search:search:regions:3j}}
+  \subfigure[4j regions]{
+    \includegraphics[width=0.48\columnwidth]{INT/4jetsketch.pdf}
+    \label{fig:search:search:regions:4j}}
+    \caption{Diagrams summarizing the 3j and 4j regions used in the analysis}
+  \label{fig:search:search:regions}
+\end{figure}
+%%------------------------------
+
+One additional set
+
+	
 	\subsection{Background Estimates}
 	\label{chapter:search:search:background}
 	\subsection{Limits}
