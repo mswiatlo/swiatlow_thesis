@@ -624,7 +624,7 @@ Figure~\ref{fig:search:search:background:3jCRThird} shows a similar comparison f
 Next is the consideration of input variables to the templates: in particular, since the $\Deta$ cuts in the 4j region will shape the $\eta$ distributions used as inputs to the templates, it is important to consider whether there is any dependence on the mass from the jet $\eta$. In principle, the calibration of the mass has eliminated any detector-related component to this dependence, but there can be effects due to jet physics.
 
 
-Figure~\ref{fig:search:search:background:closure:eta} presents the result of the study of the dependence of the jet templates on the jet $\eta$. In this study, the templates are derived either without (dark blue) or with (light purple) an explicit dependence on the jet $\eta$. Three different kinematic samples are then used to test the closure of the method: Figure~\ref{fig:search:search:background:inclusive} uses an inclusive 3-jet kinematic sample, Figure~\ref{fig:search:search:background:closure:higheta} uses a high $\eta$ ($|\eta|>1.8$) kinematic sample, and Figure~\ref{fig:search:search:background:closure:loweta} uses a low $\eta$ ($|\eta|<0.7$) kinematic sample. In the latter two cases, the template formed with an explicit dependence on $\eta$ is observed to perform significantly better than the the inclusive template. An $\eta$-dependent template is therefore adopted as the approach to be used in deriving the template for the full \MJ distribution. Note that 10 bins in $|\eta|$ are used, leading to, in the worst case, a degradation in statistical power of about a factor of 3 in the central $\eta$ bins.
+Figure~\ref{fig:search:search:background:closure:eta} presents the result of the study of the dependence of the jet templates on the jet $\eta$. In this study, the templates are derived either without (dark blue) or with (light purple) an explicit dependence on the jet $\eta$. Three different kinematic samples are then used to test the closure of the method: Figure~\ref{fig:search:search:background:closure:inclusive} uses an inclusive 3-jet kinematic sample, Figure~\ref{fig:search:search:background:closure:higheta} uses a high $\eta$ ($|\eta|>1.8$) kinematic sample, and Figure~\ref{fig:search:search:background:closure:loweta} uses a low $\eta$ ($|\eta|<0.7$) kinematic sample. In the latter two cases, the template formed with an explicit dependence on $\eta$ is observed to perform significantly better than the the inclusive template. An $\eta$-dependent template is therefore adopted as the approach to be used in deriving the template for the full \MJ distribution. Note that 10 bins in $|\eta|$ are used, leading to, in the worst case, a degradation in statistical power of about a factor of 3 in the central $\eta$ bins.
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -801,13 +801,225 @@ Figures~\ref{fig:search:search:kincorrelations:meta0,fig:search:search:kincorrel
 
 \subsubsection{Reweighting, and Systematic Uncertainties, in the 4jCR}
 
+Next, we test the 3jCR templates in the 4jCR: that is, we now use the 4jCR sample's kinematics to derive a prediction for the \MJ background. Note that for this section, and most subsequent sections, we will show plots for the CR's and VR's corresponding to SR100 and SR250, but not SR1: as SR1 is a subset of SR250, the agreement (and systematic treatment) is identical to that of SR250.
+
+The bias and variance systematics are independent, as they originate from separate sources of error in the template function, and are therefore summed in quadrature. In the individual jet mass distributions in Figure~\ref{fig:search:search:4jcr:Jets} they are shown separately, but in subsequent figures they will often be shown together to save space (though the variance is always dominant).
+
+
+The template systematics are derived separately in each kinematic region where they are tested. For example, say a hypothetical training sample from which a given template is derived has the typical steeply falling jet $\pT$ spectrum over a very large range in \pT, whereas the kinematic sample to which the template is applied has only jets from $100$ GeV to $200$ GeV in $\pT$ with an approximately uniform distribution. The kinematic sample is therefore highly restricted: it will be sampling a very small region of the template formed in the training sample, and in particular, the region of the template with the highest statistics. The resulting variance of the dressed sample -- the predicted mass distribution -- will be very low, as there were many jets in the training sample from which to extrapolate. Another hypothetical kinematic sample may have only jets with $\pT > 1000$~GeV -- another very restricted sample, but one for which the training sample does not have good statistics. The resulting variance of any background prediction using this kinematic sample will thus be very large. This training sample has poorer statistics in the region where it is being used. Thus, while the variance is itself a property of the training sample, it is nonetheless affected by the choice of the kinematic sample. We see exactly this feature in Figure~\ref{fig:search:search:4jcr:Reweight:fourth}, for example: the 4th jet in the 4jCR (and all the 4j regions) is very low $\pT$, and therefore always samples the highest statistics portion of the third jet template built in the 3jCR. 
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/reweighting_4jet/jetmass1_3temp_4kin.pdf}
+    \label{fig:search:search:4jcr:Reweight:first}}
+  \subfigure[Subleading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/reweighting_4jet/jetmass2_3temp_4kin.pdf}
+    \label{fig:search:search:4jcr:Reweight:second}}\\
+  \subfigure[Third leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/reweighting_4jet/jetmass3_3temp_4kin.pdf}
+    \label{fig:search:search:4jcr:Reweight:third}}
+  \subfigure[Fourth leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/reweighting_4jet/jetmass4_3temp_4kin.pdf}
+    \label{fig:search:search:4jcr:Reweight:fourth}}    
+    
+  \caption{Comparisons between the template before and after reweighting.}
+           
+           
+  \label{fig:search:search:4jcr:Reweight}
+\end{figure}
+%%------------------------------ 
+%
+
+
+Figure~\ref{fig:search:search:4jcr:Reweight} shows the extrapolation of the template built in the 3jCR into the 4jCR. A slight non-closure is apparent in the ratio between the observed to predicted jet mass distributions (dark blue line). Although this is not a numerically large effect in the single jet mass distributions, this non-closure can affect the total jet mass templates, and we therefore develop a reweighting procedure from the 4jCR to correct for this effect using the individual jet mass distributions for each of the four leading jets. The reweighted individual jet distributions using $\ptthr>100$~GeV are shown in Figure~\ref{fig:search:search:4jcr:Jets} --  the level of closure is improved substantially, as expected. For each of the four leading jet mass templates, the variance is substantially larger than the bias, ensuring that the estimate of the uncertainty is accurate. Figure~\ref{fig:search:search:4jcr:Jets} also shows the difference between the predicted and observed mass spectra for each jet in the cyan ratio in the bottom panels, as well as the ratio that would be obtained without any reweighting of the individual jet mass templates (dark purple). Plots for the 4jCR250 are similar, but the level of non-closure is smaller, so a reweighting is not applied (though later a systematic will still be assessed from this disagreement). %Equivalent figures showing the individual jet mass templates using the $\ptthr>250$~GeV selection are provided in \appref{templatesSR250} (see \figref{template:performance:4jcrJets:SR250}).
+
+The reweighting applied when using the $\ptthr>100$~GeV selection accounts for the differences between the 3j and 4j samples that are due to incomplete factorization of the QCD jets in a high multiplicity final state. Two causes for the differences between the 3j and 4j samples are discussed. First, the quark/gluon composition can shift between these samples: in particular, higher multiplicity events are more likely to contain gluon jets, which on average should be more massive than light quark jets. Secondly, the 4j sample requires $\geq 4$ jets, resulting in a slightly more crowded environment than the 3j sample. Overlapping jets appear more frequently in the 4j sample as a result. Such jets tend to raise the average total jet mass, which is consistent with the observed upward shift in the templates. The reweighting factor is derived bin-by-bin as the ratio of the single jet mass template to the observed distribution in the 4jCR, and is thus a function of the jet mass. This same bin-by-bin function is applied to the 4jVR and 4jSR in subsequent plots, as noted. 
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/systematics_4jet/jetmass1_3temp_.pdf}
+    \label{fig:search:search:4jcr:Jets:first}}
+  \subfigure[Subleading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/systematics_4jet/jetmass2_3temp_.pdf}
+    \label{fig:search:search:4jcr:Jets:second}}\\
+  \subfigure[Third leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/systematics_4jet/jetmass3_3temp_.pdf}
+    \label{fig:search:search:4jcr:Jetss:third}}
+  \subfigure[Fourth leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/systematics_4jet/jetmass4_3temp_.pdf}
+    \label{fig:search:search:4jcr:Jets:fourth}}    
+    
+  \caption{Comparisons between the template derived in the 3jCR (hashed blue histogram) with the 4jCR (filled cyan circles). The ratio plot also shows the systematic uncertainty band due to the bias (in red), variance (dark purple), and the total uncertainty (in orange).}
+           
+  \label{fig:search:search:4jcr:Jets}
+\end{figure}
+%%------------------------------ 
+%
+
+
+Figure~\ref{fig:search:search:4jcr:Total} presents the total jet mass, \MJ, in the 4jCR using $\ptthr>100$~GeV and the $\ptthr > 250$~GeV treshhold. The nominal template (hatched histogram) includes the impact of applying the reweighting procedure to each of the input jet mass templates obtained from the dressed 4jCR sample for the CR100 case; no reweighting is applied for CR250. As with the individual jet mass, the weighted template agrees very well with the observed \MJ distribution (solid black circles) in the 4jCR.
+%
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  \subfigure[Total jet mass in the 4jCR using $\ptthr>100$~GeV]{
+    \includegraphics[width=0.48\columnwidth]{INT/systematics_4jet/jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4jcrTotal}
+  }
+  \subfigure[Total jet mass in the 4jCR using $\ptthr>250$~GeV]{
+    \includegraphics[width=0.48\columnwidth]{INT/pt250_cr/jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4j250crTotal}
+  }
+  \caption{Total jet mass in the 4jCR with $\ptthr>100$~GeV and $\ptthr > 250$~GeV. In both cases, the reweighted template (built in the 3jCR, and applied jet-by-jet in the relevant region) is shown in the hashed blue histogram. The 4jCR templates are shown in the open blue squares. The total systematic uncertainty due to bias and variance and the non-closure in the control regions is shown in green.}
+  \label{fig:search:search:4jcr:Total}
+\end{figure}
+%%------------------------------ 
+%
+
+It is important to emphasize that because the reweighting procedure is performed differently in the CR100 and CR250 regions, the uncertainties from the non-closure in this region are also derived slightly differently. The larger disagreement from CR100 (though not visible in Figure~\ref{fig:search:search:4jcr:Total} because the reweighting has already been applied) calls for a more conservative procedure: the full size of the reweighting is taken as an uncertainty. For the CR250,  whose disagreement is smaller but non-negligible, any significant disagreement above the existing variance is taken as an extra uncertainty. These uncertainties are summarized for both regions in Table XXX. All relevant uncertainties are included in Figure~\ref{fig:search:search:4jcr:Total}.
 
 
 
+\subsubsection{Cross-checks in the 4jVR}
 
-\subsubsection{Cross-checks Using MC Simulation}
 
-\subsubsection{Final Cross-checks in the 4jVR}
+We test the background prediction in the 4jVR to validate the combination of the templates built in the 3jCR and the re-weighting derived in the 4jCR. As a reminder, the 4jVR requires at least 4 jets and requires that the two leading jets be separated by $1.0 < \Deta < 1.4$. The individual jet templates, before and after reweighting, are compared to the mass distributions in Figure~\ref{fig:search:search:4jvr:reweight}. In all cases, the agreement is good, especially after the application of the reweighting. The equivalent set of plots for the 4jVR250 is again very similar, and the agreement is very good. %As above, equivalent figures for templates using the $\ptthr>250$~GeV selection are again provided in \appref{templatesSR250} (see \figref{template:performance:4jvrJets:SR250}).
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/validation_4jet/jetmass1_3temp_4kin.pdf}
+    \label{fig:template:performance:4jvrReweight:first}}
+  \subfigure[Subleading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/validation_4jet/jetmass2_3temp_4kin.pdf}
+    \label{fig:template:performance:4jvrReweight:second}}\\
+  \subfigure[Third leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/validation_4jet/jetmass3_3temp_4kin.pdf}
+    \label{fig:template:performance:4jvrReweight:third}}
+  \subfigure[Fourth leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/validation_4jet/jetmass4_3temp_4kin.pdf}
+    \label{fig:template:performance:4jvrReweight:fourth}}    
+    
+  \caption{Comparisons between the templates before and after reweighting, in the 4jVR. The reweighted distributions are corrected using correction factors derived in the 4jCR, and the template is built in the 3jCR.}
+               
+  \label{fig:search:search:4jvr:reweight}
+\end{figure}
+%%------------------------------ 
+%
+
+Additionally, Figure~\ref{fig:search:search:4jvr:Total} shows the \MJ distribution in each of the validation regions, with all uncertainties shown in teal. The agreement in the validation regions is again very strong, showing the power of the template technique in estimating this complex QCD background.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  \subfigure[Total jet mass in the 4jVR using $\ptthr>100$~GeV]{
+    \includegraphics[width=0.48\columnwidth]{INT/validation_4jet/jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4jvrTotal}
+  }
+  \subfigure[Total jet mass in the 4jVR using $\ptthr>250$~GeV]{
+    \includegraphics[width=0.48\columnwidth]{INT/pt250_vr/jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4j250vrTotal}
+  }
+  \caption{Total jet mass in the 4jCR with $\ptthr>100$~GeV and $\ptthr > 250$~GeV. In both cases, the reweighted template (built in the 3jCR, and applied jet-by-jet in the relevant region) is shown in the hashed blue histogram. The 4jCR templates are shown in the open blue squares. The total systematic uncertainty due to bias and variance and the non-closure in the control regions is shown in green.}
+  \label{fig:search:search:4jvr:Total}
+\end{figure}
+%%------------------------------ 
+%
+
+
+\subsubsection{Final Cross-checks Using MC Simulation}
+\label{chapter:search:search:mc}
+
+One possible concern for the template technique is that it assumes that the same mechanism is responsible for generating the individual jet masses in both the control and signal regions. In the previous sections we showed the closure of the template and reweighting procedure in data (in the 4jVR region). In order to test the extent to which a different composition of processes may affect the derived templates, we relax the assumption that QCD is the only background in the 3jCR and 4j regions by injecting a sample of \Sherpa $t\bar{t}$ Monte Carlo events into the full procedure. This sample is composed of the full set of branching ratios for \ttbar\ final states. Figure~\ref{fig:search:search:mccheck:4jTop} shows the comparisons of templates in \Sherpa QCD, with and without an injection of the \ttbar\ sample. The results are consistent, showing that the background estimation is insensitive to the presence of top.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/top_injection/jetmass1_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jTop:first}}
+  \subfigure[Subleading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/top_injection/jetmass2_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jTop:second}}\\
+  \subfigure[Third leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/top_injection/jetmass3_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jTop:third}}
+  \subfigure[Fourth leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/top_injection/jetmass4_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jTop:fourth}}    
+    
+  \caption{\ttbar\ injection tests. Comparisons of the template backgrounds in the 4jSR, for QCD only and QCD + top background distributions. The templates do not generally change with the injection of the top MC.}
+               
+  \label{fig:search:search:mccheck:4jTop}
+\end{figure}
+%%------------------------------ 
+
+
+
+Another important test is the sensitivity of the background estimate to the presence of signal. The background expectation is derived from the kinematics of the leading 4 jets in the signal region -- if the signal affects the training sample kinematics then the background expectation for the signal region will change. We perform a direct signal injection test to determine the sensitivity of the template technique to the presence of signal. Figure~\ref{fig:search:search:mccheck:4jSignalInjection} shows the \Sherpa background estimate with and without signal events added into the full background estimation procedure. We use the $\mgluino = 600$ GeV, $\mninoone = 50$ GeV point, which shows the strongest change in the event kinematics, but the background expectation does not change.
+
+%%------------------------------ 
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_injection_sr/jetmass1_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jSignalInjection:first}}
+  \subfigure[Subleading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_injection_sr/jetmass2_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jSignalInjection:second}}\\
+  \subfigure[Third leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_injection_sr/jetmass3_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jSignalInjection:third}}
+  \subfigure[Fourth leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_injection_sr/jetmass4_3temp_4kin.pdf}
+    \label{fig:search:search:mccheck:4jSignalInjection:fourth}}    
+    
+  \caption{Signal injection tests. Comparisons of the template backgrounds in the 4jSR, with and without signal injection. We use the $\mgluino = 600$ GeV, $\mninoone = 50$ GeV point, which shows the strongest kinematic differences with the background sample. The resulting background expectation does not change.}
+               
+  \label{fig:search:search:mccheck:4jSignalInjection}
+\end{figure}
+%%------------------------------ 
+
+Finally, Figure~\ref{fig:search:search:mccheck:4jSherpa} shows the closure test of the technique in Sherpa QCD alone (with no other injection). This plot shows that the agreement, after the full procedure of template derivation and reweighting, succeeds in the MC signal region. 
+
+%%------------------------------ 
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/sherpa_test/jetmass1_3temp_4kin_closure.pdf}
+    \label{fig:search:search:mccheck:4jSherpa:first}}%
+  \subfigure[Subleading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/sherpa_test/jetmass2_3temp_4kin_closure.pdf}
+    \label{fig:search:search:mccheck:4jSherpa:second}}
+  \subfigure[Third leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/sherpa_test/jetmass3_3temp_4kin_closure.pdf}
+    \label{fig:search:search:mccheck:4jSherpa:third}}%
+  \subfigure[Fourth leading jet mass]{
+    \includegraphics[width=0.48\columnwidth]{INT/sherpa_test/jetmass4_3temp_4kin_closure.pdf}
+    \label{fig:search:search:mccheck:4jSherpa:fourth}}
+    
+  \caption{Sherpa closure test of the template + reweighting technique. The individual jet masses are shown in the SR, compared to the prediction before and after reweighting. The reweighted sample shows good agreement with the observed distribution.}
+               
+  \label{fig:search:search:mccheck:4jSherpa}
+\end{figure}
+%%------------------------------ 
+
+
+
+\subsubsection{Uncertainties}
+
 
 
 \subsubsection{Searching in the 4jSR}
