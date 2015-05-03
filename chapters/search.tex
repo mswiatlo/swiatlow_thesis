@@ -1021,9 +1021,816 @@ Finally, Figure~\ref{fig:search:search:mccheck:4jSherpa} shows the closure test 
 \subsubsection{Uncertainties}
 
 
+The systematic uncertainties affecting the analysis fall into two broad categories: those that derive from the selections and background estimations of the analysis itself, and those that affect the predicted signal properties and selection efficiencies. Each of these two categories are discussed in the following sections.
+
+%%------------------------------ 
+\subsubsection{Template-based background estimation uncertainties}
+%%------------------------------ 
+
+
+As described in Section~\ref{chapter:search:substructure:templates} above, there are two systematic sources of error associated with the template procedure: the uncertainty due to finite statistics in the training sample (called the variance), and the uncertainty due to the smoothing procedure in the template derivation (called the bias). All plots of the total jet mass distributions shown include both the variance and bias in the systematics. The bias is nominally treated as a fully correlated bin-by-bin uncertainty in the multi-bin fit: the degree of over-smoothing affects all bins simultaneously, if it affects any.
+
+To assess the degree of correlation between bins, we explicitly construct the \textit{covariance matrix}, where $v_i$ is the vector corresponding to the background estimate bins, and $i$ iterates over bins, as
+%
+%----------------
+\begin{equation}
+C_{ij} = \overline{v_i v_j} - (\overline{v_i}\,\, \overline{v_j}),
+\end{equation}
+%----------------
+%
+\noindent and the correlation matrix as
+%
+%----------------
+\begin{equation}
+C'_{ij} = \frac{\overline{v_i v_j }}{\sigma_i \sigma_j} - \frac{\overline{v_i}\,\,\overline{v_j}}{\sigma_i \sigma_j}.
+\end{equation}
+%----------------
+%
+\noindent The correlation matrix for SR250 is shown in Figure~\ref{fig:search:search:systematics:SR250}. Only a mild correlation exists between neighboring bins, and only one out of ten independent off-diagonal elements has a correlation greater than 20\%, only two have greater than 10\%, and the remaining are a the percent or sub-percent level. One option to reduce the number of Nuisance Parameters is to diagonalize the covariance matrix, and drop the subdominant (normalized) eigenvalues/vectors. The diagonalization procedure, however, reveals that the preferred eigenbasis is very close to that of the diagonal, which is sensible given the very small degree of correlation. For this reason, we apply the variation of each bin independently, assigning a nuisance parameter to each bin separately. This has the added benefit of reducing the profiling during the fit (as there are now more Nuisance Parameters than fit points). The effect on the limit is modest, and the exclusion reach and sensitivity of the analysis does not change appreciably.
+
+
+% Both systematics are (separately) treated as correlated bin-by-bin in the multi-bin fits. Assessments of the individual toys used to estimate the variance show that fluctuations in the 3jCR (the source of the variance systematic) create systematic shifts in the \MJ distribution-- not solitary spikes which would require an uncorrelated bin-by-bin approach. The kernel smoothing procedure spreads flucutations in the templates across many bins, and so it is reasonable to expect a fully correlated systematic bin-by-bin.
+
+% \Figref{systematics:toys} shows an example of why this is the case. The figure shows the \MJ distribution from two (out of 100) toys used to calculate the variance. Both are the result of a Poisson-fluctuated dataset in the 3jCR. The fluctations of the black toy did not spikes in comparison to the red toy, but instead a systematic shift in a single direction, caused by the inherent smoothing procedure in the template method. This shows the need to use correlated bins to assess the variance systematic.
+
+% %%------------------------------    
+% \begin{figure}[!ht]
+%   \centering  
+%   \includegraphics[width=0.65\columnwidth]{figures/Systematics/c1.eps}
+%   \caption{Example of two statistical toys used to calculate the variance of the template method. The toy in black is consistently shifted to the right-- the fluctuations in the 3jCR where the template was constructed results in a systematic shift of the \MJ distribution, and show the need to use correlated bins to describe the variance systematic.}
+%   \label{fig:systematics:toys}
+% \end{figure}
+% %%------------------------------
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Covariance Matrix]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/Cov/CovarianceSR250.pdf}
+    \label{fig:search:search:systematics:SR250:covariance}}
+  %  
+  \subfigure[Correlation Matrix]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/Cov/CorrelationSR250.pdf}
+    \label{fig:search:search:systematics:SR250:correlation}}
+    
+  \caption{Correlation and covariance matrix for SR250. The correlation matrix reveals that the correlation amongst bins is rather small, and suggest the usage of 5 separate nuisance parameters for SR250. The 5 bins here indicate the last 5 bins of the SR250 distributions.}
+           
+  \label{fig:search:search:systematics:SR250}
+\end{figure}
+%%------------------------------ 
+
+A third systematic, applicable to all signal regions, is the size of the reweighting applied (or the observed non-closure compared to data) to the total jet mass prediction, as derived in the 4jCR. This is also treated as fully correlated between the bins used in the multi-bin fit.  For all but the lowest \MJ bin in SR100, the reweighting systematic dominates. The SR250 and single-bin signal regions, when tested in the 4jCR and 4jVR, revealed a significantly smaller non-closure, and thus no reweighting is applied. The small levels of significant residual non-closure observed in the 4jCR is applied as a systematic to cover any remaining disagreement between data and prediction. At low values of \MJ this can dominate, but becomes subdominant at higher values of \MJ.
+
+The set of tables provided in Table~\ref{tab:backSR1}, Table~\ref{tab:backSR100}, and Table~\ref{tab:backSR250} provide a full breakdown of the systematics in the background estimates for all signal regions.
+
+%%------------------------------    
+\begin{table}[!ht]
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l}
+
+  
+\multicolumn{2}{c}{Uncertainties in single bin region} \\
+\hline \hline
+
+$\mathbf{\MJ}$ \textbf{Bin [GeV]}  & $\mathbf{\geq 625}$ \\
+\hline
+ Expected Number of Events & 164 $\pm 13$  \\
+ Variance & +26\% / -20\% \\
+ Bias & $\pm 8$\% \\
+ 4jCR Difference  & $\pm 7$\% \\
+ \hline \hline
+  \end{tabular}
+  
+  \caption{Expected number of observed events, and the systematic uncertainty from the template method, for the single bin signal region characterized by $\MJ \geq 625$~GeV and $\pt^{3}>250$~GeV. \label{tab:backSR1}}
+\end{center}
+\end{table}
+%%------------------------------ 
+
+
+%%------------------------------    
+\begin{table}[!ht]
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+  
+\multicolumn{6}{c}{Uncertainties in SR100} \\
+\hline \hline
+
+$\mathbf{\MJ}$ \textbf{Bin [GeV]}  & \textbf{350 - 400} & \textbf{400 - 450} & \textbf{450 - 525} & \textbf{525 - 725} & $\mathbf{>725}$ \\ \cline{2-6}
+\hline
+ Expected Number of Events & $4250\pm78$ & $2640\pm49$ & $2070\pm42$ & $965\pm24$ & $71\pm7$ \\
+ Variance & +3\% / -2\% & +2\% / -3\% & +4\% / -4\% & +7\% / -7\% & +37\% / - 38\% \\
+ Bias & $\pm$1\% & $\pm$1\% & $\pm$1\% & $\pm$2\% & $\pm$15\% \\
+ Reweighting& $\pm$12\% & $\pm$14\% & $\pm$17\% & $\pm$20\% & $\pm$22\% \\
+ \hline \hline
+  \end{tabular}
+  
+  \caption{Expected number of observed events, and the systematic uncertainty from the template method, for the SR100 signal region. \label{tab:backSR100}}
+\end{center}
+\end{table}
+%%------------------------------ 
+
+%%------------------------------    
+\begin{table}[!ht]
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+  
+\multicolumn{6}{c}{Uncertainties in SR250} \\
+\hline \hline
+
+$\mathbf{\MJ}$ \textbf{Bin [GeV]}  & \textbf{350 - 400} & \textbf{400 - 450} & \textbf{450 - 525} & \textbf{525 - 725} & $\mathbf{>725}$ \\ \cline{2-6}
+\hline
+ Expected Number of Events & $1430\pm35$ & $920\pm33$ & $780\pm32$ & $490\pm23$ & $37\pm6$ \\
+ Variance & +3\% / -4\% & +5\% / -5\% & +5\% / -5\% & +10\% / -9\% & +45\% / - 31\% \\
+ Bias & $\pm$2\% & $\pm$1\% & $\pm$1\% & $\pm$3\% & $\pm$15\% \\
+ 4jCR Difference & $\pm$8\% & $\pm$14\% & $\pm$11\% & $\pm$10\% & $\pm$7\% \\
+ \hline \hline
+  \end{tabular}
+  
+  \caption{Expected number of observed events, and the systematic uncertainty from the template method, for the SR250 signal region. \label{tab:backSR250}}
+\end{center}
+\end{table}
+%%------------------------------ 
+
+
+
+
+
+%%------------------------------ 
+\subsubsection{Signal systematic uncertainties and measurement uncertainties}
+%%------------------------------ 
+
+Uncertainties must also be assessed on the selection efficiency for each signal model considered in the analysis. The uncertainty is dominated by the jet energy scale (JES) and jet mass scale (JMS) uncertainties. In particular, the JMS uncertainty affects the selection efficiency significantly and results in the largest single source of measurement uncertainties associated with the signal. A breakdown of the JES and JMS uncertainties in the different signal regions is shown in Tables~\ref{tab:jesjms:SR1},~\ref{tab:jesjms:SR100},~and~\ref{tab:jesjms:SR250}. 
+%
+Note that the JES and JMS are assessed independently, and assumed therefore to be uncorrelated. Studies were done to correlate/anti-correlate the uncertainties and assess the change: as the differences were not large, we maintain the nominal uncorrelated assumption here.
+%
+The JMS is by far the largest systematic for all signal points. The JES is negligible for the single bin and SR100 signal regions, but becomes a little larger for the SR250 signal region (which cuts more strongly on the 3rd jet \pT, and is therefore expected to be more significantly affected by the JES).
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Impact of JES on \MJ]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/overlay_MJ4_Syst_HiFat_JES_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+    \label{fig:jesjms:jes:MJ}}
+  %  
+  \subfigure[Impact of JES on \Deta]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/overlay_DEta_Syst_HiFat_JES_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+    \label{fig:jesjms:jes:DEta}}
+    
+  \caption{Impact of the jet energy scale systematic uncertainty on the \MJ and \Deta distributions for an inclusive event selection, on the \mgluino = 800 GeV, \mninoone = 300 GeV mass point.
+           }
+           
+  \label{fig:jesjms:jes}
+\end{figure}
+%%------------------------------ 
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Impact of JMS on \MJ]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/overlay_MJ4_Syst_HiFat_JMS_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+    \label{fig:jesjms:jms:MJ}}
+  %  
+  \subfigure[Impact of JMS on \Deta]{
+    \includegraphics[width=0.48\columnwidth]{INT/Systematics/overlay_DEta_Syst_HiFat_JMS_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+    \label{fig:jesjms:jms:DEta}}
+    
+  \caption{Impact of the jet mass scale systematic uncertainty on the \MJ and \Deta distributions for an inclusive event selection, on the \mgluino = 800 GeV, \mninoone = 300 GeV mass point.
+           }
+           
+  \label{fig:jesjms:jms}
+\end{figure}
+%%------------------------------ 
+
+
+% %%------------------------------    
+% \begin{figure}[!ht]
+%   \centering
+  
+%   \subfigure[Impact of JMS on \MJ]{
+%     \includegraphics[width=0.48\columnwidth]{figures/Systematics/overlay_MJ4_Syst_HiFat_JMS_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+%     \label{fig:jesjms:jms:MJ}
+%     }
+%   %  
+%   \subfigure[Impact of JMS on \DEta]{
+%     \includegraphics[width=0.48\columnwidth]{figures/Systematics/overlay_DEta_Syst_HiFat_JMS_hpp_RPVGluinoToChi_10q_M800_300_j470_AntiKt10LCTopoTrimmedPtFrac5SmallR30_data12_v\PlotVersion.pdf}
+%     \label{fig:jesjms:jms:DEta}
+%     }
+    
+%   \caption{Impact of the jet mass scale systematic uncertainty on the \MJ and \Deta distributions for an inclusive event selection, on the \mgluino = 800 GeV, \mninoone = 300 GeV mass point.
+%            }
+           
+%   \label{fig:jesjms:jms}
+% \end{figure}
+% %%------------------------------ 
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Single Bin, \MJ $>$ 625 GeV}} \\
+\hline \hline
+
+{\mgluino, \mninoone [GeV]}  & 600, 50 & 800, 175 & 1000, 300 & 1200, 600 & 1400, 50 \\ \cline{2-6}
+\hline
+JES & $\pm$ 4\% & $\pm$ 4\% & $\pm$ 2\% & $\pm$ 1\% & $\pm$ 1\%  \\
+JMS & $\pm$ 34\% & $\pm$ 28\% & $\pm$ 19\% & $\pm$ 13\% & $\pm$ 14\% \\
+\hline \hline
+
+\end{tabular}
+\caption{Breakdown of JES and JMS for the single-bin signal region characterized by $\MJ \geq 625$~GeV and $\pt^{3}>250$~GeV.}\label{tab:jesjms:SR1}
+\end{center}
+\end{table}
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JMS, SR100}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 11$\% & $\pm 9$\% & $\pm 7$\% & $\pm 20$\% & $\pm 50$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 20$\% & $\pm 11$\% & $\pm 11$\% & $\pm 12$\% & $\pm 37$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 25$\% & $\pm 17$\% & $\pm 13$\% & $\pm 21$\% & $\pm 29$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 26$\% & $\pm 27$\% & $\pm 18$\% & $\pm 19$\% & $\pm 20$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 12$\% & $\pm 2$\% & $\pm 2$\% & $\pm 1$\% & $\pm 19$\%  \\
+\hline \hline
+
+\multicolumn{6}{c}{\textbf{Multi-Bin, JES, SR100}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 4$\% & $\pm 4$\% & $\pm 4$\% & $\pm 4$\% & $\pm 3$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 3$\% & $\pm 4$\% & $\pm 3$\% & $\pm 5$\% & $\pm 3$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 1$\% & $\pm 1$\% & $\pm 2$\% & $\pm 2$\% & $\pm 2$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 0$\% & $\pm 1$\% & $\pm 1$\% & $\pm 1$\% & $\pm 2$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 1$\% & $\pm 0$\% & $\pm 1$\% & $\pm 1$\% & $\pm 1$\%  \\
+\hline \hline
+
+\end{tabular}
+\caption{Breakdown of JES and JMS for the multi-bin SR100 signal region.}\label{tab:jesjms:SR100}
+\end{center}
+\end{table}
+
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JMS, SR250}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 9$\% & $\pm 5$\% & $\pm 12$\% & $\pm 18$\% & $\pm 41$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 23$\% & $\pm 18$\% & $\pm 14$\% & $\pm 10$\% & $\pm 37$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 25$\% & $\pm 19$\% & $\pm 14$\% & $\pm 22$\% & $\pm 29$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 26$\% & $\pm 28$\% & $\pm 19$\% & $\pm 19$\% & $\pm 20$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 13$\% & $\pm 1$\% & $\pm 2$\% & $\pm 2$\% & $\pm 20$\%  \\
+\hline \hline
+
+\multicolumn{6}{c}{\textbf{Multi-Bin, JES, SR250}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 15$\% & $\pm 12$\% & $\pm 12$\% & $\pm 11$\% & $\pm 10$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 10$\% & $\pm 10$\% & $\pm 10$\% & $\pm 8$\% & $\pm 7$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 8$\% & $\pm 8$\% & $\pm 7$\% & $\pm 6$\% & $\pm 5$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 5$\% & $\pm 5$\% & $\pm 5$\% & $\pm 4$\% & $\pm 3$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 1$\% & $\pm 2$\% & $\pm 1$\% & $\pm 2$\% & $\pm 2$\%  \\
+\hline \hline
+
+\end{tabular}
+\caption{Breakdown of JES and JMS for the multi-bin SR250 signal region.}\label{tab:jesjms:SR250}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+An additional pair of systematics comes from the effects of the Jet Energy Resolution (JER) and Jet Mass Resolution (JMR). The jet substructure group does not release an official set of resolutions, but instead prescribes a set of studies for measuring the resolution in MC samples. They yield the fitted resolution functions seen in Figure~\ref{fig:res}.
+%
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Energy Resolution]{
+    \includegraphics[width=0.48\columnwidth]{INT/Resolution/Response_vs_ptEnergy_0_0.pdf}
+    \label{fig:res:jer}}
+  %  
+  \subfigure[Mass Resolution]{
+    \includegraphics[width=0.48\columnwidth]{INT/Resolution/Response_vs_ptMass_0_0.pdf}
+    \label{fig:res:jmr}}
+    
+  \caption{Fitted resolution functions, as a function of $p_{T}$, for all signal MC.
+           }
+           
+  \label{fig:res}
+\end{figure}
+%%------------------------------ 
+%
+To estimate the uncertainty due to possible disagreement between data and MC simulation, this measured resolution and smear the \pT\ and mass of the jet such that it increases by $20\%$. This factor of $20\%$ is very roughly derived from the disagreement between data and MC in describing the $W$ mass peak from \ttbar events; as this is only valid in a very limited \pt range, the value is inflated significantly and extrapolated to the full phase space. In practice, this means applying a Gaussian smearing with mean $m$ and $\sigma = 0.66\sigma^{measured}$. We apply this smearing to all of our signal grid points.\footnote{Due to a large sensitivity to statistical uncertainty in this procedure, and the fact that mass distributions vary little for different values of \mninoone for constant \mgluino, we merge some signal distributions across \mninoone bins in order to increase statistics.} %The results of the JMR smearing are displayed in \figref{res:jmrresult}.
+%
+
+
+Table~\ref{tab:jerjmr:SR1}, \ref{tab:jerjmr:SR100}, and \ref{tab:jerjmr:SR250} show a summary of the JER and JMR for several mass points. Generally the systematic is very low -- the effect of the JER is not observable, and the JMR is always subdominant to the JES and less than $10\%$.
+
+% %%------------------------------    
+% \begin{figure}[!ht]
+%   \centering
+  
+%   \subfigure[SR1]{
+%     \includegraphics[width=0.45\columnwidth]{figures/Resolution/jmrSR0.pdf}
+%     \label{fig:res:jmr1}}
+%   %  
+%   \subfigure[SR2]{
+%     \includegraphics[width=0.45\columnwidth]{figures/Resolution/jmrSR1.pdf}
+%     \label{fig:res:jmr2}}
+%   % 
+%   \subfigure[SR3]{
+%     \includegraphics[width=0.45\columnwidth]{figures/Resolution/jmrSR2.pdf}
+%     \label{fig:res:jmr3}}
+    
+%   \caption{Size of the jet resolution systematic on the signal acceptance in each SR.
+%            }
+           
+%   \label{fig:res:jmrresult}
+% \end{figure}
+% %%------------------------------ 
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Single Bin, \MJ $>$ 625 GeV}} \\
+\hline \hline
+
+{\mgluino, \mninoone [GeV]}  & 600, 50 & 800, 175 & 1000, 300 & 1200, 600 & 1400, 50 \\ \cline{2-6}
+\hline
+JER & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\%\ \\
+JMR & $\pm$4\% & $\pm$5\% & $\pm$0\% & $\pm$1\% & $\pm$1\% \\
+
+% \hline \hline
+% \multicolumn{6}{c}{\textbf{Signal Region 2 (SR2)}} \\
+% \hline \hline
+
+% {\bfseries \mgluino, \mninoone}  & 600, 50 & 800, 175 & 1000, 300 & 1200, 600 & 1400, 50 \\ \cline{2-6}
+% \hline
+% %JER & +1.9\%\, -5.2\% & +3.0\%\, -3.4\% & \textbf{+2.0\%\, -2.2\%} & \textbf{+0.9\%\, -1.2\%} & +1.5\%\, -1.5\%  \\
+% JER & +0\% & 0\% & \textbf{-0\%} & \textbf{+0\%} & 0\%\ \\
+% JMR & 27\% & +18\% & \textbf{+9\%} & \textbf{-1\%} & +0\% \\
+
+% \hline \hline
+% \multicolumn{6}{c}{\textbf{Signal Region 3 (SR3)}} \\
+% \hline \hline
+
+% {\bfseries \mgluino, \mninoone}  & 600, 50 & 800, 175 & 1000, 300 & 1200, 600 & 1400, 50 \\ \cline{2-6}
+% \hline
+% JER & +2\% & 0\% & 0\% & +0\% & \textbf{-0\%}\ \\
+% JMR & +39\% & +40\% & +23\% & +14\% & \textbf{+12\%} \\
+
+\hline \hline
+
+\end{tabular}
+\caption{Breakdown of JER and JMR for a few mass points in the SR250 Signal Region, with a single bin cut of $\MJ > 650$ GeV.}\label{tab:jerjmr:SR1}
+\end{center}
+\end{table}
+
+
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JMR, SR100}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 4$\% & $\pm 1$\% & $\pm 0$\% & $\pm 0$\% & $\pm 1$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 4$\% & $\pm 1$\% & $\pm 2$\% & $\pm 3$\% & $\pm 9$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 4$\% & $\pm 1$\% & $\pm 0$\% & $\pm 3$\% & $\pm 3$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 6$\% & $\pm 5$\% & $\pm 1$\% & $\pm 2$\% & $\pm 0$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 1$\% & $\pm 0$\% & $\pm 1$\% & $\pm 2$\% & $\pm 1$\%  \\
+
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JER, SR100}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$1\% \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+\hline \hline
+
+
+\end{tabular}
+\caption{Breakdown of JER and JMR for the multi-bin SR100 signal region.}\label{tab:jerjmr:SR100}
+\end{center}
+\end{table}
+
+
+
+\begin{table}[!ht]
+%\footnotesize
+\begin{center}\renewcommand\arraystretch{1.6}
+\begin{tabular}{r|l |l |l |l |l }
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JMR, SR250}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV &  $\pm 6$\% & $\pm 3$\% & $\pm 1$\% & $\pm 2$\% & $\pm 12$\%  \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm 3$\% & $\pm 10$\% & $\pm 7$\% & $\pm 3$\% & $\pm 10$\%  \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm 3$\% & $\pm 4$\% & $\pm 0$\% & $\pm 3$\% & $\pm 2$\%  \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm 1$\% & $\pm 8$\% & $\pm 1$\% & $\pm 2$\% & $\pm 0$\%  \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm 1$\% & $\pm 0$\% & $\pm 1$\% & $\pm 2$\% & $\pm 1$\%  \\
+
+
+\hline \hline
+\multicolumn{6}{c}{\textbf{Multi-Bin, JER, SR250}} \\
+\hline \hline
+
+{\bfseries \MJ Bin [GeV]}  & 350 - 400 & 400 - 450 & 450 - 525 & 525 - 725 & $>$725 \\ \cline{2-6}
+\hline
+ \mgluino = 600,  \mninoone = 50 GeV & $\pm$0\% & $\pm$1\% & $\pm$0\% & $\pm$0\% & $\pm$2\% \\
+ \mgluino = 800,  \mninoone = 175 GeV & $\pm$0\% & $\pm$0\% & $\pm$1\% & $\pm$0\% & $\pm$1\% \\
+ \mgluino = 1000,  \mninoone = 300 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+ \mgluino = 1200,  \mninoone = 600 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+ \mgluino = 1400,  \mninoone = 50 GeV & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% & $\pm$0\% \\
+\hline \hline
+
+
+\end{tabular}
+\caption{Breakdown of JER and JMR for the multi-bin SR250 signal region.}\label{tab:jerjmr:SR250}
+\end{center}
+\end{table}
+
+
+%In all cases, the nominal signal cross-section and uncertainty are taken from an envelope of cross-section predictions using different PDF sets and factorization and renormalization scales, as described in Ref.~\cite{Kramer:2012bx}. 
+
+
+\editnote{Theory uncertainties! Yeah...}
+
+The statistical uncertainty of the MC signal sample is included in all results.
+
+
+Finally, the uncertainty on the integrated luminosity is $\pm2.8\%$. It is derived, following the same methodology as that detailed in \cite{ATLASLumi}, from a preliminary calibration of the luminosity scale derived from beam-separation scans performed in November 2012.
+
+
+
+
+
+
 
 \subsubsection{Searching in the 4jSR}
 
-	\subsection{Limits}
-	\subsection{Future Prospects}
-		...
+
+
+
+
+Figure~\ref{fig:search:search:4jsr:Reweight} shows the four expected single jet mass distributions in the 4jSR. Both the reweighted templates and the unweighted templates are shown, using the weighting procedure defined in the 4jCR. The size of the reweighting is approximately 10-20\%. Note that the 4jSR data are not included in this figure.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/sr_4jet/jetmass1_3temp_4kin.pdf}}
+    % \label{fig:template:performance:4jsrReweight:first}}
+  \subfigure[Subleading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/sr_4jet/jetmass2_3temp_4kin.pdf}}\\
+    % \label{fig:template:performance:4jsrReweight:second}}\\
+  \subfigure[Third leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/sr_4jet/jetmass3_3temp_4kin.pdf}}
+    % \label{fig:template:performance:4jsrReweight:third}}
+  \subfigure[Fourth leading jet mass and template]{
+    \includegraphics[width=0.48\columnwidth]{INT/sr_4jet/jetmass4_3temp_4kin.pdf}}\\
+    % \label{fig:template:performance:4jsrReweight:fourth}}    
+    
+  \caption{Comparisons between the templates before and after reweighting, in the 4jSR. The reweighted distributions are corrected using correction factors derived in the 4jCR, and the template is built in the 3jCR. Note that the 4jSR data are not included in this figure.}
+               
+  \label{fig:search:search:4jsr:Reweight}
+\end{figure}
+%%------------------------------ 
+
+
+Figures \ref{fig:search:search:4jsr:overlaySR100,fig:search:search:4jsr:overlaySR250} show two signal points overlaid with the background estimates in each of the 4-jet regions. The sensitivity (in both the $S/B$ and integrated number of events) is lowest in the 4jCR, slightly higher in the 4jVR, and highest in the 4jSR, as expected, for both SR100 and SR250.
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[4jCR using $\ptthr>100$~GeV (SR100)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay/_totaljetmass_3temp_cr.pdf}}
+    % \label{fig:template:performance:overlay:cr}}
+  \subfigure[4jVR using $\ptthr>100$~GeV (SR100)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay/_totaljetmass_3temp_vr.pdf}}\\
+    % \label{fig:template:performance:overlay:vr}}\\
+  \subfigure[4jSR using $\ptthr>100$~GeV (SR100)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay/_totaljetmass_3temp_sr.pdf}}
+    % \label{fig:template:performance:overlay:sr}}
+    
+  \caption{Comparison of the background estimate (the template derived in the 3jCR with reweighting derived from the 4jCR), in the blue hashed histogram, compared to the signal (with \mgluino = 800 GeV and \mchi = 175 GeV) in closed cyan markers. In each case, the \MJ templates is constructed using $\ptthr>100$~GeV (SR100).}
+               
+  \label{fig:search:search:4jsr:overlaySR100}
+\end{figure}
+%%------------------------------ 
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[4jCR using $\ptthr>250$~GeV (SR250)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay_250/_totaljetmass_3temp_cr.pdf}}
+    % \label{fig:template:performance:overlay:SR250:cr}}
+  \subfigure[4jVR using $\ptthr>250$~GeV (SR250)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay_250/_totaljetmass_3temp_vr.pdf}}\\
+    % \label{fig:template:performance:overlay:SR250:vr}}\\
+  \subfigure[4jSR using $\ptthr>250$~GeV (SR250)]{
+    \includegraphics[width=0.48\columnwidth]{INT/signal_overlay_250/_totaljetmass_3temp_sr.pdf}}
+    % \label{fig:template:performance:overlay:SR250:sr}}
+    
+  \caption{Comparison of the background estimate (the template derived in the 3jCR with reweighting derived from the 4jCR), in the blue hashed histogram, compared to the signal (with \mgluino = 800 GeV and \mchi = 175 GeV) in closed cyan markers. In each case, the \MJ templates is constructed using $\ptthr>250$~GeV (SR250).}
+               
+  \label{fig:search:search:4jsr:overlaySR250}
+\end{figure}
+%%------------------------------ 
+
+
+
+
+
+
+
+
+Finally, now that we are have:
+%
+\begin{enumerate}
+\item Developed a background estimate from substructure templates trained in the 3jCR
+\item Extrapolated these templates to a 4jCR, and derived corrections and uncertainty
+\item Further extrapolated the templates, reweighting, and uncertainties to a 4jVR, and observed very good agreement
+\item Checked that signal contamination (and top contamination) is low in all control regions
+\end{enumerate}
+%
+we can at least look in the 4jSR's to compare the data to the background estimation. Figure~\ref{fig:search:search:4jsr:Reweight} shows the expected total jet mass in the 4jSR, along with the unweighted template and the systematic uncertainty on the template method, including the uncertainties derived from the 4jCR disagreement. This histogram is the full background estimate, and the ratios show the full systematics. One signal point is overlayed to display the sensitivity of the analysis: if this signal was present, it would clearly be observed. However, the observed data agrees very well with the background prediction: again, the template measurement of the jet mass performs very well.
+
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  \subfigure[Total jet mass and template in SR100 using $\ptthr>100$~GeV]{
+    \includegraphics[width=0.6\columnwidth]{INT/sr_4jet/jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4jsrTotal:SR100}
+  }
+  \subfigure[Total jet mass and template in SR250 using $\ptthr>250$~GeV]{
+    \includegraphics[width=0.6\columnwidth]{INT/sr_4jet/pt250_jetmasstotal_3temp_.pdf}
+    % \label{fig:template:performance:4jsrTotal:SR250}
+  }
+  \caption{Total jet mass in the 4jSR using $\ptthr>100$~GeV (SR150) and  using $\ptthr>250$~GeV (SR250).}
+  \label{fig:search:search:4jsr:Total}
+\end{figure}
+%%------------------------------ 
+
+
+\FloatBarrier
+
+
+
+\section{Limits}
+
+
+The observed and expected event yields are presented in Table~\ref{tab:results:yields:sr1}, \ref{tab:results:yields:sr100}, and \ref{tab:results:yields:sr250} for the three signal regions SR1, SR100 and SR250 respectively. The single-bin signal region selection (SR1) is reported in addition to the binned \MJ results in SR100 and SR250 in order to provide yields that can be easily reinterpreted for other signal hypotheses. In the case of the binned \MJ signal regions, a binned fit (where the number and size of the bins were optimized) is performed that takes into account the predictions for each \MJ range. This approach provides greater sensitivity to small deviations from the template predictions. The binning, and all cut values, were optimized using the full limit setting procedure: all SR cuts were chosen from a scan on many different possibilities (changing the number of bins, cut values, etc.) and selected based on the best expected sensivitiy to a range of \gluino-\lsp models.
+
+
+
+As no signal is observed in these tables, model-independent upper limits on non-SM contributions are derived using the SR1 signal region. Multi-bin fits assume a signal shape, and are unsuitable for the purpose of testing data-background agreement and deriving generic cross-section limits in this way, so SR100 and SR250 are excluded. A generic signal model, which contributes only to the signal region, is assumed and no experimental or theoretical signal systematic uncertainties are assigned other than the luminosity uncertainty. The resulting limits on the number of non-SM events and on the visible signal cross-section are shown in the rightmost columns of Table~\ref{tab:results:discovery}. The visible signal cross-section ($\sigma_\text{vis}$) is defined as the product of acceptance ($A$), reconstruction efficiency ($\epsilon$) and production cross-section ($\sigma_\text{prod}$); it is obtained by dividing the upper limit on the number of non-SM events by the integrated luminosity. 
+
+
+%%------------------------------
+\begin{table*}[htb]
+\begin{center}
+\footnotesize
+\begin{tabular}{r|c|c|c|c|c} 
+\multicolumn{6}{c}{Summary yield table for SR1}\\
+\hline \hline
+
+\multirow{2}{*}{\textbf{\MJ Bin}} & \multirow{2}{*}{\textbf{Expected SM}} & \multirow{2}{*}{\textbf{Obs.}} & $\mgluino=600$~GeV & $\mgluino=1$~TeV & $\mgluino=1.4$~TeV\\
+ & & & $\mninoone = 50$~GeV & $\mninoone = 600$~GeV & $\mninoone = 900$~GeV \\ 
+\hline
+    $>$ 625 GeV & 160$\pm$9.7 $^{+40}_{-34} $ & 176 & 70$\pm$4.2 $\pm$25$\pm$30 (0.26\%) & 55$\pm$0.51 $\pm$8.6 $\pm$14 (11\%) & 6.3$\pm$0.07 $\pm$0.46$\pm$2.5 (35\%)\\
+\hline \hline
+
+\end{tabular} 
+
+\caption{Table showing the predicted in the SM and observed number of events in SR1 as well as three representative signal scenarios. Acceptances (including efficiency) of the various signals are listed in parentheses. The background uncertainties are displayed as statistical + systematic; the signal uncertainties are displayed as statistical + systematic + theoretical. 
+ \label{tab:results:yields:sr1}}
+\end{center}
+\end{table*}
+
+\begin{table*}[htb]
+\begin{center}
+\footnotesize
+\begin{tabular}{r|c|c|c|c|c} 
+\multicolumn{6}{c}{Summary yield table for SR100}\\
+\hline \hline
+
+\multirow{2}{*}{\textbf{\MJ Bin}} & \multirow{2}{*}{\textbf{Expected SM}} & \multirow{2}{*}{\textbf{Obs.}} & $\mgluino=600$~GeV & $\mgluino=1$~TeV & $\mgluino=1.4$~TeV\\
+ & & & $\mninoone = 50$~GeV & $\mninoone = 600$~GeV & $\mninoone = 900$~GeV \\ 
+\hline
+350 - 400 GeV & 4300$\pm$78 $^{+510}_{-500} $ & 5034 & 200$\pm$7.2$\pm$22$\pm$35 & 5.8$\pm$0.17$\pm$1.3$\pm$1.5 & 0.19$\pm$0.01$\pm$0.04$\pm$0.07\\
+
+400 - 450 GeV & 2600$\pm$49 $^{+380}_{-380} $ & 2474 & 200.$\pm$7.1$\pm$9.5$\pm$35 & 9.7$\pm$0.21$\pm$2.2$\pm$2.5 & 0.31$\pm$0.02$\pm$0.07$\pm$0.12\\
+
+450 - 525 GeV & 2100$\pm$42 $^{+360}_{-360} $ & 1844 & 280.$\pm$8.4$\pm$13$\pm$49 & 26$\pm$0.35$\pm$4.3$\pm$6.7 & 0.88$\pm$0.03$\pm$0.14$\pm$.34\\
+
+525 - 725 GeV & 960$\pm$25 $^{+200}_{-200} $ & 1070 & 280.$\pm$8.4$\pm$57$\pm$49 & 77$\pm$0.60$\pm$3.2 & 3.6$\pm$0.05$\pm$0.36$\pm$1.4\\
+
+    $>$ 725 GeV & 71$\pm$7.0 $^{+32}_{-27} $ & 79 & 35.$\pm$2.9$\pm$18$\pm$6.0 & 35$\pm$0.40$\pm$9.9$\pm$9.0  & 4.8$\pm$0.06$\pm$0.61$\pm$1.9\\
+    
+\hline \hline
+\end{tabular} 
+\caption{Table showing the predicted in the SM and observed number of events in SR100 as well as three representative signal scenarios. The background uncertainties are displayed as statistical + systematic; the signal uncertainties are displayed as statistical + systematic + theoretical.  
+\label{tab:results:yields:sr100}}
+\end{center}
+\end{table*}
+
+
+\begin{table*}[htb]
+\begin{center}
+\footnotesize
+\begin{tabular}{r|c|c|c|c|c} 
+\multicolumn{6}{c}{Summary yield table for SR250}\\
+\hline \hline
+
+\multirow{2}{*}{\textbf{\MJ Bin}} & \multirow{2}{*}{\textbf{Expected SM}} & \multirow{2}{*}{\textbf{Obs.}} & $\mgluino=600$~GeV & $\mgluino=1$~TeV & $\mgluino=1.4$~TeV\\
+ & & & $\mninoone = 50$~GeV & $\mninoone = 600$~GeV & $\mninoone = 900$~GeV \\ 
+\hline
+350 - 400 GeV & 1400$\pm$35 $^{+120}_{-134} $ & 1543 & 83$\pm$4.6 $\pm$15$\pm$14 & 3.3$\pm$0.12 $\pm$0.78$\pm$0.85 & 0.17$\pm$0.01 $\pm$0.03$\pm$0.07\\
+
+400 - 450 GeV & 920$\pm$33 $^{+140}_{-140} $ & 980 & 92$\pm$4.8 $\pm$11$\pm$16 & 5.6$\pm$0.16 $\pm$1.5$\pm$1.5 & 0.27$\pm$0.01 $\pm$0.07$\pm$0.11\\
+
+450 - 525 GeV & 780$\pm$33 $^{+94}_{-94} $ & 823 & 140$\pm$5.8 $\pm$15$\pm$23 & 17$\pm$0.28 $\pm$3.3$\pm$4.4 & 0.79$\pm$0.02 $\pm$0.13$\pm$0.31\\
+
+525 - 725 GeV & 490$\pm$24 $^{+67}_{-67} $ & 495 & 160$\pm$6.2 $\pm$30.$\pm$27 & 56$\pm$0.51 $\pm$4.1$\pm$15 & 3.3$\pm$0.05 $\pm$0.34$\pm$1.3\\
+
+    $>$ 725 GeV & 37$\pm$5.5 $^{+16}_{-12} $ & 42 & 22$\pm$2.3 $\pm$9.1$\pm$3.9 & 27$\pm$0.36 $\pm$7.4$\pm$7.0 & 4.4$\pm$0.06 $\pm$0.56$\pm$1.7\\
+    
+\hline \hline
+\end{tabular} 
+\caption{Table showing the predicted in the SM and observed number of events in SR250 as well as three representative signal scenarios. The background uncertainties are displayed as statistical + systematic; the signal uncertainties are displayed as statistical + systematic + theoretical.  
+\label{tab:results:yields:sr250}}
+\end{center}
+\end{table*}
+%%------------------------------
+
+
+
+
+
+
+\begin{table*}[!htb]
+\begin{center}
+\footnotesize
+\begin{tabular}{r|c|c|c|c|c|c|c} 
+\multicolumn{8}{c}{}\\
+\hline \hline
+
+\multirow{2}{*}{Signal Region} & \multirow{2}{*}{Expected} & \multirow{2}{*}{Obs.} & \multirow{2}{*}{$p_0$} & $N_\text{non-SM}$ & $N_\text{non-SM}$ & $\sigma_\text{vis}$  [fb] & $\sigma_\text{vis}$ [fb]\\
+ & & & & Exp. & Obv. & Exp. & Obv. \\ 
+\hline
+    SR1 (\MJ) & 160$^{+40}_{-34} $ & $176$ & $0.39$ & $49$ & $64$ & $2.4$ & $3.2$\\
+\hline \hline
+
+\end{tabular} 
+
+\caption{Table showing upper limits on the number of events and visible cross sections in SR1. Columns two and three show the expected and observed numbers of events. The uncertainties on the expected yields represent systematic and statistical uncertainties. Column four shows the probabilities, represented by the $p_0$ values, that the observed numbers of events are compatible with the background-only hypothesis (the $p_0$ values are obtained with pseudo-experiments). Columns five and six show respectively the expected and observed 95\% CL upper limit on non-SM events ($N_\text{non-SM}$), and columns seven and eight show respectively the 95\% CL upper limit on the visible signal cross-section ($\sigma_\text{vis} = \sigma_\text{prod} \times A \times \epsilon = N_\text{non-SM}/{\cal{L}}$). In the case where $N_\text{expected}$ exceeds $N_\text{observed}$, $p_0$ is set to $\geq 0.5$. \label{tab:results:discovery}}
+\end{center}
+\end{table*}
+
+
+
+
+
+
+
+Next, a procedure to set limits on the models of interest is performed. A profile likelihood ratio combining Poisson probabilities for signal and background is computed to determine the confidence level (CL) for consistency of the data with the signal-plus-background hypothesis (\CLsb). A similar calculation is performed for the background-only hypothesis (\CLb). From the ratio of these two quantities, the confidence level for the presence of signal (\CLs) is determined. Systematic uncertainties are treated via nuisance parameters assuming Gaussian distributions. \editnote{Expand on this \textbf{significantly}}%~\cite{HistFitter}
+
+In order to ensure the result has minimal sensitivity to the effects of initial state radiation (ISR), which could be poorly modeled in the signal samples,\footnote{\Herwigpp, which is used for signal simulation, is not expected to model additional energetic jets from ISR well because the leading-order evaluation of the matrix element is only performed for the $2\ra2$ particle scattering process.} the region with $(\mgluino-\mninoone)<100$~GeV is not considered. Due to the potentially large theoretical uncertainty on the non-SM colorflow given by UDD couplings, results are presented for a single model of radiation and no systematic uncertainty is assigned for this effect, further justifying the unevaluated region described above. 
+
+
+Figure~\ref{fig:search:limits:srs} shows the $95\%$ Confidence Level limits set by the \CLs procedure previously described. Limits are performed on discrete mass points (shown in Figure~\ref{fig:search:limits:optimal}), and linearly interpolated between points. The black dashed line indicates the expected upper limit (i.e., where the fit is done with pseudo-data from the expected distribution, and not the actual observed data); the yellow bands surrounding the black line indicates the extent of the $\pm 1\sigma$ uncertainties from the background and signal. The red solid line is the observed limit: i.e. the result of the fit with the actual data. Due to very slight excesses in some portion of the spectrum, the observed limit is slightly lower than expected, but is easily within the $1\sigma$ uncertainty band. The red dashed lines are the theoretical uncertainty on the SUSY cross-section.
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[SR100]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_17a.pdf}}
+    % \label{fig:template:performance:overlay:SR250:cr}}
+  \subfigure[SR250]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_17b.pdf}}\\
+    % \label{fig:template:performance:overlay:SR250:vr}}\\
+  \subfigure[SR1]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_17c.pdf}}
+    % \label{fig:template:performance:overlay:SR250:sr}}
+    
+  \caption{Limits in the \mgluino-$m_{\lsp}$ plane, for each of the signal regions of the anaysis.} 
+               
+  \label{fig:search:limits:srs}
+\end{figure}
+%%------------------------------ 
+
+With three different signal regions available, it is expected (and indeed, clear from the expected limits) that some SRs are stronger in various regions of the \mgluino-$m_{\lsp}$ mass plane. SR100, for example, sets strong limits at the bottom left-corner, while SR250 does not exclude those points to more than $1 \sigma$. For this reason, the final result selects the best expected signal region for each mass point analyzed. This is shown in Figure~\ref{fig:search:limits:optimal}: the final result uses a combination of SR100 and SR250 for low mass and high mass points respectively. Critically, the transition between SR100 and SR250 occurs just at the edge of sensitivity of SR100: the overall analysis limits are increased by 100~GeV because of this.
+
+
+%%------------------------------    
+\begin{figure}[!ht]
+  \centering
+  
+  \subfigure[Best expected SR]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_19a.pdf}}
+    % \label{fig:template:performance:overlay:SR250:cr}}
+  \subfigure[Ratio of limit with SR250 compared to SR100]{
+    \includegraphics[width=0.48\columnwidth]{mj/figaux_19b.pdf}}
+    % \label{fig:template:performance:overlay:SR250:vr}}\\
+    
+  \caption{Best expected signal regions in the \mgluino-$m_{\lsp}$ mass plane. In the left figure, 0 indicates SR1, 1 indicates SR100, and 2 indicates SR250. In the right plot, values $>$ 1 indicate a stronger limit from SR250; values $<$ 1 indicate a stronger limit from SR100. As expected, SR250 is stronger at higher mgluino, with a 60\% stronger limit at mgluino = 1400 GeV. SR100 is able to increase the strength of the limits at low mgluino by 40-50\%. } 
+               
+  \label{fig:search:limits:optimal}
+\end{figure}
+%%------------------------------ 
+
+
+Finally, Figure~\ref{fig:search:limits:combined} shows the ultimate limit from this combination. The entire phase space (excluding the unexplored ``compressed'' regions with small mass splitting) are excluded below 825 GeV, and as high as 975 GeV\footnote{In Run 1, ATLAS generally quotes limits with $-1\sigma_\mathrm{theory}$ uncertainties, but as this approach has been abandoned for Run 2, we report the nominal value here.}. 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{mj/fig_09.pdf}
+\label{fig:search:limits:combined}
+\caption{Limits in the \mgluino-$m_{\lsp}$ plane for the combined analysis, which uses the best expected limit for each mass point.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+\section{Conclusions}
+
+By setting limits near 1 TeV for \gluino's in RPV scenarios, we have significantly reduced the possibility that a natural SUSY spectrum is hidden within the complicated QCD backgrounds of this analysis. However, it should be noted that the RPC analyses generally set limits stronger by at least 200-400 GeV: there is still room for RPV SUSY hiding within the window they have eliminated, but which this analysis is not yet sensitive to.
+
+Figure~\ref{fig:search:limits:compare} helps describe one idea for improvement on the analysis. In this figure, limits in the \mgluino-$m_{\lsp}$ mass plane are shown for three analyses: the nominal total jet mass analysis described previously in blue, a jet-counting analysis without $b$-tagging in red, and a jet-counting analysis with $b$-tagging in green\footnote{The jet-counting analysis looks for events with $N_\mathrm{jet}>=6,7$ with $N_\mathrm{jet}$ is defined with an optimized \pt-threshold: high multiplicity RPV \gluino decays are expected to produce many jets.}. Clearly, the total jet mass analysis is stronger than the first jet-counting analysis: \MJ uses not just the \pt information in the event, as the jet-counting approach does, but also considers the angular structure of the events encoded within the mass. This additional angular information-- the heart of substructure, essentially-- is what provides the improved analysis power. On the other hand, the second jet-counting analysis, which utilitizes $b$-tagging information, proves stronger still than \MJ: at least some of the quarks in the \gluino-\lsp cascade turn out to be $b$ or $t$ quarks in most events, leading to many opportunities for $b$-jets in the signal. This information is completely orthogonal to \pt (and angular structure), and provides significantly improved discrimination. The total jet mass analysis did not yet implement $b$-tagging for a number of reasons, but adding this additional information could further improve the limits set by this approach (and potentially exceed those set by the jet-counting approach).
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{mj/fig_15.pdf}
+\label{fig:search:limits:compare}
+\caption{Limits in the \mgluino-$m_{\lsp}$ plane for the combined total jet mass analysis, and two versions of a related jet-counting analysis (with and without $b$-tags).}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+Finally, it should be noted that the current analysis interprets the \gluino-\lsp plane inclusively in flavor, but there are many possibilities for exclusive models: $\tilde{t}$ quarks could have lower masses than the rest of the $\tilde{q}$, for example, or the $\lambda''$ tensor might be non-isotropic and favor decays to certain flavor combinations.
+
+While there is still a great deal of room for improvement for the analysis, the existing result is already an incredibly exciting result. This is in some sense the first fully substructure based SUSY search: substructure informs not only the discriminating variables, but the core background estimation technique. Moreover, we have set very competitive limits in a complicated model which has been thus far ignored by searches-- not because it is not motivated, but because people have considered it too difficult to perform. The innovations in this analysis took a greal deal of effort to develop, but have proven very useful in the search for natural SUSY.
+
+
+
+
+% \section{Future Prospects}
+		% ...
