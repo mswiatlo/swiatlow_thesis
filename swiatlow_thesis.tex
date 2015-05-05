@@ -12,6 +12,8 @@
 \usepackage{rotating}
 \usepackage{multirow}
 \usepackage{placeins}
+\usepackage{fancyvrb}
+\usepackage{tikz}
 
 \usepackage[colorlinks,citecolor=blue,urlcolor=blue,breaklinks,pdftitle={Measuring the Standard Model and Searching for New Physics With Jet Substructure Using the ATLAS Detector},pdfauthor={Maximilian Swiatlowski}]{hyperref}
 % \usepackage{hyperref}
@@ -28,7 +30,7 @@
 \usepackage{edittools}
 \usepackage{thesissymbols}
 
-\graphicspath{{figures}{figures/detector/}{figures/lhc}{figures/jet-reconstruction}{figures/sm}{figures/search}}
+\graphicspath{{figures}{figures/detector/}{figures/lhc}{figures/jet-reconstruction}{figures/sm}{figures/search}{figures/color}}
 
 \dept{Physics}
 
@@ -81,18 +83,7 @@
 \input{chapters/jet-reconstruction.tex}
 
 \chapter{Seeing Color at the LHC}
-\label{chapter:color}
-\section{Motivation}
-\section{Reconstructing Color}
-	\subsection{Finding Top Quarks}
-	\subsection{Origin Corrections}
-	\subsection{Resolution Effects}
-	\subsection{Track and Cluster Uncertainties}
-\section{Measuring Color}
-	\subsection{Unfolding}
-	\subsection{Results}
-	\subsection{Future Prospects}
-		...
+\input{chapters/color.tex}
 
 \chapter{Searching for Supersymmetry with Super Jets}
 \input{chapters/search.tex}
