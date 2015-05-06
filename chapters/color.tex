@@ -212,9 +212,9 @@ Thus, the goal of our analysis to obtain a pure sample of hadronically decaying 
 
 	This analysis makes use of many different object types: jets, $b$-tags, electrons, muons, and \met. The exact quality and selection requirements for each are discussed below.
 
-	\textbf{Electrons} are tracks matched to isolated EM calorimeter clusters\footnote{EM clusters for electrons are composed of 3x3 cells.\editnote{Check this further}}, refit via a Gaussian Sum Filter technique to take into account the larger material interactions and radiations of electrons compared to the initial pion hypothesis~\editnote{Cite}. For this analysis, they are required to pass the \texttt{Tight++} requirement with ``author'' equal to 1 or 3-- this is a set of cuts on the shape of the electron cluster which suppresses backgrounds from jets and photons, and on track quality. The \pt of the electron is set to $E_\mathrm{cluster} / \cosh \eta_\mathrm{cluster}$, and $|\eta| < 2.47$ is required. In addition, the so-called ``crack'' region of $1.37 < |\eta| < 1.52$ is vetoed. To require consistency with the primary vertex, a requirement on the track of $|z_0| < 2$~mm with respect to the primary vertex is imposed. Furthermore, basic quality criteria are applied to reject electrons reconstructed from noisy or dead calorimeter clusters. The energy in a $\Delta R < 0.2$ cone (measured with calorimeter cells) and the \pt within a $\Delta R < 0.3$ cone (measured with tracks) are required to be small. This isolation requirement-- used to suppress electrons from leptonic $B$ decays and fakes from jets in general-- is tuned to select $90\%$ of all electrons. Finally, electrons are required to be isolated from the signal jets (defined below): the jet is removed in favor of the electron if $\Delta R < 0.2$ between any pair, and electrons are removed if $0.2 < \Delta R < 0.4$: this selection is optimized to efficiently keep electrons which are ``faking'' jets (very easy to do, as calorimeter clusters from the electron enter into jet clustering), while removing events where a real jet has emitted an electron (in leptonic $B$-decays, for example).
+	\textbf{Electrons} are tracks matched to isolated EM calorimeter clusters\footnote{EM clusters for electrons are composed of 3x3 cells.\editnote{Check this further}}, refit via a Gaussian Sum Filter technique to take into account the larger material interactions and radiations of electrons compared to the initial pion hypothesis~\editnote{Cite}. For this analysis, they are required to pass the \texttt{Tight++} requirement with ``author'' equal to 1 or 3-- this is a set of cuts on the shape of the electron cluster which suppresses backgrounds from jets and photons, and on track quality. The \pt of the electron is set to $E_\mathrm{cluster} / \cosh \eta_\mathrm{cluster}$, and $|\eta| < 2.47$ is required. In addition, the so-called ``crack'' region of $1.37 < |\eta| < 1.52$ is vetoed. To require consistency with the primary vertex, a requirement on the track of $|z_0| < 2$~mm with respect to the primary vertex is imposed. Furthermore, basic quality criteria are applied to reject electrons reconstructed from noisy or dead calorimeter clusters. The energy in a $\Delta R < 0.2$ cone (measured with calorimeter cells) and the \pt within a $\Delta R < 0.3$ cone (measured with tracks) are required to be small. This isolation requirement-- used to suppress electrons from leptonic $B$ decays and fakes from jets in general-- is tuned to select $90\%$ of all electrons. Finally, electrons are required to be isolated from the signal jets (defined below): the jet is removed in favor of the electron if $\Delta R < 0.2$ between any pair, and electrons are removed if $0.2 < \Delta R < 0.4$: this selection is optimized to efficiently keep electrons which are ``faking'' jets (very easy to do, as calorimeter clusters from the electron enter into jet clustering), while removing events where a real jet has emitted an electron (in leptonic $B$-decays, for example). Since this analysis is single-lepton, the electron is also required to match to the trigger electron.
 
-	\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible-- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.). The muons in this analysis are required to be `tight' combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the Muid algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be < 3. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by crossings with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$.
+	\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible-- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.). The muons in this analysis are required to be `tight' combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the Muid algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be < 3. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by crossings with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$. Similarly to the electrons, a good muon candidate must also match to a trigger muon.
 
 	\textbf{Jets} are reconstructed as per the discussion in Chapter~\ref{chapter:jet-reconstruction}. Cuts of $\pt > 25$~GeV and $|\eta| < 2.1$ are imposed; the $\eta$ requirement is tighter than for other objects to insure that the jet is fully enclosed in the tracker so that the jets can be effectively $b$-tagged. For jets with $\pt < 50$~GeV a JVF cut of $\mathrm{JVF} > 0.5$ is required to reduce the impact of pileup jets. The origin correction of the jet is a particularly important element of the analysis, as the pull vector is very sensitive to the choice of axes. As described below, the topo-clusters are origin-corrected, removing smearing due to the changing $z$-location of the primary vertex, and the sum of their 4-vectors are used as the jet axis. The calibrated $\eta$ is not used, as it is offset from the center of the clusters, and this can produce lare biases in the pull angle.
 
@@ -235,12 +235,12 @@ The following cuts are used to define the data sample:
 \item Require that no jets with $\pt > 20$ GeV fail quality criteria
 \item Require that there exist 4 or more jets with $\pt > 20$~GeV and $|\eta| < 2.5$
 \item Require $\met > 20$~GeV
-\item Require $\met + m_T > 60$~GeV\footnote{The $m_T$ variable is the transverse mass, associated with the visible mass of the leptonically decaying $W$ boson. It is defined as $m_T^2 = 2 \pt^{\mathrm{lep}} \met (1 - \cos(\Delta \phi)$.}
+\item Require $\met + m_T > 60$~GeV\footnote{The $m_T$ variable is the transverse mass, associated with the visible mass of the leptonically decaying $W$ boson. It is defined as $m_T^2 = 2 \pt^{\mathrm{lep}} \met (1 - \cos(\Delta \phi))$.}
 \item Require 2 $b$-tagged jets
 \item Require 2 non-$b$-tagged jets
 \end{enumerate}
 %
-This is mostly a very standard selection for semileptonic $t\bar{t}$, and has been used by ATLAS in many analyses very consitently and effectively \editnote{Cite this.}. One change with respect to the standard selection is a change to point 9: the nominal selection chooses only 1 $b$-tag, but we select 2 in order to more accurately classify and label the event. For this same reason, we require 2 non-$b$-tagged jets: this allows for less ambiguity, as we have much stronger confidence that the $b$-jets from the top quark decay are appropriately identified. Figure~\ref{fig:color:selection:labeling_diagram} displays a diagram summarizing the object selections and the labeling scheme adapted: by requiring 2 $b$-tagged jets, we can easily label $B_1$ and $B_2$ (ordered in \pt).
+This is mostly a very standard selection for semileptonic $t\bar{t}$, and has been used by ATLAS in many analyses very consistently and effectively \editnote{Cite this.}. One change with respect to the standard selection is a change to point 9: the nominal selection chooses only 1 $b$-tag, but we select 2 in order to more accurately classify and label the event. For this same reason, we require 2 non-$b$-tagged jets: this allows for less ambiguity, as we have much stronger confidence that the $b$-jets from the top quark decay are appropriately identified. Figure~\ref{fig:color:selection:labeling_diagram} displays a diagram summarizing the object selections and the labeling scheme adapted: by requiring 2 $b$-tagged jets, we can easily label $B_1$ and $B_2$ (ordered in \pt).
 
 %%%%%%%%%%%%%%%%
 
@@ -257,19 +257,329 @@ The remaining question is how to assign the label of $J_1$ and $J_2$ in the case
 
 Note that the following analysis uses the pull angle of the $J_1$ with respect to $J_2$: while it is possible to use the pull angle of $J_2$ with respect to $J_1$, the resolution actually suffers (as described in Section~\ref{chapter:color:reconstruction:resolution}) and the added statistics would not strongly benefit the analysis.
 
+Finally, a dedicated truth selection mimicing the reco-level selection is implemented for truth-level studies. This selection provides a fiducial region for targetting the unfolding. Final state electrons and muons are used as the leptons; photons with $\Delta R < 0.1$ are assumed to originate from radiation from the lepton and are added back to the 4-vector. Final state neutrinos that do not originate from a hadron are used to determine the missing energy. Jets are clustered from final state particles that are not leptons or neutrinos. $b$-jets are labelled via a ghost-association scheme: truth $B$-hadrons with $\pt > 5$~GeV are allowed to participate in the clustering of the truth jets (though with a scaled, ghost-level \pt) and the jet to which they are clustered is labelled as originating from a $B$-hadron. All the same cuts from the reco-selection are then applied to the truth-objects.
+
 	\subsubsection{MC Backgrounds}
+
+While the selection above is optimized to select $t\bar{t}$ events with very high purity, there are inevitably many different sources of background which must be assessed. The backgrounds are assessed in three ways: directly with MC simulation, using data-driven techniques, or a combination of the two. First, we discuss the MC-driven background estimates.
+
+\textbf{Single top} is assessed in the $s$, $t$, and $Wt$ channel using samples generated with \PowPythia. The $Wt$ channel assess its interference with the nominal $t\bar{t}$ sample using the ``Diagram Removal'' scheme, while the contrasting ``Diagram Subtraction'' scheme is used to assess the theoretical systematics on the sample. The $Wt$ channel contributes the most, and is a non-negligible background.
+
+\textbf{Diboson} production is simulated using \Sherpa version 1.4.1; this generator is found to model the production of dibosons in association with heavy flavor quarks-- i.e., that final state with the largest contribution to our selection-- better than \Herwigpp and other generators. This background is negligible.
+
+\textbf{$\mathbf{Z}$+jets} are assessed with \Alpgen interfaced with \Pythia, generated with separate samples for each additional emission up to 5 partons. All the samples require the $Z$ to decay leptonically in order to provide the leptons required for the analysis selection (hadronically decaying $Z$+jet events do not contribute to the selection). Dedicated filtered heavy flavor samples are produced, and the overlap with the inclusive samples is assessed with the ``Heavy Flavor Overlap Removal'' (HFOR) scheme. The $Z$+jets background is very small.
+
+\textbf{$\mathbf{W}$+jets} are assessed similarly to the $Z$+jets: \Alpgen is interfaced with \Pythia, and separate samples are generated for each real emission, up to 5 partons. All the $W$'s are required to decay leptonically, mimicing the leptonic $W$ in the $t\bar{t}$ decay. Separate samples are generated also for heavy flavor, with both $c$ and $b$ quarks; once again, the overlap is assessed using HFOR. The $W$+jets background is the largest in the analysis, and so a data-driven normalization (described below) is derived to ensure that it is accurately modeled. 
 
 
 	\subsubsection{Data-Driven Backgrounds}
 
+The normalization on \textbf{$\mathbf{W}$+jets} is assessed with a \textit{lepton-charge-asymmetry} technique. More $W^+$ than $W^-$ events are produced at the LHC because the input hadrons are both positive. The ratio of these two, $r_{MC}$, is better predicted than the absolute cross-section. To derive a scale factor, we note that the sum of both charge types over the difference of charge types should be equal, up to the scale factor $\alpha$:
+%
+\begin{equation}
+\alpha \frac{N_\mathrm{data}^+ + N_\mathrm{data}^-}{N_\mathrm{data}^+ - N_\mathrm{data}^-} = \frac{N_\mathrm{MC}^+ + N_\mathrm{MC}^-}{N_\mathrm{MC}^+ - N_\mathrm{MC}^-}
+\end{equation}
+% 
+which we can rewrite with the ratio $r_{MC}$ as:
+%
+\begin{equation}
+\alpha \frac{N_\mathrm{data}^+ + N_\mathrm{data}^-}{N_\mathrm{data}^+ - N_\mathrm{data}^-} = \frac{1 + r_{MC}}{1 - r_{MC}}
+\end{equation}
+%
+which allows us to solve for the scale factor:
+%
+\begin{equation}
+\alpha W = \frac{1 + r_{MC}}{1 - r_{MC}} \left( N_\mathrm{data}^+ - N_\mathrm{data}^- \right)
+\end{equation}
+%
+where $W$ is the inclusive $W$+jets sample (i.e. the sum of both charges). This scale-factor is derived in bins of jet multiplicity, and separetely for events with and without a $b$-tag\footnote{The scale-factor from the one-tag sample was determind to be consistent with the two-tag sample, which more closely corresponds to our selection}. The data-sample used is enriched in $W$+jets events to a very high purity, though background contributions from $t\bar{t}$, etc. mostly do not matter because they are largely charge-symmetric and drop out of the scale factor.
 
-	\subsection{Substructure Input Objects}
+The shape of the $W$+jets background therefore is taken from MC, but the normalization is corrected using this data-driven approach, substantially reducing the theoretical uncertainties on the largest background to the analysis. The values derived are $1.3 \pm 0.03$ for the $bb/cc$ component, $0.74 \pm 0.04$ for the single $c$ component, and $0.96 \pm 0.02$ for the light component.
+
+\textbf{Multi-jet backgrounds} are very poorly modelled in the simulation, as fake leptons are difficult to describe correctly. A data-driven approach called the \textit{matrix method} is therefore adopted to assess this background~\cite{MatrixMethod}. The goal of the method is to assess $N_\mathrm{fake}^\mathrm{tight}$: the number of fake ``tight'' leptons produced by multi-jet events.  This number is derived using two samples, differing only in the definition of the leptons: either the ``tight'' nominal selection (described above), or a ``loose'' selection with some of these requirements removed (the differences in the loose selection for muons and electrons, which are assessed separetely in this technique, will be described below). A tight lepton, by definition, passes the loose requirements. The tight sample mostly contains real leptons, while the loose sample is enriched in the fakes we are trying to measure, but both samples are a mixture. Thus, we can write:
+%
+\begin{align}
+N^\mathrm{loose} &= N_\mathrm{real}^\mathrm{loose} + N_\mathrm{fake}^\mathrm{loose}\\
+N^\mathrm{tight} &= N_\mathrm{real}^\mathrm{tight} + N_\mathrm{fake}^\mathrm{tight}
+\end{align}
+%
+In addition, we can define the \textit{efficiency} of the tight selection as:
+%
+\begin{equation}
+\epsilon_\mathrm{x} = \frac{N^\mathrm{tight}_\mathrm{x}}{N^\mathrm{loose}_\mathrm{x}}
+\end{equation}
+%
+where $x$ is either real or fake-- we are simply stating that the tight selection has a different efficiency of selecting real and fake leptons (i.e. it should be rather efficient for real leptons, but very low efficiency for fake leptons). The efficiencies $\epsilon_\mathrm{x}$ are measured separately in data (via a method described below), so we can take these as given for now. Plugging all these equations together, it is possible to solve for our desired quantity:
+%
+\begin{equation}
+N_\mathrm{fake}^\mathrm{tight} = \frac{\epsilon_f}{\epsilon_r - \epsilon_f} \left(\epsilon_r N^\mathrm{loose} - N^\mathrm{tight} \right)
+\end{equation}
+
+In order to derive kinematic distributions-- and not just an overall number-- this quantity can be converted to a series of weights for each event $i$:
+%
+\begin{equation}
+w^i = \frac{\epsilon_f}{\epsilon_r - \epsilon_f} (\epsilon_r - \delta_i)
+\end{equation}
+%
+where $\delta_i = 1$ if the event passes the tight selection, or $\delta_i = 0$ otherwise. These weights are further normalized such that $\sum_i w_i = N_\mathrm{fake}^\mathrm{tight}$. When run over the entire dataset, these weights thus provide the expected multi-jet contribution to the selection.
+
+Loose electrons are defined using the \texttt{medium++} quality criteria, with an additional requirement of a photon conversion veto (which is normally part  of the \texttt{tight++} requirements). There is also no isolation applied. Together, these cuts substantially enrich the loose sample with fake leptons. Loose muons are similar: only the isolation requirement is dropped.  
+
+Efficiencies for real leptons are measured using a tag-and-probe method in leptonic $Z$ decays: a tight lepton (the tag) is used to study loose leptons (the probe). The number of probes (i.e. loose leptons) which pass a tight requirement gives a measurement for $\epsilon_\mathrm{real}$. 
+
+Efficiencies for fake leptons are measured using a control region which inverts the \met and $m_T$ requirements, lowers the requirements on the number of jets, and loosens the $d_0$ cut on leptons. This enriches a sample of fake leptons with kinematics similar of the signal region, but still contains a great deal of real leptons: these must be subtracted out by using MC simulation.
+
+\subsubsection{Data/SM Yields}
+
+Now that all the backgrounds have been assessed, we can compare the data and SM prediction yields after the selection described above. Table~\ref{tab:color:yields:yields} shows the predicted and observed values; the sample has an excellent $t\bar{t}$ purity of $91\%$. The muon channel comprises $53\%$ of the data, so slightly more than the electron channel. Note that the $t\bar{t}$ in this section is always the nominal color flow \PowPythia sample.
+
+
+\begin{table}
+  \centering
+  \vspace{3mm}
+  \begin{tabular}
+  {
+ c
+ S[table-format=1,
+   table-figures-uncertainty=0,group-digits = false,tight-spacing]
+}
+    \toprule
+    Process                      & Counts                                   \\
+    \midrule
+    $t\bar{t}$                   & 95400 \hspace{1mm}$\pm$\hspace{1mm} 200  \\
+    $Wt$-chan single top         & 2730\hspace{1mm} $\pm$\hspace{1mm} 40    \\
+    $s$- and $t$-chan single top & 150\hspace{1mm} $\pm$\hspace{1mm} 1      \\
+    $W$+jets                     & 3710\hspace{1mm} $\pm$ \hspace{1mm}70    \\
+    $Z$+jets                     & 560 \hspace{1mm}$\pm$ \hspace{1mm}10     \\
+    Dibosons                     & 190\hspace{1mm} $\pm$\hspace{1mm} 10     \\
+    Multijets                    & 2500\hspace{1mm} $\pm$ \hspace{1mm}40    \\
+    \midrule
+    Total SM                     & 105000 \hspace{1mm}$\pm$ \hspace{1mm}220 \\
+    Data                         & 102987                                   \\
+    \bottomrule
+  \end{tabular}
+  \caption{Estimated sample composition.  $W$+jets and multijets estimations are data-driven. Only uncertainties due to finite statistics are listed.}
+  \label{tab:color:yields:yields}
+\end{table}
+
+We can also make comparisons between the data and SM expectation for the various kinematic quantities of the events (and in particular, the $W$-candidates) to validate that the modeling is well predicting the data distributions well. Figures~\ref{fig:color:yields:pt} and \ref{fig:color:yields:pts_sub} show the leading and subleading $W$-jet candidates' \pt distributions for the muon (left) and electron (channels) in right. The purity of the $t\bar{t}$ sample is immediately clear, but more concerning is the slope seen in the data/SM ratio. This is a well known effect related to the mismodelling of the top quark \pt in many MC simulations. Tests were performed to reweight the \pt distributions in simulation to agree with the data and to check if this had any impact on the pull angle observables: the result was a negligible change, and so this effect is not considered important\footnote{Indeed while the pull vector is normalized by the jet \pt, the angle is not directly affected.} Note also that the uncertainties in this plot (and all subsequent plots) include all detector effects described in Section~\ref{chapter:color:uncertainties:other}, but no theoretical uncertainties from Section~\ref{chapter:color:uncertainties:theory}. In all cases, the MC simulation is normalized to the luminosity.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1pT}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1pTe}
+ \caption{The leading $W$ daughter jet $p_T$ for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:pts}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J2pT}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J2pTe}
+ \caption{The sub-leading $W$ daughter jet $p_T$ for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:pts_sub}
+  \end{center}
+\end{figure}
+
+
+
+Figures~\ref{fig:color:yields:etas} and \ref{fig:color:yields:etas_sub} show the same type of distributions for the leading and subleading jet $\eta$. The angular distribution of the jets is very well modelled in MC.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1eta}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1etae}
+ \caption{The leading $W$ daughter jet $\eta$ for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:etas}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J2eta}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J2etae}
+ \caption{The sub-leading $W$ daughter jet $\eta$ for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:etas_sub}
+  \end{center}
+\end{figure}
+
+
+
+Figures~\ref{fig:color:yields:deltaR}, \ref{fig:color:yields:mass}, and \ref{fig:color:yields:wpt} show various aspects of the combined $W$-system. Figure~\ref{fig:color:yields:deltaR} shows the agreement in data/simulation in the $\Delta R$ between the two jets: as this is something which could potentially bias the pull angle measurement, it is reassuring to see it is well modelled. Figure~\ref{fig:color:yields:mass} shows the dijet mass: once again, very good agreement is seen, and moreover, a very convincing $W$-mass peak, highlighting the $W$-purity of the sample. Finally, Figure~\ref{fig:color:yields:wpt} shows the $\pt$ of the $W$ system: the ratio here shows the same slope seen in the individual jet distributions.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/DeltaR}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/DeltaRe}
+ \caption{The $\Delta R$ between $J_1$ and $J_2$ for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:deltaR}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/WM}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/WMe}
+ \caption{The dijet invariant mass of the combination of the leading and subleading $W$ daughter candidate 4-vectors for the muon channel (left) and the electron channel (right).}
+ \label{fig:color:yields:mass}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/WpT}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/WpTe}
+ \caption{The $p_T$ (right) of the combination of the leading and subleading $W$ daughter candidate 4-vectors for the muon channel (left) and the electron channel (right). }
+ \label{fig:color:yields:wpt}
+  \end{center}
+\end{figure}
+
+
+
+\FloatBarrier
+
+
+
+	\subsection{Substructure Objects}
+
+Having obtained a high-purity sample of hadronically decaying $W$'s in both data and simulation, we can now begin to study the actual pull angle distribution. The first step is to define the input objects for the pull vector calculation.
+
+	\subsubsection{Topological Calorimeter Clusters}
+
+Topological calorimeter clusters are familiar objects by now: these are the inputs to jet clustering, and are used to calculate substructure moments in many different analyses. Much has already been said on the topic in Section~\ref{jet-reconstruction:jet-inputs:topoclustering}, and everything discussed there is used for the color flow measurement. In particular, the locally calibrated clusters are used: as is common for substructure, having all calorimeter elements as close as possible to the true particle scale helps ensure that all particles contribute to the reconstructed substucture moment. 
+
+Additionally, a new correction for the primary vertex origin is applied in this analysis. As discussed in Section~\ref{jet-reconstruction:origin}, the $z$-coordinate of the primary vertex is not necessarily at the origin of the detecotr, and a correction to jets based on the measured location of the vertex can substantially improve the $\eta$ resolution of the jet. As we use standard \akt $R=0.4$ jets in this analysis, this means that the jet axis is origin corrected, but the clusters by default are not.  This leads to a large bias in the $r_i$ terms in the construction of the pull vector: the jet axis is not at the center of the clusters anymore.
+
+One potential solution is to remove the origin correction from the jet axis. However, this is also not ideal: the pull vector (and consequentially, the pull angle) are very sensitive to the $\eta$ resolution, as the $r_i$ term comes in twice in the pull vector definition. One particularly interesting consequence of this is that the pull vector magnitude, especially, is sensitive to the different $\eta$ resolutions in data and MC induced by differing $z$-vertex distributions. Because MC is run before data-taking is finished, it often uses an approximate $z$-vertex distribution predicted to match the data conditions, but this often turns out quite different in practice. Most observables do not depend on this, but the pull vector magnitude does: the un-corrected distribution in XXX shows the large disagreement when there is no correction.
+
+There is a better solution, then: one can correct the \textit{clusters themselves} for the changing location of the primary vertex. The correction is given by: 
+%
+\begin{align}
+z &= R\sinh\eta\nonumber\\
+z &\mapsto z' = z - z_\text{corr}\nonumber\\
+\eta &\mapsto \eta' = \text{asinh} (z'/R) = \text{asinh}(z/R - z_\text{corr}/R) = \text{asinh}(\sinh(\eta) - z_\text{corr}/R)
+\end{align}
+%
+where $R$ is the radial depth of the cluster. The $p_T$ of the corrected cluster is defined similarly:
+%
+\begin{align}
+p_T=E/\cosh(\eta)\mapsto E/\cosh(\eta')=p_T\cosh(\eta)/\cosh(\eta')
+\end{align}
+%
+As this correction is data-driven (it is not calibrated in MC), it corrects the resolution of both data and MC to the same level. Figure YYY below shows the effect of the correction on the pull vector magnitude: removing the different levels of smearing due to the primary vertex's $z$ location has substantially improved the agreement.
+
+Now that the cluster origins are corrected, we define the jet axis in such a way as to minimize any residual bias: we use the location of the 4-vector sum of the origin-corrected clusters. This is effectively removing the $\eta$ calibration from the jet, and restoring the the axis to the ``center'' of the clusters for the purposes of the substructure calculation.
+
+
+\subsubsection{Tracks}
+
+Tracks are automatically origin-corrected: there is no assumption of the location of the vertex at the origin of the detector, as the appropriate primary vertex is determined via the measured $z_0$ of the track. However, the axis bias may still exist: since the jet axis is formed from clusters, and not tracks, there is no guarantee that it lies in the center of the tracks. To correct for this, all track pull measurements are constructed with respect to axes formed by summing the 4-momenta of the associated tracks.
+
+Track quality requirements are rather standard. They are required to have $\pt \geq 500$~MeV, $|\eta| < 2.5$, and $\chi^2/\mathrm{ndf} < 3$. Furthermore, 1 hit in the pixel detector at least 6 hits in the SCT are required, and the tracking parameters $z_0^\mathrm{PV} < 2$~mm and $|d_0^\mathrm{PV}| < 2.5$~mm are required. The tracks are ghost associated to the jets, as described in Section~\ref{jet-reconstruction:pileup:ghost-association}.
+
+\subsubsection{Data/SM Comparisons}
+\label{chapter:color:substructure:comparisons}
+
+Now that we have defined the input objects to the pull vector, we can begin to show the data/SM agreement of the observable. In the following figures, various corrections described previously are turned on and off to display the importance of each decision. All uncertainties shown include the detector uncertainties described in Section~\ref{chapter:color:uncertainties:other}, and the uncertainties on the clusters/tracks used as inputs to the pull as described in Section~\ref{chapter:color:uncertainties:inputs}.
+
+%% CONTINUE HERE %%
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2e}
+ \caption{The jet pull angle for $J_1$ with respect to $J_2$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the mis-modelling of the jet angular resolution.}
+ \label{fig:pull}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2q}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2qe}
+ \caption{The jet track pull angle for $J_1$ with respect to $J_2$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the mis-modelling of the jet angular resolution. }
+ \label{fig:pullq}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2_caxis}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2_caxise}
+ \caption{The jet pull angle for $J_1$ with respect to $J_2$ with cluster origin corrections and the jet axis constructed from the four-vector sum of clusters for the muon channel (left) and the electron channel (right).}
+ \label{fig:pull_fixed}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2q_taxis}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/ThetaJ1J2q_taxise}
+ \caption{The jet track pull angle for $J_1$ with respect to $J_2$ were the jet axis is the four-vector sum of tracks for the muon channel (left) and the electron channel (right).}
+ \label{fig:pullq_fixed}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1e}
+ \caption{The jet pull vector magnitude for $J_1$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the impact of the mis-modelling of the jet angular resolution.}
+ \label{fig:pullmag}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v2}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v2e}
+ \caption{The jet pull vector magnitude for $J_2$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the impact of the mis-modelling of the jet angular resolution.}
+ \label{fig:pullmag_2}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1_caxis}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1_caxise}
+ \caption{The jet pull vector magnitude for $J_1$ with cluster origin corrections and the jet axis constructed from the four-vector sum of clusters for the muon channel (left) and the electron channel (right). }
+ \label{fig:pullmag_fixed}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1q}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1qe}
+ \caption{The jet track pull vector magnitude for $J_1$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the mis-modelling of the jet angular resolution.}
+ \label{fig:pullmagq}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v2q}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v2qe}
+ \caption{The jet track pull vector magnitude for $J_2$ with the jet origin correction (but no cluster correction) for the muon channel (left) and the electron channel (right). One can clearly see the mis-modelling of the jet angular resolution.}
+ \label{fig:pullmagq_2}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1q_taxis}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/v1q_taxise}
+ \caption{The jet track pull vector magnitude for $J_1$ were the jet axis is the four-vector sum of tracks for the muon channel (left) and the electron channel (right).}
+ \label{fig:pullmagq_fixed}
+  \end{center}
+\end{figure}
+
+
+
+
+
 	\subsection{Resolution Effects}
 	\label{chapter:color:reconstruction:resolution}
+
+
+\section{Uncertainties}
 	\subsection{Track and Cluster Uncertainties}
-	\subsection{Other Uncertainties}
-\section{Data and MC Comparisons}
+	\label{chapter:color:uncertainties:inputs}
+	\subsection{Other Detector Uncertainties}
+	\label{chapter:color:uncertainties:other}
+	\subsection{Theoretical Uncertainties}
+	\label{chapter:color:uncertainties:theory}
+
 \section{Measuring Color}
 	\subsection{Unfolding}
+
+	\subsection{Unfolding Uncertainties}
+
 	\subsection{Results}
 		
