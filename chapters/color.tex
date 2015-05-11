@@ -1041,7 +1041,7 @@ Does this technique work? One simple way to check is to unfold simulation with i
 \subsubsection{Uncertainty Summaries}
 
 	
-	Before we present the final results, it is important to understand the main sources of uncertainty. Figure~\ref{fig:color:unfolding:systs_combined} shows a breakdown of the dominant uncertainties in each bin of both analyses. The subdominant uncertainties are combined into the ``other'' grouping in this figure; these are broken down in Figure~\ref{fig:color:unfolding:systs_small}. Many of these, such as the lepton scale, are related to the experimental acceptance and have vanishingly small effects on the final result. I NEED TO MENTION THEORY BREAKDOWN Finally, Figure~\ref{fig:color:unfolding:uncert_chart} shows a breakdown of the dominant sources of uncertainty in just the first bin of each analysis, showing the size of each uncertainty more clearly. 
+	Before we present the final results, it is important to understand the main sources of uncertainty. Figure~\ref{fig:color:unfolding:systs_combined} shows a breakdown of the dominant uncertainties in each bin of both analyses. The subdominant uncertainties are combined into the ``other'' grouping in this figure; these are broken down in Figure~\ref{fig:color:unfolding:systs_small}. Many of these, such as the lepton scale, are related to the experimental acceptance and have vanishingly small effects on the final result. Figure~\ref{fig:color:unfolding:systs_ttbar_mod} shows the breakdown of the various theoretical uncertainties previously discussed. Changing both the matrix element and the parton shower model changes the result in a large way. Finally, Figure~\ref{fig:color:unfolding:uncert_chart} shows a breakdown of the dominant sources of uncertainty in just the first bin of each analysis, showing the size of each uncertainty more clearly. Many of the negligible uncertainties are grouped together in the ``other'' category of this plot.
 
 
 \begin{figure}[htb]
@@ -1070,6 +1070,19 @@ Does this technique work? One simple way to check is to unfold simulation with i
 
 % theory here
 
+\begin{figure}[htb]
+  
+  \includegraphics[width=.45\linewidth]{cf_int/unfolding/systematics/ttbar_modelling_systematic_PullAll}
+  \includegraphics[width=.45\linewidth]{cf_int/unfolding/systematics/ttbar_modelling_systematic_PullCharged} \\
+  \caption{Systematic uncertainties due to \ttbar\ modelling. The error bars on
+    each point represent the MC statistical uncertainties from the two samples
+    used to find the ratio.}
+  \label{fig:color:unfolding:systs_ttbar_mod}
+\end{figure}
+
+
+
+
 
 \begin{figure}[htbp]
   \centering
@@ -1081,9 +1094,40 @@ Does this technique work? One simple way to check is to unfold simulation with i
 
 
 
-
+\FloatBarrier
 
 	\subsection{Results}
+
+With the final uncertainties quantified, we can now show the final unfolded result. Figure~\ref{fig:color:unfolding:final_PullAllCaloAxis} shows the result for the all particles measurement, and Figure~\ref{fig:color:unfolding:final_PullChargedTrackAxis} shows the result for the charged particles measurement. In both measurements the data clearly agrees very well with the expectation for the Standard Model color flow-- that of the $W$ singlet-- and disagrees very much with the exotic color flow-- that of the $W$ octet. 
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullAllCaloAxis}
+  \caption{The all-particle pull angle.
+    Uncertainties on the data are shown as orange bands, with the darker band
+    representing the statistical uncertainty only and the lighter band
+    showing the total uncertainty (statistical plus systematic). Two MC predicitions
+    are shown for SM (red) and flipped (green) \PowPythia\ MC.}
+  \label{fig:color:unfolding:final_PullAllCaloAxis}
+\end{figure}
+
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullChargedTrackAxis}
+  \caption{The charged-particle pull angle.
+    Uncertainties on the data are shown as orange bands, with the darker band
+    representing the statistical uncertainty only and the lighter band
+    showing the total uncertainty (statistical plus systematic). Two MC predicitions
+    are shown for SM (red) and flipped (green) \PowPythia\ MC.}
+  \label{fig:color:unfolding:final_PullChargedTrackAxis}
+\end{figure}
+
+
+
 
 	\subsection{Hypothesis Testing}
 		
