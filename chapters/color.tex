@@ -4,9 +4,9 @@
 
 What does it mean to see color?
 
-In terms of the color we experience on a day-to-day basis, it means that our eyes (particle detectors in their own right!) respond differently to photons with different energy (that is, different wavelengths). In terms of color at the LHC-- an aspect of the strong nuclear force now, instead of the electromagnetic-- things are much more muddled. Asymptotic freedom and the process of hadronization mean that the particles observed by the LHC detectors are not actually colored themselves-- and so unlike retinas, which measure energy directly, color at the LHC is much less direct.
+In terms of the color we experience on a day-to-day basis, it means that our eyes (particle detectors in their own right!) respond differently to photons with different energy (that is, different wavelengths). In terms of color in the Standard Model-- an aspect of the strong nuclear force now, instead of the electromagnetic-- things are much more muddled. Asymptotic freedom and the process of hadronization mean that the particles observed by the LHC detectors are not actually colored themselves-- and so unlike retinas, which measure energy directly, color at the LHC is much less direct.
 
-The first question to ask, when considering measuring color at the LHC, is what potential \textit{measurable} effects color can have, even if the color charge itself is not directly accessible. After all-- $SU(3)_C$ singlets ($W$, $Z$, $\ell$ particles), triplets ($q$ of all types), and octets ($g$) exist: surely there must be some differences between these states. Certainly, seeing red-blue-green is not particularly useful-- there's no consequential differences between a red quark and a green quark. But, seeing the difference between an octet and a singlet might indeed be useful: gluon octets, for example, can be backgrounds to signal singlets. Additionally, the magntitude of the color charge-- in analogy to the magnitude of the electric charge-- might be useful: different types of particles have different  charges (0 for singlets, $1/3$ for triplets, $4/3$ for octets). \editnote{are these numbers correct? $C/A$}
+The first question to ask, when considering color at the LHC, is what potential \textit{measurable} effects color can have, even if the color charge itself is not directly accessible. After all-- $SU(3)_C$ singlets ($W$, $Z$, $\ell$ particles), triplets ($q$ of all types), and octets ($g$) exist: surely there must be some observable differences between these states. Certainly, seeing red-blue-green is not particularly useful-- there's no consequential differences between a red quark and a green quark. But, seeing the difference between an octet and a singlet might indeed be useful: gluon octets, for example, can be backgrounds to signal singlets of various types. Additionally, the magnitude of the color charge-- in analogy to the magnitude of the electric charge-- might be useful: different types of particles have different charges (0 for singlets, $4/3$ for triplets, $3$ for octets). 
 
 The first evidence of color at a particle collider was observed by the JADE experiment at PETRA-- in a process very familiar to the studies of Section~\ref{jet-reconstruction:qg:validation}. At PETRA, it was observed that the third leading jet (ordered in $p$) in tri-jet events had a \textit{broader} distribution of energy (comparing the distance of particles to the center of the jet axis) than that of the leading two jets: this was interepreted as evidence for the third jet being more likely to a gluon, whie the leading two were quarks~\cite{Bartel:1983ii}. This is exactly the same effect seen by ATLAS in Section~\ref{jet-reconstruction:qg:validation}, and is directly related to the magnitude of the color charge: the larger color charge for gluons implies that they fragment ``more,'' and consequentially have a higher multiplicity and less collimated shower. This first observation from PETRA sets the stage for color will be observed in other experiments: often it is not a direct effect on the 4-momentum of a jet, but is instead a property of the jet \textit{shape}. 
 
@@ -18,7 +18,7 @@ Colliders operating above the $W/Z$ mass scale can produce the vector bosons, an
 
 Most of these measurements have been sensitive to the presence of color-- indeed, the seminal JADE measurement is even principle to the magntitude of the color charge-- but most of them are used to constrain color \textit{models}, and not determine the actual color properties of objects. That is to say, these measurements all help tune MC generators and shower models to more accurately reproduce the effects of hadronization and the residual effects of color, but none of them have measured the actual color representation of the $W$, for example. While it is clear from leptonic helicity measurements and $W$+jets production cross-sections that the $W$-boson is a color singlet, the hadronic decays of a $W$ have not been used to \textit{directly} measure the color type: the most direct way of \textit{seeing color} at colliders has not been performed.
 
-Figure~\ref{fig:detector:schematic} gives an example of the color flow in the SM on the left hand side: this blue line connecting the $W$-daughter quarks is the color connection between the two jets, and is determined by the color type of the $W$: because it is a singlet, it cannot carry a color line itself, and so colored objects decaying from it must be connected (via blue/anti-blue, for example). On the right side is an example of a hypothetical alternative model, where the $W$ acts as a color octet: then, it is able to carry \textit{two} colors, and the $W$-daughter quarks do not share a color connection. The effect for this connecting color line is often referred to as \textit{color flow}. Does the blue color line in this figure exist? How can we tell?
+Figure~\ref{fig:detector:schematic} gives an example of the color flow in the SM on the left hand side: this blue line connecting the $W$-daughter quarks is the color connection between the two jets, and is determined by the color type of the $W$. Because it is a singlet, it cannot carry a color line itself, and so colored objects decaying from it must be connected (via blue/anti-blue, for example). On the right side is an example of a hypothetical alternative model, where the $W$ acts as a color octet: then, it is able to carry \textit{two} colors, and the $W$-daughter quarks do not share a color connection. The effect for this connecting color line is often referred to as \textit{color flow}. Does the blue color line in this figure exist in data? How can we tell?
 
 %%%%%%%%%%%%%%%%
 
@@ -42,9 +42,9 @@ What we have learned so far from previous color measurements is that two basic c
 \item Orientation of jet axes, and angular kinematics 
 \end{enumerate}
 %
-One recently developed variable, the \textit{jet pull}, combines both of these types of information~\cite{Gallicchio:2010sw}. The variable composes a vector of a \pt and radial distance weighted sum over constituents of a jet and determines the oriention of this vector in relation to other jets, thereby combining the structural information about the jet with the broader context of the event (in a strategy sometimes referred to as jet superstructure). The D0 and CMS collaborations, as well as theorists, have used this variable as a part of multivariate analyses to improve sensitivity to Higgs decays to b-quarks already.~\cite{D0higgs,CMShiggspap,CMShiggspap2}. D0 also attempted a measurement of the color flow using the pull in top quark decays, comparing reconstructed data events to templates of the pull composed using singlet and octet $W$-boson models; the result, however, was strongly statistically limited and not able to distinguish.
+One recently developed variable, the \textit{jet pull}, combines both of these types of information~\cite{Gallicchio:2010sw}. The variable composes a vector of a \pt and radial distance weighted sum over constituents of a jet and determines the oriention of this vector in relation to other jets, thereby combining the structural information about the jet with the broader context of the event (in a strategy sometimes referred to as jet superstructure). The D0 and CMS collaborations, as well as theorists, have used this variable as a part of multivariate analyses to improve sensitivity to Higgs decays to b-quarks already.~\cite{D0higgs,CMShiggspap,CMShiggspap2}. D0 also attempted a measurement of the color flow using the pull in top quark decays, comparing reconstructed data events to templates of the pull composed using singlet and octet $W$-boson models; the result, however, was strongly statistically limited and not able to distinguish between singlets and octets.
 
-The first step in measuring color flow with pull is to construct for a jet its \textit{pull vector}, defined as:
+The first step in measuring color flow with pull is to construct the \textit{pull vector} for a jet, defined as:
 %
 \begin{align}
 \vec{v} = \sum_{i\in J} \frac{p_T^i |r_i|}{p_T^{J}}\vec{r}_i,
@@ -133,7 +133,7 @@ The following chapter discusses a new ATLAS measurement (as yet unpublished) whi
 
 Following the example of the D0 analysis~\cite{Abazov:2011vh}, the measurement we perform uses $t\bar{t}$ events as Figure~\ref{fig:detector:schematic} suggests. We employ a semi-leptonic selection, where one of the $W$'s in the event decays leptonically, to select a very pure sample of top quarks: with this topology, we are able to obtain a $>90\%$ pure top sample. The leptonic $W$ acts essentially as a tag for the event, and we can then study the properties of the hadronically decaying $W$.
 
-To compare the singlet $W$-- generated using normal \PowPythia $t\bar{t}$ samples-- to an octet $W$, we need to generate a simulation of the octet. While it is possible to compose a full BSM model which includes octet $W$'s and generate MC in this way, this is slightly non-optimal: observables just as the jet \pt and angles will potentially change due to the different particle content, while we wish to assess \textit{only} the power of color flow via the substructure. The most straightforward way to do this is to take the \textit{same events} used to generate the nominal singlets and to create new events with an inverted color structure, as displayed in Figure~\ref{fig:color:reconstructing:defining:flip}. These events have their color structure flipped at the Matrix Element level, before showering and hadronization. Once the flip is performed, showering and hadronization are run as normal-- except now reflecting the different color structure. The advantage of this scheme is that the \pt and angular distributions of jets should be exactly the same as the nominal sample, except for the color flow effects: this is as fair a comparison as we can make.
+To compare the singlet $W$-- generated using normal \PowPythia $t\bar{t}$ samples-- to an octet $W$, we need to generate a simulation of the octet. While it is possible to compose a full BSM model which includes octet $W$'s and generate MC in this way, this is slightly non-optimal: observables just as the jet \pt and angles will potentially change due to the different particle content, while we wish to assess \textit{only} the power of color flow via the substructure. The most straightforward way to do this is to take the \textit{same events} used to generate the nominal singlets and to create new events with an inverted color structure, as displayed in Figure~\ref{fig:color:reconstructing:defining:flip}. These events have their color structure flipped at the Matrix Element level, before showering and hadronization. Once the flip is performed, showering and hadronization are run as normal-- except now reflecting the different color structure. The advantage of this scheme is that the \pt and angular distributions of jets should be largely the same as the nominal sample, except for the color flow effects: this is as fair a comparison as we can make.
 
 
 \begin{figure}[h!]
@@ -198,7 +198,7 @@ Samples are produced with both \PowPythia and \PowHerwig generator+showering mod
 Figure~\ref{fig:color:motivation:validation} shows one additional interesting element of the analysis: while the left-hand plot shows the pull angle calculated with all particles-- i.e., what a measurement using the calorimeter corresponds to-- the right hand plot shows the pull angle using only the \textit{charged particles}-- i.e., what the inner detector measures. Both show significant discrimination power, even though the charged-only measurement is throwing away 1/3 of the particles (the neutrals). The advantage of performing two measurements is that the experimental systematics are completely different for each: uncertainties on the tracker have a very different character from that of the uncertainties on calorimeter objects. Moreover, while the charged particle measurement throws away a significant amount of information, each particle is measured with a significantly better resolution: the \pt measurement of a track does not suffer the response fluctuations which dominate the resolution of a calorimeter. Thus, we proceed with both analyses in parallel-- many aspects of them will be shared, but some will be different, and the ultimate power of each result can be compared at the end.
 
 
-Thus, the goal of our analysis to obtain a pure sample of hadronically decaying $W$-bosons, and to measure the pull angle between the jets initiated by the decay of the $W$. To better allow the measurement to be utilized by theorists for generator tuning, and to compare to other models of color flow more easily, the analysis is corrected for detector resolution and efficiency effects and \textit{unfolded} to particle level. At this stage, a comparison can be made between the data, the singlet MC, and the octet MC, and we can determine whether the data is able to tell the difference between the two possibilities. All stages of the analysis are performed with both topological calorimeter clusters, which measure all interacting particles in a jet, and tracks reconstructed from the inner detector, which measure only the charged particles but with much improved resolution.
+The goal of our analysis to obtain a pure sample of hadronically decaying $W$-bosons, and to measure the pull angle between the jets initiated by the decay of the $W$. To better allow the measurement to be utilized by theorists for generator tuning, and to compare to other models of color flow more easily, the analysis is corrected for detector resolution and efficiency effects and \textit{unfolded} to particle level. At this stage, a comparison can be made between the data, the singlet MC, and the octet MC, and we can determine whether the data is able to tell the difference between the two possibilities. All stages of the analysis are performed with both topological calorimeter clusters, which measure all interacting particles in a jet, and tracks reconstructed from the inner detector, which measure only the charged particles but with much improved resolution.
 
 	\subsection{Finding Top Quarks}
 
@@ -208,19 +208,19 @@ Thus, the goal of our analysis to obtain a pure sample of hadronically decaying 
 
 	As the analysis is semi-leptonic in order to guarantee a high purity of $t\bar{t}$ events, it is sensible to also use the lepton triggers. A logical OR between {\tt EF\_mu24i\_tight}, {\tt EF\_mu36\_tight}, {\tt EF\_e24vhi\_medium} and {\tt EF\_e60\_medium} is used for the whole data taking period. The first and second triggers are the muon triggers; the third and fourth are the electron triggers. The numbers in the trigger name refer to the \pt threshold of the online trigger. The first and third triggers require isolation at the trigger level, thereby allowing a lower \pt threshold; the second and fourth have no isolation requirement, but a much higher \pt treshhold. The \pt $>$ 25~GeV cut on the offline lepton-- described below-- guarantees that the combination of isolated and non-isolated triggers are fully efficient.
 
-	\subsubsection{Selection Objects}
+	\subsubsection{Object Selections}
 
 	This analysis makes use of many different object types: jets, $b$-tags, electrons, muons, and \met. The exact quality and selection requirements for each are discussed below.
 
-	\textbf{Electrons} are tracks matched to isolated EM calorimeter clusters\footnote{EM clusters for electrons are composed of 3x3 cells.\editnote{Check this further}}, refit via a Gaussian Sum Filter technique to take into account the larger material interactions and radiations of electrons compared to the initial pion hypothesis~\editnote{Cite}. For this analysis, they are required to pass the \texttt{Tight++} requirement with ``author'' equal to 1 or 3-- this is a set of cuts on the shape of the electron cluster which suppresses backgrounds from jets and photons, and on track quality. The \pt of the electron is set to $E_\mathrm{cluster} / \cosh \eta_\mathrm{cluster}$, and $|\eta| < 2.47$ is required. In addition, the so-called ``crack'' region of $1.37 < |\eta| < 1.52$ is vetoed. To require consistency with the primary vertex, a requirement on the track of $|z_0| < 2$~mm with respect to the primary vertex is imposed. Furthermore, basic quality criteria are applied to reject electrons reconstructed from noisy or dead calorimeter clusters. The energy in a $\Delta R < 0.2$ cone (measured with calorimeter cells) and the \pt within a $\Delta R < 0.3$ cone (measured with tracks) are required to be small. This isolation requirement-- used to suppress electrons from leptonic $B$ decays and fakes from jets in general-- is tuned to select $90\%$ of all electrons. Finally, electrons are required to be isolated from the signal jets (defined below): the jet is removed in favor of the electron if $\Delta R < 0.2$ between any pair, and electrons are removed if $0.2 < \Delta R < 0.4$: this selection is optimized to efficiently keep electrons which are ``faking'' jets (very easy to do, as calorimeter clusters from the electron enter into jet clustering), while removing events where a real jet has emitted an electron (in leptonic $B$-decays, for example). Since this analysis is single-lepton, the electron is also required to match to the trigger electron.
+	\textbf{Electrons} are tracks matched to isolated EM calorimeter clusters\footnote{EM clusters for electrons are composed of 3x3 cells.\editnote{Check this further}}, refit via a Gaussian Sum Filter technique to take into account the larger material interactions and radiations of electrons compared to the initial pion hypothesis~\editnote{Cite}. For this analysis, they are required to pass the \texttt{Tight++} requirement with ``author'' equal to 1 or 3-- this is a set of cuts on the shape of the electron cluster which suppresses backgrounds from jets and photons, and on track quality. The \pt of the electron is set to $E_\mathrm{cluster} / \cosh \eta_\mathrm{cluster}$, and $|\eta| < 2.47$ is required. In addition, the so-called ``crack'' region of $1.37 < |\eta| < 1.52$ is vetoed as electron identification is more difficult in this region. To ensure consistency with the primary vertex, a requirement on the track of $|z_0| < 2$~mm with respect to the primary vertex is imposed. Furthermore, basic quality criteria are applied to reject electrons reconstructed from noisy or dead calorimeter clusters. The energy in a $\Delta R < 0.2$ cone (measured with calorimeter cells) and the \pt within a $\Delta R < 0.3$ cone (measured with tracks) are required to be small. This isolation requirement-- used to suppress electrons from leptonic $B$ decays and fakes from jets in general-- is tuned to select $90\%$ of all electrons. Finally, electrons are required to be isolated from the signal jets (defined below): the jet is removed in favor of the electron if $\Delta R < 0.2$ between any pair, and electrons are removed if $0.2 < \Delta R < 0.4$. This selection is optimized to efficiently keep electrons which are ``faking'' jets (very easy to do, as calorimeter clusters from the electron enter into jet clustering), while removing events where a real jet has emitted an electron (in leptonic $B$-decays, for example). Since this analysis is single-lepton, the electron is also required to match to the trigger electron.
 
-	\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible-- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.). The muons in this analysis are required to be `tight' combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the Muid algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be < 3. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by crossings with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$. Similarly to the electrons, a good muon candidate must also match to a trigger muon.
+	\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible-- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.). The muons in this analysis are required to be `tight' combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the Muid algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be $< 3$. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by overlaps with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$. Similarly to the electrons, a good muon candidate must also match to a trigger muon.
 
-	\textbf{Jets} are reconstructed as per the discussion in Chapter~\ref{chapter:jet-reconstruction}. Cuts of $\pt > 25$~GeV and $|\eta| < 2.1$ are imposed; the $\eta$ requirement is tighter than for other objects to insure that the jet is fully enclosed in the tracker so that the jets can be effectively $b$-tagged. For jets with $\pt < 50$~GeV a JVF cut of $\mathrm{JVF} > 0.5$ is required to reduce the impact of pileup jets. The origin correction of the jet is a particularly important element of the analysis, as the pull vector is very sensitive to the choice of axes. As described below, the topo-clusters are origin-corrected, removing smearing due to the changing $z$-location of the primary vertex, and the sum of their 4-vectors are used as the jet axis. The calibrated $\eta$ is not used, as it is offset from the center of the clusters, and this can produce lare biases in the pull angle.
+	\textbf{Jets} are reconstructed as per the discussion in Chapter~\ref{chapter:jet-reconstruction}. Cuts of $\pt > 25$~GeV and $|\eta| < 2.1$ are imposed; the $\eta$ requirement is tighter than for other objects to insure that the jet is fully enclosed in the tracker so that the jets can be effectively $b$-tagged and its tracking properties measured for the track pull angle measurement. For jets with $\pt < 50$~GeV a JVF cut of $\mathrm{JVF} > 0.5$ is required to reduce the impact of pileup jets. The origin correction of the jet is a particularly important element of the analysis, as the pull vector is very sensitive to the choice of axes. As described below, the topo-clusters are origin-corrected, removing smearing due to the changing $z$-location of the primary vertex, and the sum of their 4-vectors are used as the jet axis. The calibrated $\eta$ is not used in the pull calculation, as it is offset from the center of the clusters, and this can produce lare biases in the pull angle.
 
 	\textbf{B-tags} are defined using the MV1 algorithm at a $70\%$ efficiency operating point.
 
-	\textbf{Missing energy} is calculated using all the calibrated signal objects in the analysis, and the un-associated topo-clusters in the calorimeter which form the ``soft term'' which measures the underlying event. The entire method is referred to as \texttt{METRefFinal}.
+	\textbf{Missing energy} is calculated using all the calibrated signal objects in the analysis, and the un-associated topo-clusters in the calorimeter which form the ``soft term'' which measures the underlying event. The entire method is referred to as \texttt{METRefFinal}. \editnote{Cite this}
 
 
 	\subsubsection{Selection Cuts}
@@ -257,7 +257,7 @@ The remaining question is how to assign the label of $J_1$ and $J_2$ in the case
 
 Note that the following analysis uses the pull angle of the $J_1$ with respect to $J_2$: while it is possible to use the pull angle of $J_2$ with respect to $J_1$, the resolution actually suffers (as described in Section~\ref{chapter:color:reconstruction:resolution}) and the added statistics would not strongly benefit the analysis.
 
-Finally, a dedicated truth selection mimicing the reco-level selection is implemented for truth-level studies. This selection provides a fiducial region for targetting the unfolding. Final state electrons and muons are used as the leptons; photons with $\Delta R < 0.1$ are assumed to originate from radiation from the lepton and are added back to the 4-vector. Final state neutrinos that do not originate from a hadron are used to determine the missing energy. Jets are clustered from final state particles that are not leptons or neutrinos. $b$-jets are labelled via a ghost-association scheme: truth $B$-hadrons with $\pt > 5$~GeV are allowed to participate in the clustering of the truth jets (though with a scaled, ghost-level \pt) and the jet to which they are clustered is labelled as originating from a $B$-hadron. All the same cuts from the reco-selection are then applied to the truth-objects.
+Finally, a dedicated truth selection mimicing the reco-level selection is implemented for truth-level studies. This selection provides a fiducial region for targetting the unfolding. Final state electrons and muons are used as the leptons; photons with $\Delta R < 0.1$ are assumed to originate from radiation from the lepton and are added back to the 4-vector. Final state neutrinos that do not originate from a hadron are used to determine the missing energy. Jets are clustered from final state particles that are not leptons or neutrinos. $b$-jets are labelled via a ghost-association scheme: truth $B$-hadrons with $\pt > 5$~GeV are allowed to participate in the clustering of the truth jets (though with a scaled, ghost-level \pt) and the jet to which they are clustered is labelled as originating from a $B$-hadron. All the same kinematic cuts from the reco-selection are then applied to the truth-objects.
 
 	\subsubsection{MC Backgrounds}
 
@@ -292,11 +292,11 @@ which allows us to solve for the scale factor:
 \alpha W = \frac{1 + r_{MC}}{1 - r_{MC}} \left( N_\mathrm{data}^+ - N_\mathrm{data}^- \right)
 \end{equation}
 %
-where $W$ is the inclusive $W$+jets sample (i.e. the sum of both charges). This scale-factor is derived in bins of jet multiplicity, and separetely for events with and without a $b$-tag\footnote{The scale-factor from the one-tag sample was determind to be consistent with the two-tag sample, which more closely corresponds to our selection}. The data-sample used is enriched in $W$+jets events to a very high purity, though background contributions from $t\bar{t}$, etc. mostly do not matter because they are largely charge-symmetric and drop out of the scale factor.
+where $W$ is the inclusive $W$+jets sample (i.e. the sum of both charges). This scale-factor is derived in bins of jet multiplicity, and separetely for events with and without a $b$-tag\footnote{The scale-factor from the one-tag sample was determind to be consistent with the two-tag sample, which more closely corresponds to our selection.}. The data-sample used is enriched in $W$+jets events to a very high purity, though background contributions from $t\bar{t}$, etc. mostly do not matter because they are largely charge-symmetric and drop out of the scale factor.
 
 The shape of the $W$+jets background therefore is taken from MC, but the normalization is corrected using this data-driven approach, substantially reducing the theoretical uncertainties on the largest background to the analysis. The values derived are $1.3 \pm 0.03$ for the $bb/cc$ component, $0.74 \pm 0.04$ for the single $c$ component, and $0.96 \pm 0.02$ for the light component.
 
-\textbf{Multi-jet backgrounds} are very poorly modelled in the simulation, as fake leptons are difficult to describe correctly. A data-driven approach called the \textit{matrix method} is therefore adopted to assess this background~\cite{MatrixMethod}. The goal of the method is to assess $N_\mathrm{fake}^\mathrm{tight}$: the number of fake ``tight'' leptons produced by multi-jet events.  This number is derived using two samples, differing only in the definition of the leptons: either the ``tight'' nominal selection (described above), or a ``loose'' selection with some of these requirements removed (the differences in the loose selection for muons and electrons, which are assessed separetely in this technique, will be described below). A tight lepton, by definition, passes the loose requirements. The tight sample mostly contains real leptons, while the loose sample is enriched in the fakes we are trying to measure, but both samples are a mixture. Thus, we can write:
+\textbf{Multi-jet backgrounds} are very poorly modelled in the simulation, as fake leptons are difficult to predict correctly. A data-driven approach called the \textit{matrix method} is therefore adopted to assess this background~\cite{MatrixMethod}. The goal of the method is to assess $N_\mathrm{fake}^\mathrm{tight}$: the number of fake ``tight'' leptons produced by multi-jet events.  This number is derived using two samples, differing only in the definition of the leptons: either the ``tight'' nominal selection (described above), or a ``loose'' selection with some of these requirements removed (the differences in the loose selection for muons and electrons, which are assessed separetely in this technique, will be described below). A tight lepton, by definition, passes the loose requirements. The tight sample mostly contains real leptons, while the loose sample is enriched in the fakes we are trying to measure, but both samples are a mixture. Thus, we can write:
 %
 \begin{align}
 N^\mathrm{loose} &= N_\mathrm{real}^\mathrm{loose} + N_\mathrm{fake}^\mathrm{loose}\\
@@ -309,7 +309,7 @@ In addition, we can define the \textit{efficiency} of the tight selection as:
 \epsilon_\mathrm{x} = \frac{N^\mathrm{tight}_\mathrm{x}}{N^\mathrm{loose}_\mathrm{x}}
 \end{equation}
 %
-where $x$ is either real or fake-- we are simply stating that the tight selection has a different efficiency of selecting real and fake leptons (i.e. it should be rather efficient for real leptons, but very low efficiency for fake leptons). The efficiencies $\epsilon_\mathrm{x}$ are measured separately in data (via a method described below), so we can take these as given for now. Plugging all these equations together, it is possible to solve for our desired quantity:
+where $x$ is either real or fake. Here we are simply stating that the tight selection has a different efficiency of selecting real and fake leptons (i.e. it should be rather efficient for real leptons, but very low efficiency for fake leptons). The efficiencies $\epsilon_\mathrm{x}$ are measured separately in data (via a method described below), so we can take these as given for now. Plugging all these equations together, it is possible to solve for our desired quantity:
 %
 \begin{equation}
 N_\mathrm{fake}^\mathrm{tight} = \frac{\epsilon_f}{\epsilon_r - \epsilon_f} \left(\epsilon_r N^\mathrm{loose} - N^\mathrm{tight} \right)
@@ -362,7 +362,7 @@ Now that all the backgrounds have been assessed, we can compare the data and SM 
   \label{tab:color:yields:yields}
 \end{table}
 
-We can also make comparisons between the data and SM expectation for the various kinematic quantities of the events (and in particular, the $W$-candidates) to validate that the modeling is well predicting the data distributions well. Figures~\ref{fig:color:yields:pt} and \ref{fig:color:yields:pts_sub} show the leading and subleading $W$-jet candidates' \pt distributions for the muon (left) and electron (channels) in right. The purity of the $t\bar{t}$ sample is immediately clear, but more concerning is the slope seen in the data/SM ratio. This is a well known effect related to the mismodelling of the top quark \pt in many MC simulations. Tests were performed to reweight the \pt distributions in simulation to agree with the data and to check if this had any impact on the pull angle observables: the result was a negligible change, and so this effect is not considered important\footnote{Indeed while the pull vector is normalized by the jet \pt, the angle is not directly affected.} Note also that the uncertainties in this plot (and all subsequent plots) include all detector effects described in Section~\ref{chapter:color:uncertainties:other}, but no theoretical uncertainties from Section~\ref{chapter:color:uncertainties:theory}. In all cases, the MC simulation is normalized to the luminosity.
+We can also make comparisons between the data and SM expectation for the various kinematic quantities of the events (and in particular, the $W$-candidates) to validate that the modeling is well predicting the data distributions well. Figures~\ref{fig:color:yields:pts} and \ref{fig:color:yields:pts_sub} show the leading and subleading $W$-jet candidates' \pt distributions for the muon (left) and electron (channels) in right. The purity of the $t\bar{t}$ sample is immediately clear, but more concerning is the slope seen in the data/SM ratio. This is a well known effect related to the mismodelling of the top quark \pt in many MC simulations. Tests were performed to reweight the \pt distributions in simulation to agree with the data and to check if this had any impact on the pull angle observables: the result was a negligible change, and so this effect is not considered important\footnote{While the pull vector is normalized by the jet \pt, the angle is not directly affected and so the observables are not directly impacted by this mismodelling.}. Note also that the uncertainties in this plot (and all subsequent plots) include all detector effects described in Section~\ref{chapter:color:uncertainties:other}, but no theoretical uncertainties from Section~\ref{chapter:color:uncertainties:theory}. In all cases, the MC simulation is normalized to the luminosity.
 
 
 \begin{figure}[h!]
@@ -446,7 +446,7 @@ Topological calorimeter clusters are familiar objects by now: these are the inpu
 
 Additionally, a new correction for the primary vertex origin is applied in this analysis. As discussed in Section~\ref{jet-reconstruction:origin}, the $z$-coordinate of the primary vertex is not necessarily at the origin of the detecotr, and a correction to jets based on the measured location of the vertex can substantially improve the $\eta$ resolution of the jet. As we use standard \akt $R=0.4$ jets in this analysis, this means that the jet axis is origin corrected, but the clusters by default are not.  This leads to a large bias in the $r_i$ terms in the construction of the pull vector: the jet axis is not at the center of the clusters anymore.
 
-One potential solution is to remove the origin correction from the jet axis. However, this is also not ideal: the pull vector (and consequentially, the pull angle) are very sensitive to the $\eta$ resolution, as the $r_i$ term comes in twice in the pull vector definition. One particularly interesting consequence of this is that the pull vector magnitude, especially, is sensitive to the different $\eta$ resolutions in data and MC induced by differing $z$-vertex distributions. Because MC is run before data-taking is finished, it often uses an approximate $z$-vertex distribution predicted to match the data conditions, but this often turns out quite different in practice. Most observables do not depend on this, but the pull vector magnitude does: the un-corrected distribution in XXX shows the large disagreement when there is no correction.
+One potential solution is to remove the origin correction from the jet axis. However, this is also not ideal: the pull vector (and consequentially, the pull angle) are very sensitive to the $\eta$ resolution, as the $r_i$ term comes in twice in the pull vector definition. One particularly interesting consequence of this is that the pull vector magnitude, especially, is sensitive to the different $\eta$ resolutions in data and MC induced by differing $z$-vertex distributions. Because MC is run before data-taking is finished, it often uses an approximate $z$-vertex distribution predicted to match the data conditions, but this often turns out quite different in practice. Most observables do not depend on this, but the pull vector magnitude does: the un-corrected distribution in Figure~\ref{fig:color:substructure:pull} shows the large disagreement when there is no correction.
 
 There is a better solution, then: one can correct the \textit{clusters themselves} for the changing location of the primary vertex. The correction is given by: 
 %
@@ -462,7 +462,7 @@ where $R$ is the radial depth of the cluster. The $p_T$ of the corrected cluster
 p_T=E/\cosh(\eta)\mapsto E/\cosh(\eta')=p_T\cosh(\eta)/\cosh(\eta')
 \end{align}
 %
-As this correction is data-driven (it is not calibrated in MC), it corrects the resolution of both data and MC to the same level. Figure YYY below shows the effect of the correction on the pull vector magnitude: removing the different levels of smearing due to the primary vertex's $z$ location has substantially improved the agreement.
+As this correction is data-driven (it is not calibrated in MC), it corrects the resolution of both data and MC to the same level. Figure~\ref{fig:color:substructure:pull_fixed} below shows the effect of the correction on the pull vector magnitude: removing the different levels of smearing due to the primary vertex's $z$ location has substantially improved the agreement.
 
 Now that the cluster origins are corrected, we define the jet axis in such a way as to minimize any residual bias: we use the location of the 4-vector sum of the origin-corrected clusters. This is effectively removing the $\eta$ calibration from the jet, and restoring the the axis to the ``center'' of the clusters for the purposes of the substructure calculation.
 
@@ -625,7 +625,7 @@ With the details of the measurement defined, the uncertainties are the next topi
 %
 The first three will be addressed in the following sections, while the unfolding uncertainties will be addressed in Section~\ref{chapter:color:unfolding:uncertainties} after the unfolding procedure itself is defined.
 
- Practically, each uncertainty is used to shift the properties of events in simulation in some way (in multiple different ways for some of the uncertainties); the resulting selected events are used to perform the same unfolding procedure as the nominal MC, and the difference in the final result is taken as the systematic. For the reco-level figures of previous sections, the difference between the nominal and systematic selection are summed in quadrature over the variations from the detector objects (non-track and cluster) and theretical uncertainties and the resulting bland is overlaid on the nominal MC distribution.
+ Practically, each uncertainty is used to shift the properties of events in simulation in some way (in multiple different ways for some of the uncertainties); the resulting selected events are used to perform the same unfolding procedure as the nominal MC, and the difference in the final result is taken as the systematic. For the reco-level figures of previous sections, the difference between the nominal and systematic selection are summed in quadrature over the variations from the detector objects and the resulting band is overlaid on the nominal MC distribution\footnote{Note that for measurement related quantities, such as the pull angles, the uncertainties on the measurement objects are included, but for selecton related quantities, such as the jet \pt, they are ignored.}.
 
 	\subsection{Track and Cluster Uncertainties}
 	\label{chapter:color:uncertainties:inputs}
@@ -647,7 +647,7 @@ The first three will be addressed in the following sections, while the unfolding
 
 	Cluster uncertainties are slightly more complicated, as there are fewer direct physics measurements which can be used to constrain them as was done for the tracker. For most measurements of cluster properties, the corresponding measurement of the tracker is known to be much higher resolution: the tracker measurements can therefore often be used as a standard candle to assess the cluster uncertainties.
 
-	In principle there are two limitations to this approach: first, there is no assessment for $|\eta| > 2.5$, and second, there is no assessment for neutral particles. In terms of the $|\eta|$ acceptance, the jet selection cuts mean that this is not a concern for us. The neutral clusters are more troubling: the uncertainties from charged particles are used on them, which is not strictly correct. However, the overall size of the systematic is very small, and is taken to be very conservative in all cases: if it was a dmoninant component of the analysis, it would be more critical to carefully consider the effect of neutral clusters.
+	In principle there are two limitations to this approach: first, there is no assessment for $|\eta| > 2.5$, and second, there is no assessment for neutral particles. In terms of the $|\eta|$ acceptance, the jet selection cuts mean that this is not a concern for us. The neutral clusters are more troubling: the uncertainties from charged particles are used on them, which is not strictly correct. However, the overall size of the systematic is very small, and is taken to be very conservative in all cases: if it was a dominant component of the analysis, it would be more critical to carefully consider the effect of neutral clusters.
 
 	The \textbf{Cluster Angular Resolution} is measured in $Z\rightarrow \mu\mu$ events, following the example of a 2011 analysis~\editnote{Cite this}. In this technique, isolated tracks and isolated clusters are matched to each other in $\Delta R$ space, using the track position extrapolated to the second layer of the calorimeter. Events with $\pt^{Z} > 30$~GeV are selected: tracks are matched to the closest cluster, and are required to have only one cluster with $\Delta R < 0.5$. Only high quality tracks not belonging to the reconstructed muons are used, and only clusters with $E > 0$ are considered. Example distributions are shown in Figure~\ref{fig:color:uncertainties:clusters:deltar} for the barrel region of the detector. Two peaks are visible in most plots: the second one is always at $\Delta R = 0.15$, and is induced by the requirement of having no additional clusters within this range. There are clearly two peaks in the distribution: the first is interpreted as being caused by the proper charged track being matched to the cluster, while the second is seen as contamination from neutral particles not measured by the tracker. One change from the 2011 study is that a cut on $\Delta R< 0.075$ is performed in order to isolate the first peak: ultimately, this leads to a substantial reduction of the uncertainty compared to 2011.
 
@@ -707,9 +707,7 @@ The first three will be addressed in the following sections, while the unfolding
 
 	The ultimate size of the uncertainty, even assessed in this conservative manner, is very small.
 
-	\subsubsection{Dead Material Effects}
-
-	One final uncertainty on clusters is related to dead material in the detector. This uninstrumented material (dead in the sense that energy measurements do not take place) is taken into account by the LC scheme in order to improve the energy measurement as discussed in Figure~\ref{fig:jet-reconstruction:cluster-calibration:ooc-dm}, but the dead material can also prevent new clusters from being formed. Using a measurement from $\sqrt{s} = 900$~GeV data, clusters with energy $E < 2.5$~GeV  are randomly removed with probability $r\leq 25\%\times \exp(-2E/\text{GeV})$. 
+	One final uncertainty on clusters is related to \textbf{Dead Material Effects} in the detector. This uninstrumented material (dead in the sense that energy measurements do not take place) is taken into account by the LC scheme in order to improve the energy measurement as discussed in Figure~\ref{fig:jet-reconstruction:cluster-calibration:ooc-dm}, but the dead material can also prevent new clusters from being formed. Using a measurement from $\sqrt{s} = 900$~GeV data, clusters with energy $E < 2.5$~GeV  are randomly removed with probability $r\leq 25\%\times \exp(-2E/\text{GeV})$. 
 
 	\subsubsection{Jet Angular Resolution Uncertainty}
 
@@ -747,7 +745,7 @@ The first three will be addressed in the following sections, while the unfolding
 
 	The final class of uncertainties are the theory uncertainties on the MC prediction. These describe our lack of understanding of various inputs to the MC prediction, and are assessed by changing generators and parton showers, or changing the parameters and inputs to the generators.
 
-	Often the MC samples used to study these uncertainties are only available using the ATLAS Fast-Simulation framework (AFII). AFII is notoriously bad at measuring substructure because it parameterizes the showering processes in the calorimeter somewhat poorly, so direct comparisons between AFII and the full-simulation samples is not possible. For this reason, the uncertainties are assessed by comparing the unfoldings with the nominal \PowPythia $t\bar{t}$ simulated with AFII. As some of these samples also affect the truth prediction which we are ultimately comparing to, we often also show the uncertainty on the truth prediction itself. \editnote{Clean this up, not sure if true}
+	Often the MC samples used to study these uncertainties are only available using the ATLAS Fast-Simulation framework (AFII). AFII is notoriously bad at measuring substructure because it parameterizes the showering processes in the calorimeter somewhat poorly, so direct comparisons between AFII and the full-simulation samples is not possible. For this reason, the uncertainties are assessed by comparing the unfoldings with the nominal \PowPythia $t\bar{t}$ simulated with AFII. As some of these samples also affect the truth prediction which we are ultimately comparing to, we often also show the uncertainty on the truth prediction itself. \editnote{Clean this up}
 
 	\textbf{PDF Uncertainties} reflect our limited knowledge of the proton structure: as these govern the actual inputs to collisions simulated in MC, they can have a broad impact on the scale and rate of events. These are evaluated using the standard PDF4LHC recommendations~\cite{Botje:2011sn} by reweighting events with
 	%
@@ -779,7 +777,7 @@ The first three will be addressed in the following sections, while the unfolding
 \end{center}
 \end{figure}
 
-	\textbf{Color Reconnection} is expected to have some impact on color sensitive analyses, as it does involve the exchange of color lines between quarks during the parton shower. However, since it is an effect of the parton shower, it is expected to be subdominant compared to the color set by the Matrix Element-- and indeed, and indeed, previously studied variations have shown that the reconnection has a small impact on the pull angle~\cite{Altheimer:2013yza}. Simulated `low color reconnection' truth level samples are used to assess the potential impact: these samples use the lowCR Perugia tune to significant suppress the interactions between partons but not so far as to be inconsistent with minimum bias measurements. The effect is shown in Figure~\ref{fig:color:uncertainties:theory:cr}, and is clearly less than $1\%$. Again, this affects both the all particles and charged particles measurement.
+	\textbf{Color Reconnection} is expected to have some impact on color sensitive analyses, as it does involve the exchange of color lines between quarks during the parton shower. However, since it is an effect of the parton shower, it is expected to be subdominant compared to the color set by the Matrix Element-- and indeed, and indeed, previously studied variations have shown that the reconnection has a small impact on the pull angle~\cite{Altheimer:2013yza}. \editnote{cite boost report} Simulated `low color reconnection' truth level samples are used to assess the potential impact: these samples use the lowCR Perugia tune to significant suppress the interactions between partons but not so far as to be inconsistent with minimum bias measurements. The effect is shown in Figure~\ref{fig:color:uncertainties:theory:cr}, and is clearly less than $1\%$. Again, this affects both the all particles and charged particles measurement.
 
 
 \begin{figure}[h!]
@@ -812,7 +810,7 @@ The first three will be addressed in the following sections, while the unfolding
 
 \section{Measuring Color}
 
-Finally, all the preliminaries are defined and the final analysis can proceed. We understand the selection of $t\bar{t}$ events, the data/MC agreement in this sample, and the various sources of uncertainty on our measurement. We can now proceed to \textit{unfold} the pull angle distribution, creating a distribution of data corrected for the various detector effects-- thus allowing us to truly see, or measure, color at the LHC.
+Finally, all the preliminaries are defined and the final analysis can proceed. We understand the selection of $t\bar{t}$ events, the data/MC agreement in this sample, and the various sources of uncertainty on our measurement. We can now proceed to \textit{unfold} the pull angle distribution, creating a distribution of data corrected for the various detector effects-- thus allowing us to truly see color at the LHC.
 
 	\subsection{Unfolding}
 
@@ -822,7 +820,7 @@ Finally, all the preliminaries are defined and the final analysis can proceed. W
 	\mathbf{A} \cdot \mathbf{x} = \mathbf{y},
 	\end{equation}
 	%
-	where $\mathbf{y}$ is a vector describing some quantity at the reconstructed level, $\mathbf{x}$ is a vector describing the same quantity at truth level, and $\mathbf{A}$ is a matrix which smears $x$ into $y$-- i.e., $\mathbf{A}$ is a detector or detector simulation. Typically one measures $\mathbf{y}$ in data, and then wishes to extract $\mathbf{x}$ from the data: this requires obtaining and then inverting $\mathbf{A}$ in some way. The procedure adopted by this analysis is an \textit{Iterative Bayseian Unfolding}, which assesses the matrix probabilistically. \editnote{add more on this}
+	where $\mathbf{y}$ is a vector describing some quantity at the reconstructed level, $\mathbf{x}$ is a vector describing the same quantity at truth level, and $\mathbf{A}$ is a matrix which smears $x$ into $y$-- i.e., $\mathbf{A}$ is a detector or detector simulation. Typically one measures $\mathbf{y}$ in data, and then wishes to extract $\mathbf{x}$ from the data: this requires obtaining and then inverting $\mathbf{A}$ in some way. The procedure adopted by this analysis is an \textit{Iterative Bayseian Unfolding}, which assesses the matrix probabilistically. \editnote{Cite this}
 
 	The same problem can be defined in terms of probabilities as:
 %
@@ -840,7 +838,7 @@ Finally, all the preliminaries are defined and the final analysis can proceed. W
 %
 	and now the comparison to $\mathbf{A}$ from before is complete: the $a_{ji}$ are the elements of our smearing, or response matrix, from before. The $\mathrm{P}(T_i)$ is referred to as a \textit{prior}: this is the probability of finding an event in bin $i$ of the actual true distribution-- which of course we do not know. However, any reasonable guess for this true distribution often suffices, and there is a procedure to remove the dependence on this prior assumption which will be discussed shortly.
 
-	What exactly has this accomplished? We have been manipulated a matrix $\theta_{ij}$, which can be applied to some normalized reconstructed data distribution $d_j$, in order to obtain a truth-level distribution $d^\prime_i$: this is a tool we can apply to data in order to obtain a real measurement, correcting for detector efficiency and resolution effects. When we started, we had no way of constructing this matrix-- but now, we have found how to define it in terms of $\mathbf{A}$, the response matrix. The response matrix can readily be assessed using MC simulation since the truth and reconstructed quantities are both known, so in principle we have everything we need.
+	What exactly has this accomplished? We have been manipulating a matrix $\theta_{ij}$, which can be applied to some normalized reconstructed data distribution $d_j$, in order to obtain a truth-level distribution $d^\prime_i$: this is a tool we can apply to data in order to obtain a real measurement, correcting for detector efficiency and resolution effects. When we started, we had no way of constructing this matrix-- but now, we have found how to define it in terms of $\mathbf{A}$, the response matrix. The response matrix can readily be assessed using MC simulation since the truth and reconstructed quantities are both known, so in principle we have everything we need.
 
 	The previously mentioned downside of the unfolding-- the dependence on the prior $T_i$ distribution-- remains to be addressed, however. The issue is mitigated by applying the procedure \textit{iteratively}-- and so the remaining reason for the naming of the technique becomes clear. Each time the result is unfolded, it is used as a prior to the construction of a new $\theta_{ij}$ and then applied again: each time, the bias due to the choice of the initial $T_i$ decreases. There is a price, however: the statistical fluctuations in the unfolding are amplified as they are being incorporated into the result each time the unfolding is iterated. There is a tension, then, between minimizing the dependence on the prior, and minimizing the statistical uncertainty due to the unfolding-- this is the topic of Section~\ref{chapter:color:unfolding:optimization}.
 
@@ -943,7 +941,7 @@ Does this technique work? One simple way to check is to unfold simulation with i
 
 	One particularly useful way to understand the physics motivation for this selection is presented in Figure~\ref{fig:color:unfolding:optimization_iter}. Here, the fractional uncertainty on the unfolding in each bin is shown as a function of the number of iterations. It is clear that there is a minimum in the total uncertainty, and that it is mostly driven by the minimization of the color flow model uncertainty: i.e., the prior distribution. 
 
-	\editnote{Discussion on boundedness? Probably not necessary.}
+	% \editnote{Discussion on boundedness? Probably not necessary.}
 %
 \begin{figure}[h!]
   \begin{center}
@@ -1017,7 +1015,7 @@ Does this technique work? One simple way to check is to unfold simulation with i
 
 	\subsubsection{Unfolding Non-closure}
 
-	One final uncertainty has so far not been discussed: this is the uncertainty most intimately related to the unfolding, and measures the non-closure of the technique. A standard ATLAS procedure is used to assess this, in order to consider possible effects in the data which could bias the unfolding itself. First, the reconstructed MC is reweighted to match the data more closely using a first-order polynomial: this is shown in Figure~\ref{fig:color:unfolding:datamc_ratio}. The reweighted sample (mimimicing the data) is then unfolded using the nominal MC unfolding matrix: the resulting unfolded distribution is compared to the reweighted truth level distribution. If the reweighting is not pathological, it should have affected both the truth and reconstructed distributions similarly, and the difference should be small. In genreal, it is a few percent.
+	One final uncertainty has so far not been discussed: this is the uncertainty most intimately related to the unfolding, and measures the non-closure of the technique. A standard ATLAS procedure is used to assess this, in order to consider possible effects in the data which could bias the unfolding itself. First, the reconstructed MC is reweighted to match the data more closely using a first-order polynomial: this is shown in Figure~\ref{fig:color:unfolding:datamc_ratio}. The reweighted sample (mimimicing the data) is then unfolded using the nominal MC unfolding matrix: the resulting unfolded distribution is compared to the reweighted truth level distribution. If the reweighting is not pathological, it should have affected both the truth and reconstructed distributions similarly, and the difference should be small. In general, it is a few percent.
 
 \begin{figure}[h!]
   \includegraphics[width=.45\linewidth]{cf_int/unfolding/nonclosure/truth_ratio_Muons_J1J2}
@@ -1103,7 +1101,7 @@ With the final uncertainties quantified, we can now show the final unfolded resu
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullAllCaloAxis}
+  \includegraphics[width=0.7\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullAllCaloAxis}
   \caption{The all-particle pull angle.
     Uncertainties on the data are shown as orange bands, with the darker band
     representing the statistical uncertainty only and the lighter band
@@ -1117,7 +1115,7 @@ With the final uncertainties quantified, we can now show the final unfolded resu
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullChargedTrackAxis}
+  \includegraphics[width=0.7\textwidth]{cf_int/unfolding/results/new_data_mc_comparison_All_PullChargedTrackAxis}
   \caption{The charged-particle pull angle.
     Uncertainties on the data are shown as orange bands, with the darker band
     representing the statistical uncertainty only and the lighter band
@@ -1127,7 +1125,166 @@ With the final uncertainties quantified, we can now show the final unfolded resu
 \end{figure}
 
 
+\FloatBarrier
+
+Figure~\ref{fig:color:unfolding:final_PullAllCaloAxis_Herwig} and \ref{fig:color:unfolding:final_PullChargedTrackAxis_Herwig} show the unfolded data compared to the \PowHerwig SM and flipped models. The agreement with the \Herwig showering is substantially worse than with \Pythia showering. \Herwig predicts colorflow to be a larger effect (i.e., a larger peak at 0) than is observed in data. This demonstrates the importance of comparing the unfolded data to different generators and tunes: we can see that different MC codes predict different distributions, and our measurement can help constrain these effects.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{paper/new_data_mc_comparison_All_PullAllCaloAxis_Herwig}
+  \caption{The all-particle pull angle.
+    Uncertainties on the data are shown as orange bands, with the darker band
+    representing the statistical uncertainty only and the lighter band
+    showing the total uncertainty (statistical plus systematic). Two MC predicitions
+    are shown for SM (red) and flipped (green) \PowHerwig\ MC.}
+  \label{fig:color:unfolding:final_PullAllCaloAxis_Herwig}
+\end{figure}
+
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{paper/new_data_mc_comparison_All_PullChargedTrackAxis_Herwig}
+  \caption{The charged-particle pull angle.
+    Uncertainties on the data are shown as orange bands, with the darker band
+    representing the statistical uncertainty only and the lighter band
+    showing the total uncertainty (statistical plus systematic). Two MC predicitions
+    are shown for SM (red) and flipped (green) \PowHerwig\ MC.}
+  \label{fig:color:unfolding:final_PullChargedTrackAxis_Herwig}
+\end{figure}
+
+
+
+
 
 
 	\subsection{Hypothesis Testing}
+
+	Now that the unfolded measurement is complete and we have compared the data to various models of color flow, it is clear that the Standard Model prediction of a color-singlet color flow is the correct description of nature. It is interesting to quantify the extent of the agreement between the data and the various models, to demonstrate that this preference is actually statistically and systematically significant.
+
+	In order to quantify this difference, a $\Delta \chi^2$ test is performed, where
+	%
+	\begin{equation}
+	\chi^2_m = \sum_i \frac{(d_i-m_i)^2}{m_i},
+	\end{equation}
+	%
+	where $d_i$ is the value in data for some bin $i$, and $m_i$ is the value in some model. Two models are tested simultaneously, and the difference in $\chi^2$ is a test-metric for preference to either model. For our analysis, we are comparing:
+	%
+	\begin{equation}
+	\Delta \chi^2 = \chi^2_\mathrm{SM} - \chi^2_\mathrm{flipped}.
+	\end{equation} 
+	%
+	In particular, probability distribution functions for each model, $f(\Delta \chi^2 | m_i)$, are generated using pseudo-data generated from the full covariance matrix for the SM prediction\footnote{Using covariance matrices from the flipped model, as well as from the data itself, were also studied, and found to be entirely compatible with the SM covariance matrix.}. The covariance matrices-- one for the all particles and one for the charged particles measurement-- encode the bin-by-bin correlations of the uncertainties of the variables of interest; generating pseudo-data from the covariance matrix allows the toy data to take into account these correlations properly. The covariance matrix for a given uncertainty is defined as:
+	%
+	\begin{equation}
+	C_{ij} = \overline{v_i v_j} - (\overline{v_i} \overline{v_j})
+	\end{equation}
+	%
+	where $v_x$ contains the value of the measurement in a bin $x$, and the means are taken over ensembles of pseudo-data generated with a Gaussian width specified by the size of the uncertainty. The sum over the individual uncertainties' matrices is like a sum in quadrature of an uncertainty for one number, and therefore encodes the full uncertainty of the analysis. These matrices are displayed in Table~\ref{tab:color:unfolding:all_cov_matrix} and Table~\ref{tab:color:unfolding:charged_cov_matrix} for the all particles and charged particles measurements, respectively. Covariance matrices can be normalized to appear as correlation matrices by dividing by the diagonal elements; these are shown for each of the measurements in Figure~\ref{fig:color:unfolding:correlations}.
+
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{ cccc }
+      \toprule
+      $\times 10^{-4}$ & 0.0 - 0.275 & 0.275 - 0.6375 & 0.6375 - 1.0 \\
+      \cmidrule(r){2-4}
+      0.0-0.275        & 13.28       & -5.81          & -4.0         \\
+      0.275-0.6375     & -5.81       & 5.21           & -0.28        \\
+      0.6375-1.0       & -4.0        & -0.28          & 3.9          \\
+      \bottomrule
+    \end{tabular}
+    \caption{Full covariance matrix for the all-particle pull angle.}
+    \label{tab:color:unfolding:all_cov_matrix}
+\end{table}
+%
+\begin{table}
+    \centering
+    \begin{tabular}{ ccccc }
+      \toprule
+      $\times 10^{-4}$ & 0.0 - 0.2 & 0.2 - 0.5 & 0.5 - 0.8 & 0.8 - 1.0 \\
+      \cmidrule(r){2-5}
+      0.0-0.2          & 4.77      & -0.08     & -1.57     & -2.21     \\
+      0.2-0.5          & -0.08     & 0.98      & 0.14      & -1.51     \\
+      0.5-0.8          & -1.57     & 0.14      & 1.11      & -0.25     \\
+      0.8-1.0          & -2.21     & -1.51     & -0.25     & 4.85      \\
+      \bottomrule
+    \end{tabular}
+    \caption{Full covariance matrix for the charged-particle pull angle.}
+    \label{tab:color:unfolding:charged_cov_matrix}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.5\textwidth]{paper/All_stat_syst_corr_PullAllCaloAxis.pdf}\includegraphics[width=0.5\textwidth]{paper/All_stat_syst_corr_PullChargedTrackAxis.pdf}
+  \caption{The correlation in the statistical and systematic uncertainty between bins of the all- (charged-) particles pull angle on the left (right) after unfolding.}
+  \label{fig:color:unfolding:correlations}
+\end{figure}
+
+	Distributions are generated for $f(\Delta \chi^2 | \mathrm{SM})$ and $f(\Delta \chi^2 | \mathrm{Flipped})$ using toys pulled from these covariance matrices: these toys change the value of the $d_i$, and generate a probability density function of possible values of $\Delta \chi$ which could have been observed if that model was true. Figure~\ref{fig:color:unfolding:deltachi} shows the distributions of these toys for the two measurements; the blue histogram corresponds to $f(\Delta \chi^2 | \mathrm{SM})$ and the red to $f(\Delta \chi^2 | \mathrm{Flipped})$.
+
+	The expected $p$-value for compatibility with the flipped model (i.e., the $p$-value assuming that the data will look exactly like the SM prediction) is given by:
+	%
+	\begin{equation}
+  p^{\mathrm{exp}}_{\mathrm{flipped}} = \int^{\Delta\chi^2_{\mathrm{SM}}, \mathrm{mean}}_{-\infty} f(\Delta\chi^2|\mathrm{flipped}) d(\Delta\chi^2) \ .
+\end{equation}
+	%
+	This is essentially an integral of the flipped PDF up to the expected SM value, or the dashed black line in Figure~\ref{fig:color:unfolding:deltachi}. The $p$-value can be converted to a $\sigma$ using a Gaussian-equivalent $Z$-score: for the all particles measurement, the expected significance is $3.4\sigma$, and for the charged particles measurement, it is $4.5\sigma$. This indicates that the charged particles measurement is expected to be more sensitive: the improved resolution has ultimately proved more important than the neutral particle measurement. Indeed, this is clear from the $\Delta \chi$ distributions: the all particles measurement is significantly broader and the overlap between the two hypotheses is much larger.
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{cf_int/unfolding/interpretation/Hypothesis_Plot_PullAllCaloAxis.pdf} \\
+  \includegraphics[width=0.8\textwidth]{cf_int/unfolding/interpretation/Hypothesis_Plot_PullChargedTrackAxis.pdf}
+  \caption{PDFs of $\Delta\chi^2$ for the SM (blue) and flipped (red) scenarios
+    and the value of $\Delta\chi^2$ in data. Pseudo-experiments less compatible with
+    the model from which they are generated than the observed data are shown by the
+  shaded areas under the two histograms.}
+  \label{fig:color:unfolding:deltachi}
+\end{figure}
+
+	Finally, the actual observed data is used to calculate a $\Delta \chi$ value as well: this is shown as the black solid line in Figure~\ref{fig:color:unfolding:deltachi}. As expected, the observed value is slightly offset from the SM, between the SM and Flipped distributions: this is entirely compatible with the distributions in Figure~\ref{fig:color:unfolding:final_PullAllCaloAxis} and Figure~\ref{fig:color:unfolding:final_PullChargedTrackAxis}. These can be converted to a $p$-value using:
+	\begin{equation}
+  p^{\mathrm{obs}}_{\mathrm{flipped}} = \int^{\Delta\chi^2_{\mathrm{obs}}}_{-\infty} f(\Delta\chi^2|\mathrm{flipped}) d(\Delta\chi^2) \ .
+\end{equation}
+	The observed compatibilities with the flipped model are 2.7$\sigma$ and 3.3$\sigma$ for the all particles and charged particles measurements respectively. Note also that the SM compatibility can be measured in a similar way (by integrating $f(\Delta\chi^2|\mathrm{SM})$: the compatibilities are 0.7$\sigma$ and $1.1\sigma$ for the all particles and charged particles measurements respectively. All the $p$-values and $Z$-scores are summarized in Table~\ref{tab:color:unfolding:interpretation}.
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{ ccc|cc }
+      \hline
+      & \multicolumn{2}{c}{All-particle} & \multicolumn{2}{c}{Charged-particle}          \\
+                         & $p$-value & $Z$ [$\sigma$] & $p$-value       & $Z$ [$\sigma$] \\
+      \hline
+      SM (expected)      & 0.5       & 0              & 0.5             & 0              \\
+      SM (observed)      & 0.24      & 0.7            & 0.13            & 1.1            \\
+      Flipped (expected) & 0.0003    & 3.4            & $4\cdot10^{-6}$  & 4.5            \\
+      Flipped (observed) & 0.004     & 2.7            & $4\cdot10^{-4}$ & 3.3            \\
+    \end{tabular}
+    \caption{Expected and observed compatibility between the data and two models,
+    SM and flipped.}
+    \label{tab:color:unfolding:interpretation}
+\end{table}
+
+
+	From these values, we are able to conclusively state that the decays of $W$-bosons in data are compatible (with $1\sigma$) with a color singlet hypothesis, and strongly incompatible (greater than $3\sigma$) with a color octet hypothesis. This is the first direct measurement of the color charge of the $W$-boson.
+
+\FloatBarrier
+
+\section{Conclusions}
+
+In this analysis, we have studied an observable called the \textit{jet pull}. The jet pull is sensitive to the color connections between two jets: this phenomena is expected to appear in the SM, but is poorly understood, especially in the complicated environments of hadron colliders. Our measurement has demonstrated that we can tell the difference between color singlets and octets in the data by testing the $W$-boson, a well known color singlet, against an octet hypothesis. This demonstrates that BSM or Higgs searches can use this variable to aid in discrimination between signal and background, or the characterization of a signal. Our data can also be used to help constrain color flow models in MC simulations: \Herwigpp shows significantly worse agreement with the observed color flow than \Pythia, but agreement with both simulations can be improved with better tuning of the generators.
+
+Figure~\ref{fig:color:eventdisplay} shows an event display from data where two jets are clearly color connected. Events as clear as this are exceedingly rare, as the effect of color flow is extremely subtle, but we have demonstrated for the first time that such a measurement is possible at a hadron collider.
+
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.6\textwidth]{paper/EventDisplay.pdf}
+  \caption{An event in data passing the selection in the one-muon channel.  The selected $W$ daughter candidate jets, labeled $J_1$ and $J_2$ each have $p_\text{T}\sim 50$ \GeV\, and their dijet mass is $\sim 70$ \GeV\,.  The two pull angles $|\theta_\text{P}(J_1,J_2)|,|\theta_\text{P}(J_2,J_1)| < 0.01$.  Jet constituent clusters are colored and sized according to their energy.  The pull magnitudes for $J_1$ and $J_2$ are approximately $0.005$ and $0.004$, respectively.}
+  \label{fig:color:eventdisplay}
+\end{figure}
+
 		
