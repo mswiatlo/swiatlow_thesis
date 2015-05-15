@@ -131,7 +131,7 @@ This strategy clearly improves the situation with seeds: there is never an energ
 
 %origins
 
-The first sequential algorithms we used in $e^+/e^-$ collisions: these were natural targets, as the ``clean'' leptonic collisions do not produce the additional underlying event contamination and large jet multiplicity inherent to hadronic collisions. Particle multiplicity is always a concern when analyzing events with sequential recombination algorithms, as the minimized distance calculation typically goes as $O(N^2)$ and can become prohibitively expensive at hadron colliders. The first successful application at an $e^+/e^-$ machine was at JADE, and used a distance metric:
+The first sequential algorithms we used in $e^+/e^-$ collisions: these were natural targets, as the ``clean'' leptonic collisions do not produce the additional underlying event contamination and large jet multiplicity inherent to hadronic collisions. Particle multiplicity is always a concern when analyzing events with sequential recombination algorithms, as the minimized distance calculation typically goes as $O(N^3)$ and can become prohibitively expensive at hadron colliders~\cite{Jetography}\footnote{Indeed, at LEP collisions on the $Z$ peak, typically 40 particles were produced--- while 4000 are expected at LHC 14 TeV collisions!}. The first successful application at an $e^+/e^-$ machine was at JADE, and used a distance metric:
 %
 \begin{equation}
 y_{ij} = \frac{2 E_i E_j (1 - \cos \theta_ij)}{Q^2}
@@ -144,18 +144,109 @@ The IRC safety of the JADE algorithm is clear. Soft particles (the worry of infr
 The $k_t$ algorithm was the solution--- the only difference is to replace the distance metric with
 %
 \begin{equation}
-y_{ij} = \frac{2 \min(E_i^2,E_j^2) (1-\cos{\theta_{ij}})}{Q^2}
+y_{ij} = \frac{2 \min(E_i^2,E_j^2) (1-\cos{\theta_{ij}})}{Q^2}.
 \end{equation}
 %
+Considering only the minimum energy of two particles guaranteed that close-by particles would be preferred for matching over distant pairs, while preserving the IRC safety of the algorithm. This form is motivated strongly also by the probability of colinear splittings in QCD from one parton $k$ to a pair $ij$ (in the limit of soft $i$ or $j$), which generally go as:
+%
+\begin{equation}
+\frac{P_{k\rightarrow ij}}{dE_i d\theta_{ij}} \approx \frac{\alpha_s}{\min(E_i E_j) \theta_{ij}}.
+\end{equation}
+%
+These features made the \kt algorithm a favorite of the LEP experiments~\cite{Jetography}.
 
-
+Several assumptions go into this algorithm which preclude its use at a hadron collider. The main difficulty in applying it is the assumption of a full measurement of the energy of the event, whereas the varying longitudinal boosts at a hadron collider (because of the unknown, and possibly unbalanced momentum fractions of the incoming partons) mean that only transverse energy is generally meaningful (as this quantity is invariant under longitudinal boosts). Therefore, the following terms are defined for use of the \kt family at hadron colliders:
+%
+\begin{align}
+d_{ij} &= \min(p_{Ti}^{2p}, p_{Tj}^{2}) \frac{\Delta R_{ij}^2}{R^2} \nonumber\\
+\Delta R^2 &= (\phi_i - \phi_j)^2 + (y_i - y_j)^2\nonumber\\
+d_{iB} &= p_{Ti}^{2p}
+\end{align}
+%
+The algorithm proceeds almost identically to the $e^+/e^-$ version, but with a few small changes:
+%
+\begin{enumerate}
+\item Find the minimum of all $d_{ij}$ and $d_{iB}$
+\item If $d_{ij}$ is a minimum, combine the pair and return to 1; if $d_{iB}$ is a minimum, consider the particle a finished jet and remove it from the list, and then return to 1
+\item Finish when there are no more particles.
+\end{enumerate}
+%
+In this definition, $d_{ij}$ are once again the interparticle distances, and $\Delta R$ is an angular distance similar to $\theta_{ij}$ but which respects longitudinal boosts. $d_{iB}$ is the particle-beam distance: this corresponds to our understanding that most particles continue down the beampipe with no transverse momentum, and that clustering should come to an end when this set of particles is the closest to the $i$ in question. The former size parameter $y_\mathrm{cut}$ has been replaced by the distance parameter $R$: happily, $R$ has a bit more of a intuitive meaning, as it has the same units as the angular distance $\Delta R$. The last open parameter is $p$: for the \kt algorithm, $p=1$, but there are other options as well.
 %modifications
 
-%fastjet
+Initial studies of the \kt algorithm at the D0 experiment at the Tevatron were somewhat dissappointing: they showed that not only was the clustering time was a major concern, but that the \textit{irregular shape} of the \kt jets led to sensitivity to the simulation of the underlying event. For many years these were convenient excuses for experimentalists to focus on the faster and more ``regular'' cone algorithms. The former concern was alleviated in 2006 when Gavin Salam and Matteo Cacciari released the seminal \texttt{FastJet} package, which used advances in computational geometry to reduce the complexity of \kt jet finding to $O(N \ln N)$--- faster than any other algorithm at the time~\cite{fj}. 
 
-%antikt cones
+Concerns about jet shapes remained, however. Figure~\ref{fig:jets:kt} shows an example ATLAS simulated event with many final state quarks clustered with the \kt algorithm with $R=1.0$: the shapes of the jets are clearly quite different from the cone expectation. These shapes form from the clustering of soft particles to each other: as the softest particles are clustered first due to the structure of the distance metric, interesting shapes can arise because of the relative ease of a shower or the underlying event producing soft particles. A similar algorith, referred to as \CA, sets $p=0$ in the distance metric and therefore completely ignores the energy and uses only distances to match particles. Figure~\ref{fig:jets:ca} shows the same event display clustered with the \CA algorithm with $R=1.0$: the shape is quite similar to \kt, and features the same irregular pattern. Soft particles are likely to lie next to each other, and so the similarity should not be completely unexpected.  % and contain meaningful physics: if one imagines the QCD shower as a branching tree, then the soft particles consist of the furthest branchings.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{kt.pdf}
+\label{fig:jets:kt}
+\caption{An example of a simulated ATLAS $W'\rightarrow WZ\rightarrow qqqq$ event, clustered with the \kt algorithm with $R=1.0$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% i
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{ca.pdf}
+\label{fig:jets:ca}
+\caption{An example of a simulated ATLAS $W'\rightarrow WZ\rightarrow qqqq$ event, clustered with the \CA algorithm with $R=1.0$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+
+
+Are these shapes a problem? Theoretically, no--- they are well defined and IRC safe objects because of the structure of the algorithm that forms them. Experimentally, this was less clear--- was it possible to calibrate an object that whose shape was so sensitive to soft radiation? Concerns such as these motivated the introduction of the \antikt algorith, which sets $p=-1$ in the distance metric~\cite{Jetography}. Figure~\ref{fig:jets:akt} shows once again the same event, but clustered now with the \antikt algorithm with $R=1.0$. The structure is strikingly different: indeed, because the algorithm now preferentially clusters \textit{hard} particles first, the seed-like properties of cone algorithms are restored. However, because colinear particles are clustered first--- the $\Delta R$ term contributes to this--- IRC safety is still guaranteed~\cite{Jetography}.
+
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{akt.pdf}
+\label{fig:jets:akt}
+\caption{An example of a simulated ATLAS $W'\rightarrow WZ\rightarrow qqqq$ event, clustered with the \antikt algorithm with $R=1.0$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+Because the \antikt algorithm now provided a fast implementation and ``well behaved'' behavior, the LHC experiments quickly adopted it for use (though the Tevatron remained attached to cone algorithms for compatibility reasons). Does this mean that \kt and \CA algorithms have no use at the LHC? On the contrary, there are situations where they provide more information than \antikt. For example, the branching structure (or the clustering history) in these algorithms is considered meaningful: as softer particles are clustered first, it naively resembles the tree-structure of QCD showering, with each new pairing ``reversing'' a potential QCD splitting (as Figure~\ref{fig:jets:showering} demonstrates schematically). Similar information with the \antikt algorithm is hard to come by: the clustering history reveals only the seed-type interaction of a harder particles tending to attract others to them. Thus, analyses that seek to understand the structure of energy flow are more likely to use the \kt or \CA algorithms.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{showering.pdf}
+\label{fig:jets:showering}
+\caption{A schematic showing the type of structure the \kt algorithm is expected to reveal due to its \pt ordered clustering.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
 
 \section{Jet Substructure: Going Deeper}
+
+This idea of looking at the clustering history or energy structure  of a jet is actually quite different from anything else we have discussed so far. Most analyses, at the Tevatron especially but even now at the LHC, simply consider a jet as a 4-vector corresponding to some parton\footnote{And even then this overstates the amount of information used--- most analyses essentially ignore the jet mass, reducing it to a 3-vector!}. This construction of a single 4-vector was indeed the whole point of the jet algorithm, so it is in some sense a triumph to have reduced the complexity of thousands of particles into a handful of well defined jets. But the sheer scale of this reduction raises the question: what information have we removed? Can we aid our understanding of the event by using some additional pieces?
+
+This question becomes particularly interesting in the era of \textit{boosted physics} at the LHC. The unprecedented collision energy of the LHC mean that $W$ and $Z$ bosons, for example, can be produced not just essentially at rest, as was the case at LEP and the Tevatron, but with substantial momentum. This means that their decay products will often be collimated.
+
+% 2m /pt
+
+%BDRS
+
+\subsection{Grooming}
+
+\subsection{Shapes}
+
+\subsection{Tagging}
 
 
 
