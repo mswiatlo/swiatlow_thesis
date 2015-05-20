@@ -218,7 +218,10 @@ Are these shapes a problem? Theoretically, no--- they are well defined and IRC s
 
 %%%%%%%%%%%%%%%% 
 
-Because the \antikt algorithm now provided a fast implementation and ``well behaved'' behavior, the LHC experiments quickly adopted it for use (though the Tevatron remained attached to cone algorithms for compatibility reasons). Does this mean that \kt and \CA algorithms have no use at the LHC? On the contrary, there are situations where they provide more information than \antikt. For example, the branching structure (or the clustering history) in these algorithms is considered meaningful: as softer particles are clustered first, it naively resembles the tree-structure of QCD showering, with each new pairing ``reversing'' a potential QCD splitting (as Figure~\ref{fig:jets:showering} demonstrates schematically). Similar information with the \antikt algorithm is hard to come by: the clustering history reveals only the seed-type interaction of a harder particles tending to attract others to them. Thus, analyses that seek to understand the structure of energy flow are more likely to use the \kt or \CA algorithms.
+Because the \antikt algorithm now provided a fast implementation and ``well behaved'' behavior, the LHC experiments quickly adopted it for use (though the Tevatron remained attached to cone algorithms for compatibility reasons). Typical $R$ parameters for ATLAS are $R=0.4$ and $R=0.6$: these sizes are large enough to capture the bulk of the radiation from a typical parton shower while minimizing contamination from overlapping partons and underlying event.
+
+
+Does this mean that \kt and \CA algorithms have no use at the LHC? On the contrary, there are situations where they provide more information than \antikt. For example, the branching structure (or the clustering history) in these algorithms is considered meaningful: as softer particles are clustered first, it naively resembles the tree-structure of QCD showering, with each new pairing ``reversing'' a potential QCD splitting (as Figure~\ref{fig:jets:showering} demonstrates schematically). Similar information with the \antikt algorithm is hard to come by: the clustering history reveals only the seed-type interaction of a harder particles tending to attract others to them. Thus, analyses that seek to understand the structure of energy flow are more likely to use the \kt or \CA algorithms.
 
 %%%%%%%%%%%%%%%%
 
@@ -236,18 +239,135 @@ Because the \antikt algorithm now provided a fast implementation and ``well beha
 
 This idea of looking at the clustering history or energy structure  of a jet is actually quite different from anything else we have discussed so far. Most analyses, at the Tevatron especially but even now at the LHC, simply consider a jet as a 4-vector corresponding to some parton\footnote{And even then this overstates the amount of information used--- most analyses essentially ignore the jet mass, reducing it to a 3-vector!}. This construction of a single 4-vector was indeed the whole point of the jet algorithm, so it is in some sense a triumph to have reduced the complexity of thousands of particles into a handful of well defined jets. But the sheer scale of this reduction raises the question: what information have we removed? Can we aid our understanding of the event by using some additional pieces?
 
-This question becomes particularly interesting in the era of \textit{boosted physics} at the LHC. The unprecedented collision energy of the LHC mean that $W$ and $Z$ bosons, for example, can be produced not just essentially at rest, as was the case at LEP and the Tevatron, but with substantial momentum. This means that their decay products will often be collimated.
+This question becomes particularly interesting in the era of \textit{boosted physics} at the LHC. The unprecedented collision energy of the LHC mean that $W$ and $Z$ bosons, for example, can be produced not just essentially at rest, as was the case at LEP and the Tevatron, but with substantial momentum. This means that their decay products will often be collimated, as Figure~\ref{fig:jets:boost} shows. The angular separation, in fact, goes as approximately \editnote{Derive this}
+%
+\begin{equation}
+R = \frac{2 m}{\pt}.
+\end{equation}
+%
+Generally, this means that the decay products $W$ bosons with $\pt > 200$~GeV, or top quarks with $\pt > 350$~GeV when using two separate $R=0.4$ jets. This potential for overlap motivates a new approach, where one \textit{large $R$} jet is used to measure the hadronically decaying particle. The mass and \textit{substructure} of this jet can then be used to distinguish it from backgrounds~\cite{Jetography}.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{boost_top.pdf}
+\includegraphics[width=0.45\textwidth]{boost_w.pdf}
+\label{fig:jets:boost}
+\caption{The angular separation $\Delta R$ between decay products in a $Z'\rightarrow t\bar{t}$ event as a function of the top \pt, and in a $W'\rightarrow WZ$ event as a function of boson \pt.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 % 2m /pt
 
 %BDRS
 
-\subsection{Grooming}
+While earlier studies had suggested similar ideas~\editnote{cite!}, the seminal ``BDRS'' paper inspired a new flurry of activity by suggesting that it was possible to observe the decay boosted Higgs boson to $b\bar{b}$ by reconstructed  it within a single jet and tagging it with substructure \cite{BDRS}. Hadronic decays of the Higgs had previously been considered inaccessible at the LHC, so the suggestion that a new reconstruction technique might be able to measure it proved very exciting. At the heart of the idea is that the mass of the jet should correspond roughly to the Higgs mass, while the mass of jets from QCD backgrounds should be significantly lower. Moreover, the several-prong structure of a Higgs decay should be fairly unique compared to dominantly single-prong QCD backgrounds.
 
-\subsection{Shapes}
+Since then, similar techniques have been extended to the reconstruction of top quarks, electroweak bosons, supersymmetric gluinos and stop quarks, and more~\editnote{Cite}. These analyses generally share several characteristics:
+%
+\begin{itemize}
+\item Aim to reconstruct the boosted object with a single, \largeR jet, typically $R=1.0$ or $R=1.2$
+\item \textit{Groom} the jet to remove the contamination of pileup and underlying event 
+\item \textit{Tag} the jet by analyzing its structure to determine whether it is compatible with the boosted object hypothesis
+\end{itemize}
+%
+While there are many different ways of approaching these points, the unifying theme is treating the jet as more than a 4-vector. 
+
+\subsection{Grooming}
+One potential for concern when reconstructing jets with \largeR is contamination: a large size is used to capture all the collimated decay products within a single jet, but also opens up the jet to extra unwanted radiation from beam remenants and overlapping proton-proton collisions. This extra radiation, even if it is soft and does not affect the energy of the jet very much, can still have a large impact on the mass of a jet: the mass of a jet is determined by the angular splittings between its consituents, and even soft radiation at a wide angle can increase the mass dramatically.
+
+Jet grooming is the strategy of modifying jet algorithms to remove these effects. Typically a normal jet algorithm is run to create a parent jet, and then a subsequent processing reconsiders the jet and removes portions that are considered unnecessary. A wide range of algorithms exist for this modification step--- filtering, pruning, and trimming are the most common~\editnote{Cite}. The most commonly used of these in ATLAS is trimming, which procedes as follows:
+%
+\begin{enumerate}
+\item Start with a clustered \largeR jet, typically \antikt\ with R=1.0
+\item Choose a \textit{subjet} algorithm and size, typically $\Rsub = 0.3$ and \kt
+\item Remove all subjets with \pt smaller than some fraction \fcut of the original jet's \pt, typically $\fcut  = 5\%$
+\item The 4-vector sum of the remaining subjets is the trimmed jets
+\end{enumerate}
+%
+This algorithm explicitly targets the soft radiation--- typically at wide angle--- which can raise the mass of QCD jets and help them ``fake'' boosted objects. Figure~\ref{fig:jets:trimmed} shows again the same event we have been examining in previous sections, but this time with the trimming algorithm applied. The empty areas correspond to parts of the jet that have been removed; the various grayscale remaining areas indicate the surviving subjets and their relative \pt fraction. 
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{trimmed}
+\label{fig:jets:trimmed}
+\caption{A event display, identical to Figure~\ref{fig:jets:akt} except after trimming with $\Rsub = 0.3$ and $\fcut = 5\%$ is applied.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+How well does trimming work in practice? Figure~\ref{fig:jets:z_trimming} shows the reconstructed mass of a boosted $Z\rightarrow qq$ decay, with the red lines showing the signal and the black a QCD multi-jet background. The solid lines are the masses with just an \antikt\ $R=1.0$ algorithm; the dashed lines are after trimming. The improvement in discrimination power is dramatic, and demonstrates why trimming is an integral part of ATLAS's boosted object studies.
+
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{z_trimming}
+\label{fig:jets:z_trimming}
+\caption{A plot of jet masses for a signal $Z\rightarrow qq$ decay and QCD multijet backgrounds in red and black respectively. The solid lines indicate the mass before trimming, and the dashed lines after trimming.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
 
 \subsection{Tagging}
 
+The second part of the BDRS program was the identification of substructure in the event: QCD jets can fake a jet mass requirement due to the overwhelming size of the backgrounds, but additional criteria on the shape could help remove even more background. The BDRS approach implemented cuts at the grooming level to reject unbalanced jets and other characteristics common to backgrounds~\cite{BDRS}. As with grooming techniques, a whole library of tools have emerged to discriminate between various signals and QCD multi-jet backgrounds. 
+
+One powerful technique which will come up again in Chapter~\ref{chapter:search} is referred to as $n$-subjettiness~\cite{nsub}. $N$-subjettiness aims to measure how compatible a given jet is with an $n$-subjet hypothesis: by quantifying this as a real number, instead of an integer, a wider range of values without sharp cuts are able to be studied. Denoted $\tau_N$, it is calculated as follows:
+%
+\begin{enumerate}
+\item Identify $N$ axes in some fashion; often, the exclusive \kt\ algorithm is run to create $N$ subjets and those axes are used\footnote{The exclusive \kt\ algorithm is identical to the one already introduced, but with a different stopping condition: $R$ is set arbitrarily large so that it will never stop the clustering, and instead the procedure stops when $N$ jets are identified.}.
+\item Loop over the constituents $k$ of the jet and calculate:
+\begin{equation}
+\tau_N = \frac{\sum_k \pT^k \min(\Delta R(N,k))}{\sum_k \pT^k R}
+\end{equation}
+where $R$ is the radius of the jet, and the minimization is performed over all axes defined in step 1.
+\end{enumerate}
+%
+What is this variable actually doing? It calculates the distance to the closest available axis to each particle. If the particles of the jet were entirely lined up on the axes, this value would be 0. In principle, then a low value indicates a strong compatibility with an $N$-subjet hypothesis. In practice, it is also possible that a low value corresponds to compatibility with an $N-x$-subjet hypothesis: they could all be lined up along just one of the axes, for example. This motivates the use of n-subjettiness \textit{ratios}: $\tau_{MN} = \tau_M / \tau_N$, with $M > N$, which normalize away this lower-order agreement, if it exists. Figure~\ref{fig:jets:nsub} demonstrates the discrimination of the variable: the QCD background tends to have a higher value than the signal in both 3-body signal and 2-body signal decays. Figure~\ref{fig:jets:top_tagging} shows a comparison of the performance of various top-taggers by plotting the efficiency of selecting top quarks on the $x$-axis and the inverse efficiency for selecting multi-jet background events. $N$-subjettiness selections tend to be strongest at high signal efficiency, while other techniques are able to achieve better background rejection at lower signal efficiency.
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{nsub_21.pdf}
+\includegraphics[width=0.45\textwidth]{nsub_32.pdf}
+\label{fig:jets:nsub}
+\caption{$n$-subjettiness ratios $\tau_{21}$ and $\tau_{32}$ for signal events (hadronically decaying $Z$ bosons and top quarks, respectively) compared to QCD multi-jet backgrounds. The solid lines indicate the value before trimming, and the dashed after trimming.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
 
 
-\section{Calculations with Jets}
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{top_tagging}
+\label{fig:jets:top_tagging}
+\caption{A comparison in signal (top quarks) efficiency and background (QCD multi-jet) rejection for various top-tagging algorithms.}
+\end{figure}
+
+%%%%%%%%%%%%%%%% 
+
+
+
+%\section{Calculations with Jets}
+
+Many different analyses in ATLAS, most of them searches for new physics in various high mass channels, have utilized these substruture techniques. Hadronic decays of top quarks and bosons often have the dominant branching fractions, and high mass systems create strongly collimated signals, making these techniques the bedrock of a new type of analysis. \editnote{cite this}
+
+\section{Conclusions}
+
+So, having gone through an entire chapter--- what is a jet?
+
+Having explored so many different possibilities, it should be clear that there is no easy answer: instead, we should always be aware that a jet is an \textit{algorithm} and that it is a \textit{choice}. As physicists, we choose the parameters of our algorithm and the type of reconstruction we perform; depending on what we are doing, and what our detector is capable of, different algorithms are appropriate. Jets always correspond to some spray of particles initiated by a QCD parton, but the details of hadron-hadron interactions or boosted object decays can make the situation much more complicated.
+
+The key innovation over the career this PhD corresponds to is the shift towards recognizing jets as more than 4-vectors. Unprecedented detectors with granularity much improved over previous designs, as well as improved theoretical understanding and development, has enabled us to pick out information from inside jets that we otherwise would have left behind. This enables not only new types of searches for new physics with boosted objects, as previously alluded to, but also entirely new measurements of properties of the Standard Model: these ideas are at the heart of the experimental analyses of this thesis.
+
