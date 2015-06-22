@@ -1,0 +1,51 @@
+%!TEX root = ../swiatlow_thesis.tex
+\label{appendix:statistics}
+
+This appendix gives a more detailed overview of the statistical techniques used in the color flow measurement (the Iterative Bayseian Unfolding) and in the SUSY search (profile-likelihood and CLs method).
+
+\section{CLs and Limit Setting}
+
+\editnote{Just cite the HistFitter paper}
+
+The likelihood function for a single bin signal region is just the Poisson probability of observing $n$ data events when we expect $b$ background events, $s$ signal events, and signal strength $\mu$:
+%
+\begin{equation}
+L(\mu) = \frac{(\mu s + b)^n}{n!} e^{-(\mu s + b)}.
+\end{equation}
+%
+Several of the signal regions in this analysis take advantage of a simultaneous measurement in several bins of \MJ; this requires the extension of the likelihood by simply taking the product of each of these signal regions $i$:
+%
+\begin{equation}
+L(\boldsymbol{n}|\mu,\boldsymbol{b}) = \prod_i \frac{(\mu s_i + b_i)^{n_i}}{n_i!} e^{-(\mu s_i + b_i)}
+\end{equation}
+%
+where boldface indicates the full vector of the variable. Systematic uncertainties are typically incorporated as Gaussians with unit width defined by so-called nuisance parameters $\theta$, which interpolate smoothly between the nominal template (for the signal or the background) and the variation specified by the systematic: a value of $\theta = 1$ corresponds to the full size of the systematic affecting the likelihood. Thus, we now have:
+%
+\begin{equation}
+L(\boldsymbol{n}, \boldsymbol{\theta}^0 |\mu,\boldsymbol{b},\boldsymbol{\theta}) = \prod_i \frac{(\mu s_i + b_i)^{n_i}}{n_i!} e^{-(\mu s_i + b_i)} \prod_{j \in S} G(\theta^0_j - \theta_j )
+\end{equation}
+%
+where $G$ is a Gaussian distribution and $\theta^0$ are auxiliary measurements and $S$ is the full set of systematic uncertainties.
+
+The test statistic, $q(\mu)$, is the log likelihood ratio: this is guaranteed to be the most effective discriminator. This is defined as:
+%
+\begin{equation}
+q(\mu) = -2 \log \left( \frac{L(\mu, \boldsymbol{\hat{\hat{\theta}}})}{L(\hat{\mu},\boldsymbol{\hat{\theta}})}\right)
+\end{equation}
+% 
+where $\hat{\mu}$ and $\hat{\theta}$ maximize the likelihood function, and $\hat{\hat{\theta}}$ maximizes the likelihood function for the specific value of $\mu$ in the numerator. Formally, the $p$-value is calculated by throwing pseudo-experiments on the observed numbers of events, and the values of the auxiliary measurements $\theta^0$: the distribution of the test statistic allows for determining the compatibility of the observed data with the hypothesis.  Because of the large number of nuisance parameters, typically this procedure becomes very unweildly very quickly, and requires a huge number of pseudo-experiments to fully sample the space. One method to avoid this requirement is to `profile' the nuisance parameters. In this procedure, the values of $\theta^0$ are fit to the data and the chosen value of $\mu$: this guess is very close to what otherwise would have maximized the $p$-value, as the data distributions by definition will give the result which maximizes compatibility with the data. By maximizing the $p$-value, the most conservative limit is set, ensuring that the result is not over-aggressive. This method allows for a far smaller number of pseudo-experiments to be used in the construction of the test statistic distribution. The distribution is then integrated from $q(\mu)$ to $\infty$ to find the $p$-value for that particular $\mu$. Generally, if the $p$-value (or some equivalent) is below a threshold, it is possible to claim that the model for $\mu$ is excluded. Typically for limits, values of $p=0.05$ are used, which correspond to the 95$\%$ Confidence Level. 
+
+
+Model-independent upper limits are the simplest example of a limit. In this method, which considers only one bin at a time (so the combined SR100 and SR250 limits are not used, and only SR1 applies),  a signal of size $s=1$ is injected, and $\mu$ is scanned until the treshhold of $p=0.05$ is reached. This gives an upper limit to the number of signal events which are compatible, at 95\% confidence, which are compatible with the data.
+
+Model-dependent limits involve a more complicated procedure. The $p$-value previously discussed, which we will call $p_{s+b}$, has the feature that if $b$ fluctuates down, a very strong limit is possible while in reality the experiment has no sensitivity to the model. Thus, we define another $p$-value, $p_b$, which calculates the compatibility of the data with the background only hypothesis (i.e. $\mu=0$). The value $1-p_b$ is a measurement of the \textit{incompatibility} of the data with the background-only hypothesis: in the case of the previously discussed under-fluctuations, this can be used to penalize the $p_{s+b}$ value in the following way:
+%
+\begin{equation}
+CL_s = \frac{p_{s+b}}{1-p_b}.
+\end{equation} 
+%
+The $CL_s$ (i.e., the signal confidence level, in contrast to the $CL{s+b}$ for signal with background or the $CL_b$ for the background alone) has the advantage of not setting strong limits in the case of these fluctuations. All reported limits on searches in this thesis are thus reported using the $CL_s$.
+
+All of these calculations are done using the \texttt{HistFitter} software package. 
+
+\section{Unfolding}

@@ -265,9 +265,36 @@ Our efforts to impose naturalness with SUSY have run into a few complications, b
 %
 What about the other SUSY particles--- the squarks, the sleptons, and so forth? A full SUSY model will likely have them, but for the sake of experimental analyses, a \textit{simplified model} approach is adopted~\cite{simplified}. In these models, a minimal set of particles related to a particular observable signature is kept at low mass; all the other particles are set to high masses, and are effectively integrated out using an Effective Field Theory approach. We can use this philosophy in considering our minimal set of required particles: others can exist, but have a much smaller effect on the physics of naturalness, and so we essentially ignore them.
 
-\editnote{Needs some work. model spectra as well maybe?}
+\editnote{Needs some work. model spectra examples as well maybe?}
 
-\editnote{Especially need to add SUSY production cross-sections}
+An important question remains for the model: how will the new physics actually be produced? It is possible, for example, to directly produce pairs of \lsp's and search for such a signature immediately, but another attractive option goes back to the gauge couplings of the squarks and gluino. In particular, the LHC is a hadron collider and therefore is colliding quarks and gluons: production of particles which effectively couple to quarks and gluons is therefore expected to be enhanced. The \lsp has no such coupling, but the squarks do, and the gluino, because of its higher color charge, has an even stronger coupling. Figure~\ref{fig:susy:multi_strong} shows the production cross-sections for gluions, squarks, and stops alone: the higher multiplicity of treating squarks inclusively raises their production over that of stops alone, but the gluinos have the highest cross-section of all. 
+
+%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{multi_strong-2.pdf}
+\label{fig:susy:multi_strong}
+\caption{The production cross-section of various strongly interacting SUSY particles.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%  
+
+How do all of these requirements fit together? Figure~\ref{fig:susy:gtt} gives an example of the Feynman diagrams which combine all of these various requirements. Gluino pair production is used as the production mode, as it has the largest cross-section. Stops are the lightest squarks, and are either heavier than the gluino (in which case the decay to the \lsp is off-shell), or lighter than the gluino. The final states are filled with top quarks and large missing energy from the \lsp.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[Off-shell stop]{\includegraphics[width=0.45\textwidth]{gogo-ttttN1N1.pdf}}
+\subfigure[On-shell stop]{\includegraphics[width=0.45\textwidth]{gogo-ttttN1N1-stst.pdf}}
+\label{fig:susy:gtt}
+\caption{Feynman diagrams for natural SUSY processes at the LHC, in the case of off-shell stops and on-shell stops.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
+
 
 %spectra
 
@@ -386,17 +413,32 @@ where \msquark is the typical squark mass.
 \caption{One example of a diagram which contributes to rapid proton decay in RPV models with $\lampp > 0$ and $\lamp > 0$.}
 \end{figure}
 
-This is obviously a very strong restriction, and thus most modern RPV models impose an \textit{ad hoc} condition to require the proton to be stable. This is mostly easily done by requiring that at least one of \lam, \lamp, \lampp be exactly equal to zero. If the \lampp term is zero, then the proton stability is clearly preserved, as the off-shell squark in Figure~\ref{fig:susy:rpv_proton} is not able to occur.
+This is obviously a very strong restriction, and thus most modern RPV models impose an \textit{ad hoc} condition to require the proton to be stable. This is mostly easily done by requiring that at least one of \lam, \lamp, \lampp be exactly equal to zero. If the \lampp term is zero, then the proton stability is clearly preserved, as the off-shell squark in Figure~\ref{fig:susy:rpv_proton} is not able to occur. If $\lam = 0$ and $\lamp = 0$, then $\lampp > 0$ only if the LSP has mass greater than the proton: otherwise, the off-shell squark could decay to an LSP and a quark and the proton could still decay. This is usually a not very strong restriction, however, as the LSP can easily have mass $> 1$~GeV.
 
-%
-\noindent where \msquark is the typical squark mass. As a result, even when considering this more generic form of the \SUSY superpotential by including \Wrpv, it is still necessary to impose an \textit{ad hoc}, albeit experimentally motivated, symmetry to protect the proton from decay. It is generally necessary that at least one of \lam, \lamp, \lampp be exactly equal to zero. Consequently, it is common to consider each term in Equation~\ref{eqn:rpvandudd:wrpv} independently. In the case of nonzero \lam and \lamp, the typical signature involves leptons in the final state. However, for $\lamppijk \neq 0$, the final state is characterized by jets, either from direct gluino decay or from the cascade decay of the gluino to the lightest neutralino (\ninoone), as also considered here. Because of the structure of Equation~\ref{eqn:rpvandudd:wrpv}, scenarios in which only $\lamppijk \neq 0$ are often referred to as UDD scenarios.
+The collider signatures of such models are obviously extremely different from RPC scenarios, even if the particle spectrum remains identical. If $\lam > 0$ or $\lamp > 0$, the final states will include leptons instead of the large missing energy tradtionally attributed to the \lsp. Similarly, if $\lampp > 0$, the final states will include many more quarks instead of missing energy. The decay here goes through an offshell squark (or slepton), as $\lsp \rightarrow \tilde{q} q$, $\tilde{q}\rightarrow q q$. These signatures are potentially not explored by current LHC analyses, which almost uniformly rely on high missing energy signatures. Figure~\ref{fig:susy:rpv_diagrams} shows several examples of potential models at the LHC: gluino and squark pair production normally has final states dominated with only quarks and missing energy, but these models show the possibility of extra leptons or jets.
+
+% %
+% \noindent where \msquark is the typical squark mass. As a result, even when considering this more generic form of the \SUSY superpotential by including \Wrpv, it is still necessary to impose an \textit{ad hoc}, albeit experimentally motivated, symmetry to protect the proton from decay. It is generally necessary that at least one of \lam, \lamp, \lampp be exactly equal to zero. Consequently, it is common to consider each term in Equation~\ref{eqn:rpvandudd:wrpv} independently. In the case of nonzero \lam and \lamp, the typical signature involves leptons in the final state. However, for $\lamppijk \neq 0$, the final state is characterized by jets, either from direct gluino decay or from the cascade decay of the gluino to the lightest neutralino (\ninoone), as also considered here. Because of the structure of Equation~\ref{eqn:rpvandudd:wrpv}, scenarios in which only $\lamppijk \neq 0$ are often referred to as UDD scenarios.
 
 
-Current indirect experimental constraints~\cite{Allanach:1999ic} on the sizes of each of the UDD couplings \lamppijk from sources other than proton decay are valid primarily for low squark masses, as suggested by Equation~\ref{eqn:rpvandudd:protondecay}. Those limits are driven by double nucleon decay~\cite{Sher:1994sp} (for $\lampp_{112}$), neutron oscillations~\cite{Zwirner1983103} (for $\lampp_{113}$), and $Z$ boson branching ratios~\cite{Bhattacharyya:1997vv}.
+% Current indirect experimental constraints~\cite{Allanach:1999ic} on the sizes of each of the UDD couplings \lamppijk from sources other than proton decay are valid primarily for low squark masses, as suggested by Equation~\ref{eqn:rpvandudd:protondecay}. Those limits are driven by double nucleon decay~\cite{Sher:1994sp} (for $\lampp_{112}$), neutron oscillations~\cite{Zwirner1983103} (for $\lampp_{113}$), and $Z$ boson branching ratios~\cite{Bhattacharyya:1997vv}.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+\centering
+\subfigure[$\lam> 0$]{\includegraphics[width=0.45\textwidth]{gogo-qqqqllllvv-RPV.pdf}}
+\subfigure[$\lamp > 0$]{\includegraphics[width=0.45\textwidth]{sqsq-qqlqql-N1N1-RPV.pdf}}\\
+\subfigure[$\lampp > 0$]{\includegraphics[width=0.45\textwidth]{sqsq-4q4q-RPV.pdf}}
+\label{fig:susy:rpv_diagrams}
+\caption{Feynman diagrams for several RPV processes at the LHC, each with a different $\lambda$ operator set to $>0$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Conclusions}
 
 In summary, SUSY is a strongly compelling theory of BSM physics. Its solution to the naturalness problem--- the introduction of a boson/fermion symmetry--- is effective and simple. It furthermore allows for the unification of forces at high energy. And finally, it produces a miraculous dark matter candidate in the form of the \lsp.
 
-Unfortunately, given the results from the first run of the LHC, it is time to reconsider whether we can have all three miracles at once. The least explored space of possibilities exist in the realm of $R$-parity violating models, which have been largely unexplored because of the difficult signal discrimination and background estimation. Chapter~\ref{chapter:search} presents an innovative new search for exactly such models: the experimental issues are tackled with the aid of the tools of jet substructure developed in Chapter~\ref{chapter:jets-and-substructure}.
+Unfortunately, given the results from the first run of the LHC, it is time to reconsider whether we can have all three miracles at once. The least explored space of possibilities exist in the realm of $R$-parity violating models, which have been largely unexplored because of the difficult signal discrimination and background estimation. Chapter~\ref{chapter:search} presents an innovative new search for exactly such models where $\lampp > 0$: the experimental issues are tackled with the aid of the tools of jet substructure developed in Chapter~\ref{chapter:jets-and-substructure}.
