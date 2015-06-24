@@ -124,6 +124,8 @@ Note that the process of measuring an event always softens the effects of IRC un
 What exactly cause this sickness of the cone algorithms? The main issues are at the start and at the end of the clustering: the seed and the split/merge process. If we can remove seeds from the process, we can prevent the colinear safety issues; if we define the algorithm without drawing an explicit cone, we can remove much of the ambiguities that require the split/merging step.
 
 \subsection{Sequential Recombination Algorithms}
+\label{chapter:jets-and-substructure:sequential}
+
 
 Sequential recombination algorithms do exactly both of these things. The idea behind them is to focus not on seeds and the cone around them, but instead on the relationships between closeby particles. In particular, there is always a \textit{distance metric} between pairs of particles, and in every iteration of the algorithm, the pair with the minimum distance is \textit{combined} if their distance is below some threshold. The process continues until no more merges are possible~\cite{Jetography}.
 
@@ -276,6 +278,8 @@ Since then, similar techniques have been extended to the reconstruction of top q
 While there are many different ways of approaching these points, the unifying theme is treating the jet as more than a 4-vector. 
 
 \subsection{Grooming}
+\label{chapter:jets-and-substructure:grooming}
+
 One potential for concern when reconstructing jets with \largeR is contamination: a large size is used to capture all the collimated decay products within a single jet, but also opens up the jet to extra unwanted radiation from beam remenants and overlapping proton-proton collisions. This extra radiation, even if it is soft and does not affect the energy of the jet very much, can still have a large impact on the mass of a jet: the mass of a jet is determined by the angular splittings between its consituents, and even soft radiation at a wide angle can increase the mass dramatically.
 
 Jet grooming is the strategy of modifying jet algorithms to remove these effects. Typically a normal jet algorithm is run to create a parent jet, and then a subsequent processing reconsiders the jet and removes portions that are considered unnecessary. A wide range of algorithms exist for this modification step--- filtering, pruning, and trimming are the most common~\editnote{Cite}. The most commonly used of these in ATLAS is trimming, which procedes as follows:

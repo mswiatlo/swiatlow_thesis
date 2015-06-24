@@ -10,7 +10,7 @@ This appendix gives a more detailed overview of the statistical techniques used 
 The likelihood function for a single bin signal region is just the Poisson probability of observing $n$ data events when we expect $b$ background events, $s$ signal events, and signal strength $\mu$:
 %
 \begin{equation}
-L(\mu) = \frac{(\mu s + b)^n}{n!} e^{-(\mu s + b)}.
+L(n|\mu,b) = \frac{(\mu s + b)^n}{n!} e^{-(\mu s + b)}.
 \end{equation}
 %
 Several of the signal regions in this analysis take advantage of a simultaneous measurement in several bins of \MJ; this requires the extension of the likelihood by simply taking the product of each of these signal regions $i$:
