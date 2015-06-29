@@ -12,12 +12,12 @@ Jet reconstruction in ATLAS makes use of the algorithms described in~\ref{chapte
 %
 Some analyses also make use of various \CAFat jets, with various forms of split-filtering or reclustered-mass-drop filtering \editnote{Cite these.}. The analyses presented in in this thesis utilize the first and third algorithms, and most of the discussion that follows will focus on various aspects of the reconstruction of these jets.
 
-There are many more aspects to creating a jet than just choosing an algorithm, and this chapter covers the various aspects of jet reconstruction from inputs to calibrations and flavor identification. Note that while the jet reconstruction and calibration procedure has evolved significantly since the start of data-taking, some aspects have not changed very much. While all the procedures described follow the latest developments in ATLAS, some of the demonstrative figures may use older data if that particular procedure has not changed.
+There are many more aspects to creating a jet than just choosing an algorithm, and this chapter covers the various aspects of jet reconstruction from inputs to calibrations and flavor identification. Note that while the jet reconstruction and calibration procedure has evolved significantly since the start of data-taking, some aspects have not changed very much. While all the procedures described follow the latest developments in ATLAS, some of the demonstrative figures may use older data if that particular procedure has not changed\footnote{While I have personally worked on many aspects of jet reconstruction and $b$-tagging, my specific contributions to this chapter are on pileup corrections and MC-based calibrations discussed in Sections~\ref{chapter:jet-reconstruction:pileup-corrections}, \ref{jet-reconstruction:jet-calibration-mc-jet-energy-scale} and \ref{chapter:jet-reconstruction:larger}. I would like to specifically acknowledge Dag Gillberg, Toshi Sumida, Joe Taenzer, and David DeMarco for contributing various iterations of the plotting scripts for the JES.}.
 
 \section{Jet Inputs}
 
 
-One of the most important decisions in constructing a jet is the decision of what to actually input to the jet algorithm-- i.e., the choice of what to cluster. Several inputs are available, summarized in Figure~\ref{fig:jet-reconstruction:making-jets}. 
+One of the most important decisions in constructing a jet is the decision of what to actually input to the jet algorithm: i.e., the choice of what to cluster. Several inputs are available, summarized in Figure~\ref{fig:jet-reconstruction:making-jets}. 
 
 %%%%%%%%%%%%%%%%
 
@@ -34,11 +34,11 @@ Jets constructed from the simulated particles from a Monte Carlo generator are c
 
 Jets can also be constructed from tracks, the outputs of pattern recognition algorithms performed on the hits in the Inner Detector, which correspond to the trajectories of charged particles. These \textit{track jets} are mostly used for validation: they provide a completely independent measurement of a jet from the calorimeter, and while they miss the neutral third of particles, the increased angular precision of tracking can result in complementary information to the calorimeter measurement. \editnote{Cite Seth's thesis, substructure paper?} 
 
-Finally, and most importantly, jets can be formed from energy deposits left in the calorimeter, and these are called \textit{calorimeter jets}. Historically, ATLAS went through many different options for reducing the calorimeter information to a more manageable form for input to jet algorithms-- algorithms such as Global Cell Weighting, Noise Suppressed Towers, and simple projective towers were all eventually disfavored compared to the topo-clustering algorithm described in Section~\ref{jet-reconstruction:jet-inputs:topoclustering}. Calorimeter measurements all share several properties: they provide a measurement of the total energy of the parton shower, produced in both neutral and charged particles. This measurement of the jet (after relevant calibrations are applied) is at approximately the same scale as the quark which initiated it: for example, the invariant mass of the leading non-$b$-tagged jets in semi-leptonic $t\bar{t}$ peaks at the value of the mass of the $W$-boson, $m_{W} = 80$~GeV. Calorimeter jets can thus be used as 4-vectors in the same way that other detector objects-- electrons, photons, etc.-- are used (though of course there is more information in the structure of these jets, which analyses in this thesis do exploit).  \editnote{Add a few citations}
+Finally, and most importantly, jets can be formed from energy deposits left in the calorimeter, and these are called \textit{calorimeter jets}. Historically, ATLAS went through many different options for reducing the calorimeter information to a more manageable form for input to jet algorithms. These historical options were Global Cell Weighting, Noise Suppressed Towers, and simple projective towers, which were all eventually disfavored compared to the topo-clustering algorithm described in Section~\ref{jet-reconstruction:jet-inputs:topoclustering}. Calorimeter measurements all share several properties: they provide a measurement of the total energy of the parton shower, produced in both neutral and charged particles. This measurement of the jet (after relevant calibrations are applied) is at approximately the same scale as the quark which initiated it: for example, the invariant mass of the leading non-$b$-tagged jets in semi-leptonic $t\bar{t}$ peaks at the value of the mass of the $W$-boson, $m_{W} = 80$~GeV. Calorimeter jets can thus be used as 4-vectors in the same way that other detector objects--- electrons, photons, etc.--- are used (though of course there is more information in the structure of these jets, which analyses in this thesis do exploit).  \editnote{Add a few citations}
 
 One alternative to separate tracking and calorimeter reconstructions of jets is to use a ``particle flow'' algorithm to combine the measurements from the separate detectors into coherent particle candidates which an be used as inputs to jet algorithms. Such algorithms exploit the fact that charged particles are much more accurately measured (up to some crossing point determined by the strength of the magnetic field) by tracking systems rather than calorimeter systems. Typically, tracks are extrapolated to the calorimeter and matched to energy deposits there; these matched deposits are then subtracted from the calorimeter, as the energy is already accounted for by the tracker. Unmatched energy deposits are assumed to have been created by photons or neutral hadrons, and remain in the list of inputs. Thus, the best features of tracker measurements (accurate energy resolution, and very good angular precision) and calorimeter measurements (capability of measuring neutral particles, good energy resolution at high energies) are combined. The CMS detector is particularly well suited to such reconstruction: the calorimeters are inside the 3.8 T magnetic field (nearly two times stronger than ATLAS), so energy deposits are more widely separated and track-to-calorimeter matching is less ambiguous. Since two thirds of the particles in the jet are reconstructed with tracks instead of calorimeter measurements, the reduced performance of the CMS hadronic calorimeters is also less important. However, as ATLAS has a weaker (and smaller, spatially) magnetic field, and compartively stronger hadronic calorimeters, the improvement from this approached is much diminished and ATLAS has thus far not used the particle flow algorithm for analyses. \editnote{Cite this as well}
 
-The following subsections describe some details of the topoclustering and tracking algorithms which form the inputs to the jet algorithms in ATLAS. The design decisions in these algorithms-- and the strong performance they achieve in the face of difficult operating conditions-- are critical for the final results of hadronic analyses on ATLAS.
+The following subsections describe some details of the topoclustering and tracking algorithms which form the inputs to the jet algorithms in ATLAS. The design decisions in these algorithms--- and the strong performance they achieve in the face of difficult operating conditions--- are critical for the final results of hadronic analyses on ATLAS.
 
 \subsection{Topoclustering}
 \label{jet-reconstruction:jet-inputs:topoclustering}
@@ -145,7 +145,7 @@ E^\mathrm{cal}_\mathrm{clus} = \sum_{i \in \mathrm{cluster}} w_{\mathrm{cell},i}
 %
 which is just the sum of the individual cell energies with their respective weights. The cluster $\eta$ and $\phi$ are calculated using the cell weights in a similar way.
 
-Most analyses which use substructure information use clusters calibrated to the LC scale: the calibration procedure brings particles much closer to their true energy, and removes at least some of the bias in which hadronic particles are measured at an incorrect scale. LC jets still require a JES calibration, described in the following sections, which indicates that the LC scale is not the complete truth scale: however, as substructure moments are calculated over all the constituents of a jet and usually normalized by the sum of their energies, it is most important that all particles be at a \textit{consistent} scale, which the LC calibration procedure largely accomplishes.
+Most analyses which use substructure information use clusters calibrated to the LC scale: the calibration procedure brings particles much closer to their true energy, and removes at least some of the bias in which hadronic particles are measured at an incorrect scale. LC jets still require a JES calibration, described in the following sections, which indicates that the LC scale is not the complete particle scale: however, as substructure moments are calculated over all the constituents of a jet and usually normalized by the sum of their energies, it is most important that all particles be at a \textit{consistent} scale, which the LC calibration procedure largely accomplishes.
 
 \subsection{Tracking}
 \label{tracking}
@@ -182,7 +182,7 @@ Once a jet has been clustered, from either EM-scale or LC-scale constituents, it
 	\item In-situ data-driven calibrations, producing jets at the \textit{fully calibrated scale}
 \end{enumerate}
 
-All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both EM and LC-scale inputs. While the LC calibration of the clusters is able to correct for non-compensation to some extent (by noting the difference between hadronic and electromagnetic interactions in the calorimeter, and the corresponding different energies they deposit), even LC-scale jets require significant further calibrations to correspond to truth jets. \LargeR jets, as used by the analyses in this thesis, undergo only the MC JES calibration, for reasons discussed below. The following sections describe each of these steps in detail.
+All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both EM and LC-scale inputs. While the LC calibration of the clusters is able to correct for non-compensation to some extent (by noting the difference between hadronic and electromagnetic interactions in the calorimeter, and the corresponding different energies they deposit), even LC-scale jets require significant further calibrations to correspond to truth jets. \LargeR jets, as used by the analyses in this thesis, undergo only the MC JES calibration, for reasons discussed in Section~\ref{chapter:jet-reconstruction:larger}. The following sections describe each of these steps in detail.
 
 %%%%%%%%%%%%%%%%
 
@@ -196,6 +196,7 @@ All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both 
 %%%%%%%%%%%%%%%% 
 
 \subsection{Pileup Corrections}
+\label{chapter:jet-reconstruction:pileup-corrections}
 
 The first stage of jet calibration is to correct for pileup. As the calorimeter has a poor pointing resolution\footnote{Except with the notable exception of the ECal presampler, though this information is still limited and not yet used for pileup identification.}, it is not possible to determine which primary vertex (the hard-scatter, or pileup) an energy deposit originated from. This means that as a calorimeter jet is clustered, it contains energy from both the interaction of interest and the additional less-interesting interactions which occurred during the same bunch crossing. Even if a particle-flow algorithm is used to replace charged hadrons with their tracker measurements, thereby allowing a charged-hadron subtraction using the vertex identification of the tracks, neutral pileup particles cannot be subtracted and will add energy to the jet. \editnote{Cite this}
 
@@ -207,7 +208,7 @@ One detail of the topo-clustering algorithm creates an interesting effect when c
 
 There are also several ways of calculating the area of jets, the simplest of which is the voronoi technique previously mentioned. A voronoi algorithm tiles a space (the calorimeter in $y-\phi$ space, in this case) such that each tile contains only one element (i.e., only one topocluster), and each tile contains all the points that are closest to that tile's element compared to any other~\cite{catchmentarea}. The voronoi area has the advantage of being fast to calculate, and gives (on average) the same value as more expensive calculations. The largest issue is that the algorithm does not take into account the energy of each element, which does not reflect the fact that the $k_T$ distance metrics generally do use energy.
 
-A more sophisticated treatment of the area of a jet asks the question ``if a particle with very, very low energy were is at some position $y,\phi$, which jet (if any) would it join?'' This concept is at the heart of the \textit{catchment area} of a jet~\cite{catchmentarea}. To measure this area, special \textit{ghost particles} representing locations in the calorimeter participate in the jet clustering. The ghost particles have negligible energy (typically set to some $\epsilon$ value above 0), and so the IRC safety of the $k_T$ algorithms guarantee that the ghosts do not affect the clustering of the real jets. Once the mixture of ghost particles and real particles is clustered, one can examine which jet the ghost particle joined. When enough ghosts are used, this can be used to define the area of a jet (up to some level of coarseness). If the ghosts representing all the different calorimeter points are all simultaneously clustered with the real particles, this is referred to as the \textit{active area}; if on the other hand each point is added to the particles individually, and a separate clustering run each time, this is referred to as the \textit{passive area}. Both techniques are much slower than the Voronoi area calculation, and the passive calculation is again much slower than the active. The best compromise in terms of performance and usefulness of results seems to be the active area, and this is the definition used by ATLAS. The catchment area solves the issue observed with the Voronoi area: jet boundaries are determined by the algorithm's properties, and not just the closest point of a cluster. \Antikt jets, for example, form circles in $y-\phi$, and overlapping jets favor the higher $p_T$ jet: the $p_T$ weighting of the algorithm means that if a particle could join one of two jets, it will join the one with more energy. Figure~\ref{fig:jet-reconstruction:jet-active-areas} shows an event display with the areas of many \antikt $R=1.0$ jets and their \kt $R=0.3$ subjets: the circular nature of the \antikt algorith, and the more chaotic nature of \kt, are both visible.
+A more sophisticated treatment of the area of a jet asks the question ``if a particle with very, very low energy were is at some position $y,\phi$, which jet (if any) would it join?'' This concept is at the heart of the \textit{catchment area} of a jet~\cite{catchmentarea}. To measure this area, special \textit{ghost particles} representing locations in the calorimeter participate in the jet clustering. The ghost particles have negligible energy (typically set to some $\epsilon$ value above 0), and so the IRC safety of the $k_T$ algorithms guarantee that the ghosts do not affect the clustering of the real jets. Once the mixture of ghost particles and real particles is clustered, one can examine which jet the ghost particle joined. When enough ghosts are used, this can be used to define the area of a jet (up to some level of coarseness). If the ghosts representing all the different calorimeter points are all simultaneously clustered with the real particles, this is referred to as the \textit{active area}; if on the other hand each point is added to the particles individually, and a separate clustering run each time, this is referred to as the \textit{passive area}. Both techniques are much slower than the Voronoi area calculation, and the passive calculation is again much slower than the active. The best compromise in terms of performance and usefulness of results seems to be the active area, and this is the definition used by ATLAS. The catchment area solves the issue observed with the Voronoi area: jet boundaries are determined by the algorithm's properties, and not just the closest point of a cluster. \Antikt jets, for example, form circles in $y-\phi$, and overlapping jets favor the higher $p_T$ jet: the $p_T$ weighting of the algorithm means that if a particle could join one of two jets, it will join the one with more energy. Figure~\ref{fig:jet-reconstruction:jet-active-areas} shows an event display with the areas of many \antikt $R=1.0$ jets and their \kt $R=0.3$ subjets: the circular nature of the \antikt algorithm, and the more chaotic nature of \kt, are both visible.
 
 %%%%%%%%%%%%%%%%
 
@@ -220,7 +221,7 @@ A more sophisticated treatment of the area of a jet asks the question ``if a par
 
 %%%%%%%%%%%%%%%% 
 
-Once the jet area and the energy density are known, the jet can be corrected. There are two approaches to this-- the simpler one is referred to as the scalar correction, and is applied with:
+Once the jet area and the energy density are known, the jet can be corrected. There are two approaches to this--- the simpler one is referred to as the scalar correction, and is applied with:
 %
 \begin{equation}
 p_T^{\mathrm{corrected}} = p_T - \rho A
@@ -232,7 +233,7 @@ where $A$ is the scalar area of the jet. It is also common to define the 4-vecto
 p_\mu^{\mathrm{corrected}} = p_\mu - \rho A_\mu
 \end{equation}
 %
-Often this is preferable, as not just the $p_T$ but the mass of the jet is thus corrected for pileup. However, in some situations it is possible for the jet mass to be over-corrected, resulting in a negative $m^2$ and therefore imaginary mass. For this reason, ATLAS used only the scalar correction in Run~1. After the pileup correction, a jet is referred to as being at the ``pileup corrected scale'' and is ready for further calibration. Figure~\ref{fig:jet-reconstruction:jet-pu-vs-mu} shows the improvement in the RMS of the jet offset-- a measurement of the resolution induced by pileup-- as a function of $\mu$. The corrected distribution in blue shows a substantial improvement over the original distribution in black, and an average NPV based correction in red.
+Often this is preferable, as not just the $p_T$ but the mass of the jet is thus corrected for pileup. However, in some situations it is possible for the jet mass to be over-corrected, resulting in a negative $m^2$ and therefore imaginary mass. For this reason, ATLAS used only the scalar correction in Run~1. After the pileup correction, a jet is referred to as being at the ``pileup corrected scale'' and is ready for further calibration. Figure~\ref{fig:jet-reconstruction:jet-pu-vs-mu} shows the improvement in the RMS of the jet offset--- a measurement of the resolution induced by pileup--- as a function of $\mu$. The corrected distribution in blue shows a substantial improvement over the original distribution in black, and an average NPV based correction in red.
 
 %%%%%%%%%%%%%%%%
 
@@ -245,7 +246,7 @@ Often this is preferable, as not just the $p_T$ but the mass of the jet is thus 
 
 %%%%%%%%%%%%%%%% 
 
-One important aspect to note is that these corrections are done on jet 4-vectors as a whole, and not on constituents-- this means that jet moments, such as substructure observables, are not corrected. There are several extensions of the areas technique which aim to correct shapes, and some additional ideas which correct jet inputs before clustering, and therefore automatically correct shapes. While ATLAS explored some of these options in Run 1, the susceptibility of most variables to pileup was found to be rather small, putting off the need for dedicated corrections to Run 2. \editnote{Cite David's paper, others}
+One important aspect to note is that these corrections are done on jet 4-vectors as a whole, and not on constituents--- this means that jet moments, such as substructure observables, are not corrected. There are several extensions of the areas technique which aim to correct shapes, and some additional ideas which correct jet inputs before clustering, and therefore automatically correct shapes. While ATLAS explored some of these options in Run 1, the susceptibility of most variables to pileup was found to be rather small, putting off the need for dedicated corrections to Run 2. \editnote{Cite David's paper, others}
 
 % plots plots? summarizing this?
 
@@ -253,7 +254,7 @@ One important aspect to note is that these corrections are done on jet 4-vectors
 \subsubsection{Aside: Ghost Association}
 \label{jet-reconstruction:pileup:ghost-association}
 
-Now that the concept of the jet area has been defined, it is possible to define the ghost association technique previously aluded to. This technique uses the active jet area, as defined with ghosts defined previously, to determine whether a track (or truth particle, etc.) should be associated to a jet. In particular, a track (or any other object) is replaced with a ghost copy-- i.e. one with the same physical position, but some small $\epsilon$ of energy. This ghost particle is allowed to participate in the jet clustering, and the jet which the ghost is clustered to identifies which jet the track should be associated with. Figure~\ref{fig:jet-reconstruction:ghost} is an event display showing such a matching of tracks to jets: even the complicated subjet shapes are able to have an unambiguous matching using the ghost association technique.
+Now that the concept of the jet area has been defined, it is possible to define the ghost association technique previously aluded to. This technique uses the active jet area, as defined with ghosts defined previously, to determine whether a track (or truth particle, etc.) should be associated to a jet. In particular, a track (or any other object) is replaced with a ghost copy--- i.e. one with the same physical position, but some small $\epsilon$ of energy. This ghost particle is allowed to participate in the jet clustering, and the jet which the ghost is clustered to identifies which jet the track should be associated with. Figure~\ref{fig:jet-reconstruction:ghost} is an event display showing such a matching of tracks to jets: even the complicated subjet shapes are able to have an unambiguous matching using the ghost association technique.
 
 
 %%%%%%%%%%%%%%%%
@@ -269,7 +270,7 @@ Now that the concept of the jet area has been defined, it is possible to define 
 
 
 
-Isolated \antikt jets are circular in shape, which motivates the $\Delta R$ association, which is fast to compute and is very accurate for these simple cases. The ghost association technique is often useful for environments where jets are non-circular-- i.e., when using the \kt or \ca algorithms, or when jets are very dense and overlapping and therefore non-circular.
+Isolated \antikt jets are circular in shape, which motivates the $\Delta R$ association, which is fast to compute and is very accurate for these simple cases. The ghost association technique is often useful for environments where jets are non-circular--- i.e., when using the \kt or \ca algorithms, or when jets are very dense and overlapping and therefore non-circular.
 
 
 
@@ -300,7 +301,7 @@ This correction is in fact a first order Taylor approximation to a more complete
 \eta^\mathrm{corrected} = \mathrm{asinh} \left(\sinh \eta^\mathrm{det} - \frac{z_{PV} \cosh \eta^\mathrm{detector}}{r}  \right).
 \end{equation}
 %
-In principle, such a correction is best applied at the \textit{cluster} level, so that the jet clustering algorithms are run on origin-corrected inputs. This strategy will hopefully be adopted during Run 2, but in the meantime, the jet as a whole is corrected as part of the calibration process. The Color Flow analysis described in Chapter~\ref{chapter:color} actually performs this cluster-level correction for a number of reasons, which will be discussed later.
+In principle, such a correction is best applied at the \textit{cluster} level, so that the jet clustering algorithms are run on origin-corrected inputs. This strategy will hopefully be adopted during Run 2, but in the meantime, the jet as a whole is corrected as part of the calibration process. The Color Flow analysis described in Chapter~\ref{chapter:color} actually performs this cluster-level correction because of the sensitivity of the main observable to the beam-spot location.
 
 
 \subsection{MC Jet Energy Scale}
@@ -314,7 +315,7 @@ Jets, composed of either EM or LC-scale clusters, are calibrated to the particle
 \mathcal{R}^{\mathrm{jet}} = E^{\mathrm{jet}}_{\mathrm{reco}} /  E^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector $\eta$ is used as it corresponds better to the location of the jet in the calorimeter.} and $E^{\mathrm{jet}}_{\mathrm{truth}}$. Each bin produces a Gaussian distribution, which is fit and the mean value is extracted. Each $E^{\mathrm{jet}}_{\mathrm{truth}}$ point in an $\eta$ bin then is then transformed into the corresponding $E^{\mathrm{jet}}_{\mathrm{reco}}$ point by this measured response-- this step is the ``numerical inversion'' which gives the technique its name. An entire $\eta$ bin is then fit by a log-polynomial function, of the form
+and is measured in fine bins of $\eta_{\mathrm{detector}}$\footnote{The detector $\eta$ is used as it corresponds better to the location of the jet in the calorimeter.} and $E^{\mathrm{jet}}_{\mathrm{truth}}$. Each bin produces a Gaussian distribution, which is fit and the gaussian mean value is extracted. Each $E^{\mathrm{jet}}_{\mathrm{truth}}$ point in an $\eta$ bin then is then transformed into the corresponding $E^{\mathrm{jet}}_{\mathrm{reco}}$ point by this measured response--- this step is the ``numerical inversion'' which gives the technique its name. An entire $\eta$ bin is then fit by a log-polynomial function, of the form:
 %
 \begin{equation}
 \mathcal{F}_\mathrm{calib}\left(E^{\mathrm{jet}}_{\mathrm{reco}}\right) = \sum_{i=0}^N a_i \ln \left( E^{\mathrm{jet}}_{\mathrm{reco}} \right)^i
@@ -328,7 +329,7 @@ E^{\mathrm{jet}}_{\mathrm{JES}} = \frac{E^{\mathrm{jet}}_{\mathrm{reco}}}{\mathc
 %
 Figure~\ref{fig:jet-reconstruction:e-fit} shows an example of the Gaussian fit used to find the response in each energy and $\eta$ bin; Figure~\ref{fig:jet-reconstruction:ni-e} shows the result of an example fit for the full energy distribution in the same $\eta$ bin. Figure~\ref{fig:jet-reconstruction:calib-function} shows the calibration function for all of the standard jet collections for one bin of $\eta$. Finally, Figure~\ref{fig:jet-reconstruction:total_jes} shows the JES for different energy bins as a function of the detector $\eta$, for both the EM and LC $R=0.4$ collections.
 
-This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape-- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response-- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning.
+This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape--- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response--- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning. In this way we can guarantee the calibration is consistent across various physics samples.
 
 
 %%%%%%%%%%%%%%%%
@@ -383,7 +384,7 @@ The $\eta$ correction mentioned previously is derived as a subsequent correction
 \mathcal{R}_\eta^\mathrm{jet} = \eta^{\mathrm{jet}}_{\mathrm{reco}} -  \eta^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors. Figure~\ref{fig:jet-reconstruction:eta-fit} shows an example of the Gaussian fit used to determine the response; Figure~\ref{fig:jet-reconstruction:ni-eta} shows an example of the calibration function itself in an $\eta$ bin where the correction is non-negligible. Finally, Figure~\ref{fig:jet-reconstruction:total-eta} shows the full size of the correction for different energy bins as a function of $\eta$ for $R=0.6$ EM jets in 2010-- the correction is similar in 2012 conditions.
+and the correction is therefore also additive. The size of the correction is not large in the central region, where the uniform detector technology leads to consistently measured clusters, but becomes important especially in the tranisition regions between detectors. Figure~\ref{fig:jet-reconstruction:eta-fit} shows an example of the Gaussian fit used to determine the response; Figure~\ref{fig:jet-reconstruction:ni-eta} shows an example of the calibration function itself in an $\eta$ bin where the correction is non-negligible. Finally, Figure~\ref{fig:jet-reconstruction:total-eta} shows the full size of the correction for different energy bins as a function of $\eta$ for $R=0.6$ EM jets in 2010--- the correction is similar in 2012 conditions.
 
 %%%%%%%%%%%%%%%%
 
@@ -424,7 +425,7 @@ and the correction is therefore also additive. The size of the correction is not
 \subsection{Global Sequential Calibration}
 \label{jet-reconstruction:calibration:gsc}
 
-Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties-- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities-- quark and gluon jets will have a different response in the detector\footnote{See Section~\ref{jet-reconstruction:qg} for a much large discussion of quark/gluon jet differences, and a more precise treatment of the exact labeling used to define these.} The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration~\cite{ATLAS-GSC}. Moreover, even jets of a single flavor type can fragment in wildly different ways, resulting in a range of possible responses: by measuring global jet properties, it is possible to better understand this fragmentation and correct the response jet-by-jet and thereby substantially improve the jet resolution.
+Jets are calibrated to the particle scale in an inclusive dijet sample, which has a particular quark/gluon composition. Due to their different showering and hadronization properties--- gluons first split to quarks, and therefore typically have higher (but softer) particle multiplicities--- quark and gluon jets will have a different response in the detector\footnote{See Section~\ref{jet-reconstruction:qg} for a much large discussion of quark/gluon jet differences, and a more precise treatment of the exact labeling used to define these.} The Global Sequential Calibration of jets, following the JES, is a correction which uses measurable properties of jets to reduce this sensitivity to different types of hadronization, and therefore to quark/gluon flavor induced miscalibration~\cite{ATLAS-GSC}. Moreover, even jets of a single flavor type can fragment in wildly different ways, resulting in a range of possible responses: by measuring global jet properties, it is possible to better understand this fragmentation and correct the response jet-by-jet and thereby substantially improve the jet resolution.
 
 Five variables are used to correct the jets; most of the variables are only available in some subset of the detector $\eta$. As the name of the technique suggests, these corrections are applied independently and sequentially. In order, these are:
 
@@ -540,7 +541,7 @@ Figure~\ref{fig:jet-reconstruction:combined_uncertainties} shows the size of the
 
 
 \subsection{\LargeR Calibrations}
-
+\label{chapter:jet-reconstruction:larger}
 The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, using both LC and EM scale inputs. For analyses which require the use of jets with a different $R$ parameter and/or grooming, another set of calibrations must be performed. Optimization studies on a variety of signal classes in 2011 determined that the collection \antikt $R=1.0$ with trimming applied, using $\Rsub = 0.3$ and $\fcut = 0.05$, performed very well in a number of final states, and presented a very small susceptibility to pileup as demonstrated in Figure~\ref{fig:jet-reconstruction:pileup_large}~\cite{ATLAS-SS-2011}. This collection was thus centrally supported in 2012, and both calibrations and uncertainties were provided.
 
 \begin{figure}
@@ -551,7 +552,7 @@ The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, usin
 \end{figure}
 
 
-The calibration procedure for these \largeR jets is slightly different than for the other collections. As most users are interested in the substructure properties of the jets, and using constituents at the hadron-scale is more sensible than the raw detector outputs, only LC inputs are used for \largeR jets. Additionally, because trimming effectively removes a large portion of the pileup contamination in the jets, no dedicated pileup correction procedure is applied (though in principle, it is possible to easily add an areas correction to the subjets before they are trimmed, and this should improve performance). This is visible in Figure, which shows the lack of sensitivity of the jet mass to additional pileup interactions. Thus, the MC JES procedure is performed on jets at the LC scale.
+The calibration procedure for these \largeR jets is slightly different than for the other collections. As most users are interested in the substructure properties of the jets, and using constituents at the hadron-scale is more sensible than the raw detector outputs, only LC inputs are used for \largeR jets. Additionally, because trimming effectively removes a large portion of the pileup contamination in the jets, no dedicated pileup correction procedure is applied (though in principle, it is possible to easily add an areas correction to the subjets before they are trimmed, and this should improve performance). This is visible in Figure~\ref{fig:jet-reconstruction:pileup_large}, which shows the lack of sensitivity of the jet mass to additional pileup interactions. Thus, the MC JES procedure is performed on jets at the LC scale.
 
 The MC JES procedure itself is identical to that described in Section~\ref{jet-reconstruction:jet-calibration-mc-jet-energy-scale}, except that an additional \textit{mass calibration} step is performed. This procedure defines a mass response in the typical way,
 %
@@ -559,7 +560,7 @@ The MC JES procedure itself is identical to that described in Section~\ref{jet-r
 \mathcal{R}^{\mathrm{jet}}_m = m^{\mathrm{jet}}_{\mathrm{reco}} /  m^{\mathrm{jet}}_{\mathrm{truth}} 
 \end{equation}
 %
-and performs a numerical inversion calibration procedure identical to the energy calibration procedure, after both the energy and $\eta$ are calibrated. This procedure is required because of the varying mass response of the calorimeter, as displayed in Figure~. This is again caused by the varying performance of detector technologies which change as a function of $\eta$: hadrons on one side of the jet, without a calibration, would cause more mass in the jet than the other side, even if they had the same energy. As the mass of \largeR jets is commonly used as a discriminating variable in analyses (as opposed to the $R=0.4$, which is rarely if ever used), it is important that the variable have a consistent meaning as the detector technology changes. Figure~\ref{fig:jet-reconstruction:total_jms} shows the effect of the jet calibration in 2011; while the mass response is close to $1$ in central $\eta$ bins, it can be substantially mismeasured at higher values of $\eta$ when the jet energy is low.
+and performs a numerical inversion calibration procedure identical to the energy calibration procedure, after both the energy and $\eta$ are calibrated. This procedure is required because of the varying mass response of the calorimeter, as displayed in Figure~\ref{fig:jet-reconstruction:total_jms}. This is again caused by the varying performance of detector technologies which change as a function of $\eta$: hadrons on one side of the jet, without a calibration, would cause more mass in the jet than the other side, even if they had the same truth energy. As the mass of \largeR jets is commonly used as a discriminating variable in analyses (as opposed to the $R=0.4$, which is rarely if ever used), it is important that the variable have a consistent meaning as the detector technology changes. Figure~\ref{fig:jet-reconstruction:total_jms} shows the effect of the jet calibration in 2011; while the mass response is close to $1$ in central $\eta$ bins, it can be substantially mismeasured at higher values of $\eta$ when the jet energy is low.
 
 \begin{figure}
 \centering
@@ -608,65 +609,65 @@ where the sums over tracks ($k$ and $l$ indices) are tracks which are ghost-asso
 
 %%%%%%%%%%%%%%%% 
 
-One issue with JVF is that while it is indeed able to identify pileup jets, the second term in the denominator Equation~\ref{eqn:jet-reconstruction:jvf} depends on $N$, the number of pileup vertices in the event~\cite{ATLAS-JVT}. Ideally, pileup supression would be done using variables which are themselves not dependent on pileup, so that the efficiency and fake-rate of such variables do not change with the pileup conditions. One simple way to do this is to correct the problematic term in  Equation~\ref{eqn:jet-reconstruction:jvf}, defining a new variable corrJVF as:
-%
-\begin{equation}
-\label{eqn:jet-reconstruction:corrjvf}
-\mathrm{corrJVF} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{ \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_0) + \frac{\sum_{n\geq1} \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_n)}{\kappa n_\mathrm{trk}^\mathrm{PU}}}
-\end{equation}
-%
-where $\kappa$ is an arbitrary factor, typically selected to be 0.01, and $n_\mathrm{trk}^\mathrm{PU}$ is the \textit{total} number of pileup tracks in the event~\cite{ATLAS-JVT}. This normalization prevents the arbitrary growth of the second term, and renders corrJVF insensitive to the number of pileup tracks, and just as performant as JVF. Another variable which is sensitive to pileup jets, but insensitive to the number of vertices, is $R_{p\mathrm{T}}$, defined as
-%
-\begin{equation}
-R_{p\mathrm{T}} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{p_T^\mathrm{jet}}.
-\end{equation}
-%
-This variable is the simply the charged component of the jet \pt~\cite{ATLAS-JVT}. For typical jets, 2/3 of the energy is expected to occur in charged particles (due to there being two charges, and only one neutral ``charge''), with some degree of flucutation due to charged hadronization and detector inefficiencies. A lower value indicates either a strangely fragmenting jets, or more dangerously, a large degree of pileup contamination. As corrJVF and $R_{p\mathrm{T}}$ contain orthogonal information-- one measures the pileup track contamination, and the other the neutral contamination-- the variables ccan be combined using a likelihood into a new, more powerful variable: JVT (the jet-vertex-tagger). The distributions of corrJVF, $R_{p\mathrm{T}}$, and JVT are showin in Figure~\ref{fig:jet-reconstruction:jvt}.
+% One issue with JVF is that while it is indeed able to identify pileup jets, the second term in the denominator Equation~\ref{eqn:jet-reconstruction:jvf} depends on $N$, the number of pileup vertices in the event~\cite{ATLAS-JVT}. Ideally, pileup supression would be done using variables which are themselves not dependent on pileup, so that the efficiency and fake-rate of such variables do not change with the pileup conditions. One simple way to do this is to correct the problematic term in  Equation~\ref{eqn:jet-reconstruction:jvf}, defining a new variable corrJVF as:
+% %
+% \begin{equation}
+% \label{eqn:jet-reconstruction:corrjvf}
+% \mathrm{corrJVF} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{ \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_0) + \frac{\sum_{n\geq1} \sum_l p_T^{\mathrm{trk},l}(\mathrm{PV}_n)}{\kappa n_\mathrm{trk}^\mathrm{PU}}}
+% \end{equation}
+% %
+% where $\kappa$ is an arbitrary factor, typically selected to be 0.01, and $n_\mathrm{trk}^\mathrm{PU}$ is the \textit{total} number of pileup tracks in the event~\cite{ATLAS-JVT}. This normalization prevents the arbitrary growth of the second term, and renders corrJVF insensitive to the number of pileup tracks, and just as performant as JVF. Another variable which is sensitive to pileup jets, but insensitive to the number of vertices, is $R_{p\mathrm{T}}$, defined as
+% %
+% \begin{equation}
+% R_{p\mathrm{T}} = \frac{\sum_k p_T^{\mathrm{trk},k}(\mathrm{PV}_0)}{p_T^\mathrm{jet}}.
+% \end{equation}
+% %
+% This variable is the simply the charged component of the jet \pt~\cite{ATLAS-JVT}. For typical jets, 2/3 of the energy is expected to occur in charged particles (due to there being two charges, and only one neutral ``charge''), with some degree of flucutation due to charged hadronization and detector inefficiencies. A lower value indicates either a strangely fragmenting jets, or more dangerously, a large degree of pileup contamination. As corrJVF and $R_{p\mathrm{T}}$ contain orthogonal information-- one measures the pileup track contamination, and the other the neutral contamination-- the variables ccan be combined using a likelihood into a new, more powerful variable: JVT (the jet-vertex-tagger). The distributions of corrJVF, $R_{p\mathrm{T}}$, and JVT are showin in Figure~\ref{fig:jet-reconstruction:jvt}.
 
-%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
-\centering
-\subfigure[corrJVF]{\includegraphics[width=0.3\textwidth]{fig_02a.pdf}}
-\subfigure[$R_{p\mathrm{T}}$]{\includegraphics[width=0.3\textwidth]{fig_03a.pdf}}
-\subfigure[JVT]{\includegraphics[width=0.3\textwidth]{fig_05b.pdf}}
-\label{fig:jet-reconstruction:jvt}
-\caption{The distributions of various $N_\mathrm{vtx}$-insensitive pileup tagging variables.}
-\end{figure}
+% \begin{figure}
+% \centering
+% \subfigure[corrJVF]{\includegraphics[width=0.3\textwidth]{fig_02a.pdf}}
+% \subfigure[$R_{p\mathrm{T}}$]{\includegraphics[width=0.3\textwidth]{fig_03a.pdf}}
+% \subfigure[JVT]{\includegraphics[width=0.3\textwidth]{fig_05b.pdf}}
+% \label{fig:jet-reconstruction:jvt}
+% \caption{The distributions of various $N_\mathrm{vtx}$-insensitive pileup tagging variables.}
+% \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%
 
-The improvement in performance of JVT is shown in Figure~\ref{fig:jet-reconstruction:jvt_performance}~\cite{ATLAS-JVT}. The left figure shows the fake rate (i.e. the rate of acceptance of pileup jets) as a function of the hard-scatter jet efficiency-- a lower curve indicates stronger performance, and JVT clearly performs the best out of the different variables. The right figure shows the fake rate as a function of $N_\mathrm{vtx}$ for a fixed efficiency; the strong sensitivity of JVF is visible, while JVT is not affected.  
+% The improvement in performance of JVT is shown in Figure~\ref{fig:jet-reconstruction:jvt_performance}~\cite{ATLAS-JVT}. The left figure shows the fake rate (i.e. the rate of acceptance of pileup jets) as a function of the hard-scatter jet efficiency-- a lower curve indicates stronger performance, and JVT clearly performs the best out of the different variables. The right figure shows the fake rate as a function of $N_\mathrm{vtx}$ for a fixed efficiency; the strong sensitivity of JVF is visible, while JVT is not affected.  
 
-%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
-\centering
-\subfigure{\includegraphics[width=0.45\textwidth]{fig_06a_jvt}}
-\subfigure{\includegraphics[width=0.45\textwidth]{fig_06b_jvt}}
-\label{fig:jet-reconstruction:jvt_performance}
-\caption{Performance of JVT compared to JVF, comparing both the efficiency vs. fake-rate and the sensitivity to changing $N_\mathrm{vtx}$ conditions.}
-\end{figure}
+% \begin{figure}
+% \centering
+% \subfigure{\includegraphics[width=0.45\textwidth]{fig_06a_jvt}}
+% \subfigure{\includegraphics[width=0.45\textwidth]{fig_06b_jvt}}
+% \label{fig:jet-reconstruction:jvt_performance}
+% \caption{Performance of JVT compared to JVF, comparing both the efficiency vs. fake-rate and the sensitivity to changing $N_\mathrm{vtx}$ conditions.}
+% \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Pileup in \LargeR Jets}
+% \subsection{Pileup in \LargeR Jets}
 
-Typically \largeR jets are not directly sensitive to the creation of new pileup jets: the high \pt thresholds used in these analyses typically mean that jets consisting of entirely pileup are very rare. One possible issue is the presence of pileup \textit{subjets}: i.e., small subjets within an otherwise normal \largeR jet which are dominated by pileup~\cite{ATLAS-JVT}. Figure~\ref{fig:jet-reconstruction:pu_subjet} shows an example of such a jet: the \largeR jet labeled as the truth $Z$-boson (in this simulated $W'\rightarrow WZ$ event) has a mass of 90 GeV when using only the two subjets on the left, but rises to 120 when including the subjet on the right. However, it is also clear from this event display that the subjet on the right has no hard-scatter tracks associated to it, and only tracks from pileup interactions\footnote{This figure nicely demonstrates the advantage of the ghost-association scheme for tracks: the non-trivial shape of the \kt subjets are captured by the ghost association, but not by a simpler $\Delta R$ scheme.}. A subjet corrJVF discriminant could hypothetically remove such subjets, even if they remain after trimming (like this one did). In practice, Run 1 pileup conditions were low enough such that normal trimming generally performed the same as a corrJVF subjet tagger: higher pileup in Run 2 might make pileup subjet tagging a more important consideration.
+% Typically \largeR jets are not directly sensitive to the creation of new pileup jets: the high \pt thresholds used in these analyses typically mean that jets consisting of entirely pileup are very rare. One possible issue is the presence of pileup \textit{subjets}: i.e., small subjets within an otherwise normal \largeR jet which are dominated by pileup~\cite{ATLAS-JVT}. Figure~\ref{fig:jet-reconstruction:pu_subjet} shows an example of such a jet: the \largeR jet labeled as the truth $Z$-boson (in this simulated $W'\rightarrow WZ$ event) has a mass of 90 GeV when using only the two subjets on the left, but rises to 120 when including the subjet on the right. However, it is also clear from this event display that the subjet on the right has no hard-scatter tracks associated to it, and only tracks from pileup interactions\footnote{This figure nicely demonstrates the advantage of the ghost-association scheme for tracks: the non-trivial shape of the \kt subjets are captured by the ghost association, but not by a simpler $\Delta R$ scheme.}. A subjet corrJVF discriminant could hypothetically remove such subjets, even if they remain after trimming (like this one did). In practice, Run 1 pileup conditions were low enough such that normal trimming generally performed the same as a corrJVF subjet tagger: higher pileup in Run 2 might make pileup subjet tagging a more important consideration.
 
-%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{fig_20a.pdf}
-\label{fig:jet-reconstruction:pu_subjet}
-\caption{An example of a jet contaminated by a pileup subjet (i.e., the \largeR jet with the truth $Z$-boson).}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.6\textwidth]{fig_20a.pdf}
+% \label{fig:jet-reconstruction:pu_subjet}
+% \caption{An example of a jet contaminated by a pileup subjet (i.e., the \largeR jet with the truth $Z$-boson).}
+% \end{figure}
 
-%%%%%%%%%%%%%%%% 
+% %%%%%%%%%%%%%%%% 
 \section{Flavor Tagging}
 
-Another important aspect of jet reconstruction is the \textit{flavor tagging} of jets.  This refers to the identification of a long-lived (typically $\tau \approx 1.5$~ps) $B$-hadrons within jets, and so is commonly also called $b$-tagging. $B$-hadrons, because of this comparatively long life time (long, compared to the $10^{-20}$~s lifetimes of the $W$ or $Z$, for example) and the relativistic time dilation at high energy, decay at macroscopic distances (typically a few mm) away from the primary vertex in the transverse direction at a location referred to as a \textit{secondary vertex}. Precision tracking detectors are able to identify these displaced tracks and vertices, allowing $B$-jets to be identified against very large light-flavor backgrounds. As interesting physics signatures-- SUSY, top decays, Higgs decays, and so on-- often involve final states with $b$-jets, the identification of such jets is critical to the physics program of the LHC~\cite{ATLAS-B}.
+Another important aspect of jet reconstruction is the \textit{flavor tagging} of jets.  This refers to the identification of a long-lived (typically $\tau \approx 1.5$~ps) $B$-hadrons within jets, and so is commonly also called $b$-tagging. $B$-hadrons, because of this comparatively long life time (long, compared to the $10^{-20}$~s lifetimes of the $W$ or $Z$, for example) and the relativistic time dilation at high energy, decay at macroscopic distances (typically a few mm) away from the primary vertex in the transverse direction at a location referred to as a \textit{secondary vertex}. Precision tracking detectors are able to identify these displaced tracks and vertices, allowing $b$-jets to be identified against very large light-flavor backgrounds. As interesting physics signatures--- SUSY, top decays, Higgs decays, and so on--- often involve final states with $b$-jets, the identification of such jets is critical to the physics program of the LHC~\cite{ATLAS-B}.
 
 There are many different complementary techniques used to identify $B$-hadrons~\cite{ATLAS-B}. The following is a description of the most important techniques, and their comparative advantages. All the algorithms share a common baseline track association, which uses a \pt-dependent $\Delta R$ cone of maximum size $R=0.45$ at $\pt = 20$~GeV and $R=0.25$ at $\pt = 150$~GeV. The actual tracks selected are tuned in detail to keep the best tracks for each algorithm; the restrictions on some include a requirement on the $B$-layer of the pixel detector or not, varying \pt tresholds (either 400 MeV and 1 GeV), and the rejection of two-track vertices with mass consistent with the decay or conversion of a $\gamma$, $K$, or $\Lambda$.
 
@@ -765,507 +766,6 @@ After $b$-tagging algorithms are developed, they also need to be \textit{calibra
 
 %%%%%%%%%%%%%%%% 
 
-\section{Quark/Gluon Discrimination}
-\label{jet-reconstruction:qg}
-\subsection{Overview}
-\label{jet-reconstruction:qg:overview}
-%~\cite{Miyazawa:1966,Ramond:1971gb,Golfand:1971iw,Neveu:1971rx,Neveu:1971iv,Gervais:1971ji,Volkov:1973ix,Wess:1973kz,Wess:1974tw}
+\section{Conclusions}
 
-Just as $b$-tagging is useful for search for new physics in channels with heavy flavor, the identification of \textit{light quarks} can also be important when searching for new physics. Most commonly, the jets associated with multi-jet production arise from gluon radiation, and so a tool to eliminate these backgrounds can be very useful. Even searches for the Higgs boson decaying to hadronic $W$-bosons or $Z$-bosons can benefit, as once again the signal is dominated by light-quark jets and backgrounds are often gluon-induced.
-
-This type of discrimination has been attempted at several experiments before ATLAS~\cite{TevatronShapes1,QGNN,Pumplin,QGopal,Ariel,QGsub,QGlep,QGcleo,DelphiQG,DelphiQG2,AlephQG,L3QG}. This discrimination tends to rely on the different color charges for quarks ($C_F=4/3$) and gluons ($C_A=3$), which leads to a leading order prediction that gluon jets have $C_A/C_F = 9/4$ more particles (which are consequently more widely distributed, and generally softer) than light-quark jets. OPAL's measurement~\cite{QGopal} indeed measured something very similar to this prediction. Because of their much simpler experimental environments, experiments like OPAL at $e^+/e^-$ colliders have generally been much more successful at discriminating between quarks and gluons, as determining ``pure'' samples at a hadron collider is exceedingly difficult. However, recent developments from the theory communited have suggested not just that pure samples suitable for calibration are obtainable, but also that discrimination is possible in the challenging underlying-event and pileup heavy environment of a hadron collider~\cite{schwartz1,schwartz2}. \editnote{Some of these citations need to be cleaned up}
-
-This section follows the results of the ATLAS paper on quark-gluon discrimination using 2011 data~\cite{ATLASqg}. First, quark and gluon jets are more precisely defined, followed by a description of possible discriminating variables. The use of data-driven templates is discussed, and then the final tagger properties and power is presented.
-
-\subsection{Definition of Light Quark and Gluon Jets}
-\label{jet-reconstruction:qg:definition}
-
-The labeling of a $b$-jet or a $c$-jet is a fairly straightforward process: the initiating $b$ and $c$ quarks, though unmeasurable and therefore un-physical themselves, inevitably hadronize into observable $B$ and $D$ hadrons. Thus, the presence of a $B$ or $D$ hadron, at the MC simulation level, is enough to provide a label to the jet: if a $B$ or $D$ hadron is present, it is clear that a secondary vertex can occur, and the jet should be counted as being heavy-flavor.
-
-This unambiguous hadronization does not occur for light-quark and gluon jets. In the parton shower process, gluons even split into pairs of quarks before hadronization: all gluon jets contain quarks, in some sense. Moreover, the observable particles-- kaons, pions, protons, neutrons, and so on-- are all identical for quark and gluon initiated jets. Even before attempting discrimination between the two classes, then, it is difficult to precisely state what we are discriminating between.
-
-One potentially less ambiguous definition is to use the partons from the matrix element to label jets. This has the disadvantage that only some jets can be labelled-- in particular, in multi-jet events, depending on the generator, as few as 2 partons are simulated as part of the matrix element, and therefor only two jets out of many could be labelled. A better strategy is to simply use the highest energy parton within $\Delta R < R_\mathrm{jet}$ of the jet. When studied with both Pythia $2\rightarrow2$ and MadGraph $2\rightarrow4$ generators, this matching followed the labelling from the matrix element in $> 95\%$ of events. This labelling has the advantage of also working on the hadronic decays of top quarks or $Z$-bosons. For the rest of the discussions in this section, this labeling scheme will be implied when discussing quark and gluon jets.
-
-While this analysis does not directly attempt to tag $b$ and $c$ jets, they must often be subtracted from the samples in order to deal with only light-flavor jets. These jets are labelled with the following priority: if a $B$-hadron with $\pt > 5$ GeV exists within $\Delta R < R_\mathrm{jet}$, label it a $b$-jet. If two such independent hadrons exist, label it a $bb$ jet (originating from a gluon splitting, but not considered in this analysis). If this fails, search for a $D$-hadron with $\pt > 5$ GeV within the jet; if one is found, label it a $c$-jet, and if two are found, label it $cc$. Only after these steps have determined that there are no heavy flavor quarks within the jet is the jet's light-flavor type assessed.
-
-\subsection{Data and MC Samples}
-\label{jet-reconstruction:qg:samples}
-
-Several different data and MC samples are used to study the properties of quark and gluon jets. There are two main categories: multi-jet and $\gamma$+jet events. 
-
-Multi-jet events are modelled by Pythia 6 and \texttt{Herwig++} simulation, and some smaller samples using Madgraph interfaced with Pythia 8. Events are selected in data with single jet triggers with various thresholds which are fully efficient at $\pt > 40$~GeV. The lower \pt threshhold triggers are \textit{prescaled} to reduce the rate at high luminosity. When binning results in \pt, each bin is filled exclusively with events from a single trigger that is fully efficient in that range (and the second jet is used only if its \pt also is in this same bin). When studying tri-jet events, the same \pt binning and trigger treshholds are used.
-
-The $\gamma$+jet sample is selected with single photon triggers, again with variable tresholds and corresponding prescales. The lowest threshold is at $p_\mathrm{T}^\gamma > 25$~GeV, and a back-to-back requirement between the $\gamma$ and jet, $\Delta \phi > 2.8$, is imposed. An additional veto on soft radiation is imposed, wherein the uncalibrated \pt of the sub-leading jet is required to be less than $30\%$ of $p_\mathrm{T}^\gamma$~\cite{JES2010}\footnote{In the corresponding 2012 analysis, it was discovered that this cut changes the \pt distribution within each \pt bin and slightly biases the result, lowering slightly the performance of the tagger.}. Each jet \pt bin is filled by a single-photon trigger that is fully efficient in that bin, as the balance between photon and jet guarantees. The same triggers are used in the $\gamma$+2jet sample, except that the subleading jet \pt cut is removed.
-
-% The dijet sample is selected using single-jet triggers with various thresholds [48], which are fully efficient for jets with pT > 40 GeV. Each jet pT bin is filled exclusively by a single trigger that is fully efficient for jets in that pT range, following Ref. [1]. The trijet sample uses the same trigger selection as the dijet sample. This guarantees that studies using the jet with the third highest pT in each event are not biased by the trigger.
-
-%The γ+jet sample is selected using single-photon trig-gers. The lowest threshold single-photon trigger is fully efficient for photons with pT > 25 GeV. For this sam- ple, a back-to-back requirement for the photon and the leading jet, ∆φ > 2.8, is imposed. An additional veto on soft radiation is also applied to further reduce back- ground contamination [41]: the uncalibrated pT of the sub-leading jet is required to be less than 30% of the photon pT. Relying on the pT balance of the photon and jet, each jet pT bin is filled exclusively by a single-photon trigger that provides a fully efficient selection.
-%The same triggers are used in the γ+2-jet sample in each region of jet pT. Since the sub-leading jet pT is lower than that of the leading jet by definition, this selection is also not biased by jet reconstruction effects.
-
-\subsection{Quark and Gluon Jet Properties}
-\label{jet-reconstruction:qg:properties}
-
-Given the expectations developed in Section~\ref{jet-reconstruction:qg:overview}, there are many different jet observables which could potentially distinguish between quark and gluon initiated jets. One approach is to try to measure the number of particles to take advantage of the color factor difference. In principle, a variable just as $n_\mathrm{clusters}$ would be ideal, as it is expected to be directly proportional to the number of stable particles interacting with the calorimeter. However, as the granularity of the calorimeter changes with $\eta$, and the number of clusters grows unbounded with pileup, this is not a very useful variable. A related alternative is \ntrk, the number of tracks associated to a jet\footnote{Note that in this analysis, tracks are associated with a $\Delta R < R_\mathrm{jet}$ requirement instead of a ghost association. As most jets considered are isolated, and \antikt~is used throughout, this is a reasonable simplification.}. This is expected to have much less $\eta$ dependence, and because tracks from pileup vertices are able to be rejected, is stable with regards to the amount of pileup.
-
-Other variables take into account the radial distribution of the energy inside the jet. One simple such variable is the \textit{jet width}, as discussed in Section~\ref{jet-reconstruction:calibration:gsc}. The width is the first radial moment of the \pt of the jet: jets with a very focused core will have lower width, and jets with a more even distribution of energy will have a higher width. Gluons, because they first split to quarks, and because of their higher color factor, are expected to have broader energy distributions and therefore higher width. The width can be calculated with clusters as inputs, or the tracks associated to a jet. Because of the issues with pileup, track width is used in this analysis.
-
-Many other variables, as documented in \cite{schwartz1}, are possible, but these two were the preferred combination from early theoretical studies. Another set of studies~\cite{EEC} indicated that a new observable, the energy-energy correlated angularity, could also be useful. This class of observables is defined as:
-\begin{equation}
-{\rm ang_{\rm EEC}}=\frac{ \sum_i \sum_j p_{{\rm T},i} \times p_{{\rm T},j} \times (\Delta R(i,j))^\beta}{ (\sum_i p_{{\rm T},i})^2 },
-\end{equation}
-where $i$ runs over the tracks associated to the jet and $j$ runs over the tracks associated to the jet with $j>i$ (the calorimeter version is sensitive to pileup, and therefore not studied), and $\beta$ is a tunable parameter typically $O(1)$. While this variable is in principle very sensitive, several effects conspire to limit its effectiveness and prevent it from being used in the final result (as will be discussed shortly).
-
-To characterize the separation between quark and gluon jets with these variables, we define the \textit{separation} as~\cite{2006physics11219P}:
-%
-\begin{equation}
-s=\frac{1}{2}\int\frac{(p_q(x)-p_g(x))^2}{p_q(x)+p_g(x)}dx = \frac{1}{2}\sum_i\frac{(p_{q,i}-p_{g,i})^2}{p_{q,i}+p_{g,i}}, 
-\label{eq:separation}
-\end{equation}
-%
-where $i$ runs over bins of a histogram. This is a measure of the overlap of two distributions, $q(x)$ and $g(x)$, which are the quark and gluon distributions respectively in a Pythia dijet simulation.  The result is shown in Figure~\ref{fig:jet-reconstruction:qg:separation}: in general, the separation power increases as a function of \pt, and \ntrk is predicted to have the best power. Track width performs worse than many of the other variables, but because of its resilience in modeling (compared to the EEC variables) and its robustness to pileup (compared to the calorimeter width), it will also be studied further. Moreover, the track width has a very low correlation with \ntrk: as low as $15\%$ at low \pt and only $50\%$ at high \pt, whereas the EEC variables have consistent correlations of $75\%$. This means that a combined observable from \ntrk and track width will likely outperform other options.
-
-%%%%%%%%%%%%%%%%
-
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{qg/SeparationPower}
-\label{fig:jet-reconstruction:qg:separation}
-\caption{The size of the scale factor for $b$-tagging calibration in data, as a function of the jet \pt, and the size of the corresponding uncertainties.}
-\end{figure}
-
-%%%%%%%%%%%%%%%% 
-
-\subsection{Data-Driven Templates}
-
-Figures~\ref{fig:jet-reconstruction:qg:dijetProperties} and \ref{fig:jet-reconstruction:qg:gammajetProperties} show the \ntrk and Track Width distributions for data, \Pythia, and \Herwigpp generators, in both dijet and $\gamma$+jet topologies. The distributions show that while there is decent agreement for the width, the \ntrk variable is very poorly modelled: \Pythia predicts too many tracks consistently, while \Herwigpp predicts too few. 
-
-\begin{figure}[tbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_ntrk_PT60_eta0.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_ntrk_PT260_eta0.pdf}
-} \\
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_trkwidth_PT60_eta0.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/dijetakt4TopoEM_trkwidth_PT260_eta0.pdf}
-}
-\caption{
-Jet \ntrk (top) and track width (bottom) for jets with $60<\pt<80$~\GeV\ (left) and
-$260<\pt<310$~\GeV\ (right) in {\sc Pythia} 6, {\sc Herwig++}, and data, for a dijet selection.
-Jets have $|\eta|<0.8$ and are reconstructed with an \AKT\ jet algorithm with $R=0.4$.
- }
-\label{fig:jet-reconstruction:qg:dijetProperties}
-\end{center}
-\end{figure}
-
-\begin{figure}[tbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_ntrk_PT60_eta0.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_ntrk_PT260_eta0.pdf}
-} \\
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_trkwidth_PT60_eta0.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/gammaakt4TopoEM_trkwidth_PT260_eta0.pdf}
-}
-\caption{
-Jet \ntrk (top) and track width (bottom) for jets with $60<\pt<80$~\GeV\ (left) and
-$260<\pt<310$~\GeV\ (right) in {\sc Pythia} 6, {\sc Herwig++}, and data, for a $\gamma+$jet selection.
-Jets have $|\eta|<0.8$ and are reconstructed with an \AKT\ jet algorithm with $R=0.4$.
- }
-\label{fig:jet-reconstruction:qg:gammajetProperties}
-\end{center}
-\end{figure}
-
-This makes the usual prospect of constructing a tagger-- beginning with a likelihood trained in MC and calibrating small residual differences in data-- a challenging prospect. Instead, we first extract a pure quark or gluon shape from data, and construct the tagger from these shapes. To construct these shapes, we look at histograms in two different samples, where we can measure the quark/gluon flavor fraction very precisely using the matrix element of the generator\footnote{And while generator hadronization properties vary greatly, this fraction of quark and gluon jets is rather consistent; any residual difference, at the $10\%$ level, is taken as a systematic later in the procedure.}. For each bin $i$ of jet $\eta$, jet $\pt$, and jet property (track width, number of tracks, or the two-dimensional distribution of the these), a set of linear equations is solved:
-%
-\begin{align}
-P_i(\eta,\pt) &= f_{q}(\eta,\pt) \times P_{q,i}(\eta,\pt) \nonumber \\
-	& + f_{g}(\eta,\pt) \times P_{g,i}(\eta,\pt) \nonumber \\
-& + f_{c}(\eta,\pt) \times P_{c,i}(\eta,\pt) \nonumber \\
-& + f_{b}(\eta,\pt) \times P_{b,i}(\eta,\pt) , 
-\label{eq:fractions}
-\end{align}
-%
-where $P_i$ is the value of the relevant distribution in bin $i$ of the distribution in the dijet
-or $\gamma+$jet sample, $f_{q}$ and $f_{g}$ are the light-quark and gluon fractions 
-predicted by \Pythia at a given $\eta$ and $\pt$, 
-and $P_{q,i}$ and $P_{g,i}$ are the values of the relevant distribution 
-for quark- and gluon-jets in bin $i$ of the distribution. The fractions 
-$f_{c}$ and $f_{b}$ for $c$-jets and $b$-jets are relatively small. They are taken from the
-MC simulation, together with the corresponding distributions $P_{c}$ and $P_{b}$.
-The same is true for the fractions and distributions for $g\rightarrow c\bar{c}$ and $g\rightarrow b\bar{b}$,
-not shown in Eq.~\ref{eq:fractions} for brevity. The heavy flavor fractions are typically below $5-10\%$, and are taken directly from MC and subtracted from the distributions.
-
-This leaves two equations (one for a dijet sample, and one for $\gamma$+jet), with two unknowns ($P_{q}$ and $P_{g}$), which can be solved bin-by-bin. The only MC input is from the fractions-- the rest of the shape of the resulting distribution comes from data. The studies are performed in three bins of $|\eta|$: $|\eta|<0.8$, $0.8<|\eta|<1.2$ and $1.2<|\eta|<2.1$, though in general only the results from the central bin will be shown for the sake of brevity. Note that this technique depends on the assumption that the shape of a quark jet in a $\gamma$+jet sample is the same as that of a quark jet in a dijet sample: as we will later see, this is largely true, but residual differences will account for the largest systematic. An additional fake term,  $f_{{\rm fake}, i}(\eta,\pt)\times P_{{\rm fake}, i}(\eta,\pt)$, is added to the distributions in the $\gamma$+jet sample to take into account the fake photons which contaminate this sample~\cite{JES2011}.
-
-This method is first tested for the individual distributions of \ntrk and Track Width in MC, as in the top subfigures of Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. The closure in \Pythia is very good: the small residual differences between the extracted templates and the inputs are taken as a systematic later. The dijet sample, as it contains more gluons, is in some sense the basis of the gluon distribution; likewise, as the $\gamma$ is more likely to radiate from a charged object than a neutral, the $\gamma$+jet sample is more quark-enriched and the extraction leads to a quarks following the $\gamma$+jet sample more closely. With the technique validated in MC, we can also use it in data, replacing the relevant value from data into the $P_i$ of Equation~\ref{eq:fractions}. The results of this are shown in Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos} in the bottom panel: we see now a confirmation of the earlier studies, in that the \ntrk variable is clearly poorly modelled by the MC. In particular, the \textit{gluon} distribution is strongly incorrect for \ntrk, while quarks fare better; the Track Width distribution is reasonably well modelled for both quarks and gluons, as expected. As the differences between data and MC make quarks and gluons more similar than predicted by the simulation, we can expect a degraded tagger performance compared to the naive expectation.
-
-
-\begin{figure*}[p]
-\begin{center}
-%Subfigures
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/ntrk_akt4TopoEM_eta0_means_withMCin_FromMC_Pyth}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/trkwidth_akt4TopoEM_eta0_means_withMCin_FromMC_Pyth}
-} \\
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/ntrk_akt4TopoEM_eta0_means_withMCin}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/trkwidth_akt4TopoEM_eta0_means_withMCin}
-}
-\caption{ Average (a,c) \ntrk and (b,d) track width for quark- (solid symbols) and gluon-jets
-(open symbols) as a function of reconstructed jet $\pt$ for isolated jets with $|\eta|<0.8$.
-Results are shown for distributions obtained using the in-situ extraction method in
-\Pythia 6 simulation (black circles, (a,b)) or data (black circles, (c,d)), as well as for 
-labeled jets in the dijet sample (triangles) and in the $\gamma$+jet sample (squares).
-The error bars represent only statistical uncertainties. Isolated jets are reconstructed using the
-\akt jet algorithm with radius parameter $R=0.4$. The bottom panels show
-the ratio of the results obtained with the in-situ extraction method to the results
-in the dijet and $\gamma$+jet MC samples. }
-\label{fig:jet-reconstruction:qg:ntrkWidthClos}
-\end{center}
-\end{figure*}
-
-There are several sources of uncertainty in the extraction procedure:
-
-\begin{enumerate}
-\item Uncertainties on input fractions ($f_{x,i}$)
-\item Uncertainties on the input shapes ($P_{x,i}$) 
-\item Uncertainties on the fake photon background
-\item Sample dependent effects (the differences between quarks in $\gamma$+jet and dijet samples)
-\end{enumerate}
-
-The input fraction uncertainties are addressed by comparing the fractions in \Pythia and MadGraph, and taking the difference as directly as a systematic. This takes into account differences potentially due to different renormalization/factorization scales, and the different ways of simulating the emission of quarks/gluons. A $5\%$ uncertainty, anti-correlated between the quark and gluon fractions, is assigned as a conservative systematic. The differences due to the mismodelling of the PDF is also included as a systematic. A combination of different PDF sets are assessed, each with different properties. They use different fitting procedures (MRST, CTEQ, and NNPDF), and are accurate to different orders in the perturabtive expansion (MSTW2008lo for LO, CT10 for NLO), and have different assumptions about the $\alpha_s$ calculation (MRST2007lmod for LO$^*$ and MRSTMCal for LO$^{**}$). Another $5\%$ anti-correlated systematic takes these effects into account conservatively.
-
-Uncertainties on the shapes come from the MC dependence on the $b$ and $c$-jet shapes. Uncertainties on the $b$-jet shapes are determined from a $t\bar{t}$ sample with $> 95\%$ purity: a $10\%$ systematic is assigned on the $b$-jet properties to take this into account. For $c$-jets, templates with 10\% increases in the rates of 2-prong, 3-prong, and 4-prong decays are used to estimate the effect of changes to the $c$-hadron decay. The largest propagated difference of these is used as the systematic uncertainty on the tagger.
-
-The fake photon background is assessed in several ways. The fake-factors are developed using an ABCD procedure, and the cuts used to define each of the regions are varied to assess the sensitivity to these effects. This results in a purity difference of $10\%$ for low \pt jets, and is the dominant uncertainty related to the photon measurement.
-
-The sample dependent uncertainty is the largest, and takes into account the differences in the MC's seen in Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. 
-Uncertainties on the jet properties are estimated first from differences
-between the $\gamma+$jet and dijet samples of the properties of quark- and gluon-jets, using both \Pythia and \Herwigpp. The envelope of these
-variations is used to estimate a systematic uncertainty, but is prone to large fluctuations due to the limited statistics of the MC samples. These statistical 
-uncertainties
-are estimated and used to smooth the $\pt$ dependence of the uncertainty following the
-procedure described in \cite{JES2011}: a Gaussian kernel with size proportional to the inverse of the uncertainty averages over the \pt bins, weighting those with lower statistical uncertainty higher. 
-The sample dependence is consistently the dominant systematic uncertainty for all jet $\pt$, and thus it is critical to take into account these variations.
-
-\subsection{Validation with event-level kinematic cuts}
-\label{jet-reconstruction:qg:validation}
-
-While the shapes derived in the previous section are data-driven, the large data and MC differences motivate an independent check in completely separate samples for the purpose of validation. Luckily, \cite{schwartz2} proposed several samples, accessible at hadron colliders, with quark/gluon purity of $> 90\%$ which could be used for validation purposes. These samples are very statistically limited and therefore insufficient to determine the shapes used for a tagger themselves, but can serve very well as test samples. Moreover, these independent samples give a feeling for any residual color-flow or event-level dependence which the previous uncertainty procedure may have missed.
-
-Gluon jets are found in the dijet sample, particularly because the proton have a very large gluon component at low $x$. However, as \pt rises, the gluon fraction falls off rapidly, leaving a mixed sample when measured at any appreciable \pt. In multi-jet events, however, any radiated jet is relatively more likely to originate from a gluon. As this radiation is likely to be soft, the third-leading jet is thus more likely to be a gluon. A kinematic discriminant, using only information on the relative location of jets, can further purify the tri-jet sample: 
-%
-\begin{equation}
-\zeta=|\eta_3|-|\eta_1-\eta_2|,
-\end{equation}
-%
-where $\eta_i$ is the pseudorapidity of the $i$th leading jet. Cutting on $\zeta < 0$ results in a tri-jet sample with gluon purity $> 90\%$, as determined in MadGraph simulation. To evaluate the determination of the gluon shapes from Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}, those templates are directly compared to the sample with $\zeta < 0$. This comparison is presented in \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth1} and \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth2} of Figure~\ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}. The agreement between the extracted template and the completely independent pure data sample of gluons is very good, for both \ntrk and Track Width. In particular, the \ntrk distributions agree quite well, and the purified sample agrees better with the data than the \Pythia simulation.
-
-\begin{figure}[p]
-\begin{center}
-\subfigure[]{
-\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth1}
-\includegraphics[width=0.45\textwidth]{/qg/smoothed_ntrk_akt4TopoEM_eta0_PureExtractedG}
-}
-\subfigure[]{
-\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth2}
-\includegraphics[width=0.45\textwidth]{qg/smoothed_trkwidth_akt4TopoEM_eta0_PureExtractedG}
-} \\
-\subfigure[]{
-\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth3}
-\includegraphics[width=0.45\textwidth]{qg/smoothed_ntrk_akt4TopoEM_eta0_PureExtractedQ}
-}
-\subfigure[]{
-\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth4}
-\includegraphics[width=0.45\textwidth]{qg/smoothed_trkwidth_akt4TopoEM_eta0_PureExtractedQ}
-}
-\caption{Top, the jet (a) \ntrk and (b) track width as a function of $\pt$ for jets in a
-gluon-jet-enriched trijet sample (triangles) compared to gluon-jet extracted templates (circles) for
-$|\eta|<0.8$. Bottom, the jet (c) \ntrk and (d) track width as a function of $\pt$ for jets in a quark-jet-enriched $\gamma$+jet
-sample (triangles) compared to quark-jet extracted templates (circles) for jets with $|\eta|<0.8$.
-Jets are reconstructed with the \antikt algorithm with $R=0.4$. The bottom
-panels of the figures show the ratios of the results found in the enriched sample to the extracted
-results. Error bars on
-the points for the enriched sample correspond to statistical uncertainties. The inner
-shaded band around the circles and in the ratio represents statistical uncertainties on the
-extracted results, while the outer error band represents the combined systematic and statistical
-uncertainties.
-}
-\label{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}
-\end{center}
-\end{figure}
-
-Events with photons are already used to extract the more quark-like component of the templates: events with one jet and one photon have $>80\%$ quark purity at $\pt > 150$~GeV. Enrichment of this sample is difficult, and anyway, we have already used it for the template extraction and so validation requires a new sample. A sample with a single photon and two jets turns out to be more effective~\cite{schwartz2}: if no additional selection is applied, they have a lower purity, but another kinematic event-level cut can be used to significantly purify the sample by helping to identify the jets seeded by the parton that is most likely to have radiated the photon (which is more likely to be a quark because the photon requires electric charge to be radiated). The observable is defined as:
-%
-\begin{equation}
-\xi=\eta_\text{jet~1}\times\eta_\gamma+\Delta R_{(\text{jet~2},\gamma)},
-\end{equation}
-%
-where $\eta_\gamma$ ($\eta_\text{jet~1}$) is the $\eta$ of the photon (leading jet), and 
-$\Delta R_{(\text{jet~2},\gamma)}$ gives the difference in $\eta$--$\phi$ space between the sub-leading 
-jet and the photon. By imposing a requirement on this variable of $\xi < 1$, purities over 90\% can be achieved (as validated with MadGraph siulation), although with a significant loss of events. This sample can again be compared to the extracted templates for quarks from Figure~\ref{fig:jet-reconstruction:qg:ntrkWidthClos}. This comparison is presented in \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth3} and \ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth4} of Figure~\ref{fig:jet-reconstruction:qg:pure_trijet_ntrkTrkWidth}. Once again, the agreement between the independent data sample and the extracted templates is very good for both the \ntrk and Track Width variables, validating our use of our templates for both quark and gluon jets.
-
-\subsection{Creating a Tagger, and Results}
-
-As the discriminating power of Track Width and \ntrk changes with \pt (\ntrk gains power as \pt rises, while the opposite is true for Track Width), a combined likelihood between the two variables will be the most effective tool for quark-jet tagging\footnote{Though a gluon jet tagger is also possible, the details are not considered in this analysis.}. Such a likelihood is defined using the normalized extracted two-dimensional distributions (called $q$ and $g$),
-%
-\begin{equation}
-L=\frac{q}{q+g}.
-\end{equation}
-%
-A cut on this variable $L$, built in bins of \pt and $\eta$, will effectively discriminate between quarks and gluons. Note that the two-dimensional distributions are first smoothed with a Gaussian kernel and dynamically rebinned to ensure that all regions of the distributions are populated sufficiently\footnote{In particular, low statistics in the $q$ distribution also causes a rebinning of the $g$ distribution, in order to make the likelihood construction as simple as possible. To rebinning covers only areas of the distribution which are statistically limited: regions sufficiently populated are not rebinned}. The two-dimensional distribution of $L$ is shown in the top of Figure~\ref{fig:jet-reconstruction:qg:likelihoodSample}, for both data and MC: it is clear that the taggers have very different properties in data and in the simulation. This figure also contains the projections of the $L$ variable, when using the quark and gluon distributions used to build the tagger, before smoothing. Separation clearly exists for both data and MC taggers, but is much stronger in MC.
-
-
-
-\begin{figure}[tbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_2dT_llhood_q_.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_2dT_llhood_q__FromMC.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_oneDim_q_.pdf}
-}
-\subfigure[]{
-\includegraphics[width=0.48\textwidth]{qg/width_vs_ntrk_PT160_akt4TopoEM_eta0_oneDim_q__FromMC.pdf}
-}
-\caption{ Value of the likelihood-based ratio $L$ as a function of \ntrk and track width (top) and 
-likelihood-based discriminant distribution for quark- and gluon-jets (bottom) for isolated jets 
-of $|\eta|<0.8$ and $160<\pt<210\GeV$. The plots have been obtained using data (left) and
-a \Pythia 6 dijet sample (right). Jets are reconstructed using the \akt\ jet algorithm
-with radius parameter $R=0.4$. }
-\label{fig:jet-reconstruction:qg:likelihoodSample}
-\end{center}
-\end{figure}
-
-The performance of the tagger is determined using the two dimensional templates extracted from data, before smoothing, and for labelled jets in MC simulations. The tagger is indepdently derived in \Pythia and \Herwigpp, following the same procedure as in data. Systematic unceratinies are estimated by deriving alternative templates as described in the previous section and determining the change in efficiency and rejection for the same cut on $L$. Table~\ref{tab:perfSummary} summarizes this performance for jets with $|\eta|<0.8$. Several different operating points, at $30\%$, $50\%$, $70\%$, and $90\%$ quark efficiency are evaluated. The statistical uncertainty is determined using pseudoexperiments via bootstrapping. Systematic uncertainties are combined in quadrature. Scale factors between data and MC are computed for the gluon efficiencies: quark efficiencies by definition have a scale factor of 1 (though there is some uncertainty) as the tagger (and the associated cut) is derived separately in data and MC. Several different \pt bins are shown in the table. 
-
-
-\begin{table}[htbp]
-\caption{
-Summary of the performance of the quark-jet tagger on quark- and gluon-jets in data and \Pythia MC simulation for jets built with the \antikt algorithm with $R=0.4$ and with $|\eta|<0.8$. 
-The first error corresponds to the statistical uncertainty, while the second corresponds to the systematic uncertainty.
-The scale factor is the ratio of data to MC simulation. 
-\label{tab:perfSummary}}
-\begin{center}
-\begin{tabular}{|c|l|l|l|l|l|l|}
-\hline
-& \multicolumn{2}{|c|}{Monte Carlo} & \multicolumn{2}{|c|}{Data} & \multicolumn{2}{|c|}{Scale Factor} \\ 
-\hline
-& $\epsilon_{\rm quark}$ & $\epsilon_{\rm gluon}$ & $\epsilon_{\rm quark}$ & $\epsilon_{\rm gluon}$ & SF$_{\rm quark}$ & SF$_{\rm gluon}$ \\
-\hline\noalign{\smallskip}
-\multirow{4}{*}{\begin{sideways}$\pt=60$--$80 \GeV$\end{sideways}} 
-& 30\% &  8.4\% &  ($30.0\pm0.8^{+3.2}_{-5.3}$)\%    &  ($11.9\pm0.3^{+7.5}_{-2.9}$)\%    &  $1.00\pm0.03^{+0.11}_{-0.18}$ & $1.42\pm0.04^{+0.89}_{-0.34}$ \\&&&&&&\\
-& 50\% & 21.0\% &  ($50.0^{+1.4+4.3}_{-1.3-6.8}$)\%  &  ($26.6^{+0.8+7.1}_{-0.6-3.9}$)\%  &  $1.00^{+0.027+0.09}_{-0.026-0.14}$ & $1.27^{+0.04+0.34}_{-0.03-0.19}$ \\&&&&&&\\
-& 70\% & 41.5\% &  ($70.0^{+1.7+3.9}_{-1.5-11.0}$)\%  &  ($48.4^{+1.1+4.7}_{-0.9-6.0}$)\%  &  $1.00^{+0.024+0.06}_{-0.022-0.16}$ & $1.17^{+0.03+0.11}_{-0.02-0.14}$ \\&&&&&&\\
-& 90\% & 69.9\% &  ($90.0^{+1.5+1.7}_{-1.3-3.3}$)\%  &  ($80.2^{+1.0+5.6}_{-0.8-2.2}$)\%   &  $1.00^{+0.02+0.02}_{-0.01-0.04}$ & $1.15^{+0.015+0.08}_{-0.012-0.03}$ \\&&&&&&\\
-\hline\noalign{\smallskip}
-\multirow{4}{*}{\begin{sideways}\centering$\pt=110$--$160 \GeV$\end{sideways}} 
-& 30\% &  5.7\% &  ($30.0\pm0.6^{+2.8}_{-4.6}$)\%  & ($11.6^{+0.6+6.2}_{-0.4-4.6}$)\%   & $1.00\pm0.02^{+0.09}_{-0.15}$ & $2.03^{+0.11+1.08}_{-0.08-0.81}$ \\ &&&&&&\\
-& 50\% & 13.9\% &  ($50.0\pm1.0^{+4.1}_{-6.1}$)\%  & ($24.3^{+1.2+7.4}_{-0.8-9.2}$)\%   & $1.00\pm0.02^{+0.08}_{-0.12}$ & $1.75^{+0.09+0.53}_{-0.06-0.66}$ \\ &&&&&&\\
-& 70\% & 29.7\% &  ($70.0^{+1.0+3.9}_{-1.1-8.5}$)\%  & ($45.3^{+1.5+4.6}_{-1.1-9.3}$)\% & $1.00^{+0.01+0.06}_{-0.02-0.12}$ & $1.52^{+0.05+0.15}_{-0.04-0.31}$ \\ &&&&&&\\
-& 90\% & 64.8\% &  ($90.0^{+0.5+2.0}_{-0.6-2.6}$)\%  & ($78.1^{+1.0+3.5}_{-0.6-6.0}$)\% & $1.00^{+0.006+0.02}_{-0.007-0.03}$ & $1.21^{+0.02+0.05}_{-0.01-0.09}$ \\ &&&&&&\\
-\hline\noalign{\smallskip}
-\multirow{4}{*}{\begin{sideways}\centering$\pt=310$--$360 \GeV$\end{sideways}} 
-& 30\% &  3.9\% & ($30.0^{+5.0+2.1}_{-7.1-4.7}$)\% & ($11^{+5+8}_{-7-4}$)\% & $1.00^{+0.17+0.07}_{-0.24-0.16}$ & $2.8^{+1.4+2.0}_{-1.9-1.1}$ \\&&&&&&\\
-& 50\% & 10.3\% & ($50.0^{+8.1+3.0}_{-11.6-8.3}$)\%& ($23^{+10+8}_{-12-9}$)\%& $1.00^{+0.16+0.06}_{-0.23-0.17}$ & $2.2^{+1.0+0.8}_{-1.1-0.9}$ \\&&&&&&\\
-& 70\% & 23.5\% & ($70.0^{+7.2+3.1}_{-8.8-7.0}$)\% & ($43^{+8+6}_{-12-10}$)\% & $1.00^{+0.10+0.04}_{-0.13-0.10}$ & $1.81^{+0.35+0.23}_{-0.51-0.42}$ \\&&&&&&\\
-& 90\% & 58.9\% & ($90.0^{+5.0+1.8}_{-4.9-3.1}$)\% & ($80^{+6+4}_{-10-7}$)\% & $1.00^{+0.06+0.02}_{-0.05-0.03}$ & $1.37^{+0.10+0.07}_{-0.17-0.11}$ \\&&&&&&\\
-%\vspace[-0.1]
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-The largest scale factors occur at high \pt for the tighest operating point, where the difference between the predicted and observed \ntrk distributions are largest. Looser operating points, and lower \pt, have lower scale factors. Interestingly, the efficiency in data changes much less with \pt than predicted by \Pythia: the simulation seems to predict the strongly growing strength of \ntrk with \pt, while the true gain is much slower. Results are shown only for the central $\eta$ bin, but are consistent across $\eta$ (though uncertainties, especially statistical, are higher at higher $\eta$).
-
-Figure~\ref{fig:jet-reconstruction:qg:perf_summary} shows a summary of the performance, by plotting the quark efficiency vs the gluon efficiency in data and several simulations, for two different \pt bins. \Pythia clearly shows a significantly lower gluon efficiency, i.e. an over-performance of the tagger. \Herwigpp shows a slightly higher gluon efficiency than in data, i.e. an under-performance of the tagger, though it is not significant outside of the uncertainties for some of the \pt bins and operating points.
-
-\begin{figure}[!htp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT60_EffcienciesVsQEffHerwig.pdf}
-\label{fig:jet-reconstruction:qg:perf_summary_a}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT210_EffcienciesVsQEffHerwig.pdf}
-\label{fig:jet-reconstruction:qg:perf_summary_b}
-}
-\caption{ Gluon-jet efficiency as a function of quark-jet efficiency calculated using jet 
-properties extracted from data (solid symbols) and from MC-labeled jets
-from the dijet \Pythia (empty squares) and \Herwigpp (empty diamonds) samples. 
-Jets with (a) $60<\pt<80$~\GeV\ and (b) $210<\pt<260$~\GeV\  and $|\eta|<0.8$
-are reconstructed with the anti-$k_t$ algorithm with $R=0.4$.
-The shaded band shows the total systematic uncertainty on the data. The bottom of the plot
-shows the ratios of each MC simulation to the data. The error bands on the performance
-in the data are drawn around 1.0. 
-}
-\label{fig:jet-reconstruction:qg:perf_summary}
-\end{center}
-\end{figure}
-
-The performance of the tagger can also be measured usign the purified samples, i.e. the tri-jet and $\gamma$+2jet samples. The results of these comparisons are shown in Figure~\ref{fig:jet-reconstruction:qg:perf_summary_pur}, at low \pt and high \pt. The performance in the purified sample is very similar to the data samples used to train the tagger, though the results are statistically limited. In any case, the tagging performance may be slightly worse in these samples, and is again not near the prediction from \Pythia. Figure~\ref{fig:jet-reconstruction:qg:perfDataMC} shows the performance, separately for each operating point, as a function of the jet \pt, in \Pythia, the nominal extracted data samples, and the purified data samples. Once again, over a wide range of \pt bins the agreement between the extracted data and purified data is very good, while \Pythia predicts a much lower gluon efficiency.
-
-\begin{figure}[!htp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT60_EffcienciesVsQEffPure.pdf}
-\label{fig:jet-reconstruction:qg:perf_summary_pur_a}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_PT210_EffcienciesVsQEffPure.pdf}
-\label{fig:jet-reconstruction:qg:perf_summary_pur_b}
-}
-\caption{ Gluon-jet efficiency as a function of quark-jet efficiency as calculated using jet properties extracted
-from data (solid symbols), purified in data through kinematic cuts (empty diamonds), and extracted from
-{\sc Pythia} 6 MC simulation (empty squares).
-Jets with (a) $60<\pt<80$~\GeV\ and (b) $210<\pt<260$~\GeV\ and $|\eta|<0.8$ are reconstructed with the anti-$k_t$ algorithm with $R=0.4$. 
-The shaded band shows the total systematic uncertainty on the data. 
-The bottom of the plot
-shows the ratio of {\sc Pythia} 6 MC simulation or the enriched data samples 
-to the extracted data. The error bands on the performance
-in the data are drawn around 1.0. 
-}
-\label{fig:jet-reconstruction:qg:perf_summary_pur}
-\end{center}
-\end{figure}
-
-
-
-\begin{figure}[htbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_30EffcienciesPure} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_50EffcienciesPure} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_70EffcienciesPure} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/smoothed_akt4TopoEM_eta0_90EffcienciesPure}
-}
-\caption{
-Gluon-jet efficiency for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
-in data (solid symbols), enriched data (empty diamonds) and in \Pythia MC simulation 
-(empty squares) as a function of jet $\pt$. 
-Systematic uncertainties are shown as error bands around the data. The bottom of the plot 
-shows the ratio of data and MC simulation. 
-Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
-$R=0.4$ and reconstructed with $|\eta|<0.8$.
-}
-\label{fig:jet-reconstruction:qg:perfDataMC}
-\end{center}
-\end{figure}
-
-
-The dominant uncertainty is the sample dependence. This is evident from Figure~\ref{fig:jet-reconstruction:qg:systSplit} and \ref{fig:jet-reconstruction:qg:systSplitQ}, which show the breakdown of the systematic uncertainties by type as a function of jet \pt, for each operating point, and for gluon jets and quark jets respectively. Figures~\ref{fig:jet-reconstruction:qg:extractSyst} and \ref{fig:jet-reconstruction:qg:extractSyst2} show the breakdown of the origin of the non-closure uncertainty. Recall, the uncertainty is derived by creating a tagger in MC using the extraction procedure, and seeing how using a defined $L$ cut varies the quark and gluon efficiency in a sample (compared to the extracted template used to define the tagger). No single generator, and no single flavor type, dominates the difference between the templates and the raw distributions, but substantial differences occassionally arise and need to be accounted for with the systematic.
-
-
-\begin{figure}[htbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_30} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_50} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_70}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombination_akt4TopoEM_eta0_90}
-}
-\caption{
-Contributions of the different systematic uncertainties to the gluon-jet efficiency 
-for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
-as a function of jet $\pt$. The combined systematic uncertainty is 
-shown as an outer box.  
-Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
-$R=0.4$ and reconstructed with $|\eta|<0.8$. }
-\label{fig:jet-reconstruction:qg:systSplit}
-\end{center}
-\end{figure}
-
-\begin{figure}[htbp]
-\begin{center}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_30} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_50} 
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_70}
-}
-\subfigure[]{
-\includegraphics[width=0.45\textwidth]{qg/systs/smoothed_testCombinationQ_akt4TopoEM_eta0_90}
-}
-\caption{
-Contributions of the different systematic uncertainties to the quark-jet efficiency 
-for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
-as a function of jet $\pt$. The combined systematic uncertainty is 
-shown as an outer box.  
-Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
-$R=0.4$ and reconstructed with $|\eta|<0.8$. }
-\label{fig:jet-reconstruction:qg:systSplitQ}
-\end{center}
-\end{figure}
-
-\begin{figure*}[htbp]
-\begin{center}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_30}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_30Eff} \\
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_50}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_50Eff} \\
-\caption{ Sample-dependence effects on quark-jet (left) and gluon-jet (right) efficiency as a function
-of jet $\pt$ for the 30\% (top) and 50\% (bottom) working points for jets with $|\eta|<0.8$.  Four different estimates
-of sample-dependence effects are shown: the effects of applying the tagger in the
-dijet and $\gamma$+jet \Pythia 6 MC samples, and in the dijet and $\gamma$+jet \Herwigpp MC samples.
-Jets are reconstructed using the \AKT\ jet algorithm with radius parameter $R=0.4$.
-A smoothing procedure has been applied to reduce the statistical uncertainties inherent in the
-sample comparisons.
-}
-\label{fig:jet-reconstruction:qg:extractSyst}
-\end{center}
-\end{figure*}
-
-
-\begin{figure*}[htbp]
-\begin{center}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_70}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_70Eff} \\
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_90}
-\includegraphics[width=0.48\textwidth]{qg/systs/smoothed_nonclosure_akt4TopoEM_eta0_90Eff} \\
-\caption{ Sample-dependence effects on quark-jet (left) and gluon-jet (right) efficiency as a function
-of jet $\pt$ for the 70\% (top) and 90\% (bottom) working points for jets with $|\eta|<0.8$.  Four different estimates
-of sample-dependence effects are shown: the effects of applying the tagger in the 
-dijet and $\gamma$+jet \Pythia 6 MC samples, and in the dijet and $\gamma$+jet \Herwigpp MC samples.  
-Jets are reconstructed using the \AKT\ jet algorithm with radius parameter $R=0.4$. 
-A smoothing procedure has been applied to reduce the statistical uncertainties inherent in the
-sample comparisons. 
-}
-\label{fig:jet-reconstruction:qg:extractSyst2}
-\end{center}
-\end{figure*}
-
-\subsection{Conclusions}
-
-While the ATLAS quark-gluon tagger saw performance in data much worse than the prediction of the \Pythia MC, it was extremely elucidating to understand the data and MC disagreements in such detail. In the longer term, with an unfolded version of this analysis, generators could potentially be improved to show more reasonable showering distributions; in the short term, we know to be very skeptical of variables such as \ntrk which may not be very well modelled in MC.
+The ATLAS jet reconstruction procedures deliver physics-analysis ready jets, and the corresponding uncertainties on these jets, for several classes of jet algorithms. Small radius jets, with $R=0.4$ or $R=0.6$, are used by a majority of analyses and undergo a sophisticated multi-step procedure which corrects the jets for pileup and calibrates them to a consistent particle-level energy scale. The Monte Carlo based \textit{Jet Energy Scale} correction is at the heart of this calibration procedure. A similar, though simpler, set of calibrations is performed on $R=1.0$ Trimmed jets, used by analyses targetting boosted objects or events with substructure. A similar JES, and a dedicated \textit{Jet Mass Scale} correction, are used to calibrate these \largeR jets. These steps reduce the complicated detector outputs into manageable objects and tools for analyses to produce physics results in hadronic final states.
