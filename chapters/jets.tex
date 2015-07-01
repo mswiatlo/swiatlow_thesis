@@ -4,7 +4,7 @@
 
 The goal of particle physics experiments--- as Chapter~\ref{chapter:detector} will describe--- is to measure the outgoing particles produced in collisions in order to reconstruct the short lived intermediate states which describe the fundamental processes of nature. Final state particles such as electrons and muons and photons are measured through their interactions with a detector, and their 4-vectors are used to reconstruct the event and the interesting particles produced in the collision. 
 
-Sections~\ref{chapter:sm:qcd:freedom} and \ref{chapter:sm:qcd:confinement} seem to throw a wrench into this program: quarks and gluons, two types of commonly produced particles, cannot be measured directly because of their interactions with the Strong Nuclear Force and the process of \textit{confinement}. Confinement hides color charge from the world: colored particles always form color neutral pairs and triplets, and in the process create a shower of associated color neutral particles. Thus what interacts with a detector is not just one particle, like in the case of an electron or a muon, but instead a large spray of hadrons which originate from the original parton.
+Sections~\ref{chapter:sm:qcd:freedom} and \ref{chapter:sm:qcd:confinement} seem to throw a wrench into this program: quarks and gluons, two types of commonly produced particles, cannot be measured directly because of their interactions with the Strong Nuclear Force and the process of \textit{confinement}~\cite{Wilson:1974sk}. Confinement hides color charge from the world: colored particles always form color neutral pairs and triplets, and in the process create a shower of associated color neutral particles. Thus what interacts with a detector is not just one particle, like in the case of an electron or a muon, but instead a large spray of hadrons which originate from the original parton.
 
 Is it possible to reconstruct the 4-vectors of quarks and gluons? What information is lost in the showering process? Can the showering process itself tell us something about the physics of the collision? The answer to these questions is what we look for when we study \textit{jets}. This is the whimsical, though certainly appropriate, name for the collimated sprays of particles produced by quarks and gluons as they shower and hadronize. 
 
@@ -241,7 +241,7 @@ Does this mean that \kt and \CA algorithms have no use at the LHC? On the contra
 
 This idea of looking at the clustering history or energy structure  of a jet is actually quite different from anything else we have discussed so far. Most analyses, at the Tevatron especially but even now at the LHC, simply consider a jet as a 4-vector corresponding to some parton\footnote{And even then this overstates the amount of information used--- most analyses essentially ignore the jet mass, reducing it to a 3-vector!}. This construction of a single 4-vector was indeed the whole point of the jet algorithm, so it is in some sense a triumph to have reduced the complexity of thousands of particles into a handful of well defined jets. But the sheer scale of this reduction raises the question: what information have we removed? Can we aid our understanding of the event by using some additional pieces?
 
-This question becomes particularly interesting in the era of \textit{boosted physics} at the LHC. The unprecedented collision energy of the LHC mean that $W$ and $Z$ bosons, for example, can be produced not just essentially at rest, as was the case at LEP and the Tevatron, but with substantial momentum. This means that their decay products will often be collimated, as Figure~\ref{fig:jets:boost} shows. The angular separation, in fact, goes as approximately:
+This question becomes particularly interesting in the era of \textit{boosted physics} at the LHC~\cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv}. The unprecedented collision energy of the LHC mean that $W$ and $Z$ bosons, for example, can be produced not just essentially at rest, as was the case at LEP and the Tevatron, but with substantial momentum. This means that their decay products will often be collimated, as Figure~\ref{fig:jets:boost} shows. The angular separation, in fact, goes as approximately:
 %
 \begin{equation}
 R = \frac{2 m}{\pt}.
@@ -265,9 +265,9 @@ Generally, this means that the decay products of$W$ bosons with $\pt > 200$~GeV,
 
 %BDRS
 
-While earlier studies had suggested similar ideas~\editnote{cite!}, the seminal ``BDRS'' paper inspired a new flurry of activity by suggesting that it was possible to observe the decay boosted Higgs boson to $b\bar{b}$ by reconstructed  it within a single jet and tagging it with substructure \cite{BDRS}. Hadronic decays of the Higgs had previously been considered inaccessible at the LHC, so the suggestion that a new reconstruction technique might be able to measure it proved very exciting. At the heart of the idea is that the mass of the jet should correspond roughly to the Higgs mass, while the mass of jets from QCD backgrounds should be significantly lower. Moreover, the several-prong structure of a Higgs decay should be fairly unique compared to dominantly single-prong QCD backgrounds.
+While earlier studies had suggested similar ideas~\cite{Seymour:1993mx,Butterworth:2002tt} the seminal ``BDRS'' paper inspired a new flurry of activity by suggesting that it was possible to observe the decay boosted Higgs boson to $b\bar{b}$ by reconstructed  it within a single jet and tagging it with substructure~\cite{BDRS}. Hadronic decays of the Higgs had previously been considered inaccessible at the LHC, so the suggestion that a new reconstruction technique might be able to measure it proved very exciting. At the heart of the idea is that the mass of the jet should correspond roughly to the Higgs mass, while the mass of jets from QCD backgrounds should be significantly lower. Moreover, the several-prong structure of a Higgs decay should be fairly unique compared to dominantly single-prong QCD backgrounds.
 
-Since then, similar techniques have been extended to the reconstruction of top quarks, electroweak bosons, supersymmetric gluinos and stop quarks, and more~\editnote{Cite}. These analyses generally share several characteristics:
+Since then, similar techniques have been extended to the reconstruction of top quarks, electroweak bosons, supersymmetric gluinos and stop quarks, and more~\cite{Anders:2013oga,Plehn:2009rk,Rehermann:2010vq,Bai:2013xla,Larkoski:2014wba,EEC,ATLAS:2012dp}. These analyses generally share several characteristics:
 %
 \begin{itemize}
 \item Aim to reconstruct the boosted object with a single, \largeR jet, typically $R=1.0$ or $R=1.2$
@@ -282,7 +282,7 @@ While there are many different ways of approaching these points, the unifying th
 
 One potential for concern when reconstructing jets with \largeR is contamination: a large size is used to capture all the collimated decay products within a single jet, but also opens up the jet to extra unwanted radiation from beam remenants (called the \textit{underlying event}) and overlapping simultaneous proton-proton collisions. This extra radiation, even if it is soft and does not affect the energy of the jet very much, can still have a large impact on the mass of a jet: the mass of a jet is determined by the angular splittings between its consituents, and even soft radiation at a wide angle can increase the mass dramatically.
 
-Jet grooming is the strategy of modifying jet algorithms to remove these effects. Typically a normal jet algorithm is run to create a parent jet, and then a subsequent processing reconsiders the jet and removes portions that are considered unnecessary. A wide range of algorithms exist for this modification step--- filtering, pruning, and trimming are the most common~\editnote{Cite}. The most commonly used of these in ATLAS is trimming, which procedes as follows:
+Jet grooming is the strategy of modifying jet algorithms to remove these effects. Typically a normal jet algorithm is run to create a parent jet, and then a subsequent processing reconsiders the jet and removes portions that are considered unnecessary. A wide range of algorithms exist for this modification step--- filtering, pruning, and trimming are the most common~\cite{BDRS,Krohn:2009th,Ellis:2009me}. The most commonly used of these in ATLAS is trimming, which procedes as follows:
 %
 \begin{enumerate}
 \item Start with a clustered \largeR jet, typically \antikt\ with R=1.0
@@ -365,7 +365,7 @@ What is this variable actually doing? It calculates the distance to the closest 
 
 %\section{Calculations with Jets}
 
-Many different analyses in ATLAS, most of them searches for new physics in various high mass channels, have utilized these substruture techniques. Hadronic decays of top quarks and bosons often have the dominant branching fractions, and high mass systems create strongly collimated signals, making these techniques the bedrock of a new type of analysis. \editnote{cite this}
+Many different analyses in ATLAS, most of them searches for new physics in various high mass channels, have utilized these substruture techniques. Hadronic decays of top quarks and bosons often have the dominant branching fractions, and high mass systems create strongly collimated signals, making these techniques the bedrock of a new type of analysis~\cite{Aad:2015owa,Aad:2015fna,Aad:2014xea,Aad:2014kra,Aad:2014bva,Aad:2013wta,ATLAS:2012dp,RPVSUSY}.
 
 \section{Conclusions}
 

@@ -49,3 +49,52 @@ The $CL_s$ (i.e., the signal confidence level, in contrast to the $CL{s+b}$ for 
 All of these calculations are done using the \texttt{HistFitter} software package. 
 
 \section{Unfolding}
+\label{appendix:statistics:unfolding}
+
+	The problem of unfolding can be thought of as a simple equation:
+	%
+	\begin{equation}
+	\mathbf{A} \cdot \mathbf{x} = \mathbf{y},
+	\end{equation}
+	%
+	where $\mathbf{y}$ is a vector describing some quantity at the reconstructed level, $\mathbf{x}$ is a vector describing the same quantity at truth level, and $\mathbf{A}$ is a matrix which smears $x$ into $y$-- i.e., $\mathbf{A}$ is a detector or detector simulation. Typically one measures $\mathbf{y}$ in data, and then wishes to extract $\mathbf{x}$ from the data: this requires obtaining and then inverting $\mathbf{A}$ in some way. The procedure adopted by this analysis is an \textit{Iterative Bayseian Unfolding}, which assesses the matrix probabilistically. \editnote{Cite this}
+
+	The same problem can be defined in terms of probabilities as:
+%
+\begin{equation}
+  d^\prime_i = \sum_j\mathrm{P}(T_i|M_j)\;d_j  = \sum_{j}\theta_{ij}\;d_j,
+\end{equation}
+%
+	where $d^\prime_i$ is the probability of a measured event occuring in some bin $i$ of a truth distribution, $\mathrm{P}$ is an element of $\theta_{ij}$-- the so-called ``unfolding'' matrix-- and $d_j$ is the probablity of actually measuring the event in the reconstructed bin $j$. $\theta_{ij}$, then, encapsulates our knowledge of the probability of observing an event having a true value in bin $i$, even though we measured it in bin $j$-- something very close to our original matrix $\mathbf{A}$.
+
+	The Bayseian portion of the unfolding comes from our use of Bayes' Theorem to rewrite $\mathrm{P}(T_i|M_j)$ as $\mathrm{P}(M_j|T_i)$: i.e., the probability of having some measured value in a bin $j$, for some truth bin value $i$. This can be written as:
+%
+\begin{equation}
+  \theta_{ij} = \mathrm{P}(T_i|M_j) = \frac{\mathrm{P}(M_j|T_i)\cdot \mathrm{P}(T_i)}{\sum_i \mathrm{P}(M_j|T_i)\cdot \mathrm{P}(T_i)} = \frac{a_{ji}\cdot \mathrm{P}(T_i)}{\sum_i a_{ji}\cdot \mathrm{P}(T_i)} \ ,
+\end{equation}
+%
+	and now the comparison to $\mathbf{A}$ from before is complete: the $a_{ji}$ are the elements of our smearing, or response matrix, from before. The $\mathrm{P}(T_i)$ is referred to as a \textit{prior}: this is the probability of finding an event in bin $i$ of the actual true distribution-- which of course we do not know. However, any reasonable guess for this true distribution often suffices, and there is a procedure to remove the dependence on this prior assumption which will be discussed shortly.
+
+	What exactly has this accomplished? We have been manipulating a matrix $\theta_{ij}$, which can be applied to some normalized reconstructed data distribution $d_j$, in order to obtain a truth-level distribution $d^\prime_i$: this is a tool we can apply to data in order to obtain a real measurement, correcting for detector efficiency and resolution effects. When we started, we had no way of constructing this matrix-- but now, we have found how to define it in terms of $\mathbf{A}$, the response matrix. The response matrix can readily be assessed using MC simulation since the truth and reconstructed quantities are both known, so in principle we have everything we need.
+
+	The previously mentioned downside of the unfolding-- the dependence on the prior $T_i$ distribution-- remains to be addressed, however. The issue is mitigated by applying the procedure \textit{iteratively}-- and so the remaining reason for the naming of the technique becomes clear. Each time the result is unfolded, it is used as a prior to the construction of a new $\theta_{ij}$ and then applied again: each time, the bias due to the choice of the initial $T_i$ decreases. There is a price, however: the statistical fluctuations in the unfolding are amplified as they are being incorporated into the result each time the unfolding is iterated. There is a tension, then, between minimizing the dependence on the prior, and minimizing the statistical uncertainty due to the unfolding-- this is the topic of Section~\ref{chapter:color:unfolding:optimization}.
+
+	There are a few remaining details which are important to consider when performing an unfolding in practice. The response matrix $\mathbf{A}$ is by definition filled using events which pass both the truth-level and reco-level selection-- but there are also events which pass only one of the two selections. Fiducial factors $f_{i} = \frac{N^{\rm truth\;\wedge\;reco}_{i}}{N^{\rm reco}_{i}}$ are defined to measure the rate at which events which pass the reconstructed selection do not pass the truth selection. Simiarly, correction factors $c_{i} = \frac{N^{\rm reco\;\wedge\;truth}_{i}}{N^{\rm truth}_{i}}$ define the rate at which events pass the truth selection but not the reconstructed selection. Together, these correct the reconstructed fiducial selection to the truth-level fiducial selection.
+
+	Now, defining $\mathbf{d}$ as the original data distribution with $n$ bins, and $d_i$ as the element in bin $i$; $\mathbf{b}$ as the distribution of expected background events; $\mathbf{y}$ as the signal distribution; and $\mathbf{x}$ as the unfolded distribution itself, we can say:
+%
+\begin{equation}
+\begin{array} {rcl}
+  y_i & = & (d_i - b_i) \cdot f_i \\
+    x_i & = & (\boldsymbol{\theta} \cdot \mathbf{y})_i\,/\,c_i
+    \end{array}
+\end{equation}
+%
+	where $\mathbf{\theta}$ is our familiar friend constructed via $\mathbf{A}$ and the prior as discussed earlier. Finally, it should be noted that in this analysis we present normalized distributions of the unfolded quantity $Z$, and so the unfolded result in a bin $j$ is presented as:
+%
+\begin{equation}
+  \frac{1}{\sigma} \frac{d\sigma}{dZ_j} = \frac{1}{\Delta Z_j N} \cdot x_j \ ,
+  %\frac{\theta_{ij}}{c_j} \cdot f_i \cdot (d_i - b_i) \ ,
+\end{equation}
+%
+where $\Delta Z_j$ is the width of the bin $j$ and $N$ is the normalization of the unfolded histogram.
