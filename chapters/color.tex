@@ -2,6 +2,9 @@
 \label{chapter:color}
 \section{Introduction}
 
+Jets are clearly important tools for understanding collisions at the LHC, and the reconstruction of many different types of events would not be possible without accurate measurements of jet four-vectors as described in Chapter~\ref{chapter:jet-reconstruction}. However, many of the observations of this chapter--- particular Sections~\ref{jet-reconstruction:calibration:gsc} and \ref{jet-reconstruction:b-tagging}--- suggest that there is more to jets than just these four-vectors. This raises the question: what can we learn about events from not the kinematics, but the \textit{properties} of jets? Can we learn something about the Standard Model from these properties, or search for new physics with them?
+
+This chapter presents two measurements of such properties. The main focus is on the development of a quark/gluon tagger in ATLAS: a tool which can discriminate between quark-initiated and gluon-initiated jets. A particular emphasis is placed on the data-driven development and extensive validation of this tagger, which has significant deviations from the expectations of  Standard Model simulations. We will also briefly discuss a second measurement, which studies the connections between jets as revealed by measurements of the energy orientation within jets. These connections are studied in $W$-boson decays, and reveal that color flow in this final state agrees well with the SM prediction.
 
 \section{Quark/Gluon Discrimination}
 \label{jet-reconstruction:qg}
@@ -12,6 +15,10 @@
 Just as $b$-tagging is useful for search for new physics in channels with heavy flavor, the identification of \textit{light quarks} can also be important when searching for new physics. Most commonly, the jets associated with multi-jet production arise from gluon radiation, and so a tool to eliminate these backgrounds can be very useful. Even searches for the Higgs boson decaying to hadronic $W$-bosons or $Z$-bosons can benefit, as once again the signal is dominated by light-quark jets and backgrounds are often gluon-induced.
 
 This type of discrimination has been attempted at several experiments before ATLAS~\cite{TevatronShapes1,QGNN,Pumplin,QGopal,Ariel,QGsub,QGlep,QGcleo,DelphiQG,DelphiQG2,AlephQG,L3QG}. This discrimination tends to rely on the different color charges for quarks ($C_F=4/3$) and gluons ($C_A=3$), which leads to a leading order prediction that gluon jets have $C_A/C_F = 9/4$ more particles (which are consequently more widely distributed, and generally softer) than light-quark jets. OPAL's measurement~\cite{QGopal} indeed measured something very similar to this prediction. Because of their much simpler experimental environments, experiments like OPAL at $e^+/e^-$ colliders have generally been much more successful at discriminating between quarks and gluons, as determining ``pure'' samples at a hadron collider is exceedingly difficult. However, recent developments from the theory communited have suggested not just that pure samples suitable for calibration are obtainable, but also that discrimination is possible in the challenging underlying-event and pileup heavy environment of a hadron collider~\cite{schwartz1,schwartz2}. 
+
+Such a tagger has many potential uses. The most obvious are improved discrimination in searches for Higgs boson decay channels and BSM physics where gluons play a large role in the background. For example, backgrounds to Vector Boson Fusion produced Higgs bosons are often gluon-initiated~\cite{CMS-PAS-HIG-13-011}, and the $Z$+jet backgrounds in searches for $H\rightarrow ZZ \rightarrow \ell \ell qq$ are often gluon-dominated as well. Similarly, new physics searches--- for example, SUSY multi-jet cascades, as discussed in Chapter~\ref{chapter:search}--- often contain quark-rich signals, while the multi-jet backgrounds to such searches will have a strong gluon component. Reducing such backgrounds can potentially improve such searches. 
+
+Of similar importance is simply understanding the properties of quark and gluon initiated jets. Jet calibration schemes are often very sensitive to such effects: the infamous CDF $W$+di-jets resonance was eventually attributed to a mis-application of jet calibrations derived with mostly quark-like jets to a final state with mostly gluon-like jets~\cite{Aaltonen:2011mk}. Understanding the properties of light flavor jet types \textit{separately} is thus of critical importance in ensuring that such issues do not arise in ATLAS. Moreover, if it is possible to measure quarks and gluons separately in data, then it would be possible to check the quality of predictions from simulations such as \Pythia and \Herwigpp.
 
 This section follows the results of the ATLAS paper on quark-gluon discrimination using 2011 data~\cite{ATLASqg,Golling:1554107}. First, quark and gluon jets are more precisely defined, followed by a description of possible discriminating variables. The use of data-driven templates is discussed, and such templates are validated in independent data samples. Finally, the tagger properties and power are presented, as well as scale-factors which can calibrate the MC to the observed performance in data. This work was done in collaboration with Larry Lee (then of Yale, now of University of Adelaide), David Lopez Mateos (Harvard University), and Zachary Marshall (then of CERN, now of Lawrence Berkeley National Laboratory).
 
@@ -47,7 +54,7 @@ Given the expectations developed in Section~\ref{jet-reconstruction:qg:overview}
 
 Other variables take into account the radial distribution of the energy inside the jet. One simple such variable is the \textit{jet width}, as discussed in Section~\ref{jet-reconstruction:calibration:gsc}. The width is the first radial moment of the \pt of the jet: jets with a very focused core will have lower width, and jets with a more even distribution of energy will have a higher width. Gluons, because they first split to quarks, and because of their higher color factor, are expected to have broader energy distributions and therefore higher width. The width can be calculated with clusters as inputs, or the tracks associated to a jet. Because of the issues with pileup (which are expected to change the distribution of the width as a function of the number of interactions, if the variable is calculated with calorimeter inputs), track width is used in this analysis.
 
-Many other variables, as documented in \cite{schwartz1}, are possible, but these two were the preferred combination from early theoretical studies. Another set of studies~\cite{EEC} indicated that a new observable, the energy-energy correlated angularity, could also be useful. This class of observables is defined as:
+Many other variables, as documented in \cite{schwartz1}, are possible, but these two were the preferred combination from early theoretical studies. Another set of studies~\cite{EEC} indicated that a new observable, the energy-energy correlated angularity (EEC), could also be useful. This class of observables is defined as:
 \begin{equation}
 {\rm ang_{\rm EEC}}=\frac{ \sum_i \sum_j p_{{\rm T},i} \times p_{{\rm T},j} \times (\Delta R(i,j))^\beta}{ (\sum_i p_{{\rm T},i})^2 },
 \end{equation}
@@ -358,7 +365,7 @@ in the data are drawn around 1.0.
 \end{center}
 \end{figure}
 
-The performance of the tagger can also be measured usign the purified samples, i.e. the tri-jet and $\gamma$+2jet samples. The results of these comparisons are shown in Figure~\ref{fig:jet-reconstruction:qg:perf_summary_pur}, at low \pt and high \pt. The performance in the purified sample is very similar to the data samples used to train the tagger, though the results are statistically limited. In any case, the tagging performance may be slightly worse in these samples, and is again not near the prediction from \Pythia. Figure~\ref{fig:jet-reconstruction:qg:perfDataMC} shows the performance, separately for each operating point, as a function of the jet \pt, in \Pythia, the nominal extracted data samples, and the purified data samples. Once again, over a wide range of \pt bins the agreement between the extracted data and purified data is very good, while \Pythia predicts a much lower gluon efficiency.
+The performance of the tagger can also be measured usign the purified samples, i.e. the tri-jet and $\gamma$+2jet samples. The results of these comparisons are shown in Figure~\ref{fig:jet-reconstruction:qg:perf_summary_pur}, at low \pt and high \pt. The performance in the purified sample is very similar to the data samples used to train the tagger, though the results are statistically limited. In any case, the tagging performance may be slightly worse in these samples, and is again not near the prediction from \Pythia. Figure~\ref{fig:jet-reconstruction:qg:perfDataMC} shows the performance, separately for each operating point, as a function of the jet \pt, in \Pythia, the nominal extracted data samples, and the purified data samples. Once again, over a wide range of \pt bins the agreement between the extracted data and purified data is very good, while \Pythia predicts a much lower gluon efficiency. Figure~\ref{fig:jet-reconstruction:qg:perfDataMCHPP} shows the same figure except with the \Herwigpp simulation: while the performance of simulation is sometimes worse than observed in data, it is within $1\sigma$ of the uncertainties. This indicates that the \Herwigpp characterization of gluon jets is significantly closer to reality than that of \Pythia.
 
 \begin{figure}[!htp]
 \begin{center}
@@ -410,6 +417,34 @@ Jets are reconstructed using the \AKT\ jet algorithm with radius parameter
 $R=0.4$ and reconstructed with $|\eta|<0.8$.
 }
 \label{fig:jet-reconstruction:qg:perfDataMC}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{figaux_06a} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{figaux_06b} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{figaux_06c} 
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{figaux_06d}
+}
+\caption{
+Gluon-jet efficiency for quark-jet efficiencies of 30\% (a), 50\% (b), 70\% (c) and 90\% (d) 
+in data (solid symbols), enriched data (empty diamonds) and in \Herwigpp MC simulation 
+(empty squares) as a function of jet $\pt$. 
+Systematic uncertainties are shown as error bands around the data. The bottom of the plot 
+shows the ratio of data and MC simulation. 
+Jets are reconstructed using the \AKT\ jet algorithm with radius parameter 
+$R=0.4$ and reconstructed with $|\eta|<0.8$.
+}
+\label{fig:jet-reconstruction:qg:perfDataMCHPP}
 \end{center}
 \end{figure}
 
@@ -504,7 +539,94 @@ sample comparisons.
 \end{center}
 \end{figure*}
 
+\FloatBarrier
+
+\subsection{Results with Angularities}
+
+The energy-energy-correlation angularities (EEC) variables~\cite{EEC} were also extensively studied due to their promising performance in theoretical results. In some sense the variables act as a higher-order version of the Width variable, and study the energy profile of jets in a non-linear manner based on the exponential parameter $\beta$. This motivates the study of the variable as a replacement to the Width variable, as it seems to be a better version. The best theoretical performance is observed for $\beta = 0.2$, and CMS uses a version of this variable with $\beta = 0$ in their own similar likelihood~\cite{CMS:2013kfa}. 
+
+Figure~\ref{fig:angularity} shows the  track-based angularities for
+light-quark and gluon jets for two different $\pt$ bins with three different $a$ parameters (where $\beta = 2 - a$) in \Pythia simulation. There is clearly some discrimination power in these distributions.
+
+\begin{figure}[!h]
+	\centering
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity10_80-110_0-08}
+}
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity15_80-110_0-08}
+}
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity18_80-110_0-08}
+}
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity10_160-210_0-08}
+}
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity15_160-210_0-08}
+}
+	\subfigure[][]{
+	\includegraphics[width=48mm]{QGOverlay_angularity18_160-210_0-08}
+}
+
+%	\subfigure[][]{
+%	\includegraphics[width=70mm]{figures/respHerTruthOpPoints6}
+%	}
+	\caption{ Distributions of track-based angularity defined using $a=1.0$ (a,d), $a=1.5$ (b,e) and
+	  $a=1.8$ (c,f) for light-quark (black markers) and gluon (red markers) jets from the dijet 
+	  Pythia 6 sample. Jets are reconstructed with the anti-$k_t$ algorithm with $R=0.4$ and
+	  have reconstructed $\pt$ $[80,110] \GeV$ (a,b,c) and $[160,210] \GeV$ (d,e,f). }
+	\label{fig:angularity}
+\end{figure}
+
+To optimize the used value of $\beta$, the full data-driven template procedure is performed on the one-dimensional distributions of the EEC angularities, and the various non-closure systematics are re-derived. The result is shown in Figure~\ref{fig:jet-reconstruction:qg:angSummary} for a fixed quark-efficiency of $50\%$ and for two bins of \pt. There is a significant disagreement between the predicted performance and the observed performance in data, and moreover, the non-closure systematics are very large. This indicates that the variable has a significant sample dependence (i.e. that quark and gluon jets in the dijet and $\gamma$+jet samples are not consistently described by the variable). 
+
+\begin{figure}[htp]
+\begin{center}
+%Subfigures
+\subfigure[]{
+\includegraphics[width=0.47\textwidth]{fig_08a}
+}
+\subfigure[]{
+\includegraphics[width=0.47\textwidth]{fig_08b}
+}
+\caption{ 
+One minus the gluon-jet efficiency (for comparison with Ref.~\cite{EEC}) as a function of 
+$\beta$ for EEC angularities, calculated using extracted jet properties from 
+data (solid circles) and dijet \Pythia 6 MC simulation (solid squares) for jets with (a) $60<\pt<80$~\GeV\
+and (b) $210<\pt<260$~\GeV\ and $|\eta|<0.8$ reconstructed with the anti-$k_t$ algorithm with $R=0.4$. 
+The shaded bands represent the total systematic uncertainty on the data points.
+}
+\label{fig:jet-reconstruction:qg:angSummary}
+\end{center}
+\end{figure}
+
+In the face of this disappointing performance, we still considered adding the variable to a likelihood with \ntrk to study whether it would perform better than the Track Width. The results are shown in Figure~\ref{fig:jet-reconstruction:qg:eec_ntrk_perf}. The discrimination is not improved compared to the original performance in the equivalent \ntrk + Track Width combination as studied in Figure~\ref{fig:jet-reconstruction:qg:perfDataMC}. This is in fact somewhat expected: the correlations between the \ntrk and EEC angularity are nearly $70\%$ in most \pt bins for both quarks and gluons, so there is not much performance to be gained from a combination of the two of them. 
+
+\begin{figure}[!h]
+	\centering
+	\subfigure[][]{
+	\includegraphics[width=0.47\textwidth]{eec_akt4TopoEM_eta0_30Effciencies}
+}
+	\subfigure[][]{
+	\includegraphics[width=0.47\textwidth]{eec_akt4TopoEM_eta0_50Effciencies}
+}
+    \subfigure[][]{
+    \includegraphics[width=0.47\textwidth]{eec_akt4TopoEM_eta0_70Effciencies}
+}
+    \subfigure[][]{
+    \includegraphics[width=0.47\textwidth]{eec_akt4TopoEM_eta0_90Effciencies}
+}
+	\caption{Performance of a discriminant constructed using EEC angularity with $\beta=0.2$ and $n_{\rm trk}$.
+	\label{fig:jet-reconstruction:qg:eec_ntrk_perf}}
+\end{figure}
+
+These results are, of course, in strong contrast to that of the initial theoretical result~\cite{EEC}. The strong sample dependence we observe suggests, in particular, that the sensitive exponential character of the $\beta$ term in the definition is sensitive to the residual color-and-topology factors in events which were neglected in the original study. Additional work is needed to understand these effects in detail, however.
+
+
 \subsection{Conclusions}
+
+A quark-gluon tagger mased on two simple variables, \ntrk and Track Width, has been developed using a data-driven technique in the $\sqrt{s} = 7$~TeV dataset at ATLAS. The results suggest that \textit{gluon fragmentation} predictions of \Pythia are very incorrect: in fact, the somewhat pernicious result of \Pythia's incorrect description of gluons is that it over-predicts the separation between quarks and gluons. Validation in specially derived enriched control regions shows that the templates extracted in data by mixing dijet and $\gamma$+jet events confirms the performance of the tagger. \Herwigpp is shown to give overall very comparable performance to the data.
 
 While the ATLAS quark-gluon tagger saw performance in data much worse than the prediction of the \Pythia MC, it was extremely elucidating to understand the data and MC disagreements in such detail. In the longer term, with an unfolded version of this analysis, generators could potentially be improved to show more reasonable showering distributions; in the short term, we know to be very skeptical of variables such as \ntrk which may not be very well modelled in MC.
 
@@ -518,7 +640,7 @@ What does it mean to see color at a collider?
 
 The first question to ask, when considering color at the LHC, is what potential \textit{measurable} effects color can have, even if the color charge itself is not directly accessible. After all-- $SU(3)_C$ singlets ($W$, $Z$, $\ell$ particles), triplets ($q$ of all types), and octets ($g$) exist: surely there must be some observable differences between these states. Certainly, seeing red-blue-green is not particularly useful--- there's no consequential differences between a red quark and a green quark. But, seeing the difference between an octet and a singlet might indeed be useful: gluon octets, for example, can be backgrounds to signal singlets of various types. 
 
-The first evidence of color at a particle collider was observed by the JADE experiment at PETRA-- in a process very familiar to the studies of Section~\ref{jet-reconstruction:qg:validation}. At PETRA, it was observed that the third leading jet (ordered in $p$) in tri-jet events had a \textit{broader} distribution of energy (comparing the distance of particles to the center of the jet axis) than that of the leading two jets: this was interepreted as evidence for the third jet being more likely to a gluon, whie the leading two were quarks~\cite{Bartel:1983ii}. This is exactly the same effect seen by ATLAS in Section~\ref{jet-reconstruction:qg:validation}, and is directly related to the magnitude of the color charge: the larger color charge for gluons implies that they fragment ``more,'' and consequentially have a higher multiplicity and less collimated shower. This first observation from PETRA sets the stage for color will be observed in other experiments: often it is not a direct effect on the 4-momentum of a jet, but is instead a property of the jet \textit{shape}. 
+The first evidence of color at a particle collider was observed by the JADE experiment at PETRA, in a process very familiar to the studies of Section~\ref{jet-reconstruction:qg:validation}. At PETRA, it was observed that the third leading jet (ordered in $p$) in tri-jet events had a \textit{broader} distribution of energy (comparing the distance of particles to the center of the jet axis) than that of the leading two jets: this was interepreted as evidence for the third jet being more likely to a gluon, whie the leading two were quarks~\cite{Bartel:1983ii}. This is exactly the same effect seen by ATLAS in Section~\ref{jet-reconstruction:qg:validation}, and is directly related to the magnitude of the color charge: the larger color charge for gluons implies that they fragment ``more,'' and consequentially have a higher multiplicity and less collimated shower. This first observation from PETRA sets the stage for color will be observed in other experiments: often it is not a direct effect on the 4-momentum of a jet, but is instead a property of the jet \textit{shape}. 
 
 % A similar property, also first measured by PETRA but now explored by a variety of analyses at PEP, the Tevatron, and the LHC, is called \textit{color coherence}: this refers to the interaction of colored particles during the showering/fragmentation phase of an event, and implies that the angular distribution of jets should be somewhat different from the non-connected expectation. Many experiments have observed effects related to color coherence, at both $e^+/e^-$ and hadron-hadron colliders, in multi-jet events.~\cite{tasso,pep,PhysRevLett54270,PhysRevLett57945,PhysRevLett571398,PhysRevD.50.5562,Abbott:1997bk,Chatrchyan:2013fha}. In this type of analysis, color is sometimes measured with jet shapes, and sometimes indirectly via the push/pull of the jet axis away/towards some other jet.
 
@@ -590,7 +712,7 @@ The following section discusses the object selections and cuts used to define th
 
 \subsubsection{Trigger}
 
-As the analysis is semi-leptonic in order to guarantee a high purity of $t\bar{t}$ events, it is sensible to also use the lepton triggers. A logical OR between {\tt EF\_mu24i\_tight}, {\tt EF\_mu36\_tight}, {\tt EF\_e24vhi\_medium} and {\tt EF\_e60\_medium} is used for the whole data taking period. The first and second triggers are the muon triggers; the third and fourth are the electron triggers. The numbers in the trigger name refer to the \pt threshold of the online trigger. The first and third triggers require isolation at the trigger level, thereby allowing a lower \pt threshold; the second and fourth have no isolation requirement, but a much higher \pt treshhold. The \pt $>$ 25~GeV cut on the offline lepton-- described below-- guarantees that the combination of isolated and non-isolated triggers are fully efficient.
+As the analysis is semi-leptonic in order to guarantee a high purity of $t\bar{t}$ events, it is sensible to also use the lepton triggers. A logical OR between {\tt EF\_mu24i\_tight}, {\tt EF\_mu36\_tight}, {\tt EF\_e24vhi\_medium} and {\tt EF\_e60\_medium} is used for the whole data taking period~\cite{ATLAS-CONF-2012-099,Pasztor:1706278}. The first and second triggers are the muon triggers; the third and fourth are the electron triggers. The numbers in the trigger name refer to the \pt threshold of the online trigger. The first and third triggers require isolation at the trigger level, thereby allowing a lower \pt threshold; the second and fourth have no isolation requirement, but a much higher \pt treshhold. The \pt $>$ 25~GeV cut on the offline lepton-- described below-- guarantees that the combination of isolated and non-isolated triggers are fully efficient.
 
 \subsubsection{Object Selections}
 
@@ -598,7 +720,7 @@ This analysis makes use of many different object types: jets, $b$-tags, electron
 
 \textbf{Electrons} are tracks matched to isolated EM calorimeter clusters\footnote{EM clusters for electrons are composed of 3x3 cells.}, refit via a Gaussian Sum Filter technique to take into account the larger material interactions and radiations of electrons compared to the initial pion hypothesis~\cite{Aad:2014nim,Aad:2014fxa,ATLAS-CONF-2014-032,ATLAS-CONF-2012-047}. For this analysis, they are required to pass the \texttt{Tight++} requirement with ``author'' equal to 1 or 3--- this is a set of cuts on the shape of the electron cluster which suppresses backgrounds from jets and photons, and on track quality. The \pt of the electron is set to $E_\mathrm{cluster} / \cosh \eta_\mathrm{cluster}$, and $|\eta| < 2.47$ is required. In addition, the so-called ``crack'' region of $1.37 < |\eta| < 1.52$ is vetoed as electron identification is more difficult in this region. To ensure consistency with the primary vertex, a requirement on the track of $|z_0| < 2$~mm with respect to the primary vertex is imposed. Furthermore, basic quality criteria are applied to reject electrons reconstructed from noisy or dead calorimeter clusters. The energy in a $\Delta R < 0.2$ cone (measured with calorimeter cells) and the \pt within a $\Delta R < 0.3$ cone (measured with tracks) are required to be small. This isolation requirement--- used to suppress electrons from leptonic $B$ decays and fakes from jets in general--- is tuned to select $90\%$ of all electrons. Finally, electrons are required to be isolated from the signal jets (defined below): the jet is removed in favor of the electron if $\Delta R < 0.2$ between any pair, and electrons are removed if $0.2 < \Delta R < 0.4$. This selection is optimized to efficiently keep electrons which are ``faking'' jets (very easy to do, as calorimeter clusters from the electron enter into jet clustering), while removing events where a real jet has emitted an electron (in leptonic $B$-decays, for example). Since this analysis is single-lepton, the electron is also required to match to the trigger electron.
 
-\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible--- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.). The muons in this analysis are required to be \texttt{Tight} combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the \texttt{Muid} algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be $< 3$. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by overlaps with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$. Similarly to the electrons, a good muon candidate must also match to a trigger muon.
+\textbf{Muons} are generally inner detector tracks matched to muon-spectrometer tracks (though various combinations are possible--- inner detector only, muon-spectrometer only, inner detector with a calorimeter tag, etc.)~\cite{Aad:2014rra}. The muons in this analysis are required to be \texttt{Tight} combined muons, indicating that tracks are indepenently constructed in both systems and well matched via the \texttt{Muid} algorithm. Cuts of $\pt > 25$~GeV and $|\eta|<2.5$ are applied. Several requirements on the track quality are applied: a b-layer hit is required if expected, and the number of silicon hits is required to be greater than 4, with the number of holes (crossings with no hit, but one expected) to be $< 3$. The $|z_0|$ is again required to be $< 2$ mm from the primary vertex. Additional requirements on the TRT hits are also applied. The isolation is defined using a variable cone scaling, summing the $\pt$ of all tracks within a cone of size $\Delta R < 10~\mathrm{GeV} / \pt^{\mu}$: the scaling allows the better reconstructed high-\pt muons to not be removed by overlaps with jets as the boost of the top quark increases. The cut applied is $I_\mathrm{mini} / \pt^{\mu} < 0.05 $.  Muons are also required to be isolated from jets with a cone of $\Delta R < 0.4$. Similarly to the electrons, a good muon candidate must also match to a trigger muon.
 
 \textbf{Jets} are reconstructed as per the discussion in Chapter~\ref{chapter:jet-reconstruction}. Cuts of $\pt > 25$~GeV and $|\eta| < 2.1$ are imposed; the $\eta$ requirement is tighter than for other objects to insure that the jet is fully enclosed in the tracker so that the jets can be effectively $b$-tagged and its tracking properties measured for the track pull angle measurement. For jets with $\pt < 50$~GeV a JVF cut of $\mathrm{JVF} > 0.5$ is required to reduce the impact of pileup jets. The origin correction of the jet is a particularly important element of the analysis, as the pull vector is very sensitive to the choice of axes. As described below, the topo-clusters are origin-corrected, removing smearing due to the changing $z$-location of the primary vertex, and the sum of their 4-vectors are used as the jet axis. The calibrated $\eta$ is not used in the pull calculation, as it is offset from the center of the clusters, and this can produce lare biases in the pull angle.
 
@@ -624,7 +746,7 @@ The following cuts are used to define the data sample:
 \item Require 2 non-$b$-tagged jets
 \end{enumerate}
 %
-This is mostly a very standard selection for semileptonic $t\bar{t}$, and has been used by ATLAS in many analyses very consistently and effectively \editnote{Cite this.}. One change with respect to the standard selection is a change to point 9: the nominal selection chooses only 1 $b$-tag, but we select 2 in order to more accurately classify and label the event. For this same reason, we require 2 non-$b$-tagged jets: this allows for less ambiguity, as we have much stronger confidence that the $b$-jets from the top quark decay are appropriately identified. We label these two jets, in \pt ordering, as $B_1$ and $B_2$.
+This is mostly a very standard selection for semileptonic $t\bar{t}$, and has been used by ATLAS in many analyses very consistently and effectively~\cite{Aad:2015fna,ATLAS-CONF-2012-149}. One change with respect to the standard selection is a change to point 9: the nominal selection chooses only 1 $b$-tag, but we select 2 in order to more accurately classify and label the event. For this same reason, we require 2 non-$b$-tagged jets: this allows for less ambiguity, as we have much stronger confidence that the $b$-jets from the top quark decay are appropriately identified. We label these two jets, in \pt ordering, as $B_1$ and $B_2$.
 
 
 The remaining question is how to assign the label of $J_1$ and $J_2$, the candidate jets from the $W$ decay, in the case when there are more than 2 non-$b$-tagged jets. It is simplest, and most consistent with the \textit{pseudo-top} definition from the {\sc TopLHCWG}, to use the leading two non-$b$-tagged jets~\cite{pseudotop,Aad:2015eia}.
@@ -670,7 +792,7 @@ where $W$ is the inclusive $W$+jets sample (i.e. the sum of both charges). This 
 
 The shape of the $W$+jets background therefore is taken from MC, but the normalization is corrected using this data-driven approach, substantially reducing the theoretical uncertainties on the largest background to the analysis. The values derived are $1.3 \pm 0.03$ for the $bb/cc$ component, $0.74 \pm 0.04$ for the single $c$ component, and $0.96 \pm 0.02$ for the light component.
 
-\textbf{Multi-jet backgrounds} are very poorly modelled in the simulation, as fake leptons are difficult to predict correctly. A data-driven approach called the \textit{matrix method} is therefore adopted to assess this background~\cite{MatrixMethod}. The goal of the method is to assess $N_\mathrm{fake}^\mathrm{tight}$: the number of fake ``tight'' leptons produced by multi-jet events.  This number is derived using two samples, differing only in the definition of the leptons: either the ``tight'' nominal selection (described above), or a ``loose'' selection with some of these requirements removed (the differences in the loose selection for muons and electrons, which are assessed separetely in this technique, will be described below). A tight lepton, by definition, passes the loose requirements. The tight sample mostly contains real leptons, while the loose sample is enriched in the fakes we are trying to measure, but both samples are a mixture. Thus, we can write:
+\textbf{Multi-jet backgrounds} are very poorly modelled in the simulation, as fake leptons are difficult to predict correctly. A data-driven approach called the \textit{matrix method} is therefore adopted to assess this background~\cite{MatrixMethod,ATLAS-CONF-2014-058}. The goal of the method is to assess $N_\mathrm{fake}^\mathrm{tight}$: the number of fake ``tight'' leptons produced by multi-jet events.  This number is derived using two samples, differing only in the definition of the leptons: either the ``tight'' nominal selection (described above), or a ``loose'' selection with some of these requirements removed (the differences in the loose selection for muons and electrons, which are assessed separetely in this technique, will be described below). A tight lepton, by definition, passes the loose requirements. The tight sample mostly contains real leptons, while the loose sample is enriched in the fakes we are trying to measure, but both samples are a mixture. Thus, we can write:
 %
 \begin{align}
 N^\mathrm{loose} &= N_\mathrm{real}^\mathrm{loose} + N_\mathrm{fake}^\mathrm{loose}\\
@@ -742,7 +864,7 @@ We can also make comparisons between the data and SM expectation for the various
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1pT}\includegraphics[width=0.45\textwidth]{cf_int/DataMC/J1pTe}
- \caption{The leading $W$ daughter jet $p_T$ for the muon channel (left) and the electron channel (right). The slope in data/MC is a well known deficiency of the current tune of the \PowPythia sample, but has no effect on the observable of interest. }
+ \caption{The leading $W$ daughter jet $p_T$ for the muon channel (left) and the electron channel (right).}
  \label{fig:color:yields:pts}
   \end{center}
 \end{figure}
@@ -782,7 +904,7 @@ Track quality requirements are rather standard. They are required to have $\pt \
 \subsection{Data/SM Comparisons}
 \label{chapter:color:comparisons}
 
-Now that we have defined the input objects to the pull vector, we can show the data/SM agreement of the observable. In the following figures, various corrections described previously are turned on and off to display the importance of each decision. All uncertainties shown include the detector uncertainties described in Section~\ref{chapter:color:uncertainties:other}, and the uncertainties on the clusters/tracks used as inputs to the pull as described in Section~\ref{chapter:color:uncertainties:inputs}. Figure~\ref{fig:color:substructure:pull_fixed} shows the calorimeter measurement on the left and the tracker on the right: both agree very well with the expectation from simulation.
+Now that we have defined the input objects to the pull vector, we can show the data/SM agreement of the observable. In the following figures, various corrections described previously are turned on and off to display the importance of each decision. All uncertainties shown include the detector uncertainties described in Section~\ref{chapter:color:uncertainties:other}, and the uncertainties on the clusters/tracks used as inputs to the pull as described in Section~\ref{chapter:color:uncertainties:track} and \ref{chapter:color:uncertainties:clusters}. Figure~\ref{fig:color:substructure:pull_fixed} shows the calorimeter measurement on the left and the tracker on the right: both agree very well with the expectation from simulation.
 
 
 \begin{figure}[h!]
@@ -848,6 +970,7 @@ The first three will be addressed in the following sections, while the unfolding
  Practically, each uncertainty is used to shift the properties of events in simulation in some way (in multiple different ways for some of the uncertainties); the resulting selected events are used to perform the same unfolding procedure as the nominal MC, and the difference in the final result is taken as the systematic. For the reco-level figures of previous sections, the difference between the nominal and systematic selection are summed in quadrature over the variations from the detector objects and the resulting band is overlaid on the nominal MC distribution\footnote{Note that for measurement related quantities, such as the pull angles, the uncertainties on the measurement objects are included, but for selecton related quantities, such as the jet \pt, they are ignored.}.
 
 	\subsubsection{Track Uncertainties}
+	\label{chapter:color:uncertainties:tracks}
 
 	The following uncertainties characterize various aspects of tracking in ATLAS: they all affect only the construction of the charged pull angle.
 
@@ -859,6 +982,7 @@ The first three will be addressed in the following sections, while the unfolding
 	The \textbf{Track Energy Resolution} takes into account potential mismeaurements of track \pt, and is again assessed from minimum-bias data~\cite{ATLASCharged}. The energy of each track is simultaneously randomly smeared by $10\%$. 
 
 	\subsubsection{Cluster Uncertainties}
+	\label{chapter:color:uncertainties:clusters}
 
 	Cluster uncertainties are slightly more complicated, as there are fewer direct physics measurements which can be used to constrain them as was done for the tracker. For most measurements of cluster properties, the corresponding measurement of the tracker is known to be much higher resolution: the tracker measurements can therefore often be used as a standard candle to assess the cluster uncertainties.
 
@@ -931,8 +1055,6 @@ The first three will be addressed in the following sections, while the unfolding
 
 	This section describes the various sources of uncertainty that arise from the measurement of the properties of events used in the selection. In all cases, these assess the degree to which the MC predicts the properties of some object in the event.
 
-	\editnote{These all should be cited.}
-
 	The \textbf{Jet Energy Scale} (JES) uncertainty describes the precision to which the \pt of a jet is understood, as described in Section~\ref{chapter:jet-reconstruction:insitu}. The JES is known to a few percent; its main effect on the analysis is its effect on the acceptance of jets, as the \pt threshold of 25 GeV is sensitive to variations in the \pt scale.
 
 	% Note that there is one other place the \pt uncertainty comes into play: the pull vector magnitude is normalized by it. This means that if the analysis cuts on the pull vector magnitude in order to improve the pull angle resolution, it also has the effect of increasing the effect of the JES on the analysis.
@@ -944,7 +1066,7 @@ The first three will be addressed in the following sections, while the unfolding
 
 	The \textbf{Luminosity Uncertainty} is $\pm2.8\%$. It is derived, following the same methodology as that detailed in \cite{ATLASLumi}, from a preliminary calibration of the luminosity scale derived from beam-separation scans performed in November 2012. The final measurement subtracts backgrounds from the data to perform the unfolding, so the luminosity uncertainty only comes into play on the normalization of the backgrounds that are estimated from MC (i.e. the diboson, single top, and $Z$+jets components). Since the $W$+jets and multijet backgrounds are derived (or at least normalized) to data, the luminosity uncertainty does not affect them.
 
-	\textbf{Lepton uncertainties} come in several types, but affect the analysis only minimally: they are much smaller than the JES uncertainties, and since only one lepton is required, the effect is not increased by the multiplicity requirements. There are separate components for muon and electron trigger scale factors: these parameterize the understanding of the efficiency of the lepton triggers~\cite{Pasztor:1706278}. There are also uncertainties on the lepton efficiency, characterizing the performance of lepton reconstruction, especially taking into account the uncertainty on the cuts used to define the \texttt{Tight} leptons used in the analysis~\cite{Aad:2014fxa,ATLAS-CONF-2014-032}. Both the lepton trigger and lepton general uncertainties are on efficiencies, so they act as scale factors on the event without changing the raw acceptance. Finally, there are uncertainties on the lepton energy scale and resolution: these directly affect the acceptance of the analysis~\cite{Aad:2014nim}. All these uncertainties are very tiny.
+	\textbf{Lepton uncertainties} come in several types, but affect the analysis only minimally: they are much smaller than the JES uncertainties, and since only one lepton is required, the effect is not increased by the multiplicity requirements. There are separate components for muon and electron trigger scale factors: these parameterize the understanding of the efficiency of the lepton triggers~\cite{Pasztor:1706278,ATLAS-CONF-2012-099}. There are also uncertainties on the lepton efficiency, characterizing the performance of lepton reconstruction, especially taking into account the uncertainty on the cuts used to define the \texttt{Tight} leptons used in the analysis~\cite{Aad:2014fxa,ATLAS-CONF-2014-032,Aad:2014rra}. Both the lepton trigger and lepton general uncertainties are on efficiencies, so they act as scale factors on the event without changing the raw acceptance. Finally, there are uncertainties on the lepton energy scale and resolution: these directly affect the acceptance of the analysis~\cite{Aad:2014nim,Aad:2014rra}. All these uncertainties are very tiny.
 
 	\textbf{Missing Energy and Soft Term} uncertainties are related to the measurement of the \met in the event used in the selection. All the jet and lepton energy uncertainties are used to recalculate the \met whenever they are applied, and a separate uncertainty exists for the soft term of the missing energy~\cite{Aad:2012re,ATLAS-CONF-2013-082}. The effect on the analysis is again minimal.
 
@@ -1056,7 +1178,7 @@ With the final uncertainties quantified, we can now show the final unfolded resu
 
 \FloatBarrier
 
-Finally, a $\Delta \chi^2$ test, which compares the compatibility of the observed data to various hypotheses using an ensemble of toys generated with the full covariance matrix of all uncertainties, is used to determine quantitatively whether the data more closely resembles the Standard Model or the Octet model. \editnote{cite? maybe the int?}
+Finally, a $\Delta \chi^2$ test, which compares the compatibility of the observed data to various hypotheses using an ensemble of toys generated with the full covariance matrix of all uncertainties, is used to determine quantitatively whether the data more closely resembles the Standard Model or the Octet model~\cite{Nachman:1728288}.
 
 For the all particles measurement, the expected significance is $3.4\sigma$, and for the charged particles measurement, it is $4.5\sigma$. This indicates that the charged particles measurement is expected to be more sensitive: the improved resolution has ultimately proved more important than the neutral particle measurement. The observed values are slightly below, at $2.7\sigma$ and $3.4\sigma$ respectively. are able to conclusively state that the decays of $W$-bosons in data are compatible (with $1\sigma$) with a color singlet hypothesis, and strongly incompatible (greater than $3\sigma$) with a color octet hypothesis. This is the first direct measurement of the color charge of the $W$-boson.
 
@@ -1443,6 +1565,6 @@ In this analysis, we have studied an observable called the \textit{jet pull}. Th
 %   \label{fig:color:eventdisplay}
 % \end{figure}
 
-\section{Conclusions}
+\section{Conclusions with Measuring Jets}
 
 While substructure has been a key part of many searches at the LHC, we have demonstrated that it can also be applied for the measurement of properties of the Standard Model. Even small radius jets--- the objects which have been treated as simply 4-vectors at hadron colliders, even in the age of boosted physics--- have been demonstrated to have observable structure. The differences between light quark and gluon jets, while more subtle than suggested by simulation, are real indeed, and observable in the complicated environment of hadron colliders. Additionally, the effects of color connections between jets are also observable. Moreover, this structure can be resolved in several ways: in some situations, calorimeter measurements can be very useful, but very often the tracking detector can play a critical role in understanding the structure of jets. Substructure has enabled a unique measurement of the Standard Model, which will hopefully play a role in improving our understanding of showering and hadronization.
