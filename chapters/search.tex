@@ -2,33 +2,41 @@
 \label{chapter:search}
 \section{Motivation}
 
-As discussed in Section~\ref{chapter:susy:status}, the state of ATLAS SUSY searches at the Run 1 is somewhat discouraging, in the sense that gluinos have been excluded up to even 1.4 TeV in some signal models. This is providing significant pressure on the argument of naturalness of the Higgs which SUSY had attempted to solve: without light gluinos and top-partners, SUSY requires large ``accidental'' cancellations and becomes significantly less elegant. As Section~\ref{chapter:susy:r} described, one scenario which is significantly less explored is that in which $R$-parity is violated, allowing for the decay of the LSP to SM particles. 
+As discussed in Section~\ref{chapter:susy:status}, ATLAS SUSY searches at the end of Run 1 have covered an enormous number of potential signals, but have not yet found gluinos, even up to 1.4 TeV in some signal models. This provides significant pressure on the argument of naturalness of the Higgs which SUSY had attempted to solve: without light gluinos and top-partners, SUSY requires large ``accidental'' cancellations and becomes significantly less elegant. As Section~\ref{chapter:susy:r} described, one scenario which is significantly less explored is where $R$-parity is violated, allowing for the decay of the LSP to SM particles. 
 
-One particularly unexplored possibility is that of $\lambda'' > 0$, i.e., the case in which the LSP decays via `UDD' couplings through off-shell squarks. Feynman diagrams of this type are displayed in Figure~\ref{fig:search:motivation:diagrams}: the final state is composed entirely of SM particles, and in particular, entirely quarks. As there is no missing energy expected in these events, existing ATLAS SUSY analyses, which require significant \met to define signal regions, will not select these events. For this reason, even rather light gluinos--- with masses as low as 600 GeV--- could reasonably be hiding within the ATLAS dataset. Final states with neutralino LSPs are particularly well motivated: all the naturalness benefits of SUSY are maintained, but at the cost of a dark matter candidate. 
+One particularly unexplored possibility is that of $\lambda'' > 0$, i.e., the case in which the LSP decays via `UDD' couplings through off-shell squarks. Feynman diagrams of this type are displayed in Figure~\ref{fig:search:motivation:diagrams}: the final state is composed entirely of SM particles, and in particular, entirely quarks. As there is no missing energy expected in these events\footnote{Depending on whether top quarks are involved, leptonic $W$ decays originating from the top could provide some small amount of missing energy.}, existing ATLAS SUSY analyses, which require significant \met to define signal regions, will not select these events. For this reason, even rather light gluinos--- with masses as low as 600 GeV--- could reasonably be hiding within the ATLAS dataset. Final states with neutralino LSPs are particularly well motivated: all the naturalness benefits of SUSY are maintained, but at the cost of a dark matter candidate. 
 
 %%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\subfigure[6q]{\includegraphics[width=0.45\textwidth]{mj/fig_01a.pdf}}
-\subfigure[10q]{\includegraphics[width=0.45\textwidth]{mj/fig_01a.pdf}}
+\subfigure[6-quark]{\includegraphics[width=0.45\textwidth]{mj/fig_01a.pdf}}
+\subfigure[10-quark]{\includegraphics[width=0.45\textwidth]{mj/fig_01b.pdf}}
+\caption{Feynman diagrams for a 6-quark and 10-quark final state with gluino pair production and RPV decays of the LSP. The 10q final state proceeds through an intermediate neutralino LSP.}
 \label{fig:search:motivation:diagrams}
-\caption{Feynman diagrams for a 6q and 10q final state with gluino pair production and RPV decays of the LSP. The 10q final state proceeds through an intermediate neutralino LSP.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
 
 Many different possibilities for the flavor structure of the quarks in this diagram exist. As discussed in Section~\ref{chapter:susy:r}, the  $\lambda''_{ijk}$ coupling is actually an anti-symmetric tensor which couples together one up type and two different down type quarks. This means, for example, that the \lsp can decay to a top-bottom-strange triplet, but not a top-bottom-bottom. The most generic assumption is to set all possibilities as equal, as a priori there is no preference for any particular combination. Moreover, there is an additional place for quark flavor to be decided, in the quarks coming from the gluino decay: these are set by the masses of the off-shell squarks in the theory. If the stop was very much lighter than the other squarks, for example, the gluinos would all decay through off-shell stops, leading to only tops from the gluino decays. Again, however, the most generic assumption is to set all squark masses to be degenerate (at 5 TeV, well above the kinematic threshold), so all decays that are kinematically possible will happen. Ultimately, this means that in decay chains with many hadronically decaying top quarks can have up to 22 quarks in the final state, or as few as 10 in the case where no tops are included in the decays. 
 
-Final states like these have largely been ignored because of the extremely difficult backgrounds: QCD multi-jet processes, which are usually suppressed by \met cuts, are dominant. The problem with a multijet background is actually two-fold. First, the extremely high cross-section requires very powerful variables to replace the \met cut in order to become sensitive. Additionally, the modeling of these backgrounds is also very challenging, generally requiring sophisticated data-driven techniques because of the inadequacy of MC simulation to model the high-multiplicity multijet final states.
+Final states like these have largely been ignored because of the extremely difficult backgrounds: QCD multi-jet processes, which are usually suppressed by \met cuts, are dominant. The problem with a multijet background is two-fold. First, the extremely high cross-section requires very powerful variables to replace the \met cut in order to be sensitive to the signal. Additionally, the modeling of these backgrounds is also very challenging, generally requiring sophisticated data-driven techniques because of the inadequacy of MC simulation to model the high-multiplicity multijet final states.
 
-An analysis searching for final states of this type is thus very exciting: SUSY could exist at rather low mass, and could be discovered if new analysis strategies and background estimation techniques were developed. Thankfully, jet substructure tools provide an answer to both elements of the problem. The following chapter describes a new search for RPV SUSY using jet substructure techniques, as published in \cite{RPVSUSY}. This is the first search for the 10-quark model previously described, and sets strong limits on the production of gluinos in all-hadronic final states. This work was done in collaboration with Larry Lee (who developed a parallel jet-counting analysis), and Joakim Olsson and David Miller (who developed parts of the substructure-based analysis presented allow).
+The analysis in this chapter focuses on the 10-quark final state shown in Figure~\ref{fig:search:motivation:diagrams}. There are two free paramaters in such a model: \mgluino and \mninoone, where $\mgluino > \mninoone$. Generally, \mgluino sets the scale of the event and how much energy is available. The role of \mninoone is more complicated: a high mass means that there is a low splitting between the two SUSY particles, and the quarks emitted in the decay from \gluino to \lsp will therefore be very soft. If \mninoone is very low, on the other hand, then its decay can be very collimated, and there will be less broadly spread activity in the event. 
+
+An analysis searching for final states of this type is thus very exciting: SUSY could exist at rather low mass, and could be discovered if new analysis strategies and background estimation techniques were developed. Jet substructure tools provide an answer to both elements of the problem. 
+
+\section{Overview}
+
+The following chapter describes a new search for RPV SUSY using jet substructure techniques, as published in \cite{RPVSUSY}.  The chapter begins with a discussion for why substructure is useful for both signal discrimination, and for background estimation. The key variable, the \textit{total jet mass} is introduced, as well as the \textit{jet substructure templates} used to estimate the backgrounds. The next section addresses the optimization of the analysis: many different substructure and kinematic variables are compared, and the best pair is selected to continue with the search. The triggering strategy is also defined, and the trigger efficiencies are studied. Next, various \textit{analysis regions} are defined for the analysis. These regions have varying levels of expected signal. \textit{Control regions} have low expected signal contribution, and are used to estimate backgrounds and systematic uncertainties; \textit{validation regions} have slightly larger but still low signal contamination, and are used to cross-check the results derived in the control regions. Some control regions are defined using jet multiplicity; others use an inversion of a cut which defines the signal region.  Finally, \textit{signal regions} have high expectes signal contribution and are used to search for new physics. Results are shown for two parallel analyses, with different \pt cuts on the jets optimized to have the best sensitivity across the parameter space. The background estimates are then presented in detail, and the treatment of the systematic uncertainties is presented. The signal region is finally unblinded, but no evidence for new physics is found, and strong limits are set on the production of gluinos in all-hadronic final states. 
+
+This work was done in collaboration with Larry Lee (who developed a parallel jet-counting analysis), and Joakim Olsson and David Miller (who developed parts of the substructure-based analysis presented allow). Discussions with Jay Wacker, Martin Jankowiak, Tim Lou, and Tim Cohen were extremely helpeful in developing the background estimation and substructure variables.
 
 %discuss final state structure, types of quarks, etc?
 
 \section{Why Jet Substructure?}
 
-The best way to understand the utility of jet substruture for this analysis is to consider an event display, as in Figure~\ref{fig:search:motivation:event-displays}. This display shows in the $y/\phi$ plane the \antikt $R=1.0$ Trimmed jets run on a background (left) and signal (right) event. Typically, analyses have used variables such as \Ht--- the sum of the transverse momentum of the jets--- to define a signal region. In this case, the \Ht of the two events is very similar, near $2$~TeV. However, the event on the right shows significantly more \textit{structure} in its jets than the event on the left: QCD jets are generally single-prong, while the jets in the signal have a richer topology.  
+The best way to understand the utility of jet substruture for this analysis is to consider an event display, as in Figure~\ref{fig:search:motivation:event-displays}. This display shows in the $y/\phi$ plane the \antikt\ $R=1.0$ Trimmed jets run on a background (left) and signal (right) event. Typically, analyses have used variables such as \Ht--- the sum of the transverse momentum of the jets--- to define a signal region. In this case, the \Ht of the two events is very similar, near $2$~TeV. However, the event on the right shows significantly more \textit{structure} in its jets than the event on the left: QCD jets are generally single-prong, while the jets in the signal have a richer topology.  
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -36,13 +44,13 @@ The best way to understand the utility of jet substruture for this analysis is t
 \centering
 \subfigure[\herwigpp Dijet Background]{\includegraphics[width=0.45\textwidth]{mj/figaux_08f.pdf}}
 \subfigure[\gl-\gl Signal]{\includegraphics[width=0.45\textwidth]{mj/figaux_06f.pdf}}
-\label{fig:search:motivation:event-displays}
 \caption{Event displays for background and signal events with very similar \Ht (sum of jet \pt), but very different \textit{jet masses}.}
+\label{fig:search:motivation:event-displays}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
 
-Interestingly, these \largeR jets do not correspond to any particular top quark, or \lsp decay, or \gl decay products: the complicated, high multiplicity environment, along with relatively low \pt for quarks from the \lsp because of 3-body decays, means that most decays are not actually very collimated, and there is a great deal of overlap between quarks. All hope is not lost, however: instead of requiring mass windows, one can simply look for lots of structure. This approach is referred to as \textit{accidental substructure}: the quarks from various parts of the event accidently overlap in the \largeR jets used to reconstruct the event, and simply trying to identify ``lots of structure'' is sufficient to discriminate between signal and background. For this reason, analyses implementing this strategy generally require four \largeR jets in an event, and use the properties of these jets to search for new physics~\cite{Hook:2012fd,Cohen:2012yc}.
+Interestingly, these \largeR jets do not correspond to any particular top quark, or \lsp decay, or \gl decay products: the complicated, high multiplicity environment, along with relatively low \pt for quarks from the \lsp because of 3-body decays, means that most decays are not actually very collimated, and there are a great deal of overlap between quarks. All hope is not lost, however: instead of requiring mass windows, one can simply look for significant structure in the event. This approach is referred to as \textit{accidental substructure}: the quarks from various parts of the event accidently overlap in the \largeR jets used to reconstruct the event, and simply trying to identify ``lots of structure'' is a powerful way to discriminate between signal and background. For this reason, analyses implementing this strategy generally require four \largeR jets in an event, and use the properties of these jets to search for new physics~\cite{Hook:2012fd,Cohen:2012yc}. This approaches replaces the \met~cut used by traditional analyses, and restores the sensitivity of the search.
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -50,19 +58,19 @@ Interestingly, these \largeR jets do not correspond to any particular top quark,
 \centering
 \subfigure[Backgrounds]{\includegraphics[width=0.45\textwidth]{Boosting11}}
 \subfigure[Signals]{\includegraphics[width=0.45\textwidth]{Boosting7b}}
-\label{fig:search:motivation:event-displays}
 \caption{Sketches of the expected structure of \largeR jets in the background (left) and signal (right).}
+\label{fig:search:motivation:event-displays}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
 
 
-Thus, jet substructure provides a path to discrimination between signal and background, which will be discussed further in Section~\ref{chapter:search:substructure:mj}. Jet substructure actually provides a path for background estimation as well: the \textit{expected structure} of QCD can be measured in control regions and extrapolated to a signal region~\cite{MassTemplates}. This strategy is discussed in Section~\ref{chapter:search:substructure:templates}. 
+Thus, jet substructure provides a path to discrimination between signal and background, which will be discussed further in Section~\ref{chapter:search:substructure:mj}. Jet substructure provides a path for background estimation as well: the \textit{expected structure} of QCD (i.e., the mass of each jet in an event) can be measured in control regions and extrapolated to a signal region~\cite{MassTemplates}. This strategy is discussed in Section~\ref{chapter:search:substructure:templates}. 
 
-\subsection{Total Jet Mass, and Other Variables}
+\subsection{Total Jet Mass, and Other Jet Substructure Variables}
 	\label{chapter:search:substructure:mj}
 
-A variable like \Ht (or \met) is convenient for analysis because it reduces the complexity of the event to a single scalar variable which quantifies the total energy (or missing energy) in an event. Using this approach as in inspiration, it is also possible to create variables which describe not the amount of energy, but the amount of structure in an event~\cite{Hook:2012fd}. The simplest possibility is called the \textit{Total Jet Mass}, and is defined as:
+A variable like \Ht (or \met) is convenient for analysis because it reduces the complexity of the event to a single scalar variable which quantifies the total energy (or missing energy) in an event. Using this approach as in inspiration, it is also possible to create variables which describe not the amount of energy, but the amount of structure in an event~\cite{Hook:2012fd}. One simple possibility is called the \textit{Total Jet Mass}, and is defined as:
 %
 \begin{equation}
 \MJ = \sum_{i=1}^4 M_J^i,
@@ -92,28 +100,28 @@ Finally, there are also more kinematic variables which can be constructed from t
 \Delta \eta = |\eta_J^1 - \eta_J^2|.
 \end{equation}
 %
-Supersymmetry is produced in $s$-channel processes, which are generally more centrally produced, and therefore have small $\Delta\eta$, whereas QCD also contains many $t$- and $u$-channel processes which have more forward production, and thefore a very high $\Delta\eta$. It is also possible to define $\Delta y$, the difference in absolute rapidity, but the performance in the two variables is essentially identical.
+Supersymmetry is produced in $s$-channel processes, which are generally more centrally produced, and therefore have small $\Delta\eta$. QCD, on the other hand, also contains many $t$- and $u$-channel processes which can extend to higher rapidities, and thefore a very high $\Delta\eta$. It is also possible to define $\Delta y$, the difference in absolute rapidity, but the performance in the two variables is essentially identical.
 
-One last set of variables which can potentially be useful are various ways of using the \pt of the third leading jet, $\pt^3$. Generally multi-jet backgrounds are dominated by di-jet like topologies, where the third jet has relatively low \pt compared to the leading two jets which dominate the event: signal, on the other hand, should have a more even \pt distribution, and therefore a higher $\pt^3$ than background. Likwise, one can look at the ratio $\pt^3/\pt^1$, which normalizes the third \pt by the first. The \pt distributions between signal and background are generally very similar, but in combination with many of the other mass cuts, this can be a useful pre-selection device. 
+One last set of variables which can potentially be useful are various ways of using the \pt of the third leading jet, $\pt^3$. Generally multi-jet backgrounds are dominated by di-jet like topologies, where the third jet has relatively low \pt compared to the leading two jets which dominate the event: signal, on the other hand, should have a more even \pt distribution, and therefore a higher $\pt^3$ than background. Likwise, one can look at the ratio $\pt^3/\pt^1$, which normalizes the third \pt by the first. The \pt distributions between signal and background are generally very similar, but in combination with many of the other mass cuts, this can be a useful pre-selection tool. 
 
 
 \subsection{Jet Mass Templates}
 	\label{chapter:search:substructure:templates}
 
-The second important aspect of jet substructure in the analysis is in the measurement of the background. Because the main discriminating variables are composed of the \textit{structure} of jets, and the kinematics of these events are less sensitive to new physics, one can form a background prediction based on the structure of jets in a signal-depleted control region, and use the kinematics as a transfer factor into a signal region. These measurements in the control region are formulated as \textit{jet substructure templates}, and are defined in detail in \cite{MassTemplates}. Figure~\ref{fig:search:substructure:template-big-picture} summarizes the procedure: the template, constructed from the training sample, is convoluted with the kinematics of the signal sample, produced a dressed sample, which is a distribution of a substructure variable usable for the background estimate.
+The second important aspect of jet substructure in the analysis is in the measurement of the background. Because the main discriminating variables are composed of the \textit{structure} of jets, and the kinematics of these events are less sensitive to new physics, one can form a background prediction based on the structure of jets in a signal-depleted control region, and use the kinematics as a transfer factor into a signal region. These measurements in the control region are formulated as \textit{jet substructure templates}, and are defined in detail in \cite{MassTemplates}. Figure~\ref{fig:search:substructure:template-big-picture} summarizes the procedure: the template, constructed from the training sample, is convoluted with the kinematics (the $\pt$ and $\eta$) of the signal sample, produced a dressed sample, which is a distribution of a substructure variable usable for the background estimate.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{INT/BigPictureSketch}
-\label{fig:search:substructure:template-big-picture}
 \caption{The strategy used to develop background estimates using jet substructure templates, from~\cite{MassTemplates}.}
+\label{fig:search:substructure:template-big-picture}
 \end{figure}
 
 %%%%%%%%%%%%%%%%   
 
-The background strategy can be formally described as follows\footnote{We follow the discussion of \cite{MassTemplates} closely here.}. First, we consider $J_{ij}(z)$, which is a $D$-dimensional vector of variables $z$, which can be ``inputs'' (i.e., kinematic variables like \pt or $\eta$) or ``outputs'' (i.e., substructure variables like mass or $\tau_{21}$), and where $j$ is indexed over events and $i$ for jets in each event. One can define a histogram $T_i = \{J_{i1}, J_{i2}..., J_{iN_T}\}$, which is the multi-dimensional distribution of the variables $z$ defined separately for each jet $i$. To increase statistical power, various sums over $i$ can also attempted (for example, using the leading and sub-leading jets together). When $T$ is normalized, it represents a probability distribution function for the jet $i$ to have various properties. However, as this is a highly multi-dimensional object, there can be various regions of this function which are not filled by the training sample, but which are still important for the background estimation. The histograms are therefore smoothed using a Gaussian kernel method, which produces the final templates. In particular, the smoothed template for each jet $i$ is:
+The background strategy can be formally described as follows\footnote{The discussion of \cite{MassTemplates} is followed closely here.}. First, consider $J_{ij}(z)$, which is a $D$-dimensional vector of variables $z$, which can be ``inputs'' (i.e., kinematic variables like \pt or $\eta$) or ``outputs'' (i.e., substructure variables like mass or $\tau_{21}$), and where $j$ is indexed over events and $i$ for jets in each event. One can define a histogram $T_i = \{J_{i1}, J_{i2}..., J_{iN_T}\}$, which is the multi-dimensional distribution of the variables $z$ defined separately for each jet $i$. To increase statistical power, various sums over $i$ can also attempted (for example, using the leading and sub-leading jets together). When $T$ is normalized, it represents a probability distribution function for the jet $i$ to have various properties. However, as this is a highly multi-dimensional object, there can be various regions of this function which are not filled by the training sample, but which are still important for the background estimation. The histograms are therefore smoothed using a Gaussian kernel method, which produces the final templates. In particular, the smoothed template for each jet $i$ is:
 %
 \begin{equation}
 \hat{\rho}_i(z) = \frac{1}{N_T} \sum_{J\in T_i} K_h(z - z_J)
@@ -131,15 +139,15 @@ where $h$ is a matrix which describes the width of the kernel. Thus, the templat
 h_{ij}^\mathrm{amise} = c \hat{\sigma}_{ij} N_T^{-\frac{1}{D+4}}
 \end{equation}
 %
-where $c$ is an $O(1)$ constant, and $\hat{\sigma}$ is the estimate of the square root of the covariance matrix for $\rho(z)$ (the true distribution). For the analysis below, $c=0.01$ is typically used. A schematic diagram summarizing the technique is shown in Figure~\ref{fig:search:substructure:smoothing}
+where $c$ is an $O(1)$ constant, and $\hat{\sigma}$ is the estimate of the square root of the covariance matrix for $\rho(z)$ (the true distribution). For the analysis below, $c=0.01$ is typically used. A schematic diagram summarizing the technique is shown in Figure~\ref{fig:search:substructure:smoothing}.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{INT/KernelSmoothing}
-\label{fig:search:substructure:smoothing}
 \caption{A schematic describing the use of the Gaussian Kernel smoothing method to generate a smoothed template.}
+\label{fig:search:substructure:smoothing}
 \end{figure}
 
 %%%%%%%%%%%%%%%%  
@@ -151,9 +159,9 @@ b(z) &= \rho(z) - \hat{\rho}(z)\nonumber\\
 v^2(z) &= \langle \hat{\rho(z)}^2 \rangle  - \langle \hat{\rho}(z) \rangle^2.
 \end{align}
 %
-There is also a potential error due to  physics: the extrapolation from a control region to a signal region may not be fully controlled by the kinematic distributions. This is discussed in more detail in Section~\ref{chapter:search:search:background}. 
+There is also a potential error due to  physics effects: the extrapolation from a control region to a signal region may not be fully controlled by the kinematic distributions: for example, the proximity of jets to each other, or the total jet multiplicity in the event, could potentially influence the extrapolation. This is discussed in more detail in Section~\ref{chapter:search:search:background}. 
 
-The bias is an important potential source of error: by definition, it is exactly the difference between the true distribution and the estimate. If we can find an estimate for the bias, we can even correct for this error immediately and derive an improved estimate. In fact, such an estimate can easily be derived by smoothing again the smoothed distribution: this is accurate to first order in $h$ (as shown in detail in Appendix A of \cite{MassTemplates}). The twice smoothed template is:
+The bias is an important potential source of error: by definition, it is exactly the difference between the true distribution and the estimate. If one can find an estimate for the bias, one can even correct for this error and derive an improved estimate. In fact, such an estimate can be derived by smoothing again the smoothed distribution: this is accurate to first order in $h$ (as shown in detail in Appendix A of \cite{MassTemplates}). The twice smoothed template is:
 %
 \begin{equation}
 \hat{\hat{\rho}}(z) = \int d^D z' \hat{\rho}(z') K_h (z-z')
@@ -173,7 +181,7 @@ This in turn defines the bias corrected template:
 %
 This is the final template (actually, the median of a set of toys of such templates) used for the background estimate. The full difference between the corrected and the un-corrected term (i.e., the full size of $\hat{b}(z)$) is used as a systematic error in the analysis.
 
-Before describing the estimate of the variance $v^2$, we can define how the template $\hat{\rho}^*(z)$ is used to generate a background prediction. In particular, we want to understand the distribution of the substructure variables $x$ as a function of the kinematic variables $k$, which were previously concatanated into one vector $z$. Currently, we have a joint probability distribution $\hat{\rho}^*(x,k)$, but we want a \textit{conditional} probability distribution $\hat{\rho}^*(x|k)$. This is derivable as:
+Before describing the estimate of the variance $v^2$, one can define how the template $\hat{\rho}^*(z)$ is used to generate a background prediction. In particular, it is important to understand the distribution of the substructure variables $x$ as a function of the kinematic variables $k$, which were previously concatanated into one vector $z$. Thus, the currently derived joint probability distribution $\hat{\rho}^*(x,k)$ is not sufficient, and a \textit{conditional} probability distribution $\hat{\rho}^*(x|k)$ is required. This is derivable as:
 %
 \begin{equation}
 \label{eqn:templates:conditional}
@@ -182,35 +190,40 @@ Before describing the estimate of the variance $v^2$, we can define how the temp
 %
 where $d$ is the number of kinematic variables in $k$, and $\hat{\rho}^*(x|k)$ defined such that the integral over $x$ is normalized to 1. The remaining question is how to do the non-trivial integral in the denominator of Equation~\ref{eqn:templates:conditional}. One simple solution is to perform the integral using a Monte Carlo approach: each possible value of $x$ (sampled across the full domain of the variable with 500,000 steps, each referred to as $\alpha$) is evaluated simultaneously with the kinematics $k$, returning a weight $w_\alpha$ (or $w^*_\alpha$ for the bias-corrected template) for such a combination. Thus, every kinematic event $k$ creates a distribution for the substructure variables $x$ which is compatible with those kinematics, and this distribution is normalized to 1 (the weight of the particular kinematic event is in total 1). To combine the templates of multiple jets, the product of these weights is computed, as the convolution of the probability density functions of each jet gives the combined probability. For example, for a given event with jet kinematics $k_1$ and $k_2$, one could calculate $M_1 + M_2 = \{w^*_{\alpha,1} w^*_{\alpha,2}\}$, i.e. creating a histogram for the variable $M_1 + M_2$ filled with the product of all the weights; this histogram could then be used to fill another histogram for every event $j$, giving a combined distribution of $M_1 + M_2$ for all the kintematic events in the analysis. This histogram is normalized correctly to the number of events in the dataset: a cut on $M_1 + M_2$, either creating mass windows or a simple cut-and-count region, can be compared directly to the observed mass distribution to search for new physics.
 
-There is on subtlety to this point: if new physics is present, then the ``extra'' events from new physics would be included in the normalization--- and so would pass undetected in the inclusive distribution. However, if the \pt distribution of new physics and QCD is the same, the bulk of the `predicted' masses would fall in the low mass range, near the peak of QCD--- the tails would see a very small, sub-percent, additional contribution (as they are a factor of a million or lower compared to the peak in QCD). Thus, the standard interpretation of a background prediction, with a signal appearing as an additive excess, is reasonable in the tails of the mass distribution, even though the overall normalization would be preserved (and so in the case of an observation of new physics, the peak would see a slight under-prediction of the mass). The technique in \cite{MassTemplates} avoided this issue by using normal MC simulation, normalized to luminosity, to create the kinematic sample used to create the background prediction: however, as multi-jet \pt spectra are notoriously difficult to normalize, and using an MC simulation would add JES related systematic uncertainties, a data-only technique is used by this analysis.
+There is on subtlety to this point: if new physics is present, then the ``extra'' events from new physics would be included in the normalization--- and so would pass undetected in the inclusive distribution. However, if the \pt distribution of new physics and QCD is the same, the bulk of the `predicted' masses would fall in the low mass range, near the peak of QCD--- the tails would see a very small, sub-percent, additional contribution (as they are a factor of a million or lower compared to the peak in QCD). Thus, the standard interpretation of a background prediction, with a signal appearing as an additive excess, is reasonable in the tails of the mass distribution, even though the overall normalization would be preserved (and so in the case of an observation of new physics, the peak would see a slight under-prediction of the mass). The technique in \cite{MassTemplates} avoided this issue by using MC simulation, normalized to luminosity, to create the kinematic sample used to model the background prediction: however, as multi-jet \pt spectra are difficult to normalize, and using an MC simulation would add JES related systematic uncertainties, a data-only technique is used by this analysis.
 
-Finally, the direct analytical calculation of the variance is very difficult, but a different straightforward technique is easy to apply. \textit{Bootstrapping}--- i.e., generating toys via varying the number of events in each bin in the histogram $T_i$ via the Poisson distribution centered at the bin value, performing the same procedure on all the toys, and calculating a new final histogram for each toy. Then, each mass bin of interest can assessed by the full ensemble of these toy histograms: the median is used as the nominal value, and the $\pm 1\sigma$ values (i.e., the 68th and 32nd sorted entries when using 100 toys) are used to bracket the derived variance. This corresponds to the statistical uncertainty of the templates, caused by the limited statistical power of the control regions. Note that because the variance computed in this way is exact (up to fluctuations based on the number of toys) while the bias is a first order approximation, typically $c$, the constant in the rule-of-thumb which defines the strength of smoothing, is selected to \textit{undersmooth}: this raises the size of the variance (which we know very well) and lowers the size of the bias. In the limit that the variance dominates, higher order corrections to the bias estimation do not matter.
+Finally, the direct analytical calculation of the variance is very difficult, but a different straightforward technique is easy to apply. The analysis uses \textit{bootstrapping}, in which  statistical toys are generated via varying the number of events in each bin in the histogram $T_i$ via the Poisson distribution centered at the bin value, performing the same procedure on all the toys, and calculating a new final histogram for each toy. Then, each mass bin of interest can assessed by the full ensemble of these toy histograms: the median is used as the nominal value, and the $\pm 1\sigma$ values (i.e., the 68th and 32nd sorted entries when using 100 toys) are used to bracket the derived variance. This corresponds to the statistical uncertainty of the templates, caused by the limited statistical power of the control regions. Note that because the variance computed in this way is exact (up to fluctuations based on the number of toys) while the bias is a first order approximation, typically $c$, the constant in the rule-of-thumb which defines the strength of smoothing, is selected to \textit{undersmooth}: this raises the size of the variance (which is known very well) and lowers the size of the bias. In the limit that the variance dominates, higher order corrections to the bias estimation do not matter.
 
-Thus, by measuring jet properties (such as the mass, or the n-subjettiness) as a function of the kinematic variables using mass templates, one can use jet substructure as a background estimation technique. In this sense, jets are used as a tool to divide up the event, and characterize the expected properties of portions of the detector.
+Thus, by measuring jet properties (such as the mass, or the n-subjettiness) as a function of the kinematic variables using substructure templates, one can use jet substructure as a background estimation technique. In this sense, jets are used as a tool to organize the event, and characterize the expected properties of portions of the detector.
 %
 
 \section{Constructing a Search}
 \label{chapter:search:search}
 
+This section addresses two critical components of the design of the analysis: the optimization of the sensitive regions in Section~\ref{chapter:search:search:optimization}, and the determination of the triggering strategy in Section~\ref{chapter:search:search:triggering}.
+
 \subsection{Optimization}
 \label{chapter:search:search:optimization}
 
-While the complicated multi-jet backgrounds generally require the previously discussed data-driven background techniques to create reliable predictions for the final analysis, it is cumbersome to use these techniques for performing the optimization over a large number of possible variables. For this reason, we use signal MC and \herwigpp di-jet MC to explore the previously defined variables, and to select the most useful way of defining the analysis. The goal is to find two variables which are \textit{uncorrelated}: that is, that they provide discrimination power more or less independently of each other. In this way, one variable can be used to define signal and control regions, while another can be used as the final cut in the signal region to define the precise search region.
+While the complicated multi-jet backgrounds generally require the previously discussed data-driven background techniques to create reliable predictions for the final analysis, it is cumbersome to use these techniques for performing the optimization over a large number of possible variables. For this reason, signal MC and \herwigpp dijet simulation is used to explore the previously defined variables, and to select the most powerful discriminators. The goal is to find two variables which are \textit{uncorrelated}: that is, that they provide discrimination power more or less independently of each other. In this way, one variable can be used to define signal and control regions, while another can be used as the final cut in the signal region to define the precise search region.
 
-One initial question is the number of jets required in the signal region, and which jet algorithm to use. The jet algorithm is the \antikt $R=1.0$, built from locally calibrated topological clusters, with trimming of $\Rsub = 0.3$ and $\fcut > 5\%$, as described in Chapter~\ref{chapter:jet-reconstruction}. These jets are available to 100 GeV: below this point, the calibrations and uncertainties are not valid. An initial optimization found that requiring $\geq 4$ jets above this threshold was the most effective strategy: exactly 3-jet and lower multiplicities are background dominated, while the signal efficiency for a $> 5$ is rather low. Note that the requirement on 4 jets is inclusive: jets with higher multiplicity are allowed. It should also be noted that jets are required to fall with $|\eta| < 2.5$, the region of validity of the systematic uncertainty measurement: jets outside of this requirement are not considered, so the ordering of the 4 jets in the analysis takes into account only jets within this proper fiducial region.
+\subsubsection{Jet Multiplicity}
+
+One initial question is the number of jets required in the signal region, and which jet algorithm to use. The jet algorithm is the \antikt\ $R=1.0$, built from locally calibrated topological clusters, with trimming of $\Rsub = 0.3$ and $\fcut > 5\%$, as described in Chapter~\ref{chapter:jet-reconstruction}. These jets are available to 100 GeV: below this point, the calibrations and uncertainties are not valid. An initial optimization found that requiring $\geq 4$ jets above this threshold was the most effective strategy: exactly 3-jet and lower multiplicities are background dominated, while the signal efficiency for a $> 5$ is rather low. Note that the requirement on 4 jets is inclusive: jets with higher multiplicity are allowed. It should also be noted that jets are required to fall with $|\eta| < 2.5$, the region of validity of the systematic uncertainty measurement: jets outside of this requirement are not considered, so the ordering of the 4 jets in the analysis takes into account only jets within this proper fiducial region.
+
 
 \subsubsection{1D Optimization}
 
-Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimization:MJ}, \ref{fig:search:search:optimization:T21}, \ref{fig:search:search:optimization:T32}, \ref{fig:search:search:optimization:NCA}, \ref{fig:search:search:optimization:NKT}, \ref{fig:search:search:optimization:PT31}, and \ref{fig:search:search:optimization:DEta} show the distribution of a given variable for both signal (in colors) and background (in black) on the left, while the right shows the signal efficiency vs. background rejection (defined as 1/(background efficiency)). Several trends are clear for most of the variables: higher \mgluino raises the energy of the event and increases the discrimination power of most of the variables. Some variables have less dependence on this, however, such as the event-subjettiness ratios $T_{21}$ and $T_{32}$.
+The next task is to understand the power of different variables, and to find the most performant individual discriminators between signal and background. Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimization:MJ}, \ref{fig:search:search:optimization:T21}, \ref{fig:search:search:optimization:T32}, \ref{fig:search:search:optimization:NCA}, \ref{fig:search:search:optimization:NKT}, \ref{fig:search:search:optimization:PT31}, and \ref{fig:search:search:optimization:DEta} show the distribution of a given variable for both signal (in colors) and background (in black) on the top, while the bottom shows the signal efficiency vs. background rejection (defined as 1/(background efficiency)). Several trends are clear for most of the variables: higher \mgluino raises the energy of the event and increases the discrimination power of most of the variables. Some variables have less dependence on this effect, however, such as the event-subjettiness ratios $T_{21}$ and $T_{32}$.
 
 %%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_HT4_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_HT4_g_RPVGluino}}
-\label{fig:search:search:optimization:HT}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_HT4_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_HT4_g_RPVGluino}}
 \caption{Distribution of $H_T = \sum_{i=1}^4 \pT^J$, a typical variable used to measure the energy in an event and discriminate between signal and background. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the \HT distribution.}
+\label{fig:search:search:optimization:HT}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -220,10 +233,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_g_RPVGluino}}
-\label{fig:search:search:optimization:MJ}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_g_RPVGluino}}
 \caption{Distribution of \MJ, a variable describing the total mass in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the \MJ distribution.}
+\label{fig:search:search:optimization:MJ}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -233,10 +246,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T21_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T21_g_RPVGluino}}
-\label{fig:search:search:optimization:T21}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T21_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T21_g_RPVGluino}}
 \caption{Distribution of $T_{21}$, a variable describing the average n-subjettiness ($\tau_{21}$) in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $T_{21}$ distribution.}
+\label{fig:search:search:optimization:T21}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -245,10 +258,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T32_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T32_g_RPVGluino}}
-\label{fig:search:search:optimization:T32}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T32_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_4T32_g_RPVGluino}}
 \caption{Distribution of $T_{32}$, a variable describing the average n-subjettiness ($\tau_{32}$) in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $T_{32}$ distribution.}
+\label{fig:search:search:optimization:T32}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -259,10 +272,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NCASub4_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NCASub4_g_RPVGluino}}
-\label{fig:search:search:optimization:NCA}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NCASub4_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NCASub4_g_RPVGluino}}
 \caption{Distribution of $N_{CA}$, a variable describing the total number of C/A subjets in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $N_{CA}$ distribution.}
+\label{fig:search:search:optimization:NCA}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -273,10 +286,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NKTSub4_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NKTSub4_g_RPVGluino}}
-\label{fig:search:search:optimization:NKT}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NKTSub4_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_NKTSub4_g_RPVGluino}}
 \caption{Distribution of $N_{kT}$, a variable describing the total number of \kt subjets in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $N_{kT}$ distribution.}
+\label{fig:search:search:optimization:NKT}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -288,10 +301,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_PT31_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_PT31_g_RPVGluino}}
-\label{fig:search:search:optimization:PT31}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_PT31_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_PT31_g_RPVGluino}}
 \caption{Distribution of $\pt^3/\pt^1$, a variable describing the amount of energy in the third jet in the event. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $\pt^3/\pt^1$ distribution.}
+\label{fig:search:search:optimization:PT31}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -301,10 +314,10 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_DEta_RPVGluino.pdf}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j360_a10_NjetIncl_NFatJetMin4_DEta_g_RPVGluino}}
-\label{fig:search:search:optimization:DEta}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_DEta_RPVGluino.pdf}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j360_a10_NjetIncl_NFatJetMin4_DEta_g_RPVGluino}}
 \caption{Distribution of $\Delta \eta$ a variable describing the difference in pseudo-rapidity between the leading two jets. Several signal mass points and the \herwigpp di-jet background are shown. The right-hand plot shows the signal efficiency vs. background rejection of a scan of possible cuts on the $\Delta \eta$ distribution.}
+\label{fig:search:search:optimization:DEta}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -312,9 +325,9 @@ Figures~\ref{fig:search:search:optimization:HT}, \ref{fig:search:search:optimiza
 Finally, Figure~\ref{fig:search:search:optimization:All} shows two efficiency vs. rejection curves for two different mass points, comparing all of the various variables previously shown (though $\Delta \eta$ is not shown, but its performance is slightly stronger than $\pt^3/\pt^1$ on these plots). Several important conclusions are clear:
 
 \begin{enumerate}
-\item While \Ht is sometimes strongest at very high signal efficiency, and $N_{kT}$ and $N_{CA}$ sometimes strongest at very, very low signal efficiency, \MJ is generally the strongest variable by far.
-\item \Ht is generally the second strongest variable, though it is a kinematic variable and so the background estimation may not work well with it.
-\item $N_{kT}$ and $N_{CA}$ generally work very well-- but integer type variables may be problematic with a Gaussian kernel smoothing.
+\item While \Ht is sometimes strongest at very high signal efficiency, and $N_{kT}$ and $N_{CA}$ sometimes strongest at low signal efficiency, \MJ is generally the strongest variable by several orders of magnitude.
+\item \Ht is generally the second strongest variable, though it is a kinematic variable and so may complicate the background estimation strategy.
+\item $N_{kT}$ and $N_{CA}$ generally work very well--- but integer type variables are problematic with a Gaussian kernel smoothing.
 \item $T_{32}$ and $T_{21}$ perform worse than the subjet counting variables, but do have some power.
 \item $\pt^3/\pt^1$ has comparatively low power.
 \end{enumerate}
@@ -323,35 +336,34 @@ Finally, Figure~\ref{fig:search:search:optimization:All} shows two efficiency vs
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint2_g_RPVGluino}}
-\subfigure{\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint7_g_RPVGluino}}
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint2_g_RPVGluino}}\\
+\subfigure{\includegraphics[width=0.65\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_SigPoint7_g_RPVGluino}}
+\caption{Signal efficiency vs. background rejection curves for two mass points, comparing the power of various variables.}
 \label{fig:search:search:optimization:All}
-\caption{Signal efficiency vs. background rejection curves for two pass points, comparing the power of various variables. $\Delta \eta$ is not shown, but has similar power (though slightly stronger) than $\pt^3 / \pt^1$.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
 
 From this set of results, it is clear that \MJ is a good candidate for a final discriminant variable which can apply the most discrimination between signal and background. There are several other candidates for the second variable used for defining signal and control regions, but these need two-dimensional correlation studies in order to understand the best pairing.
 
-Throughout these studies, the event-level variables have been constructed from the leading 4 jets (recall that the signal region was pre-selected to have $>=4$ jets). Other possibilities-- such as constructing the substructure observable from only the leading 2 jets--- could potentially make the background estimation easier, but come at a price of slightly reduced discrimination (as the third and fourth jets do have useful substructure information to contribute). Similarly, one could add more jets to the sums/means if they existed, but this was found to not contribute at all to discrimation, and as it would further complicate the background estimation, this strategy was not adopted. For this reasons, all the variables considered simply use the leading 4 jets in the event.
 
-\subsubsection{Additional 1D Studies}
+\subsubsection{Cross-Checks With Other Variables}
 
-One important consideration for the sake of the background estimation, as discussed in Section~\ref{chapter:search:substructure:templates}, is understanding whether the inclusive \pt spectrum is sensitive to new physics (as we use the \pt spectrum to determine the background expectation). Figure~\ref{fig:search:search:optimization:pt} shows that the \pt spectrum is essentially unchanged, showing that we can use the kinematics without worry of biasing the background estimate.
+One important consideration for the sake of the background estimation, as discussed in Section~\ref{chapter:search:substructure:templates}, is understanding whether the inclusive \pt spectrum is sensitive to new physics (as the \pt spectrum is used to determine the background expectation). Figure~\ref{fig:search:search:optimization:pt} shows that the \pt spectrum is essentially unchanged, showing that it is possible to use the kinematic information without worry of biasing the background estimate.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/overlay_sigBkgd_sherpaDijets_logy_stacked_jet_pT1_NFatJetMin4_lowDEta70incl_CR_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
-\label{fig:search:search:optimization:pt}
+\includegraphics[width=0.65\textwidth]{INT/overlay_sigBkgd_sherpaDijets_logy_stacked_jet_pT1_NFatJetMin4_lowDEta70incl_CR_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
 \caption{An example of a \pt distribution for the leading jet, using \Sherpa multi-jet backgrounds, with various signal models overlaid.}
+\label{fig:search:search:optimization:pt}
 \end{figure}
 
 %%%HERE%%%
 
 
-Additionally, one could ask whether individual jet masses are useful for signal discrimination. Figures~\ref{fig:search:search:optimization:signalcomp1} and \ref{fig:search:search:optimization:signalcomp2} show the leading and subleading mass distribution as compared to \Herwigpp backgrounds: the important thing to notice is that for no signal point is the mass of the $\tilde{g}$, or the mass of the \lsp, properly and consistently reconstructed. This demonstrates the advantage of the accidental substructure approach: for such a complicated signal, the significant overlaps between various decay products mean it is easiest to simply use the mass as a event-level discriminant, without trying to reconstruct a specific particle's mass.
+Additionally, one could ask whether individual jet masses are useful for signal discrimination. Figures~\ref{fig:search:search:optimization:signalcomp1} and \ref{fig:search:search:optimization:signalcomp2} show the leading and subleading mass distribution as compared to \Herwigpp backgrounds: the important observation is that for no signal point is the mass of the $\tilde{g}$, or the mass of the \lsp, properly and consistently reconstructed. This demonstrates the advantage of the accidental substructure approach: for such a complicated final state, the significant overlaps between various partons mean it is easiest to simply use the mass as a event-level discriminant, without trying to reconstruct a specific particle's mass.
 
 
 %%------------------------------    
@@ -406,7 +418,7 @@ Additionally, one could ask whether individual jet masses are useful for signal 
 
 %%------------------------------    
 
-Finally, while our main goal is to study the \gluino-\lsp model inclusively in flavor, it is interesting to consider whether we are particularly sensitive, for example, to \gluino decays mediated through $\tilde{t}$, or whether we are pick out mostly \lsp decays to $t$-quarks. In principle, top decays should slightly increase the quark multiplicity, as leptonic decays produce only one quark and hadronic decays produce three. While it is difficult to tell because of the limited statistics in the flavor-sliced samples, Figure~\ref{fig:search:search:optimization:flavor} shows the difference between situations in which the \gluino or \lsp decay to tops, compared to an inclusive sample. Both the \MJ and leading jet mass are approximately consistent over these comparisons, showing that the analysis selects flavor without large amounts of bias.
+Finally, while the main goal is to study the \gluino-\lsp model inclusively in flavor, it is interesting to consider whether the analysis is particularly sensitive, for example, to \gluino decays mediated through $\tilde{t}$, or whether the selection picks out mostly \lsp decays to $t$-quarks. In principle, top decays should slightly increase the quark multiplicity, as leptonic decays produce only one quark and hadronic decays produce three. While it is difficult to tell because of the limited statistics in the flavor-sliced samples, Figure~\ref{fig:search:search:optimization:flavor} shows the difference between situations in which the \gluino or \lsp decay to tops, compared to an inclusive sample. Both the \MJ and leading jet mass are approximately consistent over these comparisons, showing that the analysis has similar sensitivity to all flavors.
 
 
 %%------------------------------
@@ -437,16 +449,16 @@ L = \frac{S}{S+B}
 %
 where $S$ and $B$ are two-dimensional histograms in the two variables of interest, separately for signal and background. A useful pair of variables will have a high $L$ in a corner of this space: this would indicate that both variables are useful, and that they provide complementary information. Highly correlated variables appear as a line: this indicates that the power of one variable is strongly associated to a second, and that a cut on only one of them would be sufficient. 
 
-Figure~\ref{fig:search:search:optimization:2D:NCA} and \ref{fig:search:search:optimization:2D:NKT}, for example, show the likelihoods formed with the subjet counting variables. While $N_{CA}$ and $N_{kT}$ are useful on their own, they provide little information on top of $\MJ$: a horizontal cut in this plane would provide just as much power as a diagonal (or curved) cut. The correlation levels in the background between \MJ and these variables is over $60\%$, indicating that indeed little additional information is contained. $T_{32}$ and $T_{21}$ are also similarly correlated to \MJ, and therefore are also not particularly useful.
+Figure~\ref{fig:search:search:optimization:2D:NCA} and \ref{fig:search:search:optimization:2D:NKT}, for example, show the likelihoods formed with the subjet counting variables. While $N_{CA}$ and $N_{kT}$ are useful on their own, they provide little information on top of $\MJ$: a horizontal cut in this plane would provide just as much power as a diagonal (or curved) cut. The correlation levels in the background between \MJ and these variables is over $60\%$, indicating that little additional information is contained. $T_{32}$ and $T_{21}$ are also similarly correlated to \MJ, and therefore are not particularly useful.
 
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NCASub4_SigPoint1_L_RPVGluino.pdf}
-\label{fig:search:search:optimization:2D:NCA}
+\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NCASub4_SigPoint1_L_RPVGluino.pdf}
 \caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $N_{CA}$ as inputs.}
+\label{fig:search:search:optimization:2D:NCA}
 \end{figure}
 
 %%%%%%%%%%%%%%%%  
@@ -456,36 +468,36 @@ Figure~\ref{fig:search:search:optimization:2D:NCA} and \ref{fig:search:search:op
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NKTSub4_SigPoint1_L_RPVGluino.pdf}
-\label{fig:search:search:optimization:2D:NKT}
+\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_NKTSub4_SigPoint1_L_RPVGluino.pdf}
 \caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $N_{kt}$ as inputs.}
+\label{fig:search:search:optimization:2D:NKT}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
 
-Other variables have less correlation, and therefore potentially improved utility. Figure~\ref{fig:search:search:optimization:2D:PT31}, for example, shows the likelihood constructed with $\pt^3/\pt^1$: a diagonal cut, incorporating the discriminating power of both variables, would be clearly helpful. In this case, the correlation in the background between the two variables is at $20\%$: still substantial, but significantly reduced compared to the substructure based variables. This is reasonable, as all substructure variables are correlated to some extent: mass arises from the presence of wild angle radiation, which also causes extra subjets or lower talues of $\tau_{32}$, etc. Kinematic information like \pt is slightly correlated with masses as well, but less when looking at a ratio of \pt's, and looking at only some of the jets (instead of \Ht, which looks at the \pt of all them like much like \MJ).
+Other variables have less correlation, and therefore potentially improved sensitivity. Figure~\ref{fig:search:search:optimization:2D:PT31}, for example, shows the likelihood constructed with $\pt^3/\pt^1$: a diagonal cut, incorporating the discriminating power of both variables, would be clearly helpful. In this case, the correlation in the background between the two variables is at $20\%$: still substantial, but significantly reduced compared to the substructure based variables. This is reasonable, as all substructure variables are correlated to some extent: mass arises from the presence of wild angle radiation, which also causes extra subjets or lower talues of $\tau_{32}$, etc. Kinematic information like \pt is slightly correlated with masses as well, but less when looking at a ratio of \pt's, and looking at only some of the jets (instead of \Ht, which looks at the \pt of all them like much like \MJ).
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_PT31_SigPoint3_L_RPVGluino.pdf}
-\label{fig:search:search:optimization:2D:PT31}
+\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_PT31_SigPoint3_L_RPVGluino.pdf}
 \caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\pt^3/\pt^1$ as inputs.}
+\label{fig:search:search:optimization:2D:PT31}
 \end{figure}
 
 %%%%%%%%%%%%%%%%  
 
-Finally, Figure~\ref{fig:search:search:optimization:2D:DETA} shows the likelihood constructed with \Deta. Once again, the discrimination is improved by a diagonal cut, and even better, the correlation is significantly lower in these variables, at $<10\%$. Figure~\ref{fig:search:search:optimization:2D:DETAraw} shows the distribution in the \herwigpp di-jet sample: this evident very low level of correlation between the variables makes \Deta ideal to define signal and control regions, as will be discussed in Section~\ref{chapter:search:search:regions}. For this reason, the two variables used to define the analysis were chosen to be \MJ and \Deta.
+Finally, Figure~\ref{fig:search:search:optimization:2D:DETA} shows the likelihood constructed with \Deta and \MJ. Once again, the discrimination is improved by a diagonal cut, and even better, the correlation is significantly lower in these variables, at $<10\%$. Figure~\ref{fig:search:search:optimization:2D:DETAraw} shows the distribution in the \herwigpp di-jet sample: this evident very low level of correlation between the variables makes \Deta ideal to define signal and control regions, as will be discussed in Section~\ref{chapter:search:search:regions}. For this reason, the two variables used to define the analysis were chosen to be \MJ and \Deta.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint5_L_RPVGluino.pdf}
+\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint5_L_RPVGluino.pdf}
+\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\Delta \eta$ as inputs.}
 \label{fig:search:search:optimization:2D:DETA}
-\caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\Delta \eta$ as inputs.}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -494,40 +506,41 @@ Finally, Figure~\ref{fig:search:search:optimization:2D:DETA} shows the likelihoo
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint_RPVGluino.pdf}
-\label{fig:search:search:optimization:2D:DETAraw}
+\includegraphics[width=0.45\textwidth]{INT/AntiKt10LCTopoTrimmedPtFrac5SmallR30_j145_ht500_NjetIncl_NFatJetMin4_MJ4_vs_DEta_SigPoint_RPVGluino.pdf}
 \caption{A likelihood for discrimination between a high $m_{\gluino}$ point and a \herwigpp di-jet background, using \MJ and $\Delta \eta$ as inputs.}
+\label{fig:search:search:optimization:2D:DETAraw}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
 
-Note also that other combinations without \MJ were also considered: \Ht and $T_{32}$, for example, are substantially less correlated because \Ht does not use substructure information. These pairings were all less effective than \MJ and \Deta combination. Additionally, pre-selection cuts on $T_{32}$ and $T_{21}$ were attempted, in combination with the \MJ and \Deta variables: adding the additional discrimination from the n-subjettiness variables did not significantly increase the discrimination.
+Note also that other combinations without \MJ were also considered: \Ht and $T_{32}$, for example, are substantially less correlated because \Ht does not use substructure information. These pairings were all less effective than the \MJ and \Deta combination. Additionally, pre-selection cuts on $T_{32}$ and $T_{21}$ were attempted, in combination with the \MJ and \Deta variables: adding the additional discrimination from the n-subjettiness variables did not significantly increase the discrimination.
 
 
 \subsection{Event and Trigger Selections}
 
+\label{chapter:search:search:triggering}
 To perform the analysis in data, only events which pass a general quality selection and particular trigger configuration are used. The quality selection is rather generic to many ATLAS analyses:
 %
 \begin{enumerate}
 \item Events are required to have not occurred during periods with limited detector operations.
 \item Events are required to contain a primary vertex consistent with the LHC beamspot, reconstructed from at least 2 tracks with transverse momenta $\pt^{\mathrm{track}} > 400$~MeV
-\item Jets reconstructed with the anti-kt algorithm using a size parameter of $R = 0.4$ and a measured $\pt^{\mathrm{jet}} >$ 25 GeV are required to satisfy the “looser” requirements, which are targetted at reducing background from photons and electrons (by requiring the EM fraction to be at least 5\%), as well as poorly functioning regions of the detector (by requiring that no jet be allowed to have more than 99\% of its energy in one layer)~\cite{jetquality}. Furthermore, jets with a majority of their energy in the HEC are required to have no problematic noise characteristics, and no more than 60 GeV of negative energy (both indications of read-out problems); jets enclosed in the ECal are required to have good pulse shapes in all layers. If any jet with $\pt^{\mathrm{jet}} > 25$~GeV is found to fail any of these criteria, the event is rejected.
+\item Jets reconstructed with the anti-kt algorithm using a size parameter of $R = 0.4$ and a measured $\pt^{\mathrm{jet}} >$ 25 GeV are required to satisfy the “looser” requirements, which are targetted at reducing background from photons and electrons (by requiring the EM fraction to be less than 95\%), as well as poorly functioning regions of the detector (by requiring that no jet be allowed to have more than 99\% of its energy in one layer)~\cite{jetquality}. Furthermore, jets with a majority of their energy in the HEC are required to have no problematic noise characteristics, and no more than 60 GeV of negative energy (both indications of read-out problems); jets enclosed in the ECal are required to have good pulse shapes in all layers. If any jet with $\pt^{\mathrm{jet}} > 25$~GeV is found to fail any of these criteria, the event is rejected.
 \end{enumerate} 
 %
 
-A three-stage trigger system is used to select interesting events for the analysis. The level-1 trigger, \texttt{L1\_J75}, requires a single \antikt $R=0.4$ jet with an EM-level $\pt > 75$~GeV. The level-2 trigger, \texttt{L2\_j165\_c4cchad}, requires a JES-calibrated \antikt $R=0.4$ jet to have $\pt > 165$~GeV. The high-\pt trigger at the event filter, \texttt{EF\_j360\_a10tcem}, has an online cut of $360$~GeV on the leading jet \pt, constructed using the \antikt $R=1.0$ algorithm from online EM-scale topo-clusters. Fluctuations due to jet energy resolution and differences between online and offline reconstruction (for example, the online jet has no trimming applied, and the clusters are only EM-scale instead of locally calibrated) mean that a jet with a given offline \pt may or may not have actually fired the trigger. As the modeling of the trigger in the simulation is somewhat unrelaible, we require the offline jet \pt to be fully efficient: i.e., that the \pt is so high that the trigger is guaranteed to have fired.
+A three-stage trigger system is used to select interesting events for the analysis. The level-1 trigger, \texttt{L1\_J75}, requires a single \antikt\ $R=0.4$ jet with an uncalibrated $\pt > 75$~GeV. The level-2 trigger, \texttt{L2\_j165\_c4cchad}, requires a JES-calibrated \antikt\ $R=0.4$ jet to have $\pt > 165$~GeV. The high-\pt trigger at the event filter, \texttt{EF\_j360\_a10tcem}, has an online cut of $360$~GeV on the leading jet \pt, constructed using the \antikt\ $R=1.0$ algorithm from online EM-scale topo-clusters. Fluctuations due to jet energy resolution and differences between online and offline reconstruction (for example, the online jet has no trimming applied, and the clusters are only EM-scale instead of locally calibrated) mean that a jet with a given offline \pt may or may not have actually fired the trigger. As the modeling of the trigger in the simulation is somewhat unreliable, the offline jet \pt is required to be fully efficient: i.e., that the \pt is so high that the trigger is guaranteed to have fired.
 
-To measure the efficiency of the \texttt{j360} trigger, its measurements are compared to a \textit{reference} trigger. A reference trigger has a lower \pt threshold, but is pre-scaled to avoid taking data at too high a rate. A higher \pt threshold trigger is considered fully efficient if it fired on every event on which the lower \pt treshold trigger fired. The ratio of their efficiencies is called the \textit{turn-on} curve. In order to make the trigger fully efficient an offline \pt cut on the trimmed jet pT at $500$~GeV was used, as motivated by Figure~\ref{fig:search:search:trig:pt1}. 
+To measure the efficiency of the \texttt{j360} trigger, its measurements are compared to a \textit{reference} trigger. A reference trigger has a lower \pt threshold, but is pre-scaled to avoid taking data at too high a rate. A higher \pt threshold trigger is considered fully efficient if it fired on every event on which the lower \pt treshold trigger fired. The ratio of their efficiencies is called the \textit{turn-on} curve. In order to make the trigger fully efficient an offline \pt cut on the trimmed jet \pt at $500$~GeV was used, as motivated by Figure~\ref{fig:search:search:trig:pt1}. 
 
 %% pT1 and cum eff
 \begin{figure}[!ht]
   \centering
   \subfigure[Leading $\ptjet$]{
-    \includegraphics[width=0.48\columnwidth]{INT/Trigger/overlay_Eff_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
-    \label{fig:search:search:trig:pt1:eff}}
+    \includegraphics[width=0.65\columnwidth]{INT/Trigger/overlay_Eff_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
+    \label{fig:search:search:trig:pt1:eff}}\\
   \subfigure[Cumulative efficiency (leading $\ptjet>500$~GeV)]{
-    \includegraphics[width=0.48\columnwidth]{INT/Trigger/overlay_Eff_ZoomDetailed_CumEff500_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
+    \includegraphics[width=0.65\columnwidth]{INT/Trigger/overlay_Eff_ZoomDetailed_CumEff500_jet_pT1_Trig_10q_Incl_AntiKt10LCTopoTrimmedPtFrac5SmallR30.pdf}
     \label{fig:search:search:trig:pt1:cumeff}}
     \caption{Efficiency for the \texttt{EF\_j360\_a10tcem} trigger as a function of leading $\ptjet$. The efficiency is calculated using \texttt{EF\_j240\_a10tcem} as the reference trigger. The cumulative efficiency (shown in the legend) is the ratio of the sum of the number of events passing the trigger \texttt{EF\_j360\_a10tcem} and the number of events passing the reference trigger \texttt{EF\_j240\_a10tcem}. }
   \label{fig:search:search:trig:pt1}
@@ -539,11 +552,13 @@ The \texttt{j360} trigger is fully unprescaled, and the integrated luminosity co
 \section{Analysis Regions}
 \label{chapter:search:search:regions}
 
-Several basic requirements in the analysis have thus been defined: we require high quality events, we use events with several \largeR jets, and we require the leading such jet to have \ptjet > 500 GeV. Two classes of region are now defined: the exclusive 3-jet control region (referred to as the 3jCR) and the various $\geq 4$ jet regions (referred to with the prefix 4j). These are summarized in Figure~\ref{fig:search:search:regions}. To count for the signal region definition, as previously discussed, a jet must have $\pt > 100$~GeV and $|\eta| < 2.5$. 
+Various analysis regions are required in order to build a background estimate and uncertainties, to validate the background estimate, and finally to search for new physics. This section discusses the control, validation, and signal regions used for these tasks.
+
+Several basic requirements in the analysis have already been defined: high quality events are required, events are required to have several \largeR jets, and leading such jet must have \ptjet > 500 GeV. Two classes of region are now defined: the exclusive 3-jet control region (referred to as the 3jCR) and the various $\geq 4$ jet regions (referred to with the prefix 4j). These are summarized in Figure~\ref{fig:search:search:regions}. To count for the signal region definition, as previously discussed, a jet must have $\pt > 100$~GeV and $|\eta| < 2.5$. 
 
 The 3jCR is inclusive in all variables. This region is strongly enriched in the multi-jet background: a requirement of exactly 3-jets highly reduces the signal in this region (and moreover, the natural cross-section of a 3-jet region is an order of magnitude higher than that of the $\geq 4$ jet region). This makes the 3jCR a perfect candidate for the training sample of the substructure template background estimation technique.
 
-As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s power is not very strong, but it is rather uncorrelated with \MJ. This means that a selection on $\Deta$ designed to select background--- i.e., a cut on $|\Deta|$ to be high--- can expose a region with high \MJ, but comparatively low expected signal. This allows for the assessment of the templates and the derivation of additional topology related uncertainties, even in the 4j regions. The 4jCR (control region) is defined with $\Deta > 1.4$; the 4jVR (validation region) is defined as $1.4 >\Deta > 1.0$. The two separate regions allow for the derivation of corrections and uncertainties in one, and then the assessment of these in an orthogonal region. Finally, a cut of $|\Deta| < 0.7$ defines the signal region (4jSR), where new physics is hoped to be found.
+As previously implied in \ref{chapter:search:search:optimization}, $\Deta$'s power is not very strong, but it is rather uncorrelated with \MJ. This means that a selection on $\Deta$ designed to select background--- i.e., a cut on $|\Deta|$ to be high--- can expose a region with high \MJ, but comparatively low expected signal. This allows for the assessment of the templates and the derivation of additional topology related uncertainties, even in the 4j regions. The 4jCR (control region) is defined with $\Deta > 1.4$; the 4jVR (validation region) is defined as $1.4 >\Deta > 1.0$. The two separate regions allow for the derivation of corrections and uncertainties in one, and then the assessment of these in an orthogonal region. Finally, a cut of $\Deta < 0.7$ defines the signal region (4jSR), where new physics is searched for.
 
 %%------------------------------
 \begin{figure}[!ht]
@@ -594,9 +609,9 @@ Name  &         &     & [GeV] & [GeV] & [GeV]\\ \hline
 	\section{Background Estimates}
 	\label{chapter:search:search:background}
 
-Now that the sensitive variables, background estimate strategy, and analysis regions are defined, it is time to actually develop the expected Standard Model contribution to the signal region. The first priority is assessing the construction of the templates in the 3jCR.
+Now that the sensitive variables, background estimate strategy, and analysis regions are defined, it is time to actually develop the expected Standard Model contribution to the signal region. The first priority the construction of the templates in the 3jCR.
 
-It should be noted that for the purposes of constructing the templates, steeply falling distributions like jet masses and \pt are actually not very optimal: the rapidly falling distribution means that statistics are not evenly distributed through the boundaries of the variable. The solution is to apply a transformation to these two variables: instead of \pt, $\log(\pt/50)$ is used, and instead of mass, $-\log(m/\pt)$ is used. These transformations are trivial to reverse back into \pt and $m$ after the background prediction is extracted.
+When constructing the templates, steeply falling distributions like jet masses and \pt are actually not very optimal: the rapidly falling distribution means that statistics are not evenly distributed through the boundaries of the variable. The solution is to apply a transformation to these two variables: instead of \pt, $\log(\pt/50)$ is used, and instead of mass, $-\log(m/\pt)$ is used. These transformations are trivial to reverse back into \pt and $m$ after the background prediction is extracted.
 
 \subsection{Template Construction in the 3jCR}
 
@@ -659,7 +674,7 @@ Figure~\ref{fig:search:search:background:closure:eta} presents the result of the
 \end{figure} 
 %%------------------------------ 
 
-The final closure test is to compare the \MJ template using the 3-jet kinematic sample to the actual \MJ distribution in 3-jet events. We use the approaches described above to account for $\eta$ dependence and the jet ordering. Figure~\ref{fig:search:search:background:closure:MJ} shows the closure of the method in the 3jCR using the $\ptthr>100$~GeV selection. The closure is very good, indicating that we are able to construct an event-wide variable like \MJ from the individual jet mass templates.
+The final closure test is to compare the \MJ template using the 3-jet kinematic sample to the actual \MJ distribution in 3-jet events. The approaches described above is used to account for $\eta$ dependence and the jet ordering. Figure~\ref{fig:search:search:background:closure:MJ} shows the closure of the method in the 3jCR using the $\ptthr>100$~GeV selection. The closure is very good, indicating that it is possible to construct an event-wide variable like \MJ from the individual jet mass templates.
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -674,7 +689,7 @@ The final closure test is to compare the \MJ template using the 3-jet kinematic 
 
 \subsection{Checks on Region Compatibility}
 
-Before extrapolating our templates to the 4j regions, it is important to first consider whether the extrapolation is sensible. If the \pt distributions are dramatically different, or the mass distributions very much different for a given \pt, then controlling for the kinematics alone will not be sufficient to build a prediction for mass. In the following plots, we show that the 3j and 4jCR have very similar 2D shapes between the input kinematics (\pt and $\eta$) and the output observable (jet mass) used in the templates. Their similar kinematic distributions means that the use of the template technique to extrapolate between them is appropriate.
+Before extrapolating the templates to the 4j regions, it is important to first consider whether the extrapolation is sensible. If the \pt distributions are dramatically different, or the mass distributions very much different for a given \pt, then controlling for the kinematics alone will not be sufficient to build a prediction for mass. In the following plots, it is shown that the 3j and 4jCR have very similar 2D shapes between the input kinematics (\pt and $\eta$) and the output observable (jet mass) used in the templates. Their similar kinematic distributions means that the use of the template technique to extrapolate between them is appropriate.
 
 
 Figure~\ref{fig:search:search:kincorrelations:mpt0}, for example, shows the mass-\pt correlations in the 3j and 4jCR samples in data: the distributions in fact look very similar. Likewise, Figure~\ref{fig:search:search:kincorrelations:mpt1} and Figure~\ref{fig:search:search:kincorrelations:mpt2} show these correlations for the second leading and third leading jets; again the distributions are very much compatible.
@@ -735,7 +750,7 @@ Figure~\ref{fig:search:search:kincorrelations:mpt0}, for example, shows the mass
 %%------------------------------ 
 
 
-Figures~\ref{fig:search:search:kincorrelations:meta0,fig:search:search:kincorrelations:meta1,fig:search:search:kincorrelations:meta2} show a similar plot displaying the correlations in mass and $\eta$. Once again, the distributions are not too different: there is no large extrapolation from a region dominated by one $\eta$ shape to a region with a different $\eta$ shape, for example.
+Figures~\ref{fig:search:search:kincorrelations:meta0}, \ref{fig:search:search:kincorrelations:meta1}, and \ref{fig:search:search:kincorrelations:meta2} show a similar plot displaying the correlations in mass and $\eta$. Once again, the distributions are not too different: there is no large extrapolation from a region dominated by one $\eta$ shape to a region with a different $\eta$ shape, for example.
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -810,12 +825,12 @@ Figures~\ref{fig:search:search:kincorrelations:meta0,fig:search:search:kincorrel
 
 \subsection{Reweighting, and Systematic Uncertainties, in the 4jCR}
 
-Next, we test the 3jCR templates in the 4jCR: that is, we now use the 4jCR sample's kinematics to derive a prediction for the \MJ background. Note that for this section, and most subsequent sections, we will show plots for the CR's and VR's corresponding to SR100 and SR250, but not SR1: as SR1 is a subset of SR250, the agreement (and systematic treatment) is identical to that of SR250.
+Next, the 3jCR templates are tested in the 4jCR: i.e., the 4jCR sample's kinematics are used to derive a prediction for the \MJ background. Note that for this section, and most subsequent sections, plots will be shown for the CR's and VR's corresponding to SR100 and SR250, but not SR1: as SR1 is a subset of SR250, the agreement (and systematic treatment) is identical to that of SR250.
 
 The bias and variance systematic uncertainties are independent, as they originate from separate sources of error in the template function, and are therefore summed in quadrature. In the individual jet mass distributions in Figure~\ref{fig:search:search:4jcr:Jets} they are shown separately, but in subsequent figures they will often be shown together to save space (though the variance is always dominant).
 
 
-The template systematic uncertainties are derived separately in each kinematic region where they are tested. For example, say a hypothetical training sample from which a given template is derived has the typical steeply falling jet $\pT$ spectrum over a very large range in \pT, whereas the kinematic sample to which the template is applied has only jets from $100$ GeV to $200$ GeV in $\pT$ with an approximately uniform distribution. The kinematic sample is therefore highly restricted: it will be sampling a very small region of the template formed in the training sample, and in particular, the region of the template with the highest statistics. The resulting variance of the dressed sample -- the predicted mass distribution -- will be very low, as there were many jets in the training sample from which to extrapolate. Another hypothetical kinematic sample may have only jets with $\pT > 1000$~GeV -- another very restricted sample, but one for which the training sample does not have good statistics. The resulting variance of any background prediction using this kinematic sample will thus be very large. This training sample has poorer statistics in the region where it is being used. Thus, while the variance is itself a property of the training sample, it is nonetheless affected by the choice of the kinematic sample. We see exactly this feature in Figure~\ref{fig:search:search:4jcr:Reweight:fourth}, for example: the 4th jet in the 4jCR (and all the 4j regions) is very low $\pT$, and therefore always samples the highest statistics portion of the third jet template built in the 3jCR. 
+The template systematic uncertainties are derived separately in each kinematic region where they are tested. For example, say a hypothetical training sample from which a given template is derived has the typical steeply falling jet $\pT$ spectrum over a very large range in \pT, whereas the kinematic sample to which the template is applied has only jets from $100$ GeV to $200$ GeV in $\pT$ with an approximately uniform distribution. The kinematic sample is therefore highly restricted: it will be sampling a very small region of the template formed in the training sample, and in particular, the region of the template with the highest statistics. The resulting variance of the dressed sample--- the predicted mass distribution--- will be very low, as there were many jets in the training sample from which to extrapolate. Another hypothetical kinematic sample may have only jets with $\pT > 1000$~GeV--- another very restricted sample, but one for which the training sample does not have good statistics. The resulting variance of any background prediction using this kinematic sample will thus be very large. This training sample has poorer statistics in the region where it is being used. Thus, while the variance is itself a property of the training sample, it is nonetheless affected by the choice of the kinematic sample. Exactly this feature is seen in Figure~\ref{fig:search:search:4jcr:Reweight:fourth}, for example: the 4th jet in the 4jCR (and all the 4j regions) is very low $\pT$, and therefore always samples the highest statistics portion of the third jet template built in the 3jCR. 
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -843,7 +858,7 @@ The template systematic uncertainties are derived separately in each kinematic r
 %
 
 
-Figure~\ref{fig:search:search:4jcr:Reweight} shows the extrapolation of the template built in the 3jCR into the 4jCR. A slight non-closure is apparent in the ratio between the observed to predicted jet mass distributions (dark blue line). Although this is not a numerically large effect in the single jet mass distributions, this non-closure can affect the total jet mass templates, and we therefore develop a reweighting procedure from the 4jCR to correct for this effect using the individual jet mass distributions for each of the four leading jets. The reweighted individual jet distributions using $\ptthr>100$~GeV are shown in Figure~\ref{fig:search:search:4jcr:Jets} --  the level of closure is improved substantially, as expected. For each of the four leading jet mass templates, the variance is substantially larger than the bias, ensuring that the estimate of the uncertainty is accurate. Figure~\ref{fig:search:search:4jcr:Jets} also shows the difference between the predicted and observed mass spectra for each jet in the cyan ratio in the bottom panels, as well as the ratio that would be obtained without any reweighting of the individual jet mass templates (dark purple). Plots for the 4jCR250 are similar, but the level of non-closure is smaller, so a reweighting is not applied (though later a systematic will still be assessed from this disagreement). %Equivalent figures showing the individual jet mass templates using the $\ptthr>250$~GeV selection are provided in \appref{templatesSR250} (see \figref{template:performance:4jcrJets:SR250}).
+Figure~\ref{fig:search:search:4jcr:Reweight} shows the extrapolation of the template built in the 3jCR into the 4jCR. A slight non-closure is apparent in the ratio between the observed to predicted jet mass distributions (dark blue line). Although this is not a numerically large effect in the single jet mass distributions, this non-closure can affect the total jet mass templates, and it is therefore necesarry to develop a reweighting procedure from the 4jCR to correct for this effect using the individual jet mass distributions for each of the four leading jets. The reweighted individual jet distributions using $\ptthr>100$~GeV are shown in Figure~\ref{fig:search:search:4jcr:Jets}---  the level of closure is improved substantially, as expected. For each of the four leading jet mass templates, the variance is substantially larger than the bias, ensuring that the estimate of the uncertainty is accurate. Figure~\ref{fig:search:search:4jcr:Jets} also shows the difference between the predicted and observed mass spectra for each jet in the cyan ratio in the bottom panels, as well as the ratio that would be obtained without any reweighting of the individual jet mass templates (dark purple). Plots for the 4jCR250 are similar, but the level of non-closure is smaller, so a reweighting is not applied (though later a systematic will still be assessed from this disagreement). %Equivalent figures showing the individual jet mass templates using the $\ptthr>250$~GeV selection are provided in \appref{templatesSR250} (see \figref{template:performance:4jcrJets:SR250}).
 
 The reweighting applied when using the $\ptthr>100$~GeV selection accounts for the differences between the 3j and 4j samples that are due to incomplete factorization of the QCD jets in a high multiplicity final state. Two causes for the differences between the 3j and 4j samples are discussed. First, the quark/gluon composition can shift between these samples: in particular, higher multiplicity events are more likely to contain gluon jets, which on average should be more massive than light quark jets. Secondly, the 4j sample requires $\geq 4$ jets, resulting in a slightly more crowded environment than the 3j sample. Overlapping jets appear more frequently in the 4j sample as a result. Such jets tend to raise the average total jet mass, which is consistent with the observed upward shift in the templates. The reweighting factor is derived bin-by-bin as the ratio of the single jet mass template to the observed distribution in the 4jCR, and is thus a function of the jet mass. This same bin-by-bin function is applied to the 4jVR and 4jSR in subsequent plots, as noted. 
 
@@ -899,7 +914,7 @@ It is important to emphasize that because the reweighting procedure is performed
 \subsection{Cross-checks in the 4jVR}
 
 
-We test the background prediction in the 4jVR to validate the combination of the templates built in the 3jCR and the re-weighting derived in the 4jCR. As a reminder, the 4jVR requires at least 4 jets and requires that the two leading jets be separated by $1.0 < \Deta < 1.4$. The individual jet templates, before and after reweighting, are compared to the mass distributions in Figure~\ref{fig:search:search:4jvr:reweight}. In all cases, the agreement is good, especially after the application of the reweighting. The equivalent set of plots for the 4jVR250 is again very similar, and the agreement is very good. %As above, equivalent figures for templates using the $\ptthr>250$~GeV selection are again provided in \appref{templatesSR250} (see \figref{template:performance:4jvrJets:SR250}).
+The background prediction is tested in the 4jVR to validate the combination of the templates built in the 3jCR and the re-weighting derived in the 4jCR. As a reminder, the 4jVR requires at least 4 jets and requires that the two leading jets be separated by $1.0 < \Deta < 1.4$. The individual jet templates, before and after reweighting, are compared to the mass distributions in Figure~\ref{fig:search:search:4jvr:reweight}. In all cases, the agreement is good, especially after the application of the reweighting. The equivalent set of plots for the 4jVR250 is again very similar, and the agreement is very good. %As above, equivalent figures for templates using the $\ptthr>250$~GeV selection are again provided in \appref{templatesSR250} (see \figref{template:performance:4jvrJets:SR250}).
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -948,7 +963,7 @@ Additionally, Figure~\ref{fig:search:search:4jvr:Total} shows the \MJ distributi
 \subsection{Final Cross-checks Using MC Simulation}
 \label{chapter:search:search:mc}
 
-One possible concern for the template technique is that it assumes that the same mechanism is responsible for generating the individual jet masses in both the control and signal regions. In the previous sections we showed the closure of the template and reweighting procedure in data (in the 4jVR region). In order to test the extent to which a different composition of processes may affect the derived templates, we relax the assumption that QCD is the only background in the 3jCR and 4j regions by injecting a sample of \Sherpa $t\bar{t}$ Monte Carlo events into the full procedure. This sample is composed of the full set of branching ratios for \ttbar\ final states. Figure~\ref{fig:search:search:mccheck:4jTop} shows the comparisons of templates in \Sherpa QCD, with and without an injection of the \ttbar\ sample. The results are consistent, showing that the background estimation is insensitive to the presence of top.
+One possible concern for the template technique is that it assumes that the same mechanism is responsible for generating the individual jet masses in both the control and signal regions. In the previous sections the closure of the template and reweighting procedure in data were shown (in the 4jVR region). In order to test the extent to which a different composition of processes may affect the derived templates, the assumption that QCD is the only background in the 3jCR and 4j regions is relaxed by injecting a sample of \Sherpa $t\bar{t}$ Monte Carlo events into the full procedure. This sample is composed of the full set of branching ratios for \ttbar\ final states. Figure~\ref{fig:search:search:mccheck:4jTop} shows the comparisons of templates in \Sherpa QCD, with and without an injection of the \ttbar\ sample. The results are consistent, showing that the background estimation is insensitive to the presence of top.
 
 %%------------------------------    
 \begin{figure}[!ht]
@@ -975,7 +990,7 @@ One possible concern for the template technique is that it assumes that the same
 
 
 
-Another important test is the sensitivity of the background estimate to the presence of signal. The background expectation is derived from the kinematics of the leading 4 jets in the signal region--- if the signal affects the training sample kinematics then the background expectation for the signal region will change. We perform a direct signal injection test to determine the sensitivity of the template technique to the presence of signal. Figure~\ref{fig:search:search:mccheck:4jSignalInjection} shows the \Sherpa background estimate with and without signal events added into the full background estimation procedure. We use the $\mgluino = 600$ GeV, $\mninoone = 50$ GeV point, which shows the strongest change in the event kinematics, but the background expectation does not change.
+Another important test is the sensitivity of the background estimate to the presence of signal. The background expectation is derived from the kinematics of the leading 4 jets in the signal region--- if the signal affects the training sample kinematics then the background expectation for the signal region will change. A direct signal injection test is performed to determine the sensitivity of the template technique to the presence of signal. Figure~\ref{fig:search:search:mccheck:4jSignalInjection} shows the \Sherpa background estimate with and without signal events added into the full background estimation procedure. The $\mgluino = 600$ GeV, $\mninoone = 50$ GeV point, which shows the strongest change in the event kinematics, is used but the background expectation does not change.
 
 %%------------------------------ 
 \begin{figure}[!ht]
@@ -994,7 +1009,7 @@ Another important test is the sensitivity of the background estimate to the pres
     \includegraphics[width=0.48\columnwidth]{INT/signal_injection_sr/jetmass4_3temp_4kin.pdf}
     \label{fig:search:search:mccheck:4jSignalInjection:fourth}}    
     
-  \caption{Signal injection tests. Comparisons of the template backgrounds in the 4jSR, with and without signal injection. We use the $\mgluino = 600$ GeV, $\mninoone = 50$ GeV point, which shows the strongest kinematic differences with the background sample. The resulting background expectation does not change.}
+  \caption{Signal injection tests. Comparisons of the template backgrounds in the 4jSR, with and without signal injection. The resulting background expectation does not change.}
                
   \label{fig:search:search:mccheck:4jSignalInjection}
 \end{figure}
@@ -1027,7 +1042,7 @@ Finally, Figure~\ref{fig:search:search:mccheck:4jSherpa} shows the closure test 
 
 
 
-\section{Uncertainties}
+\section{Systemati Uncertainties}
 
 
 The systematic uncertainties affecting the analysis fall into two broad categories: those that derive from the selections and background estimations of the analysis itself, and those that affect the predicted signal properties and selection efficiencies. Each of these two categories are discussed in the following sections.
@@ -1039,7 +1054,7 @@ The systematic uncertainties affecting the analysis fall into two broad categori
 
 As described in Section~\ref{chapter:search:substructure:templates} above, there are two systematic sources of error associated with the template procedure: the uncertainty due to finite statistics in the training sample (called the variance), and the uncertainty due to the smoothing procedure in the template derivation (called the bias). All plots of the total jet mass distributions shown include both the variance and bias in the systematics. The bias is nominally treated as a fully correlated bin-by-bin uncertainty in the multi-bin fit: the degree of over-smoothing affects all bins simultaneously, if it affects any.
 
-To assess the degree of correlation between bins, we explicitly construct the \textit{covariance matrix}, where $v_i$ is the vector corresponding to the background estimate bins, and $i$ iterates over bins, as
+To assess the degree of correlation between bins, the \textit{covariance matrix} is constructed. This is defined with $v_i$ is the vector corresponding to the background estimate bins, and $i$ iterating over bins, as:
 %
 %----------------
 \begin{equation}
@@ -1055,7 +1070,7 @@ C'_{ij} = \frac{\overline{v_i v_j }}{\sigma_i \sigma_j} - \frac{\overline{v_i}\,
 \end{equation}
 %----------------
 %
-\noindent The correlation matrix for SR250 is shown in Figure~\ref{fig:search:search:systematics:SR250}. Only a mild correlation exists between neighboring bins, and only one out of ten independent off-diagonal elements has a correlation greater than 20\%, only two have greater than 10\%, and the remaining are a the percent or sub-percent level. One option to reduce the number of Nuisance Parameters is to diagonalize the covariance matrix, and drop the subdominant (normalized) eigenvalues/vectors. The diagonalization procedure, however, reveals that the preferred eigenbasis is very close to that of the diagonal, which is sensible given the very small degree of correlation. For this reason, we apply the variation of each bin independently, assigning a nuisance parameter to each bin separately. This has the added benefit of reducing the profiling during the fit (as there are now more Nuisance Parameters than fit points). The effect on the limit is modest, and the exclusion reach and sensitivity of the analysis does not change appreciably.
+\noindent The correlation matrix for SR250 is shown in Figure~\ref{fig:search:search:systematics:SR250}. Only a mild correlation exists between neighboring bins, and only one out of ten independent off-diagonal elements has a correlation greater than 20\%, only two have greater than 10\%, and the remaining are a the percent or sub-percent level. One option to reduce the number of Nuisance Parameters is to diagonalize the covariance matrix, and drop the subdominant (normalized) eigenvalues/vectors. The diagonalization procedure, however, reveals that the preferred eigenbasis is very close to that of the diagonal, which is sensible given the very small degree of correlation. For this reason, the variation of each bin is applied independently, assigning a nuisance parameter to each bin separately. This has the added benefit of reducing the profiling during the fit (as there are now more Nuisance Parameters than fit points). The effect on the limit is modest, and the exclusion reach and sensitivity of the analysis does not change appreciably.
 
 
 % Both systematics are (separately) treated as correlated bin-by-bin in the multi-bin fits. Assessments of the individual toys used to estimate the variance show that fluctuations in the 3jCR (the source of the variance systematic) create systematic shifts in the \MJ distribution-- not solitary spikes which would require an uncorrelated bin-by-bin approach. The kernel smoothing procedure spreads flucutations in the templates across many bins, and so it is reasonable to expect a fully correlated systematic bin-by-bin.
@@ -1173,7 +1188,7 @@ $\mathbf{\MJ}$ \textbf{Bin [GeV]}  & \textbf{350 - 400} & \textbf{400 - 450} & \
 
 Uncertainties must also be assessed on the selection efficiency for each signal model considered in the analysis. The uncertainty is dominated by the jet energy scale (JES) and jet mass scale (JMS) uncertainties. In particular, the JMS uncertainty affects the selection efficiency significantly and results in the largest single source of measurement uncertainties associated with the signal. A breakdown of the JES and JMS uncertainties in the different signal regions is shown in Tables~\ref{tab:jesjms:SR1},~\ref{tab:jesjms:SR100},~and~\ref{tab:jesjms:SR250}. 
 %
-Note that the JES and JMS are assessed independently, and assumed therefore to be uncorrelated. Studies were done to correlate/anti-correlate the uncertainties and assess the change: as the differences were not large, we maintain the nominal uncorrelated assumption here.
+Note that the JES and JMS are assessed independently, and assumed therefore to be uncorrelated. Studies were done to correlate/anti-correlate the uncertainties and assess the change: as the differences were not large, the nominal uncorrelated assumption is maintained here.
 %
 The JMS is by far the largest systematic for all signal points. The JES is negligible for the single bin and SR100 signal regions, but becomes a little larger for the SR250 signal region (which cuts more strongly on the 3rd jet \pT, and is therefore expected to be more significantly affected by the JES).
 
@@ -1358,7 +1373,7 @@ An additional pair of systematic uncertainties comes from the effects of the Jet
 \end{figure}
 %%------------------------------ 
 %
-To estimate the uncertainty due to possible disagreement between data and MC simulation, this measured resolution and smear the \pT\ and mass of the jet such that it increases by $20\%$. This factor of $20\%$ is very roughly derived from the disagreement between data and MC in describing the $W$ mass peak from \ttbar events; as this is only valid in a very limited \pt range, the value is inflated significantly and extrapolated to the full phase space. In practice, this means applying a Gaussian smearing with mean $m$ and $\sigma = 0.66\sigma^{measured}$. We apply this smearing to all of our signal grid points.\footnote{Due to a large sensitivity to statistical uncertainty in this procedure, and the fact that mass distributions vary little for different values of \mninoone for constant \mgluino, we merge some signal distributions across \mninoone bins in order to increase statistics.} %The results of the JMR smearing are displayed in \figref{res:jmrresult}.
+To estimate the uncertainty due to possible disagreement between data and MC simulation, this measured resolution and smear the \pT\ and mass of the jet such that it increases by $20\%$. This factor of $20\%$ is very roughly derived from the disagreement between data and MC in describing the $W$ mass peak from \ttbar events; as this is only valid in a very limited \pt range, the value is inflated significantly and extrapolated to the full phase space. In practice, this means applying a Gaussian smearing with mean $m$ and $\sigma = 0.66\sigma^{measured}$. This smearing is applied to all of the signal grid points.\footnote{Due to a large sensitivity to statistical uncertainty in this procedure, and the fact that mass distributions vary little for different values of \mninoone for constant \mgluino, merge some signal distributions are merged across \mninoone bins in order to increase statistics.} %The results of the JMR smearing are displayed in \figref{res:jmrresult}.
 %
 
 
@@ -1508,13 +1523,13 @@ JMR & $\pm$4\% & $\pm$5\% & $\pm$0\% & $\pm$1\% & $\pm$1\% \\
 
 
 
-Theoretical uncertainties include those that describe our lack of understanding of the the incoming partons (in the PDF uncertainties), and the expected signal cross-section. An uncertainty to cover these effects an envelope of cross-section predictions using different PDF sets and factorization and renormalization scales, as described in Ref.~\cite{Kramer:2012bx}. 
+Theoretical uncertainties include those that describe the lack of understanding of the the incoming partons (in the PDF uncertainties), and the expected signal cross-section. An uncertainty to cover these effects an envelope of cross-section predictions using different PDF sets and factorization and renormalization scales, as described in Ref.~\cite{Kramer:2012bx}. 
 
 
 The statistical uncertainty of the MC signal sample is included in all results.
 
 
-Finally, the uncertainty on the integrated luminosity is $\pm2.8\%$. It is derived, following the same methodology as that detailed in \cite{ATLASLumi}, from a preliminary calibration of the luminosity scale derived from beam-separation scans performed in November 2012. This applies only to the signal simulation, as the background is fully data-driven.
+Finally, the systematic uncertainty on the integrated luminosity is $\pm2.8\%$. It is derived, following the same methodology as that detailed in \cite{ATLASLumi}, from a preliminary calibration of the luminosity scale derived from beam-separation scans performed in November 2012. This applies only to the signal simulation, as the background is fully data-driven.
 
 
 
@@ -1601,16 +1616,16 @@ Figures \ref{fig:search:search:4jsr:overlaySR100,fig:search:search:4jsr:overlayS
 
 
 
-Finally, now that we are have:
+Finally, now that the analysis has:
 %
 \begin{enumerate}
 \item Developed a background estimate from substructure templates trained in the 3jCR
-\item Extrapolated these templates to a 4jCR, and derived corrections and uncertainty
+\item Extrapolated these templates to a 4jCR, and derived corrections and systematic uncertainties
 \item Further extrapolated the templates, reweighting, and uncertainties to a 4jVR, and observed very good agreement
 \item Checked that signal contamination (and top contamination) is low in all control regions
 \end{enumerate}
 %
-we can at least look in the 4jSR's to compare the data to the background estimation. Figure~\ref{fig:search:search:4jsr:Reweight} shows the expected total jet mass in the 4jSR, along with the unweighted template and the systematic uncertainty on the template method, including the uncertainties derived from the 4jCR disagreement. This histogram is the full background estimate, and the ratios show the full systematic uncertainties. One signal point is overlayed to display the sensitivity of the analysis: if this signal was present, it would clearly be observed. However, the observed data agrees very well with the background prediction: again, the template measurement of the jet mass performs very well.
+it is at last possible to look in the 4jSR's to compare the data to the background estimation. Figure~\ref{fig:search:search:4jsr:Reweight} shows the expected total jet mass in the 4jSR, along with the unweighted template and the systematic uncertainty on the template method, including the uncertainties derived from the 4jCR disagreement. This histogram is the full background estimate, and the ratios show the full systematic uncertainties. One signal point is overlayed to display the sensitivity of the analysis: if this signal was present, it would clearly be observed. However, the observed data agrees very well with the background prediction: again, the template measurement of the jet mass performs very well.
 
 
 
@@ -1800,15 +1815,15 @@ With three different signal regions available, it is expected (and indeed, clear
 %%------------------------------ 
 
 
-Finally, Figure~\ref{fig:search:limits:combined} shows the ultimate limit from this combination. The entire phase space (excluding the unexplored ``compressed'' regions with small mass splitting) are excluded below 825 GeV, and as high as 975 GeV\footnote{In Run 1, ATLAS generally quotes limits with $-1\sigma_\mathrm{theory}$ uncertainties, but as this approach has been abandoned for Run 2, we report the nominal value here.}. 
+Finally, Figure~\ref{fig:search:limits:combined} shows the ultimate limit from this combination. The entire phase space (excluding the unexplored ``compressed'' regions with small mass splitting) are excluded below 825 GeV, and as high as 975 GeV\footnote{In Run 1, ATLAS generally quotes limits with $-1\sigma_\mathrm{theory}$ uncertainties, but as this approach has been abandoned for Run 2, the nominal value is reported here.}. 
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{mj/fig_09.pdf}
-\label{fig:search:limits:combined}
 \caption{Limits in the \mgluino-$m_{\lsp}$ plane for the combined analysis, which uses the best expected limit for each mass point.}
+\label{fig:search:limits:combined}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -1823,13 +1838,13 @@ Finally, Figure~\ref{fig:search:limits:combined} shows the ultimate limit from t
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{mj/figaux_02f.pdf}
-\label{fig:search:conclusions:eventdisplay}
 \caption{An event display for the highest observed $\MJ$ event in data in the SR regions: $\MJ = 963$~GeV.}
+\label{fig:search:conclusions:eventdisplay}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
-By setting limits near 1 TeV for \gluino's in RPV scenarios, we have significantly reduced the possibility that a natural SUSY spectrum is hidden within the complicated QCD backgrounds of this analysis. High-mass such as the one displayed in Figure~\ref{fig:color:eventdisplay} were found to be completely compatible with the SM expectation. However, it should be noted that the RPC analyses generally set limits stronger by at least 200-400 GeV: there is still room for RPV SUSY hiding within the window they have eliminated, but which this analysis is not yet sensitive to.
+By setting limits near 1 TeV for \gluino's in RPV scenarios, the possibility that a natural SUSY spectrum could be hiding within the complicated QCD backgrounds of this analysis has been substantially reduced. High-mass such as the one displayed in Figure~\ref{fig:color:eventdisplay} were found to be completely compatible with the SM expectation. However, it should be noted that the RPC analyses generally set limits stronger by at least 200-400 GeV: there is still room for RPV SUSY hiding within the window they have eliminated, but which this analysis is not yet sensitive to.
 
 Figure~\ref{fig:search:limits:compare} helps describe one idea for improvement on the analysis. In this figure, limits in the \mgluino-$m_{\lsp}$ mass plane are shown for three analyses: the nominal total jet mass analysis described previously in blue, a jet-counting analysis without $b$-tagging in red, and a jet-counting analysis with $b$-tagging in green\footnote{The jet-counting analysis looks for events with $N_\mathrm{jet}>=6,7$ with $N_\mathrm{jet}$ is defined with an optimized \pt-threshold: high multiplicity RPV \gluino decays are expected to produce many jets.}. Clearly, the total jet mass analysis is stronger than the first jet-counting analysis: \MJ uses not just the \pt information in the event, as the jet-counting approach does, but also considers the angular structure of the events encoded within the mass. This additional angular information--- the heart of substructure, essentially--- is what provides the improved analysis power. On the other hand, the second jet-counting analysis, which utilitizes $b$-tagging information, proves stronger still than \MJ: at least some of the quarks in the \gluino-\lsp cascade turn out to be $b$ or $t$ quarks in most events, leading to many opportunities for $b$-jets in the signal. This information is completely orthogonal to \pt (and angular structure), and provides significantly improved discrimination. The total jet mass analysis did not yet implement $b$-tagging for a number of reasons, but adding this additional information could further improve the limits set by this approach (and potentially exceed those set by the jet-counting approach).
 
@@ -1839,15 +1854,15 @@ Figure~\ref{fig:search:limits:compare} helps describe one idea for improvement o
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{mj/fig_15.pdf}
-\label{fig:search:limits:compare}
 \caption{Limits in the \mgluino-$m_{\lsp}$ plane for the combined total jet mass analysis, and two versions of a related jet-counting analysis (with and without $b$-tags).}
+\label{fig:search:limits:compare}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
 Finally, it should be noted that the current analysis interprets the \gluino-\lsp plane inclusively in flavor, but there are many possibilities for exclusive models: $\tilde{t}$ quarks could have lower masses than the rest of the $\tilde{q}$, for example, or the $\lambda''$ tensor might be non-isotropic and favor decays to certain flavor combinations.
 
-While there is still a great deal of room for improvement for the analysis, the existing result is already an incredibly exciting result. This is in some sense the first fully substructure based SUSY search: substructure informs not only the discriminating variables, but the core background estimation technique. Moreover, we have set very competitive limits in a complicated model which has been thus far ignored by searches--- not because it is not motivated, but because people have considered it too difficult to perform. The innovations in this analysis took a greal deal of effort to develop, but have proven very useful in the search for natural supersymmetry.
+While there is still a great deal of room for improvement for the analysis, the existing result is already an incredibly exciting result. This is in some sense the first fully substructure based SUSY search: substructure informs not only the discriminating variables, but the core background estimation technique. Moreover, this analysis has set very competitive limits in a complicated model which has been thus far ignored by searches--- not because it is not motivated, but because people have considered it too difficult to perform. The innovations in this analysis took a greal deal of effort to develop, but have proven very useful in the search for natural supersymmetry.
 
 
 

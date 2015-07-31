@@ -1,18 +1,19 @@
 %!TEX root = ../swiatlow_thesis.tex
 \label{chapter:sm}
 
-The Standard Model (SM) of particle physics is the enormously successful set of theories, developed mostly in the 1960s-1970s, which are the best known description of fundamental physics. The SM describes all known matter and all known interactions (besides gravity) with startling precision: some observables, such as the value of the electromagnetic coupling constant, $\alpha$, have even been measured to within 1 part in $10^{10}$ of their predicted value \editnote{cite}. Moreover, many precision analyses performed in a huge variety of final states at the LHC, summarized in Figure~\ref{fig:sm:summary}, all show strong agreement with the prediction: the SM has been extraordinarily successful at describing the high-energy physics frontier across a huge phase space.
+The Standard Model (SM) of particle physics is the enormously successful set of theories, developed mostly in the 1960s-1970s, which are the best known description of fundamental physics. The SM describes all known matter and all known interactions (besides gravity) with startling precision: some observables, such as the value of the electromagnetic coupling constant, $\alpha$, have even been measured to within 1 part in $10^{10}$ of their predicted value~\cite{PhysRevLett.100.120801}. Moreover, many precision analyses performed in a huge variety of final states at the LHC, summarized in Figure~\ref{fig:sm:summary}, all show strong agreement with the prediction: the SM has been extraordinarily successful at describing the high-energy physics frontier across a huge phase space.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{summary2.pdf}
-\label{fig:sm:summary}
 \caption{Summary of SM cross-section measurements performed in ATLAS, showing the theoretical prediction and the observed value. The agreement across all the various channels is striking.}
+\label{fig:sm:summary}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
+
 
 The theory consists of two main parts: the Glashow-Weinberg-Salam theory of electroweak interactions, which describes the electromagnetic and weak nuclear forces, and Quantum Chromodynamics, which describes the strong nuclear force. Together these form the symmetry group of the Standard Model, $SU(3)_C \otimes SU(2)_W \otimes U(1)_Y$. With the discovery of the Higgs Boson, the mechanism of symmetry breaking in the electroweak sector has been elucidated, and all the particles predicted by the model have been identified. While the SM is complete in this sense, there are still many questions which it does not address, and some of these will be discussed in Chapter~\ref{chapter:susy} and \ref{chapter:search}. At the same time, some predictions of the SM--- the rate of decay channels of the Higgs Boson, or the details of parton showering in QCD--- are still not fully understood, and one new measurement of such SM phenomena is presented in Chapter~\ref{chapter:color}.
 
@@ -105,14 +106,14 @@ The quantization of the QCD Lagrangian (or really, any field theory) allows for 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.25\textwidth]{loop.png}
-\label{fig:sm:loop}
+\includegraphics[width=0.45\textwidth]{higgs-top-loop.pdf}
 \caption{An example of a loop, whose contribution to a matrix element is formally infinite, in a QFT calculation.}
+\label{fig:sm:loop}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
 
-One particularly interesting set of corrections is for the coupling constant, $g_s$ for the strong force\footnote{$g$ and $g'$ for the electroweak force also receive such a correction, but for reasons that will be explained, this correction is not as important for the electroweak force.} The correction to the coupling constant is parameterized by the $\beta$-function, which is used as a part of the \textit{renormalization group equation} to characterize the evolution of the coupling as a function of the $\mu/\Lambda$, or the energy scale over some reference scale of the theory. A positive value of the $\beta$-function implies that the strength of the coupling grows with energy--- this is the direction of the evolution of the electroweak couplings, for instance\footnote{In particular, the $\beta$-function is the coefficient of a $\ln{\mu/\Lambda}$ term in the RGE equation which determines the strength of the coupling constant $g$. So the sign of the $\beta$-function determines whether the RGE is a growing or shrinking exponential, to first order.}. The $\beta$-function for QCD, on the other hand, is:
+One particularly interesting set of corrections is for the coupling constant, $g_s$ for the strong force\footnote{$g$ and $g'$ for the electroweak force also receive such a correction, but for reasons that will be explained, this correction is not as important for the electroweak force.}. The correction to the coupling constant is parameterized by the $\beta$-function, which is used as a part of the \textit{renormalization group equation} to characterize the evolution of the coupling as a function of the $\mu/\Lambda$, or the energy scale over some reference scale of the theory. A positive value of the $\beta$-function implies that the strength of the coupling grows with energy--- this is the direction of the evolution of the electroweak couplings, for instance\footnote{In particular, the $\beta$-function is the coefficient of a $\ln{\mu/\Lambda}$ term in the RGE equation which determines the strength of the coupling constant $g$. So the sign of the $\beta$-function determines whether the RGE is a growing or shrinking exponential, to first order.}. The $\beta$-function for QCD, on the other hand, is:
 %
 \begin{equation}
 \beta(\alpha_s) = - \frac{\alpha_s^2}{2\pi} \left(\frac{11}{3} n_\mathrm{colors} - \frac{4}{3}n_\mathrm{flavors}\right)
@@ -132,7 +133,7 @@ Finally, it should be noted that the details of confinement are still very myste
 
 \subsection{Parton Distribution Functions}
 
-At a hadron collider such as the LHC, confinement plays an interesting role in determining not only the outgoing particles--- in the form of jets--- but also the incoming particles, through a process described by \textit{parton distribution functions} (PDFs)~\cite{PhysRevD.30.49}. The protons which the LHC accelerates are not in fact fundamental objects: they are composed of two up quarks one one down quark (these will be defined in more detail in Section~\ref{chapter:sm:matter}), and the gluons which hold them together. This means collisions at the LHC are not really between protons, but between the partons \textit{inside} the protons. Thus, calculations of cross-sections at hadron colliders are not done at a particular energy, or even with specific parton inputs, but instead must be averaged over a distribution of possible input particles and energies those particles might have.
+At a hadron collider such as the LHC, confinement plays an interesting role in determining not only the outgoing particles--- in the form of jets--- but also the incoming particles, through a process described by \textit{parton distribution functions} (PDFs)~\cite{PhysRevD.30.49}. The protons which the LHC accelerates are not in fact fundamental objects: they are composed of two up quarks one one down quark (these will be defined in more detail in Section~\ref{chapter:sm:matter}), and the gluons which hold them together. This means collisions at the LHC are not really between protons, but between the partons \textit{inside} the protons. Thus, calculations of cross-sections at hadron colliders are not done at a particular energy, or even with specific parton inputs, but instead must be averaged over a distribution of possible input particles and energies those particles might have. The energy of the collider, usually denoted with $\sqrt{s}$, is thus not the actual energy of the collisions, but instead a maximum bound on the energy of the collisions.
 
 To make matters even more interesting, the deep structure of the proton is much more complicated than a simple view of $uud$ would suggest. The internal gluons holding the hadron together can split into virtual quark/anti-quark pairs before reforming to gluons: these virtual quarks, referred to as \textit{sea} partons (as opposed to the \textit{valence} partons $uud$), as well as the gluons inside the proton, can also participate in collisions.
 
@@ -145,8 +146,8 @@ Thankfully, the situation is not completely hopeless: the QCD factorization theo
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{mstw2008nlo68cl_allpdfs}
-\label{fig:sm:pdf}
 \caption{An example of a PDF set--- in this case the MSTW2008NLO--- which characterizes the probability of a particular particle inside the proton interacting, as a function of the momentum-fraction $x$ and the momentum scale $Q^2$~\cite{Martin:2009iq}.}
+\label{fig:sm:pdf}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -234,15 +235,15 @@ Note that because the charged-leptons correspond to the ``down''-type, and the n
 
 \section{Summary}
 
-The particle content of the Standard Model is summarized in Figure~\ref{fig:sm:summary}: the Higgs boson sits at the heart of the theory, the 4 gauge bosons interact with matter and transmit the forces, and the 12 matter particles form the atoms which we are all composed of. It is a remarkably concise theory: simply the statement of three generations of matter, the $SU(3)\times SU(2)\times U(1)$ gauge symmetry, the non-trivial minimum of the Higgs-potential, and Lorentz invariance gets us remarkably far in uniquely determining the shape of the theory. It took decades of theoretical insight and experimental work to create such a powerful description of the Universe, but the resilience of SM predictions to even very high energies proves the soundness of the underlying theory. 
+The particle content of the Standard Model is summarized in Figure~\ref{fig:sm:summary_fever}: the Higgs boson sits at the heart of the theory, the 4 gauge bosons interact with matter and transmit the forces, and the 12 matter particles form the atoms which we are all composed of. It is a remarkably concise theory: simply the statement of three generations of matter, the $SU(3)\times SU(2)\times U(1)$ gauge symmetry, the non-trivial minimum of the Higgs-potential, and Lorentz invariance gets us remarkably far in uniquely determining the shape of the theory. It took decades of theoretical insight and experimental work to create such a powerful description of the Universe, but the resilience of SM predictions to even very high energies proves the soundness of the underlying theory. 
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{Particle-Fever-Standard-Model-Graphic.png}
-\label{fig:sm:summary}
 \caption{Summary of the particle content of the Standard Model. Graphic courtesy of Particle Fever and Quantum Diaries.}
+\label{fig:sm:summary_fever}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 

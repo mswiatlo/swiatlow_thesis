@@ -24,8 +24,8 @@ One of the most important decisions in constructing a jet is the decision of wha
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{making-jets.pdf}
-\label{fig:jet-reconstruction:making-jets}
 \caption{A diagram showing the various forms of jet inputs, and the different types of jets they are used to make.}
+\label{fig:jet-reconstruction:making-jets}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -55,8 +55,8 @@ Topo-clusters, short for ``three dimensional topological clusters,'' sum the sca
 \subfigure[2011]{\includegraphics[width=0.45\textwidth]{topo_2011}}
 
 \subfigure[2012]{\includegraphics[width=0.45\textwidth]{topo_2012}}
-\label{fig:jet-reconstruction:jet-inputs:topoclustering-noise}
 \caption{Total expected noise, $\sigma_\mathrm{noise} = \sigma^\mathrm{electronic}_\mathrm{noise}~\oplus~\sigma^\mathrm{pileup}_\mathrm{noise}$, in each year of detector operations, for various subdetectors, as a function of $\eta$. The higher levels in 2011 and 2012 compared to 2012 indicate the changing pileup noise threshold.}
+\label{fig:jet-reconstruction:jet-inputs:topoclustering-noise}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -71,8 +71,8 @@ Each cell thus has an energy significance $\zeta = E / \sigma_\mathrm{noise}$~\c
 \subfigure[Growth cells]{\includegraphics[width=0.45\textwidth]{FCal_evtdisplay_4sig.pdf}}
 
 \subfigure[All cells]{\includegraphics[width=0.6\textwidth]{FCal_evtdisplay_full.pdf}}
-\label{fig:jet-reconstruction:jet-inputs:topoclustering-display}
 \caption{Topo-cluster cells during the clustering, showing first the seed cells, then the growth cells, and finally all cells. Only the first layer of the LAR-FCal is shown in this event display. The final display also shows the outlines of the final topo-clusters, after splitting.}
+\label{fig:jet-reconstruction:jet-inputs:topoclustering-display}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -94,8 +94,8 @@ where $E_\mathrm{clus}^\mathcal{EM}$ and $\eta_\mathrm{clus}$ are the cluster en
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{emlike.pdf}
-\label{fig:jet-reconstruction:cluster-calibration:em-like}
 \caption{An example of the likelihood used for classification of EM vs hadronic showers, for a particular bin of energy and $\eta$. The diagonal line indicates the surface of a $\mathcal{P} > 0.5$ cut.}
+\label{fig:jet-reconstruction:cluster-calibration:em-like}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -107,8 +107,8 @@ After a cluster has been classified as hadronic or electromagnetic,  calibration
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{calib_flow_cropped.pdf}
-\label{fig:jet-reconstruction:cluster-calibration:calib-flow}
 \caption{The form of the calibration algorithm for clusters in the LCW procedure.}
+\label{fig:jet-reconstruction:cluster-calibration:calib-flow}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -124,8 +124,8 @@ A final correction, again developed separately for EM and hadronic particles usi
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{ooc_dm_bounds.pdf}
-\label{fig:jet-reconstruction:cluster-calibration:ooc-dm}
 \caption{An example of the search procedures for the out-of-cluster and }
+\label{fig:jet-reconstruction:cluster-calibration:ooc-dm}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -189,8 +189,8 @@ All of these steps are applied in ATLAS to $R=0.4$ and $R=0.6$ jets, using both 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{JES_calib_chain.png}
-\label{fig:jet-reconstruction:making-jets}
 \caption{A diagram displaying the multiple steps which are used to transform a jet at the constituent scale to a fully-calibrated physics object for use in analysis.}
+\label{fig:jet-reconstruction:making-jets}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -215,8 +215,8 @@ A more sophisticated treatment of the area of a jet asks the question ``if a par
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{jet-areas-example.pdf}
-\label{fig:jet-reconstruction:jet-active-areas}
 \caption{An event display showing a Pythia QCD simulation event with \antikt $R=1.0$ trimmed jets, with subjets formed by the \kt algorithm with $\Rsub = 0.3$.}
+\label{fig:jet-reconstruction:jet-active-areas}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -240,8 +240,8 @@ Often this is preferable, as not just the $p_T$ but the mass of the jet is thus 
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{pu_vs_mu.pdf}
-\label{fig:jet-reconstruction:jet-pu-vs-mu}
 \caption{The improvement of the width of the jet offset (a measurement of the jet resolution in simulation) from the application of the jet areas pileup correction in blue, compared to an NPV based correction in red, and no correction in black.}
+\label{fig:jet-reconstruction:jet-pu-vs-mu}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -262,8 +262,8 @@ Now that the concept of the jet area has been defined, it is possible to define 
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{AKT10_legend4moment_example_etaphi_default.png}
-\label{fig:jet-reconstruction:ghost}
 \caption{An example of the ghost association algorithm in action, showing the locations of tracks from pileup vertices and from the hard-scatter vertices overlaid on the area of calorimeter jets. Tracks within the grey areas are considered to be associated to a jet.}
+\label{fig:jet-reconstruction:ghost}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -282,15 +282,15 @@ Before any other corrections are performed, the $\eta$ of a jet is first adjuste
 \eta^\mathrm{corrected} = \eta^\mathrm{detector} - \frac{z_{PV} \cosh \eta^\mathrm{detector} }{r}
 \end{equation}
 %
-where $z_{PV}$ is the $z$ location of the primary vertex, and $r$ is the ``center-magnitude'' of the jet (i.e., a weighted sum of the jet clusters which averages over their energies to give the radial distance away from the center of the detector)~\cite{JES2011}. Figure~\ref{fig:jet-reconstruction:origin_correction} shows the impact of the correction on the $\eta$ resolution of the jet, which is quite substantial.
+where $z_{PV}$ is the $z$ location of the primary vertex, and $r$ is the ``center-magnitude'' of the jet (i.e., a weighted sum of the jet clusters which averages over their energies to give the radial distance away from the center of the detector)~\cite{JES2011}. Figure~\ref{fig:jet-reconstruction:origin_correction} shows the impact of the correction on the $\eta$ resolution of the jet, which is quite substantial~\cite{Nachman:1728288}.
 
 %%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{origin_correction.pdf}
-\label{fig:jet-reconstruction:origin_correction}
 \caption{The improvement in the $\eta$ resolution after the application of the jet origin correction; no change in $\phi$ resolution is observed, as expected.}
+\label{fig:jet-reconstruction:origin_correction}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -329,7 +329,7 @@ E^{\mathrm{jet}}_{\mathrm{JES}} = \frac{E^{\mathrm{jet}}_{\mathrm{reco}}}{\mathc
 %
 Figure~\ref{fig:jet-reconstruction:e-fit} shows an example of the Gaussian fit used to find the response in each energy and $\eta$ bin; Figure~\ref{fig:jet-reconstruction:ni-e} shows the result of an example fit for the full energy distribution in the same $\eta$ bin. Figure~\ref{fig:jet-reconstruction:calib-function} shows the calibration function for all of the standard jet collections for one bin of $\eta$. Finally, Figure~\ref{fig:jet-reconstruction:total_jes} shows the JES for different energy bins as a function of the detector $\eta$, for both the EM and LC $R=0.4$ collections.
 
-This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape--- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if we bin in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response--- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning. In this way we can guarantee the calibration is consistent across various physics samples.
+This is a rather complicated procedure, and a relevant question to ask is why the correction cannot be derived by simply measuring the correction factor directly in bins of $E$ and $\eta$, and skipping the numerical inversion steps. The numerical inversion technique, while introducing complexity, is preferred because it removes the dependence of the calibration on the input $p_T$ spectrum. If the correction were binned in $E_{\mathrm{reco}}$, then the truth-jets matched to the reconstructed jet will have both up-fluctuations and down fluctuations due to the calorimeter response, but there are more likely to be down fluctuations, because there are more low $p_T$ jets in the dijet sample than high $p_T$ jets. This introduces a bias due to the $p_T$ shape--- if that shape changes, as it does in a different physics sample, then the calibration would no longer be valid. On the other hand, if one bins in $E_{\mathrm{truth}}$ to start, then the fluctuations up and down will depend only on the calorimeter response--- the physics spectrum has already been accounted for by the $E_{\mathrm{truth}}$ binning. In this way it is possible to guarantee the calibration is consistent across various physics samples.
 
 
 %%%%%%%%%%%%%%%%
@@ -337,8 +337,8 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{e_fit.pdf}
-\label{fig:jet-reconstruction:e-fit}
 \caption{An example of the Gaussian fit used to measure the energy response in a $\eta_\mathrm{detector}$, $E_\mathrm{true}$ bin.}
+\label{fig:jet-reconstruction:e-fit}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -349,8 +349,8 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{ni_e.pdf}
-\label{fig:jet-reconstruction:ni-e}
 \caption{An example of the log-polynomial fit used to measure the jet response as a function of $E_\mathrm{reco}$ in a bin of $E_\mathrm{detector}$. The inverse of this function is the energy calibration applied for each point.}
+\label{fig:jet-reconstruction:ni-e}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -360,8 +360,8 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{calib_function.pdf}
-\label{fig:jet-reconstruction:calib-function}
 \caption{The size of the calibration constants for each of the standard jet collection for one bin of $\eta_\mathrm{detector}$.}
+\label{fig:jet-reconstruction:calib-function}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -372,8 +372,8 @@ This is a rather complicated procedure, and a relevant question to ask is why th
 \centering
 \subfigure[EM]{\includegraphics[width=0.45\textwidth]{figures/jet-reconstruction/total_jes_eta_em.pdf}}
 \subfigure[LC]{\includegraphics[width=0.45\textwidth]{figures/jet-reconstruction/total_jes_eta_lc.pdf}}
-\label{fig:jet-reconstruction:total_jes}
 \caption{The size of the calibration constants for each of the standard jet collection for one bin of $\eta_\mathrm{detector}$.}
+\label{fig:jet-reconstruction:total_jes}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -391,8 +391,8 @@ and the correction is therefore also additive. The size of the correction is not
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{eta_fit.pdf}
-\label{fig:jet-reconstruction:eta-fit}
 \caption{An example of the Gaussian fit used to measure the $\eta$ response in a $\eta_\mathrm{detector}$, $E_\mathrm{true}$ bin.}
+\label{fig:jet-reconstruction:eta-fit}
 \end{figure}
 
 %%%%%%%%%%%%%%%%
@@ -402,8 +402,8 @@ and the correction is therefore also additive. The size of the correction is not
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{ni_eta.pdf}
-\label{fig:jet-reconstruction:ni-eta}
 \caption{An example of the log-polynomial fit used to measure the jet $\eta$-response as a function of $E_\mathrm{true}$ in a bin of $E_\mathrm{detector}$. The jet-$\eta$ correction is the negative of each point.}
+\label{fig:jet-reconstruction:ni-eta}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -413,8 +413,8 @@ and the correction is therefore also additive. The size of the correction is not
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{total_eta.pdf}
-\label{fig:jet-reconstruction:total-eta}
 \caption{The full size of the $\eta$ calibration corrections, for different bins of energy and as a function of the detector $\eta$, for $R=0.6$ EM jets in 2010.}
+\label{fig:jet-reconstruction:total-eta}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -451,15 +451,15 @@ The first two variables, $f_{\mathrm{Tile0}}$ and $f_{\mathrm{LAr3}}$, measure t
 
 \subfigure[Track Width]{\includegraphics[width=0.3\textwidth]{fig_06d.pdf}}
 \subfigure[$N_\mathrm{Segments}$]{\includegraphics[width=0.3\textwidth]{fig_06e.pdf}}
-\label{fig:jet-reconstruction:gsc}
 \caption{The average jet response, as a function of each GSC variable, in a central bin of jet $\eta$.}
+\label{fig:jet-reconstruction:gsc}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_04a.pdf}
-\label{fig:jet-reconstruction:resolution_gsc}
 \caption{The improvement in jet resolution after applying the GSC correction.}
+\label{fig:jet-reconstruction:resolution_gsc}
 \end{figure}
 
 
@@ -476,8 +476,8 @@ In $Z$+jet measurements, a well reconstructed $Z$-boson, decaying in either the 
 \centering
 \subfigure[Example of a fit used to estimate $\mathcal{R}_Z$]{\includegraphics[width=0.45\textwidth]{fig_15a.pdf}}
 \subfigure[Data/MC as a function of $p_T^\mathrm{ref}$]{\includegraphics[width=0.45\textwidth]{fig_17a.pdf}}
-\label{fig:jet-reconstruction:z_jet}
 \caption{Examples of the measurements used to measure the uncertainties in jet $p_T$ at low \pt using $Z$+jet events.}
+\label{fig:jet-reconstruction:z_jet}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -490,8 +490,8 @@ The $\gamma$+jet measurements use a similar principle, and measures $\mathcal{R}
 \centering
 \subfigure[Example of a fit used to estimate $\mathcal{R}_\gamma$]{\includegraphics[width=0.45\textwidth]{fig_22b.pdf}}
 \subfigure[Data/MC as a function of $p_T^\gamma$]{\includegraphics[width=0.45\textwidth]{fig_23a.pdf}}
-\label{fig:jet-reconstruction:gamma_jet}
 \caption{Examples of the measurements used to measure the uncertainties in jet $p_T$ at moderate \pt using $\gamma$+jet events.}
+\label{fig:jet-reconstruction:gamma_jet}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -503,8 +503,8 @@ At high \pt, a multijet balance technique is used to derive uncertainties~\cite{
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_29a.pdf}
-\label{fig:jet-reconstruction:mjb}
 \caption{The value of the MJB, as a function of $p_T^\mathrm{recoil}$, in data and MC. The residual disagreement is used to define the uncertainty at high $p_T^\mathrm{jet}$.}
+\label{fig:jet-reconstruction:mjb}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -519,8 +519,8 @@ Once each of these procedures is performed, they are statistically combined to c
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{responseRatio_LCJES_R4-2.pdf}
-\label{fig:jet-reconstruction:combined_jes}
 \caption{The combined uncertainty band, overlaid with the uncertainties derived from the $Z$+jets, $\gamma$+jets, and multijet analyses.}
+\label{fig:jet-reconstruction:combined_jes}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -533,8 +533,8 @@ Figure~\ref{fig:jet-reconstruction:combined_uncertainties} shows the size of the
 \centering
 \subfigure[As a function of $p_T^\mathrm{jet}$]{\includegraphics[width=0.45\textwidth]{JESUncertainty-Moriond2013-Dijet-LC4-pT-noCloseby.pdf}}
 \subfigure[As a function of $\eta$]{\includegraphics[width=0.45\textwidth]{JESUncertainty-Moriond2013-Dijet-LC4-eta-noCloseby.pdf}}
-\label{fig:jet-reconstruction:combined_uncertainties}
 \caption{The combined JES uncertainty, as a function of \pt and $\eta$, in 2012 data, for \antikt~$R=0.4$ LC jets.}
+\label{fig:jet-reconstruction:combined_uncertainties}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -547,8 +547,8 @@ The standard jet calibration chain is run only on $R=0.4$ and $R=0.6$ jets, usin
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_18b.pdf}
-\label{fig:jet-reconstruction:pileup_large}
 \caption{The dependence of the average lead jet mass in dijet events in 2011 data for ungroomed \antikt $R=1.0$ jets and several configurations of trimming.}
+\label{fig:jet-reconstruction:pileup_large}
 \end{figure}
 
 
@@ -566,8 +566,8 @@ and performs a numerical inversion calibration procedure identical to the energy
 \centering
 \subfigure[Before mass calibration]{\includegraphics[width=0.45\textwidth]{fig_07a.pdf}}
 \subfigure[After mass calibration]{\includegraphics[width=0.45\textwidth]{fig_07b.pdf}}
-\label{fig:jet-reconstruction:total_jms}
 \caption{The mass response, for different bins of jet energy, as a function of jet $\eta$, before and after the calibration procedure.}
+\label{fig:jet-reconstruction:total_jms}
 \end{figure}
 
 Uncertainties on the \largeR jets are derived using a track-jet double ratio technique~\cite{ATLAS-SS-2011}. Track-jets reconstructed with the same jet algorithm are matched to the calorimeter jets in a multi-jet sample, in both data and simulation. The ratio of the track-jet mass to the calorimeter mass is then measured: this provides a comparison of two indepenent measurements of the jet mass. The ratio of this ratio gives a bound on the disagreement of the modelling of the jet mass (or $p_T$, or other quantities) in the simulation.  These uncertainties, while conservative because of the introduction of charged fragmentation modeling, provide an \textit{in-situ} alternative measurement of the jet mass and other substructure properties. Figure~\ref{fig:jet-reconstruction:jms_uncertainty} shows both the raw track-to-calo mass ratio, and the corresponding derived uncertainty as a function of the jet \pt, in 2011 data.
@@ -578,8 +578,8 @@ Uncertainties on the \largeR jets are derived using a track-jet double ratio tec
 \centering
 \subfigure[Track/Calo Mass]{\includegraphics[width=0.45\textwidth]{fig_09b.pdf}}
 \subfigure[Mass uncertainty]{\includegraphics[width=0.45\textwidth]{fig_10b.pdf}}
-\label{fig:jet-reconstruction:jms_uncertainty}
 \caption{The jet track mass/ calo mass ratio in data and MC as a function of the jet mass, and the corresponding derived uncertainty as a function of jet \pt.}
+\label{fig:jet-reconstruction:jms_uncertainty}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -603,8 +603,8 @@ where the sums over tracks ($k$ and $l$ indices) are tracks which are ghost-asso
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_26.pdf}
-\label{fig:jet-reconstruction:jvf}
 \caption{An example distribution of JVF measured for primary vertex and pileup jets in a $Z$+jets simulation sample.}
+\label{fig:jet-reconstruction:jvf}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -683,8 +683,8 @@ The simplest of the main ATLAS $b$-taggers, IP3D searches for tracks with signif
 \subfigure[$d_0$, the transverse impact parameter]{\includegraphics[width=0.3\textwidth]{fig_03}}
 \subfigure[$z_0$, the longitudinal impact parameter]{\includegraphics[width=0.3\textwidth]{fig_04}}
 \subfigure[Combined IP3D weight]{\includegraphics[width=0.3\textwidth]{fig_07}}
-\label{fig:jet-reconstruction:b-tagging:ip3d}
 \caption{Distribution of the signed impact parameter significances used by the IP3D tagging algorithm, and the combined IP3D output, in a dijet sample in both data and MC.}
+\label{fig:jet-reconstruction:b-tagging:ip3d}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -702,8 +702,8 @@ The SV1 algorithm, as the named suggests, uses information about the secondary v
 \subfigure[SV mass]{\includegraphics[width=0.3\textwidth]{fig_10a_sv1}}
 \subfigure[SV energy fraction]{\includegraphics[width=0.3\textwidth]{fig_10b_sv1}}
 \subfigure[Number of two-track vertices]{\includegraphics[width=0.3\textwidth]{fig_10c_sv1}}
-\label{fig:jet-reconstruction:b-tagging:sv1}
 \caption{Several of the inputs used in the SV1 $b$-tagging algorithm, in a dijet sample in both data and MC.}
+\label{fig:jet-reconstruction:b-tagging:sv1}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -719,8 +719,8 @@ The JetFitter algorithm is the most sophisticated of the standalone taggers~\cit
 \subfigure[Number of 2-track vertices]{\includegraphics[width=0.3\textwidth]{fig_16a}}
 \subfigure[Decay chain mass]{\includegraphics[width=0.3\textwidth]{fig_16c}}
 \subfigure[Decay chain energy fraction]{\includegraphics[width=0.3\textwidth]{fig_16d}}
-\label{fig:jet-reconstruction:b-tagging:jetfitter}
 \caption{Several of the inputs used in the JetFitter $b$-tagging algorithm, in a dijet sample in both data and MC.}
+\label{fig:jet-reconstruction:b-tagging:jetfitter}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -731,8 +731,8 @@ The JetFitter algorithm is the most sophisticated of the standalone taggers~\cit
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_14.pdf}
-\label{fig:jet-reconstruction:b-tagging:jetfitter_total}
 \caption{The output of the JetFitter $b$-tagging likelihood, in a dijet sample in both data and MC.}
+\label{fig:jet-reconstruction:b-tagging:jetfitter_total}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -746,8 +746,8 @@ Each of these algorithms contains useful orthogonal information, and the most pe
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_01a.pdf}
-\label{fig:jet-reconstruction:b-tagging:mv1}
 \caption{A comparison, using $t\bar{t}$ MC, of the $b$-jet efficiency vs. light jet rejection of several $b$-tagging algorithms.}
+\label{fig:jet-reconstruction:b-tagging:mv1}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
@@ -761,8 +761,8 @@ After $b$-tagging algorithms are developed, they also need to be \textit{calibra
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{fig_02b-2}
-\label{fig:jet-reconstruction:b-tagging:calib}
 \caption{The size of the scale factor for $b$-tagging calibration in data, as a function of the jet \pt, and the size of the corresponding uncertainties.}
+\label{fig:jet-reconstruction:b-tagging:calib}
 \end{figure}
 
 %%%%%%%%%%%%%%%% 
